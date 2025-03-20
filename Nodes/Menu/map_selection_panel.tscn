@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://4jg8hrihkw6o"]
+
+[ext_resource type="FontFile" uid="uid://cwiw18el0nvtw" path="res://Misc/Fonts/Minecraft.ttf" id="1_gfdqt"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/button_play_map.gd" id="2_xdj6r"]
+
+[node name="Map" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = -4.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MapName" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 4.0
+offset_bottom = 36.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("1_gfdqt")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]MAP NAME"
+fit_content = true
+autowrap_mode = 0
+
+[node name="MapSize" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = 40.0
+offset_right = -49.0
+offset_bottom = 56.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("1_gfdqt")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "69x69"
+fit_content = true
+autowrap_mode = 0
+
+[node name="PlayButton" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -36.0
+offset_top = -36.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Play"
+script = ExtResource("2_xdj6r")

@@ -1,0 +1,576 @@
+[gd_scene load_steps=32 format=3 uid="uid://cnyektfckpb08"]
+
+[ext_resource type="Script" path="res://Scripts/Main/main.gd" id="1_kqp5x"]
+[ext_resource type="Script" path="res://Scripts/Camera.gd" id="2_r14qm"]
+[ext_resource type="Script" path="res://Scripts/UIManager.gd" id="3_pb3m7"]
+[ext_resource type="Texture2D" uid="uid://cku8i0gm7aj7o" path="res://Images/Icons/BaseIcons.png" id="3_qknrr"]
+[ext_resource type="Texture2D" uid="uid://rd3favt5syvv" path="res://Images/UI/Bars.png" id="5_kacx6"]
+[ext_resource type="FontFile" uid="uid://cwiw18el0nvtw" path="res://Misc/Fonts/Minecraft.ttf" id="6_kxyny"]
+[ext_resource type="Script" path="res://Scripts/UI/pause_panel_menu.gd" id="8_fexfo"]
+
+[sub_resource type="Gradient" id="Gradient_jnjkh"]
+offsets = PackedFloat32Array(0.373281, 0.626719, 1)
+colors = PackedColorArray(0.266667, 0.364706, 0.282353, 1, 0.235294, 0.317647, 0.25098, 1, 0.211765, 0.266667, 0.196078, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ou0pb"]
+gradient = SubResource("Gradient_jnjkh")
+width = 32
+height = 32
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5m21v"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="Theme" id="Theme_pgw6q"]
+Panel/styles/panel = SubResource("StyleBoxFlat_5m21v")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vcepb"]
+
+[sub_resource type="Theme" id="Theme_8kb4n"]
+Panel/styles/panel = SubResource("StyleBoxFlat_vcepb")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rkb85"]
+bg_color = Color(0.2, 0.2, 0.2, 1)
+
+[sub_resource type="Theme" id="Theme_5pli4"]
+Panel/styles/panel = SubResource("StyleBoxFlat_rkb85")
+
+[sub_resource type="Theme" id="Theme_nydmo"]
+Panel/styles/panel = null
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uan7b"]
+atlas = ExtResource("3_qknrr")
+region = Rect2(0, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s5n2l"]
+atlas = ExtResource("5_kacx6")
+region = Rect2(0, 0, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34c12"]
+atlas = ExtResource("5_kacx6")
+region = Rect2(0, 24, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rrex7"]
+atlas = ExtResource("3_qknrr")
+region = Rect2(12, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7q7ga"]
+atlas = ExtResource("5_kacx6")
+region = Rect2(0, 12, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bvwy"]
+atlas = ExtResource("5_kacx6")
+region = Rect2(0, 36, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8vsgf"]
+atlas = ExtResource("3_qknrr")
+region = Rect2(24, 0, 12, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcpdn"]
+atlas = ExtResource("5_kacx6")
+region = Rect2(0, 48, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_06rrb"]
+atlas = ExtResource("3_qknrr")
+region = Rect2(36, 0, 12, 12)
+
+[sub_resource type="Theme" id="Theme_oc7ro"]
+Panel/styles/panel = SubResource("StyleBoxFlat_rkb85")
+
+[sub_resource type="Theme" id="Theme_0vnqg"]
+Panel/styles/panel = null
+
+[sub_resource type="Gradient" id="Gradient_lkytc"]
+offsets = PackedFloat32Array(0, 0.534831, 1)
+colors = PackedColorArray(0.419608, 0.188235, 0.176471, 1, 0.301961, 0.0745098, 0.317647, 1, 0.137255, 0.12549, 0.364706, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7b1cl"]
+gradient = SubResource("Gradient_lkytc")
+width = 16
+height = 16
+fill_from = Vector2(0.5, 1)
+fill_to = Vector2(0.5, 0)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_syocd"]
+texture = SubResource("GradientTexture2D_7b1cl")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ox3di"]
+bg_color = Color(0.231373, 0.0588235, 0.454902, 0.607843)
+border_width_left = 16
+border_width_top = 16
+border_width_right = 16
+border_width_bottom = 16
+border_color = Color(0.231373, 0.0588235, 0.454902, 0.784314)
+border_blend = true
+
+[node name="Main" type="Node2D"]
+process_mode = 3
+script = ExtResource("1_kqp5x")
+spawnUnitsRed = true
+spawnUnitsBlue = true
+armyBuilder = false
+armyCostLimit = 6500
+
+[node name="Paralax" type="Node2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="Parallax2D" type="Parallax2D" parent="Paralax"]
+repeat_size = Vector2(128, 128)
+autoscroll = Vector2(16, 16)
+repeat_times = 9
+
+[node name="Sprite2D" type="Sprite2D" parent="Paralax/Parallax2D"]
+scale = Vector2(4, 4)
+texture = SubResource("GradientTexture2D_ou0pb")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 1
+zoom = Vector2(3, 3)
+script = ExtResource("2_r14qm")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+script = ExtResource("3_pb3m7")
+styleDark = SubResource("Theme_pgw6q")
+styleLight = SubResource("Theme_8kb4n")
+styleUpperDark = SubResource("Theme_5pli4")
+styleUpperLight = SubResource("Theme_nydmo")
+
+[node name="LowerPanel" type="Panel" parent="Camera2D/CanvasLayer"]
+top_level = true
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -190.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_pgw6q")
+
+[node name="NamePanel" type="Panel" parent="Camera2D/CanvasLayer/LowerPanel"]
+top_level = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -226.0
+offset_right = 424.0
+offset_bottom = -190.0
+grow_vertical = 0
+theme = SubResource("Theme_pgw6q")
+
+[node name="NamePanel" type="Panel" parent="Camera2D/CanvasLayer/LowerPanel/NamePanel"]
+top_level = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -222.0
+offset_right = 420.0
+offset_bottom = -190.0
+grow_vertical = 0
+theme = SubResource("Theme_8kb4n")
+
+[node name="Label" type="RichTextLabel" parent="Camera2D/CanvasLayer/LowerPanel/NamePanel/NamePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("6_kxyny")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Ullnyaal Korbaa"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="StatusPanels" type="Control" parent="Camera2D/CanvasLayer/LowerPanel/NamePanel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = -16.0
+offset_right = 4.0
+offset_bottom = -16.0
+grow_horizontal = 0
+
+[node name="StatsPanel" type="Panel" parent="Camera2D/CanvasLayer/LowerPanel"]
+top_level = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -186.0
+offset_right = 210.0
+offset_bottom = -4.0
+grow_vertical = 0
+theme = SubResource("Theme_8kb4n")
+
+[node name="PanelStatsCore" type="Panel" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel"]
+top_level = true
+layout_mode = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = -183.0
+offset_right = 206.0
+offset_bottom = -60.0
+grow_vertical = 0
+theme = SubResource("Theme_pgw6q")
+
+[node name="IconHealth" type="TextureRect" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel/PanelStatsCore"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 28.0
+offset_bottom = 28.0
+texture = SubResource("AtlasTexture_uan7b")
+
+[node name="BarHealth" type="TextureProgressBar" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel/PanelStatsCore"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 4.0
+offset_right = 112.0
+offset_bottom = 16.0
+scale = Vector2(2, 2)
+max_value = 80.0
+value = 10.0
+texture_under = SubResource("AtlasTexture_s5n2l")
+texture_progress = SubResource("AtlasTexture_34c12")
+
+[node name="Label" type="RichTextLabel" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel/PanelStatsCore/BarHealth"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_right = 80.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/normal_font = ExtResource("6_kxyny")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]500/1000"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="IconMovement" type="TextureRect" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel/PanelStatsCore"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 34.0
+offset_right = 28.0
+offset_bottom = 58.0
+texture = SubResource("AtlasTexture_rrex7")
+
+[node name="BarMovement" type="TextureProgressBar" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel/PanelStatsCore"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 34.0
+offset_right = 112.0
+offset_bottom = 46.0
+scale = Vector2(2, 2)
+max_value = 80.0
+value = 40.0
+texture_under = SubResource("AtlasTexture_7q7ga")
+texture_progress = SubResource("AtlasTexture_7bvwy")
+
+[node name="Label" type="RichTextLabel" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel/PanelStatsCore/BarMovement"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_right = 80.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/normal_font = ExtResource("6_kxyny")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]5/6"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="IconAction" type="TextureRect" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel/PanelStatsCore"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 64.0
+offset_right = 28.0
+offset_bottom = 88.0
+texture = SubResource("AtlasTexture_8vsgf")
+
+[node name="BarAction" type="TextureProgressBar" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel/PanelStatsCore"]
+layout_mode = 0
+offset_left = 32.0
+offset_top = 64.0
+offset_right = 112.0
+offset_bottom = 76.0
+scale = Vector2(2, 2)
+max_value = 80.0
+value = 59.0
+texture_under = SubResource("AtlasTexture_7q7ga")
+texture_progress = SubResource("AtlasTexture_fcpdn")
+
+[node name="Label" type="RichTextLabel" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel/PanelStatsCore/BarAction"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 3.0
+offset_right = 80.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/normal_font = ExtResource("6_kxyny")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]2/3"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="IconCost" type="TextureRect" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel/PanelStatsCore"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 94.0
+offset_right = 28.0
+offset_bottom = 118.0
+texture = SubResource("AtlasTexture_06rrb")
+
+[node name="LabelCost" type="RichTextLabel" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel/PanelStatsCore"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 32.0
+offset_top = 100.0
+offset_right = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("6_kxyny")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]69420"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="Traits" type="Control" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel"]
+anchors_preset = 0
+offset_left = 4.0
+offset_top = 130.0
+offset_right = 4.0
+offset_bottom = 130.0
+mouse_filter = 2
+
+[node name="ActionPanels" type="Control" parent="Camera2D/CanvasLayer/LowerPanel"]
+anchors_preset = 0
+offset_left = 214.0
+offset_top = 4.0
+offset_right = 214.0
+offset_bottom = 4.0
+
+[node name="UpperPanel" type="Panel" parent="Camera2D/CanvasLayer"]
+top_level = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -250.0
+offset_right = 250.0
+offset_bottom = 100.0
+grow_horizontal = 2
+theme = SubResource("Theme_oc7ro")
+
+[node name="Button" type="Button" parent="Camera2D/CanvasLayer/UpperPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = 4.0
+offset_right = 50.0
+offset_bottom = 60.0
+grow_horizontal = 2
+focus_mode = 0
+theme = SubResource("Theme_0vnqg")
+theme_override_fonts/font = ExtResource("6_kxyny")
+theme_override_font_sizes/font_size = 24
+text = "End
+Turn"
+
+[node name="RedScore" type="RichTextLabel" parent="Camera2D/CanvasLayer/UpperPanel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -12.5
+offset_right = 100.0
+offset_bottom = 12.5
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("6_kxyny")
+text = "RED: 100%"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="PlayerText" type="RichTextLabel" parent="Camera2D/CanvasLayer/UpperPanel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("6_kxyny")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]RED's turn"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="BlueScore" type="RichTextLabel" parent="Camera2D/CanvasLayer/UpperPanel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -12.5
+offset_bottom = 12.5
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("6_kxyny")
+bbcode_enabled = true
+text = "[right]BLUE: 100%"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="PausePanel" type="Panel" parent="Camera2D/CanvasLayer"]
+process_mode = 2
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_syocd")
+script = ExtResource("8_fexfo")
+
+[node name="PausePanel" type="Panel" parent="Camera2D/CanvasLayer/PausePanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -210.0
+offset_right = 200.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ox3di")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Camera2D/CanvasLayer/PausePanel/PausePanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 4.0
+offset_bottom = 36.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("6_kxyny")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]Paused"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera2D/CanvasLayer/PausePanel/PausePanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 100.0
+offset_top = 40.0
+offset_right = -100.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 10
+
+[node name="ResumeButton" type="Button" parent="Camera2D/CanvasLayer/PausePanel/PausePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_kxyny")
+theme_override_font_sizes/font_size = 24
+text = "Resume"
+
+[node name="SaveButton" type="Button" parent="Camera2D/CanvasLayer/PausePanel/PausePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_kxyny")
+theme_override_font_sizes/font_size = 24
+text = "Save N/A"
+
+[node name="LoadButton" type="Button" parent="Camera2D/CanvasLayer/PausePanel/PausePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_kxyny")
+theme_override_font_sizes/font_size = 24
+text = "Load N/A"
+
+[node name="SettingsButton" type="Button" parent="Camera2D/CanvasLayer/PausePanel/PausePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_kxyny")
+theme_override_font_sizes/font_size = 24
+text = "Settings N/A"
+
+[node name="ReturnButton" type="Button" parent="Camera2D/CanvasLayer/PausePanel/PausePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_kxyny")
+theme_override_font_sizes/font_size = 24
+text = "Return to Menu"
+
+[node name="QuitButton" type="Button" parent="Camera2D/CanvasLayer/PausePanel/PausePanel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_kxyny")
+theme_override_font_sizes/font_size = 24
+text = "Quit Game"
+
+[node name="PlayerText" type="RichTextLabel" parent="Camera2D/CanvasLayer/PausePanel/PausePanel"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -32.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/normal_font = ExtResource("6_kxyny")
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "[center]RED's turn"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="MouseNode" type="Control" parent="Camera2D/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+mouse_filter = 2
+
+[node name="Units" type="Node2D" parent="."]
+process_mode = 1
+
+[node name="Tiles" type="Node2D" parent="."]
+process_mode = 1
+
+[connection signal="pressed" from="Camera2D/CanvasLayer/UpperPanel/Button" to="Camera2D/CanvasLayer" method="_on_end_turn_button_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/PausePanel/PausePanel/VBoxContainer/ResumeButton" to="Camera2D/CanvasLayer/PausePanel" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/PausePanel/PausePanel/VBoxContainer/ReturnButton" to="Camera2D/CanvasLayer/PausePanel" method="_on_return_button_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/PausePanel/PausePanel/VBoxContainer/QuitButton" to="Camera2D/CanvasLayer/PausePanel" method="_on_quit_button_pressed"]

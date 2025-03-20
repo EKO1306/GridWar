@@ -1,0 +1,1287 @@
+{
+	"grid": [
+		{
+			"height": 4,
+			"image": "SnowBush",
+			"type": 2
+		},
+		{
+			"height": 4,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "SnowBush",
+			"type": 2
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "SnowBush",
+			"type": 2
+		},
+		{
+			"height": 5,
+			"image": "SnowTrees",
+			"type": 3
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "SnowBush",
+			"type": 2
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "SnowBush",
+			"type": 2
+		},
+		{
+			"height": 4,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "SnowBush",
+			"type": 2
+		},
+		{
+			"height": 4,
+			"image": "SnowBush",
+			"type": 2
+		},
+		{
+			"height": 4,
+			"image": "SnowTrees",
+			"type": 3
+		},
+		{
+			"height": 4,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "SnowBush",
+			"type": 2
+		},
+		{
+			"height": 4,
+			"image": "SnowTrees",
+			"type": 3
+		},
+		{
+			"height": 5,
+			"image": "SnowTrees",
+			"type": 3
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "SnowBush",
+			"type": 2
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 6,
+			"image": "SnowBush",
+			"type": 2
+		},
+		{
+			"height": 4,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "SnowTrees",
+			"type": 3
+		},
+		{
+			"height": 4,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "SnowBush",
+			"type": 2
+		},
+		{
+			"height": 4,
+			"image": "SnowBush",
+			"type": 2
+		},
+		{
+			"height": 4,
+			"image": "SnowBush",
+			"type": 2
+		},
+		{
+			"height": 4,
+			"image": "SnowTrees",
+			"type": 3
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "SnowBush",
+			"type": 2
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "SnowBush",
+			"type": 2
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 6,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 6,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 6,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "SnowTrees",
+			"type": 3
+		},
+		{
+			"height": 4,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "SnowBush",
+			"type": 2
+		},
+		{
+			"height": 4,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 5,
+			"image": "SnowBush",
+			"type": 2
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 6,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 6,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 7,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 6,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 6,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 6,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 6,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 6,
+			"image": "SnowBush",
+			"type": 2
+		},
+		{
+			"height": 7,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 8,
+			"image": "SnowTrees",
+			"type": 3
+		},
+		{
+			"height": 7,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 6,
+			"image": "SnowBush",
+			"type": 2
+		},
+		{
+			"height": 6,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 6,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 7,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 6,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 6,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 7,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 8,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 8,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 7,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 7,
+			"image": "SnowTrees",
+			"type": 3
+		},
+		{
+			"height": 5,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 5,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 6,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 7,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 8,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 9,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 8,
+			"image": "SnowBush",
+			"type": 2
+		},
+		{
+			"height": 8,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 8,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 4,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 2,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 8,
+			"image": "SnowTrees",
+			"type": 3
+		},
+		{
+			"height": 8,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 9,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 9,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 9,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 9,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 8,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 9,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 9,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 10,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 10,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 9,
+			"image": "SnowTrees",
+			"type": 3
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 10,
+			"image": "Snow",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 0,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 0,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 0,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 0,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 0,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 0,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 0,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 0,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 0,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 0,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 0,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 0,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 0,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 0,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 0,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 0,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 0,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 0,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 0,
+			"image": "Grass",
+			"type": 0
+		}
+	],
+	"gridHeight": 16,
+	"gridWidth": 16,
+	"name": "Summit"
+}

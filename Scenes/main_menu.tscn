@@ -1,0 +1,236 @@
+[gd_scene load_steps=5 format=3 uid="uid://ctj2dy7csrdv5"]
+
+[ext_resource type="Script" path="res://Scripts/MainMenuUI.gd" id="1_8dmwm"]
+[ext_resource type="FontFile" uid="uid://cwiw18el0nvtw" path="res://Misc/Fonts/Minecraft.ttf" id="2_sis5w"]
+[ext_resource type="Script" path="res://Scripts/Misc/text_edit.gd" id="3_oowao"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6eo1"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.294118, 0.172549, 0.556863, 0.607843)
+border_width_bottom = 4
+border_color = Color(0.294118, 0.172549, 0.556863, 1)
+
+[node name="MainMenu" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="MainMenuUI" type="CanvasLayer" parent="."]
+script = ExtResource("1_8dmwm")
+
+[node name="MainPanel" type="Panel" parent="MainMenuUI"]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -424.0
+offset_top = -120.0
+offset_right = -64.0
+offset_bottom = 120.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="PlayButton" type="Button" parent="MainMenuUI/MainPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 42.0
+grow_horizontal = 2
+text = "Play"
+
+[node name="PlayButton2" type="Button" parent="MainMenuUI/MainPanel"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 10.0
+offset_top = 52.0
+offset_right = -10.0
+offset_bottom = 84.0
+grow_horizontal = 2
+text = "Editor"
+
+[node name="MapEditorTab" type="TabContainer" parent="MainMenuUI"]
+visible = false
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 466.0
+offset_bottom = 624.0
+current_tab = 0
+
+[node name="New" type="Control" parent="MainMenuUI/MapEditorTab"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="MapName" type="HSplitContainer" parent="MainMenuUI/MapEditorTab/New"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = 28.0
+grow_horizontal = 2
+split_offset = 100
+dragger_visibility = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenuUI/MapEditorTab/New/MapName"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_sis5w")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]Map Name"
+fit_content = true
+autowrap_mode = 0
+
+[node name="TextEdit" type="LineEdit" parent="MainMenuUI/MapEditorTab/New/MapName"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_sis5w")
+theme_override_styles/normal = SubResource("StyleBoxFlat_h6eo1")
+max_length = 32
+
+[node name="MapID" type="HSplitContainer" parent="MainMenuUI/MapEditorTab/New"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = 32.0
+offset_right = -4.0
+offset_bottom = 56.0
+grow_horizontal = 2
+split_offset = 100
+dragger_visibility = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenuUI/MapEditorTab/New/MapID"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_sis5w")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]Map ID"
+fit_content = true
+autowrap_mode = 0
+
+[node name="TextEdit" type="LineEdit" parent="MainMenuUI/MapEditorTab/New/MapID"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_sis5w")
+theme_override_styles/normal = SubResource("StyleBoxFlat_h6eo1")
+script = ExtResource("3_oowao")
+specialFlags = ["snake"]
+
+[node name="MapWidth" type="HSplitContainer" parent="MainMenuUI/MapEditorTab/New"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = 60.0
+offset_right = -4.0
+offset_bottom = 84.0
+grow_horizontal = 2
+split_offset = 100
+dragger_visibility = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenuUI/MapEditorTab/New/MapWidth"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_sis5w")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]Map Width"
+fit_content = true
+autowrap_mode = 0
+
+[node name="TextEdit" type="LineEdit" parent="MainMenuUI/MapEditorTab/New/MapWidth"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_sis5w")
+theme_override_styles/normal = SubResource("StyleBoxFlat_h6eo1")
+max_length = 2
+script = ExtResource("3_oowao")
+allowedCharacters = "1234567890"
+
+[node name="MapHeight" type="HSplitContainer" parent="MainMenuUI/MapEditorTab/New"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = 88.0
+offset_right = -4.0
+offset_bottom = 112.0
+grow_horizontal = 2
+split_offset = 100
+dragger_visibility = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="MainMenuUI/MapEditorTab/New/MapHeight"]
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("2_sis5w")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]Map Height"
+fit_content = true
+autowrap_mode = 0
+
+[node name="TextEdit" type="LineEdit" parent="MainMenuUI/MapEditorTab/New/MapHeight"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_sis5w")
+theme_override_styles/normal = SubResource("StyleBoxFlat_h6eo1")
+max_length = 2
+script = ExtResource("3_oowao")
+allowedCharacters = "1234567890"
+
+[node name="MapEditorButton" type="Button" parent="MainMenuUI/MapEditorTab/New"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -35.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Start"
+
+[node name="Official" type="VBoxContainer" parent="MainMenuUI/MapEditorTab"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 82
+metadata/_tab_index = 1
+
+[node name="Custom" type="VBoxContainer" parent="MainMenuUI/MapEditorTab"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 82
+metadata/_tab_index = 2
+
+[node name="MapPlayTab" type="TabContainer" parent="MainMenuUI"]
+visible = false
+offset_left = 16.0
+offset_top = 24.0
+offset_right = 466.0
+offset_bottom = 624.0
+current_tab = 0
+
+[node name="Official" type="VBoxContainer" parent="MainMenuUI/MapPlayTab"]
+layout_mode = 2
+theme_override_constants/separation = 82
+metadata/_tab_index = 0
+
+[node name="Custom" type="VBoxContainer" parent="MainMenuUI/MapPlayTab"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 82
+metadata/_tab_index = 1
+
+[connection signal="pressed" from="MainMenuUI/MainPanel/PlayButton" to="MainMenuUI" method="_on_play_button_pressed"]
+[connection signal="pressed" from="MainMenuUI/MainPanel/PlayButton2" to="MainMenuUI" method="_on_editor_pressed"]
+[connection signal="focus_exited" from="MainMenuUI/MapEditorTab/New/MapID/TextEdit" to="MainMenuUI/MapEditorTab/New/MapID/TextEdit" method="_on_focus_exited"]
+[connection signal="text_submitted" from="MainMenuUI/MapEditorTab/New/MapID/TextEdit" to="MainMenuUI/MapEditorTab/New/MapID/TextEdit" method="_on_text_submitted"]
+[connection signal="focus_exited" from="MainMenuUI/MapEditorTab/New/MapWidth/TextEdit" to="MainMenuUI/MapEditorTab/New/MapWidth/TextEdit" method="_on_focus_exited"]
+[connection signal="text_submitted" from="MainMenuUI/MapEditorTab/New/MapWidth/TextEdit" to="MainMenuUI/MapEditorTab/New/MapWidth/TextEdit" method="_on_text_submitted"]
+[connection signal="focus_exited" from="MainMenuUI/MapEditorTab/New/MapHeight/TextEdit" to="MainMenuUI/MapEditorTab/New/MapHeight/TextEdit" method="_on_focus_exited"]
+[connection signal="text_submitted" from="MainMenuUI/MapEditorTab/New/MapHeight/TextEdit" to="MainMenuUI/MapEditorTab/New/MapHeight/TextEdit" method="_on_text_submitted"]
+[connection signal="pressed" from="MainMenuUI/MapEditorTab/New/MapEditorButton" to="MainMenuUI" method="_on_map_editor_button_pressed"]

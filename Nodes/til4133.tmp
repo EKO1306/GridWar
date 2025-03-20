@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://q1v4ipobf5ex"]
+
+[ext_resource type="Texture2D" uid="uid://cycxpt663aiq0" path="res://Images/Tiles.png" id="1_5h67t"]
+[ext_resource type="Script" path="res://Scripts/tile.gd" id="1_eqan0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2k5pm"]
+atlas = ExtResource("1_5h67t")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mdl7w"]
+atlas = ExtResource("1_5h67t")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cp0bo"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2k5pm")
+}],
+"loop": true,
+"name": &"Grass",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mdl7w")
+}],
+"loop": true,
+"name": &"Wall",
+"speed": 5.0
+}]
+
+[node name="Tile" type="Node2D"]
+script = ExtResource("1_eqan0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_cp0bo")
+animation = &"Grass"

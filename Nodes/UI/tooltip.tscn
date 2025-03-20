@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dggkq05ikgiym"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_scjg2"]
+bg_color = Color(0.319, 0.183, 0.48, 0.9)
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="Theme" id="Theme_wc1vy"]
+RichTextLabel/styles/normal = SubResource("StyleBoxFlat_scjg2")
+
+[node name="Tooltip" type="RichTextLabel"]
+offset_left = 8.0
+offset_right = 308.0
+offset_bottom = 40.0
+mouse_filter = 2
+theme = SubResource("Theme_wc1vy")
+bbcode_enabled = true
+text = "Hello Gamers"
+fit_content = true

@@ -1,0 +1,14 @@
+TRAITS
+Cavalry -
+Takes +1 movement when moving between elevation and when moving onto tree tiles
+Lancer -
+Deals +X% damage for each tile further away they are from their starting tile this turn
+
+UNITS
+Ursiara Ullnyaal (Bear Master, New Lord)
+	- Ursiara Rider (Bear Master Rider)
+Faetorm Ullnyaal (Health Shield, New Lord)
+	- Faetorm Herbalist (Health Shield Herbalist)
+	- Faetorm Shieldmaiden
+Paigrash Ullnyaal (Storm Charger, New Lord)
+	- Paigrash Beserker
