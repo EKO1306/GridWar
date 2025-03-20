@@ -380,63 +380,73 @@ func calcAction(targetUnit):
 	var actionNo = main.selectedAction
 	var currentAction = statActionList[actionNo]
 	var isTargetDead = false
+	var didActionTrigger = false
 	
 	if not checkActionValid(currentAction, actionNo):
 		return
 	
 	print("I hit " + targetUnit.name + " at " + str(Vector2(targetUnit.gridX,targetUnit.gridY)))
 	hasActed = true
-	for hasUsePerTurn in hasTrait("usePerTurn", actionNo): #Tick down Use Per Turn
-		statActionList[actionNo].traits[hasUsePerTurn[1]][1] -= 1
-	
-	for hasUse in hasTrait("use", actionNo): #Tick down Use
-		statActionList[actionNo].traits[hasUse[1]][1] -= 1
-	
-	for hasAmmo in hasTrait("ammo", actionNo): #Tick down Ammo
-		statActionList[actionNo].traits[hasAmmo[1]][1] -= 1
 	
 	for hasReload in hasTrait("reload", actionNo): #Tick up Ammo from reload
 		for actions in range(len(statActionList)):
 			for hasAmmo in hasTrait("ammo",actions):
 				if hasAmmo[0][1] < hasAmmo[0][2]:
 					statActionList[actions].traits[hasAmmo[1]][1] += hasReload[0][1]
+					didActionTrigger = true
 	
 	for hasHeal in hasTrait("heal", actionNo): #Heals target from heal trait
 		if targetUnit.hasTrait("mechanical").is_empty(): #Mechanical Units cannot be healed.
 			targetUnit.changeHealth(hasHeal[0][1])
+			didActionTrigger = true
 	for hasBurn in hasTrait("burn", actionNo): #Inficts burning from burn trait
 		targetUnit.addStatus("burning", 4, [hasBurn[0][1]])
+		didActionTrigger = true
 	for hasPoison in hasTrait("poison", actionNo): #Inficts poisoned from poison trait
 		targetUnit.addStatus("poisoned", 4, [hasPoison[0][1]])
+		didActionTrigger = true
 	for hasExpose in hasTrait("expose", actionNo): #Inficts exposed from expose trait
 		targetUnit.addStatus("exposed", hasExpose[0][1], [])
+		didActionTrigger = true
 	
 	for hasUrsuanaYaalCommand in hasTrait("ursuanaYaalCommand", actionNo): #Gives UrsuanaYaalCommand status on mounted within 2 tiles.
 		for unit in getUnitsInArea(gridX,gridY,2,null,unitTeam):
 			if not unit.hasTrait("mounted").is_empty():
 				unit.addStatus("ursuanaYaalCommand", 2, [])
+				didActionTrigger = true
 	
 	for hasDamage in hasTrait("damage", actionNo): #Deals damage equal to damage trait
 		if not isTargetDead:
 			if targetUnit.damage(hasDamage[0][1], self, actionNo): #Did the target die from the damage?
 				isTargetDead = true
-	
-	while true: #If the unit has the charge status, remove it.
-		var hasCharge = hasStatus("charge")
-		if hasCharge.is_empty():
-			break
-		removeStatus(hasCharge[0][1])
+			didActionTrigger = true
 	
 	if isTargetDead:
 		for hasRampage in hasTrait("rampage", actionNo): #If the target died, gain actions if rampage trait
 			statActions += hasRampage[0][1]
 	
-	#Update Actions
-	statActions -= currentAction.actions
-	if statActions < currentAction.actions:
-		if statActions <= 0:
-			if hasTrait("vigilance").is_empty():
-				statMovement = 0
+	if didActionTrigger:
+		while true: #If the unit has the charge status, remove it.
+			var hasCharge = hasStatus("charge")
+			if hasCharge.is_empty():
+				break
+			removeStatus(hasCharge[0][1])
+		
+		for hasUsePerTurn in hasTrait("usePerTurn", actionNo): #Tick down Use Per Turn
+			statActionList[actionNo].traits[hasUsePerTurn[1]][1] -= 1
+		
+		for hasUse in hasTrait("use", actionNo): #Tick down Use
+			statActionList[actionNo].traits[hasUse[1]][1] -= 1
+		
+		for hasAmmo in hasTrait("ammo", actionNo): #Tick down Ammo
+			statActionList[actionNo].traits[hasAmmo[1]][1] -= 1
+	
+		#Update Actions
+		statActions -= currentAction.actions
+		if statActions < currentAction.actions:
+			if statActions <= 0:
+				if hasTrait("vigilance").is_empty():
+					statMovement = 0
 	print("Action took " + str(Time.get_ticks_usec() - time) + " usec.")
 	
 	if not checkActionValid(currentAction, actionNo):
