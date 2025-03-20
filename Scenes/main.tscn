@@ -111,7 +111,7 @@ script = ExtResource("1_kqp5x")
 spawnUnitsRed = true
 spawnUnitsBlue = true
 armyBuilder = false
-armyCostLimit = 6500
+armyCostLimit = 7500
 
 [node name="Paralax" type="Node2D" parent="."]
 position = Vector2(576, 324)

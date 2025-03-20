@@ -27,6 +27,7 @@ var statusList = []
 @onready var uiCanvas = main.get_node("Camera2D/CanvasLayer")
 
 @onready var nodeHealthBar = get_node_or_null("HealthBar") as TextureProgressBar
+@onready var nodeAnimationPlayer = get_node("AnimationPlayer") as AnimationPlayer
 
 var animationMovementBuffer = []
 var movementOffset = Vector2.ZERO
@@ -426,6 +427,7 @@ func calcAction(targetUnit):
 			statActions += hasRampage[0][1]
 	
 	if didActionTrigger:
+		nodeAnimationPlayer.play("action" + str(actionNo))
 		while true: #If the unit has the charge status, remove it.
 			var hasCharge = hasStatus("charge")
 			if hasCharge.is_empty():
