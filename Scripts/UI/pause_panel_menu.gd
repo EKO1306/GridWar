@@ -43,3 +43,11 @@ func _on_quit_button_pressed() -> void:
 	else:
 		quitWarning = 2
 		$PausePanel/VBoxContainer/QuitButton.text = "Are you sure?"
+
+
+func _on_save_button_pressed() -> void:
+	main.saveGame()
+
+
+func _on_load_button_pressed() -> void:
+	main.loadGame()

@@ -1,0 +1,2809 @@
+{
+	"armyHighestCosts": [
+		14700,
+		14700
+	],
+	"map": {
+		"grid": [
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 4,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 5,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 5,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 5,
+				"image": "Trees",
+				"type": 3
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 2,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 4,
+				"image": "Trees",
+				"type": 3
+			},
+			{
+				"height": 4,
+				"image": "Trees",
+				"type": 3
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 3,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 4,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 2,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Trees",
+				"type": 3
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 2,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Trees",
+				"type": 3
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 3,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 2,
+				"image": "Trees",
+				"type": 3
+			},
+			{
+				"height": 3,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 1,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 7,
+				"image": "Wall",
+				"type": 1
+			},
+			{
+				"height": 7,
+				"image": "Wall",
+				"type": 1
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 3,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 3,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 1,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 1,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 6,
+				"image": "Wall",
+				"type": 1
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 4,
+				"image": "Bridge",
+				"type": 4
+			},
+			{
+				"height": 4,
+				"image": "Bridge",
+				"type": 4
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 1,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Trees",
+				"type": 3
+			},
+			{
+				"height": 1,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 1,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 1,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 4,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 1,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 1,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 3,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 0,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Bridge",
+				"type": 4
+			},
+			{
+				"height": 0,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 0,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 1,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 1,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 1,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 1,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 1,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 1,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 0,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Bridge",
+				"type": 4
+			},
+			{
+				"height": 0,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 0,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 0,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 0,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 2,
+				"image": "Trees",
+				"type": 3
+			},
+			{
+				"height": 1,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 0,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 0,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 1,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 1,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 1,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 0,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Bridge",
+				"type": 4
+			},
+			{
+				"height": 0,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 0,
+				"image": "Trees",
+				"type": 3
+			},
+			{
+				"height": 0,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 1,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 2,
+				"image": "Trees",
+				"type": 3
+			},
+			{
+				"height": 1,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 0,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 0,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 1,
+				"image": "Trees",
+				"type": 3
+			},
+			{
+				"height": 1,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 1,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 2,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Trees",
+				"type": 3
+			},
+			{
+				"height": 1,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 1,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 1,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Bush",
+				"type": 2
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			},
+			{
+				"height": 2,
+				"image": "Grass",
+				"type": 0
+			}
+		],
+		"gridHeight": 12,
+		"gridWidth": 16,
+		"name": "Dual Peaks"
+	},
+	"playerTurn": 0,
+	"turnEnded": true,
+	"units": [
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Longbow",
+					"range": "(3, 7)",
+					"traits": [
+						[
+							"damage",
+							140
+						],
+						[
+							"ranged"
+						]
+					]
+				},
+				{
+					"actions": 1,
+					"name": "Punch",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							80
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 0,
+			"cost": 350,
+			"gridX": 1,
+			"gridY": 1,
+			"health": 120,
+			"maxActions": 1,
+			"maxHealth": 120,
+			"maxMovement": 3,
+			"movement": 0,
+			"name": "Archer",
+			"pathName": "res://Nodes/Units/kingdomArcher.tscn",
+			"statusList": [],
+			"team": 0,
+			"traitsList": [
+				[
+					"factionKingdom"
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Longbow",
+					"range": "(3, 7)",
+					"traits": [
+						[
+							"damage",
+							140
+						],
+						[
+							"ranged"
+						]
+					]
+				},
+				{
+					"actions": 1,
+					"name": "Punch",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							80
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 1,
+			"cost": 350,
+			"gridX": 0,
+			"gridY": 3,
+			"health": 120,
+			"maxActions": 1,
+			"maxHealth": 120,
+			"maxMovement": 3,
+			"movement": 3,
+			"name": "Archer",
+			"pathName": "res://Nodes/Units/kingdomArcher.tscn",
+			"statusList": [],
+			"team": 1,
+			"traitsList": [
+				[
+					"factionKingdom"
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Dagger",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							440
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 1,
+			"cost": 500,
+			"gridX": 2,
+			"gridY": 1,
+			"health": 100,
+			"maxActions": 1,
+			"maxHealth": 100,
+			"maxMovement": 5,
+			"movement": 2.5,
+			"name": "Assassin",
+			"pathName": "res://Nodes/Units/kingdomAssassin.tscn",
+			"statusList": [],
+			"team": 0,
+			"traitsList": [
+				[
+					"factionKingdom"
+				],
+				[
+					"vigilance"
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Dagger",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							440
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 1,
+			"cost": 500,
+			"gridX": 1,
+			"gridY": 3,
+			"health": 100,
+			"maxActions": 1,
+			"maxHealth": 100,
+			"maxMovement": 5,
+			"movement": 5,
+			"name": "Assassin",
+			"pathName": "res://Nodes/Units/kingdomAssassin.tscn",
+			"statusList": [],
+			"team": 1,
+			"traitsList": [
+				[
+					"factionKingdom"
+				],
+				[
+					"vigilance"
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Cannon",
+					"range": "(4, 10)",
+					"traits": [
+						[
+							"damage",
+							1000
+						],
+						[
+							"ranged"
+						],
+						[
+							"ammo",
+							0,
+							1
+						]
+					]
+				},
+				{
+					"actions": 1,
+					"name": "Reload",
+					"range": "(0, 0)",
+					"traits": [
+						[
+							"reload",
+							1
+						],
+						[
+							"selfTarget"
+						]
+					]
+				},
+				{
+					"actions": 1,
+					"name": "Punch",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							80
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 0,
+			"cost": 1500,
+			"gridX": 3,
+			"gridY": 0,
+			"health": 320,
+			"maxActions": 1,
+			"maxHealth": 320,
+			"maxMovement": 2,
+			"movement": 0,
+			"name": "Cannon",
+			"pathName": "res://Nodes/Units/kingdomCannon.tscn",
+			"statusList": [],
+			"team": 0,
+			"traitsList": [
+				[
+					"factionKingdom"
+				],
+				[
+					"mechanical"
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Cannon",
+					"range": "(4, 10)",
+					"traits": [
+						[
+							"damage",
+							1000
+						],
+						[
+							"ranged"
+						],
+						[
+							"ammo",
+							0,
+							1
+						]
+					]
+				},
+				{
+					"actions": 1,
+					"name": "Reload",
+					"range": "(0, 0)",
+					"traits": [
+						[
+							"reload",
+							1
+						],
+						[
+							"selfTarget"
+						]
+					]
+				},
+				{
+					"actions": 1,
+					"name": "Punch",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							80
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 1,
+			"cost": 1500,
+			"gridX": 2,
+			"gridY": 3,
+			"health": 320,
+			"maxActions": 1,
+			"maxHealth": 320,
+			"maxMovement": 2,
+			"movement": 2,
+			"name": "Cannon",
+			"pathName": "res://Nodes/Units/kingdomCannon.tscn",
+			"statusList": [],
+			"team": 1,
+			"traitsList": [
+				[
+					"factionKingdom"
+				],
+				[
+					"mechanical"
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Healing Touch",
+					"range": "(0, 1)",
+					"traits": [
+						[
+							"heal",
+							160
+						]
+					]
+				},
+				{
+					"actions": 1,
+					"name": "Prayer",
+					"range": "(0, 4)",
+					"traits": [
+						[
+							"heal",
+							80
+						]
+					]
+				},
+				{
+					"actions": 1,
+					"name": "Cane",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							100
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 1,
+			"cost": 550,
+			"gridX": 3,
+			"gridY": 3,
+			"health": 100,
+			"maxActions": 1,
+			"maxHealth": 100,
+			"maxMovement": 3,
+			"movement": 3,
+			"name": "Healer",
+			"pathName": "res://Nodes/Units/kingdomHealer.tscn",
+			"statusList": [],
+			"team": 1,
+			"traitsList": [
+				[
+					"factionKingdom"
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Royal Greatsword",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							120
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 4,
+			"cost": 3000,
+			"gridX": 4,
+			"gridY": 3,
+			"health": 1100,
+			"maxActions": 4,
+			"maxHealth": 1100,
+			"maxMovement": 3,
+			"movement": 3,
+			"name": "King Billy",
+			"pathName": "res://Nodes/Units/kingdomKingBilly.tscn",
+			"statusList": [],
+			"team": 1,
+			"traitsList": [
+				[
+					"factionKingdom"
+				],
+				[
+					"defence",
+					40
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Greatsword",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							120
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 1,
+			"cost": 700,
+			"gridX": 5,
+			"gridY": 1,
+			"health": 480,
+			"maxActions": 2,
+			"maxHealth": 480,
+			"maxMovement": 2,
+			"movement": 1,
+			"name": "Knight",
+			"pathName": "res://Nodes/Units/kingdomKnight.tscn",
+			"statusList": [],
+			"team": 0,
+			"traitsList": [
+				[
+					"factionKingdom"
+				],
+				[
+					"defence",
+					20
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Greatsword",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							120
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 2,
+			"cost": 700,
+			"gridX": 5,
+			"gridY": 3,
+			"health": 480,
+			"maxActions": 2,
+			"maxHealth": 480,
+			"maxMovement": 2,
+			"movement": 2,
+			"name": "Knight",
+			"pathName": "res://Nodes/Units/kingdomKnight.tscn",
+			"statusList": [],
+			"team": 1,
+			"traitsList": [
+				[
+					"factionKingdom"
+				],
+				[
+					"defence",
+					20
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Punch",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							80
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 1,
+			"cost": 100,
+			"gridX": 6,
+			"gridY": 0,
+			"health": 100,
+			"maxActions": 1,
+			"maxHealth": 100,
+			"maxMovement": 3,
+			"movement": 3,
+			"name": "Peasant",
+			"pathName": "res://Nodes/Units/kingdomPeasant.tscn",
+			"statusList": [],
+			"team": 0,
+			"traitsList": [
+				[
+					"factionKingdom"
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Punch",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							80
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 1,
+			"cost": 100,
+			"gridX": 6,
+			"gridY": 3,
+			"health": 100,
+			"maxActions": 1,
+			"maxHealth": 100,
+			"maxMovement": 3,
+			"movement": 3,
+			"name": "Peasant",
+			"pathName": "res://Nodes/Units/kingdomPeasant.tscn",
+			"statusList": [],
+			"team": 1,
+			"traitsList": [
+				[
+					"factionKingdom"
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Knife",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							60
+						],
+						[
+							"melee"
+						]
+					]
+				},
+				{
+					"actions": 2,
+					"name": "Spot",
+					"range": "(1, 3)",
+					"traits": [
+						[
+							"expose",
+							1
+						]
+					]
+				}
+			],
+			"actions": 2,
+			"cost": 400,
+			"gridX": 7,
+			"gridY": 0,
+			"health": 160,
+			"maxActions": 2,
+			"maxHealth": 160,
+			"maxMovement": 4,
+			"movement": 4,
+			"name": "Scout",
+			"pathName": "res://Nodes/Units/kingdomScout.tscn",
+			"statusList": [],
+			"team": 0,
+			"traitsList": [
+				[
+					"factionKingdom"
+				],
+				[
+					"eagleEye",
+					2
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Knife",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							60
+						],
+						[
+							"melee"
+						]
+					]
+				},
+				{
+					"actions": 2,
+					"name": "Spot",
+					"range": "(1, 3)",
+					"traits": [
+						[
+							"expose",
+							1
+						]
+					]
+				}
+			],
+			"actions": 2,
+			"cost": 400,
+			"gridX": 7,
+			"gridY": 3,
+			"health": 160,
+			"maxActions": 2,
+			"maxHealth": 160,
+			"maxMovement": 4,
+			"movement": 4,
+			"name": "Scout",
+			"pathName": "res://Nodes/Units/kingdomScout.tscn",
+			"statusList": [],
+			"team": 1,
+			"traitsList": [
+				[
+					"factionKingdom"
+				],
+				[
+					"eagleEye",
+					2
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Shield Bash",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							120
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 1,
+			"cost": 300,
+			"gridX": 8,
+			"gridY": 0,
+			"health": 320,
+			"maxActions": 1,
+			"maxHealth": 320,
+			"maxMovement": 3,
+			"movement": 3,
+			"name": "Shielder",
+			"pathName": "res://Nodes/Units/kingdomShielder.tscn",
+			"statusList": [],
+			"team": 0,
+			"traitsList": [
+				[
+					"factionKingdom"
+				],
+				[
+					"defence",
+					10
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Shield Bash",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							120
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 1,
+			"cost": 300,
+			"gridX": 8,
+			"gridY": 3,
+			"health": 320,
+			"maxActions": 1,
+			"maxHealth": 320,
+			"maxMovement": 3,
+			"movement": 3,
+			"name": "Shielder",
+			"pathName": "res://Nodes/Units/kingdomShielder.tscn",
+			"statusList": [],
+			"team": 1,
+			"traitsList": [
+				[
+					"factionKingdom"
+				],
+				[
+					"defence",
+					10
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Longsword",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							100
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 2,
+			"cost": 300,
+			"gridX": 9,
+			"gridY": 0,
+			"health": 240,
+			"maxActions": 2,
+			"maxHealth": 240,
+			"maxMovement": 3,
+			"movement": 3,
+			"name": "Soldier",
+			"pathName": "res://Nodes/Units/kingdomSoldier.tscn",
+			"statusList": [],
+			"team": 0,
+			"traitsList": [
+				[
+					"factionKingdom"
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Longsword",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							100
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 2,
+			"cost": 300,
+			"gridX": 9,
+			"gridY": 3,
+			"health": 240,
+			"maxActions": 2,
+			"maxHealth": 240,
+			"maxMovement": 3,
+			"movement": 3,
+			"name": "Soldier",
+			"pathName": "res://Nodes/Units/kingdomSoldier.tscn",
+			"statusList": [],
+			"team": 1,
+			"traitsList": [
+				[
+					"factionKingdom"
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Handaxe",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							100
+						],
+						[
+							"melee"
+						],
+						[
+							"rampage",
+							1
+						]
+					]
+				}
+			],
+			"actions": 2,
+			"cost": 500,
+			"gridX": 10,
+			"gridY": 0,
+			"health": 140,
+			"maxActions": 2,
+			"maxHealth": 140,
+			"maxMovement": 5,
+			"movement": 5,
+			"name": "Beserker",
+			"pathName": "res://Nodes/Units/vikingBeserker.tscn",
+			"statusList": [
+				[
+					"charge",
+					null,
+					1
+				]
+			],
+			"team": 0,
+			"traitsList": [
+				[
+					"factionViking"
+				],
+				[
+					"charge",
+					1
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Handaxe",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							100
+						],
+						[
+							"melee"
+						],
+						[
+							"rampage",
+							1
+						]
+					]
+				}
+			],
+			"actions": 2,
+			"cost": 500,
+			"gridX": 10,
+			"gridY": 3,
+			"health": 140,
+			"maxActions": 2,
+			"maxHealth": 140,
+			"maxMovement": 5,
+			"movement": 5,
+			"name": "Beserker",
+			"pathName": "res://Nodes/Units/vikingBeserker.tscn",
+			"statusList": [
+				[
+					"charge",
+					null,
+					1
+				]
+			],
+			"team": 1,
+			"traitsList": [
+				[
+					"factionViking"
+				],
+				[
+					"charge",
+					1
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 2,
+					"name": "Healing Tonic",
+					"range": "(0, 1)",
+					"traits": [
+						[
+							"heal",
+							140
+						]
+					]
+				},
+				{
+					"actions": 1,
+					"name": "Dart",
+					"range": "(2, 4)",
+					"traits": [
+						[
+							"damage",
+							60
+						],
+						[
+							"ranged"
+						],
+						[
+							"poison",
+							5
+						]
+					]
+				},
+				{
+					"actions": 2,
+					"name": "Punch",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							80
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 2,
+			"cost": 600,
+			"gridX": 11,
+			"gridY": 0,
+			"health": 100,
+			"maxActions": 2,
+			"maxHealth": 100,
+			"maxMovement": 3,
+			"movement": 3,
+			"name": "Herbalist",
+			"pathName": "res://Nodes/Units/vikingHerbalist.tscn",
+			"statusList": [],
+			"team": 0,
+			"traitsList": [
+				[
+					"factionViking"
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 2,
+					"name": "Healing Tonic",
+					"range": "(0, 1)",
+					"traits": [
+						[
+							"heal",
+							140
+						]
+					]
+				},
+				{
+					"actions": 1,
+					"name": "Dart",
+					"range": "(2, 4)",
+					"traits": [
+						[
+							"damage",
+							60
+						],
+						[
+							"ranged"
+						],
+						[
+							"poison",
+							5
+						]
+					]
+				},
+				{
+					"actions": 2,
+					"name": "Punch",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							80
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 2,
+			"cost": 600,
+			"gridX": 11,
+			"gridY": 3,
+			"health": 100,
+			"maxActions": 2,
+			"maxHealth": 100,
+			"maxMovement": 3,
+			"movement": 3,
+			"name": "Herbalist",
+			"pathName": "res://Nodes/Units/vikingHerbalist.tscn",
+			"statusList": [],
+			"team": 1,
+			"traitsList": [
+				[
+					"factionViking"
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Battleaxe",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							200
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 1,
+			"cost": 300,
+			"gridX": 12,
+			"gridY": 0,
+			"health": 160,
+			"maxActions": 1,
+			"maxHealth": 160,
+			"maxMovement": 3,
+			"movement": 3,
+			"name": "Raider",
+			"pathName": "res://Nodes/Units/vikingRaider.tscn",
+			"statusList": [
+				[
+					"block",
+					1,
+					60
+				]
+			],
+			"team": 0,
+			"traitsList": [
+				[
+					"factionViking"
+				],
+				[
+					"shield",
+					60
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Battleaxe",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							200
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 1,
+			"cost": 300,
+			"gridX": 12,
+			"gridY": 3,
+			"health": 160,
+			"maxActions": 1,
+			"maxHealth": 160,
+			"maxMovement": 3,
+			"movement": 3,
+			"name": "Raider",
+			"pathName": "res://Nodes/Units/vikingRaider.tscn",
+			"statusList": [
+				[
+					"block",
+					1,
+					60
+				]
+			],
+			"team": 1,
+			"traitsList": [
+				[
+					"factionViking"
+				],
+				[
+					"shield",
+					60
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Handaxe",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							100
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 1,
+			"cost": 600,
+			"gridX": 13,
+			"gridY": 0,
+			"health": 180,
+			"maxActions": 1,
+			"maxHealth": 180,
+			"maxMovement": 2,
+			"movement": 2,
+			"name": "Shieldmaiden",
+			"pathName": "res://Nodes/Units/vikingShieldmaiden.tscn",
+			"statusList": [
+				[
+					"block",
+					1,
+					140
+				]
+			],
+			"team": 0,
+			"traitsList": [
+				[
+					"factionViking"
+				],
+				[
+					"shield",
+					80
+				],
+				[
+					"shieldwall"
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Handaxe",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							100
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 1,
+			"cost": 600,
+			"gridX": 13,
+			"gridY": 3,
+			"health": 180,
+			"maxActions": 1,
+			"maxHealth": 180,
+			"maxMovement": 2,
+			"movement": 2,
+			"name": "Shieldmaiden",
+			"pathName": "res://Nodes/Units/vikingShieldmaiden.tscn",
+			"statusList": [
+				[
+					"block",
+					1,
+					140
+				]
+			],
+			"team": 1,
+			"traitsList": [
+				[
+					"factionViking"
+				],
+				[
+					"shield",
+					80
+				],
+				[
+					"shieldwall"
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Torch",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							80
+						],
+						[
+							"melee"
+						],
+						[
+							"burn",
+							40
+						]
+					]
+				}
+			],
+			"actions": 1,
+			"cost": 400,
+			"gridX": 14,
+			"gridY": 0,
+			"health": 200,
+			"maxActions": 1,
+			"maxHealth": 200,
+			"maxMovement": 3,
+			"movement": 3,
+			"name": "Torchbearer",
+			"pathName": "res://Nodes/Units/vikingTorchbearer.tscn",
+			"statusList": [],
+			"team": 0,
+			"traitsList": [
+				[
+					"factionViking"
+				],
+				[
+					"eagleEye",
+					1
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "Torch",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							80
+						],
+						[
+							"melee"
+						],
+						[
+							"burn",
+							40
+						]
+					]
+				}
+			],
+			"actions": 1,
+			"cost": 400,
+			"gridX": 14,
+			"gridY": 3,
+			"health": 200,
+			"maxActions": 1,
+			"maxHealth": 200,
+			"maxMovement": 3,
+			"movement": 3,
+			"name": "Torchbearer",
+			"pathName": "res://Nodes/Units/vikingTorchbearer.tscn",
+			"statusList": [],
+			"team": 1,
+			"traitsList": [
+				[
+					"factionViking"
+				],
+				[
+					"eagleEye",
+					1
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 0,
+					"name": "Longaxe",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							140
+						],
+						[
+							"melee"
+						],
+						[
+							"usePerTurn",
+							1,
+							1
+						]
+					]
+				},
+				{
+					"actions": 2,
+					"name": "Bear Bite",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							80
+						],
+						[
+							"melee"
+						]
+					]
+				},
+				{
+					"actions": 1,
+					"name": "Bear Claw",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							30
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 2,
+			"cost": 500,
+			"gridX": 15,
+			"gridY": 0,
+			"health": 320,
+			"maxActions": 2,
+			"maxHealth": 320,
+			"maxMovement": 4,
+			"movement": 4,
+			"name": "Ursuana Rider",
+			"pathName": "res://Nodes/Units/vikingUrsuanaRider.tscn",
+			"statusList": [
+				[
+					"charge",
+					null,
+					1
+				]
+			],
+			"team": 0,
+			"traitsList": [
+				[
+					"factionViking"
+				],
+				[
+					"charge",
+					1
+				],
+				[
+					"mounted"
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 0,
+					"name": "Longaxe",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							140
+						],
+						[
+							"melee"
+						],
+						[
+							"usePerTurn",
+							1,
+							1
+						]
+					]
+				},
+				{
+					"actions": 2,
+					"name": "Bear Bite",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							80
+						],
+						[
+							"melee"
+						]
+					]
+				},
+				{
+					"actions": 1,
+					"name": "Bear Claw",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							30
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 2,
+			"cost": 500,
+			"gridX": 15,
+			"gridY": 3,
+			"health": 320,
+			"maxActions": 2,
+			"maxHealth": 320,
+			"maxMovement": 4,
+			"movement": 4,
+			"name": "Ursuana Rider",
+			"pathName": "res://Nodes/Units/vikingUrsuanaRider.tscn",
+			"statusList": [
+				[
+					"charge",
+					null,
+					1
+				]
+			],
+			"team": 1,
+			"traitsList": [
+				[
+					"factionViking"
+				],
+				[
+					"charge",
+					1
+				],
+				[
+					"mounted"
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "NAME",
+					"range": "(0, 1)",
+					"traits": [
+						[
+							"damage",
+							80
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 1,
+			"cost": 3000,
+			"gridX": 0,
+			"gridY": 1,
+			"health": 1000,
+			"maxActions": 1,
+			"maxHealth": 1000,
+			"maxMovement": 5,
+			"movement": 5,
+			"name": "Beaoor, Ursuana Ullnyaal",
+			"pathName": "res://Nodes/Units/vikingUrsuanaUllnyaal.tscn",
+			"statusList": [
+				[
+					"charge",
+					null,
+					1
+				],
+				[
+					"block",
+					1,
+					40
+				]
+			],
+			"team": 0,
+			"traitsList": [
+				[
+					"factionViking"
+				],
+				[
+					"charge",
+					1
+				],
+				[
+					"mounted"
+				],
+				[
+					"shield",
+					40
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 1,
+					"name": "NAME",
+					"range": "(0, 1)",
+					"traits": [
+						[
+							"damage",
+							80
+						],
+						[
+							"melee"
+						]
+					]
+				}
+			],
+			"actions": 1,
+			"cost": 3000,
+			"gridX": 0,
+			"gridY": 4,
+			"health": 1000,
+			"maxActions": 1,
+			"maxHealth": 1000,
+			"maxMovement": 5,
+			"movement": 5,
+			"name": "Beaoor, Ursuana Ullnyaal",
+			"pathName": "res://Nodes/Units/vikingUrsuanaUllnyaal.tscn",
+			"statusList": [
+				[
+					"charge",
+					null,
+					1
+				],
+				[
+					"block",
+					1,
+					40
+				]
+			],
+			"team": 1,
+			"traitsList": [
+				[
+					"factionViking"
+				],
+				[
+					"charge",
+					1
+				],
+				[
+					"mounted"
+				],
+				[
+					"shield",
+					40
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 0,
+					"name": "Banner Glaive",
+					"range": "(1, 2)",
+					"traits": [
+						[
+							"damage",
+							200
+						],
+						[
+							"melee"
+						],
+						[
+							"usePerTurn",
+							1,
+							1
+						]
+					]
+				},
+				{
+					"actions": 2,
+					"name": "Bear Bite",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							80
+						],
+						[
+							"melee"
+						]
+					]
+				},
+				{
+					"actions": 1,
+					"name": "Bear Claw",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							30
+						],
+						[
+							"melee"
+						]
+					]
+				},
+				{
+					"actions": 0,
+					"name": "Command",
+					"range": "(0, 0)",
+					"traits": [
+						[
+							"ursuanaYaalCommand"
+						],
+						[
+							"use",
+							1,
+							1
+						],
+						[
+							"selfTarget"
+						]
+					]
+				}
+			],
+			"actions": 2,
+			"cost": 1100,
+			"gridX": 2,
+			"gridY": 0,
+			"health": 440,
+			"maxActions": 2,
+			"maxHealth": 440,
+			"maxMovement": 4,
+			"movement": 2,
+			"name": "Ursuana Yaal",
+			"pathName": "res://Nodes/Units/vikingUrsuanaYaal.tscn",
+			"statusList": [
+				[
+					"charge",
+					null,
+					1
+				],
+				[
+					"block",
+					1,
+					40
+				]
+			],
+			"team": 0,
+			"traitsList": [
+				[
+					"factionViking"
+				],
+				[
+					"charge",
+					1
+				],
+				[
+					"mounted"
+				],
+				[
+					"shield",
+					40
+				]
+			]
+		},
+		{
+			"actionList": [
+				{
+					"actions": 0,
+					"name": "Banner Glaive",
+					"range": "(1, 2)",
+					"traits": [
+						[
+							"damage",
+							200
+						],
+						[
+							"melee"
+						],
+						[
+							"usePerTurn",
+							1,
+							1
+						]
+					]
+				},
+				{
+					"actions": 2,
+					"name": "Bear Bite",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							80
+						],
+						[
+							"melee"
+						]
+					]
+				},
+				{
+					"actions": 1,
+					"name": "Bear Claw",
+					"range": "(1, 1)",
+					"traits": [
+						[
+							"damage",
+							30
+						],
+						[
+							"melee"
+						]
+					]
+				},
+				{
+					"actions": 0,
+					"name": "Command",
+					"range": "(0, 0)",
+					"traits": [
+						[
+							"ursuanaYaalCommand"
+						],
+						[
+							"use",
+							1,
+							1
+						],
+						[
+							"selfTarget"
+						]
+					]
+				}
+			],
+			"actions": 2,
+			"cost": 1100,
+			"gridX": 1,
+			"gridY": 4,
+			"health": 440,
+			"maxActions": 2,
+			"maxHealth": 440,
+			"maxMovement": 4,
+			"movement": 4,
+			"name": "Ursuana Yaal",
+			"pathName": "res://Nodes/Units/vikingUrsuanaYaal.tscn",
+			"statusList": [
+				[
+					"charge",
+					null,
+					1
+				],
+				[
+					"block",
+					1,
+					40
+				]
+			],
+			"team": 1,
+			"traitsList": [
+				[
+					"factionViking"
+				],
+				[
+					"charge",
+					1
+				],
+				[
+					"mounted"
+				],
+				[
+					"shield",
+					40
+				]
+			]
+		}
+	]
+}

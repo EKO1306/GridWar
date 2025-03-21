@@ -3,11 +3,11 @@ extends Area2D
 @export_category("Unit Stats")
 @export var statName = ""
 @export var statMaxHealth = 100
-@onready var statHealth = statMaxHealth
+var statHealth
 @export var statMaxMovement = 3
-@onready var statMovement = statMaxMovement
+var statMovement
 @export var statMaxActions = 1
-@onready var statActions = statMaxActions
+var statActions
 @export var statCost = 100
 @export var statTraits = []
 @export var statActionList: Array[Dictionary] = [{"name": "NAME", "actions": 1, "range": Vector2(0,1), "traits": [["damage",80],["melee"]]}]
@@ -48,6 +48,11 @@ func _ready():
 	elif unitTeam == 1:
 		$Sprites.material.set_shader_parameter("line_color",Color(0,0,1))
 		$Sprites.scale = Vector2(-1,1)
+		
+func setupUnit():
+	statHealth = statMaxHealth
+	statMovement = statMaxMovement
+	statActions = statMaxActions
 	for chargeTrait in hasTrait("charge"):
 		addStatus("charge",null,[chargeTrait[0][1]])
 	
@@ -427,7 +432,7 @@ func calcAction(targetUnit):
 			statActions += hasRampage[0][1]
 	
 	if didActionTrigger:
-		nodeAnimationPlayer.play("action" + str(actionNo))
+		#nodeAnimationPlayer.play("action" + str(actionNo))
 		while true: #If the unit has the charge status, remove it.
 			var hasCharge = hasStatus("charge")
 			if hasCharge.is_empty():
@@ -587,3 +592,25 @@ func getUnitsInArea(areaX,areaY,areaRadius,unitMask = null, teamMask = null):
 				continue
 		unitList.append(i)
 	return unitList
+
+func saveUnit():
+	if statName == "King Billy":
+		print(statActions)
+	return {
+	"pathName": get_scene_file_path()
+	,"name": statName
+	,"maxHealth": statMaxHealth
+	,"health": statHealth
+	,"maxMovement": statMaxMovement
+	,"movement": statMovement
+	,"maxActions": statMaxActions
+	,"actions": statActions
+	,"cost": statCost
+	,"traitsList": statTraits
+	,"actionList": statActionList
+	,"statusList": statusList
+	
+	,"gridX": gridX
+	,"gridY": gridY
+	,"team": unitTeam
+}

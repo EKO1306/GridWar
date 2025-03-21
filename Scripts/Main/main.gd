@@ -1,12 +1,10 @@
 extends "main_functions.gd"
 
-var currentTurn = [1,false] #0 = Red, 1 = Blue, true = turn, false = ended turn
 var selectedUnit
 var selectedAction
 @export var spawnUnitsRed = false
 @export var spawnUnitsBlue = false
 var armyCosts = [0,0]
-var armyHighestCosts
 
 @export var armyBuilder = true
 var selectedArmyNo = [0,0]
@@ -21,7 +19,6 @@ var mapEditor = false
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	createGrid()
-	massSpawnUnits()
 	for y in range(gridHeight):
 		for x in range(gridWidth):
 			if tileGrid[y * gridWidth + x].type == 1:
@@ -34,7 +31,36 @@ func _ready():
 				armyGrid.append(1)
 				continue
 			armyGrid.append(null)
-	endTurn()
+	if get_parent().scenePassover.get("units") != null:
+		loadUnits(get_parent().scenePassover.units)
+		currentTurn[0] = get_parent().scenePassover.playerTurn
+		currentTurn[1] = get_parent().scenePassover.turnEnded
+		armyHighestCosts = get_parent().scenePassover.armyHighestCosts
+		updateScreen()
+	else:
+		massSpawnUnits()
+		endTurn()
+
+func loadUnits(units):
+	for unit in units:
+		var unitNode = load(unit.pathName).instantiate()
+		unitNode.statName = unit.name
+		unitNode.statMaxHealth = unit.maxHealth
+		unitNode.statHealth = unit.health
+		unitNode.statMaxMovement = unit.maxMovement
+		unitNode.statMovement = unit.movement
+		unitNode.statMaxActions = unit.maxActions
+		unitNode.statActions = unit.actions
+		print(unitNode.statActions,unit.actions)
+		unitNode.statCost = unit.cost
+		unitNode.statTraits = unit.traitsList
+		#unitNode.statActionList = unit.actionList
+		unitNode.statusList = unit.statusList
+	
+		unitNode.gridX = unit.gridX
+		unitNode.gridY = unit.gridY
+		unitNode.unitTeam = unit.team
+		unitControl.add_child(unitNode)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -142,3 +168,4 @@ func spawnUnit(unitPath,unitX,unitY,unitTeam):
 	spawnUnitNode.gridY = unitY
 	spawnUnitNode.unitTeam = unitTeam
 	unitControl.add_child(spawnUnitNode)
+	spawnUnitNode.setupUnit()

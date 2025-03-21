@@ -1,12 +1,4 @@
-extends Node2D
-
-@export_category("Grid Settings")
-@onready var mapName = get_parent().scenePassover.mapName
-@onready var mapID = get_parent().scenePassover.mapID
-@onready var gridWidth = get_parent().scenePassover.mapWidth
-@onready var gridHeight = get_parent().scenePassover.mapHeight
-@onready var unitControl = $Units
-@onready var tileControl = $Tiles
+extends "main_save_load_multiplayer.gd"
 
 const traitTooltipList = {
 	
@@ -81,8 +73,6 @@ const unitList = [
 # Type 2: Bush (4)
 # Type 3: Trees (5)
 # Type 4: Bridge (1)
-
-@onready var tileGrid = get_parent().scenePassover.mapGrid
 var lightGrid = []
 
 func createGrid():
