@@ -13,6 +13,7 @@ var armyGrid = []
 @export var armyCostLimit = 5000
 
 var mapEditor = false
+@onready var isMultiplayer = get_parent().scenePassover.get("isMultiplayer") != null
 
 @onready var uiCanvas = $Camera2D/CanvasLayer
 
@@ -39,7 +40,7 @@ func _ready():
 		updateScreen()
 	else:
 		massSpawnUnits()
-		endTurn()
+		endTurn(true)
 
 func loadUnits(units):
 	for unit in units:
@@ -51,7 +52,6 @@ func loadUnits(units):
 		unitNode.statMovement = unit.movement
 		unitNode.statMaxActions = unit.maxActions
 		unitNode.statActions = unit.actions
-		print(unitNode.statActions,unit.actions)
 		unitNode.statCost = unit.cost
 		unitNode.statTraits = unit.traitsList
 		#unitNode.statActionList = unit.actionList
@@ -88,9 +88,23 @@ func _process(_delta):
 				selectedUnit = unitList[selectedArmyNo[0]][selectedArmyNo[1]]
 				updateScreen()
 
-func endTurn():
+func endTurn(firstEnd = false):
 	selectedAction = null
+	if isMultiplayer:
+		if (OnlineHandler.players[OnlineHandler.id].team == currentTurn[0] and not currentTurn[1]) or (OnlineHandler.players[OnlineHandler.id].team != currentTurn[0] and currentTurn[1]):
+			unitControl.hide()
+			tileControl.hide()
+			uiCanvas.hide()
+			return
 	if currentTurn[1]:
+		if not firstEnd:
+			var saveData = generateSaveData()
+			currentTurn[0] = 1 - currentTurn[0]
+			loadGame.rpc(saveData)
+			unitControl.hide()
+			tileControl.hide()
+			uiCanvas.hide()
+			return
 		selectedUnit = null
 		if currentTurn[0] == 1 and armyBuilder:
 			armyBuilder = false

@@ -32,7 +32,10 @@ func updateMapList(directory, panelDir, playAction):
 		get_node(panelDir).add_child(panel)
 
 func _on_play_button_pressed() -> void:
+	OnlineHandler.closeOnline()
 	$MapEditorTab.visible = false
+	$MapHostTab.visible = false
+	$MapJoinTab.visible = false
 	$MapPlayTab.visible = not $MapPlayTab.visible
 
 func _on_map_editor_button_pressed() -> void:
@@ -63,5 +66,33 @@ func _on_map_editor_button_pressed() -> void:
 
 
 func _on_editor_pressed() -> void:
+	OnlineHandler.closeOnline()
 	$MapPlayTab.visible = false
+	$MapHostTab.visible = false
+	$MapJoinTab.visible = false
 	$MapEditorTab.visible = not $MapEditorTab.visible
+
+
+func _on_join_button_pressed() -> void:
+	OnlineHandler.closeOnline()
+	$MapEditorTab.visible = false
+	$MapHostTab.visible = false
+	$MapPlayTab.visible = false
+	$MapJoinTab.visible = not $MapJoinTab.visible
+
+
+func _on_host_button_pressed() -> void:
+	OnlineHandler.closeOnline()
+	$MapEditorTab.visible = false
+	$MapPlayTab.visible = false
+	$MapJoinTab.visible = false
+	$MapHostTab.visible = not $MapHostTab.visible
+	if $MapHostTab.visible:
+		OnlineHandler.hostGame()
+		$MapHostTab/Host/IP.text = "IP: " + OnlineHandler.address
+
+
+func _on_join_game_button_pressed() -> void:
+	if len($MapJoinTab/Host/HSplitContainer/TextEdit.text) > 0:
+		OnlineHandler.address = $MapJoinTab/Host/HSplitContainer/TextEdit.text
+		OnlineHandler.joinGame()

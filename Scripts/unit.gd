@@ -594,8 +594,6 @@ func getUnitsInArea(areaX,areaY,areaRadius,unitMask = null, teamMask = null):
 	return unitList
 
 func saveUnit():
-	if statName == "King Billy":
-		print(statActions)
 	return {
 	"pathName": get_scene_file_path()
 	,"name": statName

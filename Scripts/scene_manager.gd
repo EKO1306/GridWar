@@ -12,6 +12,7 @@ func _process(_delta: float) -> void:
 		add_child(load(changingScene).instantiate())
 		changingScene = null
 
+@rpc("any_peer","call_remote", "reliable")
 func changeScene(scene, passover = null):
 	scenePassover = passover
 	for i in get_children():

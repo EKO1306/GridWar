@@ -27,37 +27,24 @@ func saveMap():
 	print("saved successfully")
 
 func saveGame():
-	var unitSaveString = []
-	for unit in unitControl.get_children():
-		if unit.is_in_group("Unit"):
-			unitSaveString.append(unit.saveUnit())
-	
+	var saveData = generateSaveData()
 	var saveFile = FileAccess.open("res://Saves//Games//{id}.json".format({"id": mapID}), FileAccess.WRITE)
-	var mapSaveString = {
-		"grid": tileGrid,
-		"name": mapName,
-		"gridWidth": gridWidth,
-		"gridHeight": gridHeight}
-
-	var finalSaveString = {
-		"map": mapSaveString,
-		"units": unitSaveString,
-		"playerTurn": currentTurn[0],
-		"turnEnded": currentTurn[1],
-		"armyHighestCosts": armyHighestCosts
-	}
-	saveFile.store_line(JSON.stringify(finalSaveString, "\t"))
+	saveFile.store_line(JSON.stringify(saveData, "\t"))
 	print("saved successfully")
-func loadGame():
-	var openFile = FileAccess.open("res://Saves/Games/dual_peaks.json", FileAccess.READ)
-	var json = JSON.new()
-	var fileString = ""
-	while openFile.get_position() < openFile.get_length():
-		fileString += openFile.get_line()
-	if not json.parse(fileString) == OK:
-		print(json.get_error_message())
-		return
-	var saveData = json.data
+
+@rpc("any_peer","call_remote","reliable")
+func loadGame(saveData = null):
+	if saveData == null:
+		var openFile = FileAccess.open("res://Saves/Games/dual_peaks.json", FileAccess.READ)
+		var json = JSON.new()
+		var fileString = ""
+		while openFile.get_position() < openFile.get_length():
+			fileString += openFile.get_line()
+		if not json.parse(fileString) == OK:
+			print(json.get_error_message())
+			return
+		saveData = json.data
+	print("ae")
 	
 	get_tree().current_scene.changeScene("res://Scenes/main.tscn",{
 	"mapName": saveData.map.name,
@@ -70,3 +57,23 @@ func loadGame():
 	"turnEnded": currentTurn[1],
 	"armyHighestCosts": armyHighestCosts
 	})
+	
+func generateSaveData():
+	var unitSaveString = []
+	for unit in unitControl.get_children():
+		if unit.is_in_group("Unit"):
+			unitSaveString.append(unit.saveUnit())
+	
+	var mapSaveString = {
+		"grid": tileGrid,
+		"name": mapName,
+		"gridWidth": gridWidth,
+		"gridHeight": gridHeight}
+
+	return {
+		"map": mapSaveString,
+		"units": unitSaveString,
+		"playerTurn": currentTurn[0],
+		"turnEnded": currentTurn[1],
+		"armyHighestCosts": armyHighestCosts
+	}
