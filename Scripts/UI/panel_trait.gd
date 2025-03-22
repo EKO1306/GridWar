@@ -3,9 +3,9 @@ extends TextureRect
 var tooltip = "Bro, huhhhh"
 
 var isMouseOver = false
-@onready var main = get_tree().get_current_scene().get_child(0)
+@onready var main = get_tree().get_current_scene().main
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var mousePos = get_global_mouse_position() - global_position
 	var inBox = true
 	if mousePos.x < 0:

@@ -31,10 +31,10 @@ const actionTraitTooltipList = {
 	,"ranged": {"tooltip": "[color=Darkorange]Ranged Attack[/color]\nThis action is a ranged attack."}
 	
 	#Defensive
-	,"heal": {"tooltip": "[color=Darkorange]Heal[/color] [color=Springgreen]{0}[/color]\nRestores [color=Springgreen]{0}[/color] health to the target.", "traitText": "{0}"}
+	,"heal": {"tooltip": "[color=Darkorange]Heal[/color] [color=Springgreen]{0}[/color]\nRestores [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color] to the target.\n[i][color=Slategray](Does not affect [img width=24]res://Images/Icons/Traits/mechanical.png[/img][color=Deepskyblue]Mechanical[/color] units.)[/color][/i]", "traitText": "{0}"}
 	
 	#Status
-	,"poison": {"tooltip": "[color=Darkorange]Poison[/color] [color=Springgreen]{0}[/color]\nApplies [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/Status/poisoned.png[/img][color=Hotpink]Poisoned[/color] to the target for 6 turns. Poisoned units lose {0} health each turn.", "traitText": "{0}"}
+	,"poison": {"tooltip": "[color=Darkorange]Poison[/color] [color=Springgreen]{0}[/color]\nApplies [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/Status/poisoned.png[/img][color=Hotpink]Poisoned[/color] to the target for 6 turns. Poisoned units lose {0} [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color] each turn.", "traitText": "{0}"}
 	,"burn": {"tooltip": "[color=Darkorange]Burn[/color] [color=Springgreen]{0}[/color]\nApplies [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/Status/burning.png[/img][color=Hotpink]Burning[/color] to the target for 4 turns. Burning deals {0} [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] each turn and the unit cannot hide.", "traitText": "{0}"}
 	,"expose": {"tooltip": "[color=Darkorange]Expose[/color] [color=Springgreen]{0}[/color]\nApplies [img width=24]res://Images/Icons/Status/exposed.png[/img][color=Hotpink]Exposed[/color] to the target for {0} turn(s). Exposed units cannot hide.", "traitText": "{0}"}
 	
@@ -56,7 +56,7 @@ const statusTooltipList = {
 	"charge": {"tooltip": "[color=Hotpink]Charge[/color] [color=Springgreen]{0}[/color]\n+[color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Movement.png[/img][color=Skyblue]Movement[/color] until this unit takes an action.", "traitText": "{0}"}
 	,"block": {"tooltip": "[color=Hotpink]Block[/color] [color=Springgreen]{0}[/color]\n[img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] taken is dealt to block first.", "traitText": "{0}"}
 	,"burning": {"tooltip": "[color=Hotpink]Burning[/color] [color=Springgreen]{0}[/color]\nDeals [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] at the start of each turn and can't hide.", "traitText": "{0}"}
-	,"poisoned": {"tooltip": "[color=Hotpink]Poisoned[/color] [color=Springgreen]{0}[/color]\nLose [color=Springgreen]{0}[/color] health each turn.", "traitText": "{0}"}
+	,"poisoned": {"tooltip": "[color=Hotpink]Poisoned[/color] [color=Springgreen]{0}[/color]\nLose [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color] each turn.", "traitText": "{0}"}
 	,"exposed": {"tooltip": "[color=Hotpink]Exposed[/color]\nCannot hide."}
 	
 	#Specific

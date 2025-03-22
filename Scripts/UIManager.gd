@@ -55,7 +55,7 @@ func _process(delta: float) -> void:
 			uiEndTurnButton.text = "End\nTurn"
 
 func updateUI():
-	var time = Time.get_ticks_usec()
+	var _time = Time.get_ticks_usec()
 	var unit = main.selectedUnit
 	if unit == null:
 		uiLowerPanel.visible = false
@@ -212,10 +212,10 @@ func updateUpperPanel():
 			styleUpperDark.get_stylebox("panel", "Panel").bg_color = Color(0.031,0.129,0.286)
 			styleUpperLight.get_stylebox("panel", "Panel").bg_color = Color(0.141,0.263,0.557)
 
-func addTooltip(tooltip):
+func addTooltip(text):
 	removeTooltip()
 	var tooltipNode = preload("res://Nodes/UI/tooltip.tscn").instantiate()
-	tooltipNode.text = tooltip
+	tooltipNode.text = text
 	mouseNode.add_child(tooltipNode)
 
 func removeTooltip():

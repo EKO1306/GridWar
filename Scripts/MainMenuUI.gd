@@ -87,12 +87,20 @@ func _on_host_button_pressed() -> void:
 	$MapPlayTab.visible = false
 	$MapJoinTab.visible = false
 	$MapHostTab.visible = not $MapHostTab.visible
-	if $MapHostTab.visible:
-		OnlineHandler.hostGame()
-		$MapHostTab/Host/IP.text = "IP: " + OnlineHandler.address
 
 
 func _on_join_game_button_pressed() -> void:
 	if len($MapJoinTab/Host/HSplitContainer/TextEdit.text) > 0:
 		OnlineHandler.address = $MapJoinTab/Host/HSplitContainer/TextEdit.text
 		OnlineHandler.joinGame()
+
+
+func _on_host_game_button_pressed() -> void:
+	OnlineHandler.hostGame()
+	$MapHostTab/Host/IP.text = "IP: " + OnlineHandler.address
+	$MapHostTab/Host/startGameButton.show()
+
+
+func _on_start_game_button_pressed() -> void:
+	if len(OnlineHandler.players) > 1:
+		OnlineHandler.startGame()

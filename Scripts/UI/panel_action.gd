@@ -5,7 +5,7 @@ var actionNo
 
 var main
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if main.armyBuilder:
 		return
 	if main.selectedUnit == null:

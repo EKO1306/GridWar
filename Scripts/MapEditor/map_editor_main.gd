@@ -3,8 +3,6 @@ extends "res://Scripts/Main/main_functions.gd"
 @onready var uiCanvasLayer = $Camera2D/CanvasLayer as CanvasLayer
 var brush = {"tool": null, "type": null, "image": null}
 var mapEditor = true
-
-var armyBuilder = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$Camera2D/CanvasLayer/SettingsPanel/MapName/TextEdit.text = mapName

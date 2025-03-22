@@ -44,10 +44,8 @@ func _ready():
 	$AnimationPlayer.speed_scale = rng.randf_range(0.9,1.1)
 	if unitTeam == 0:
 		$Sprites.material.set_shader_parameter("line_color",Color(1,0,0))
-		$Sprites.scale = Vector2(1,1)
 	elif unitTeam == 1:
 		$Sprites.material.set_shader_parameter("line_color",Color(0,0,1))
-		$Sprites.scale = Vector2(-1,1)
 		
 func setupUnit():
 	statHealth = statMaxHealth
@@ -55,6 +53,12 @@ func setupUnit():
 	statActions = statMaxActions
 	for chargeTrait in hasTrait("charge"):
 		addStatus("charge",null,[chargeTrait[0][1]])
+	if unitTeam == 0:
+		$Sprites.material.set_shader_parameter("line_color",Color(1,0,0))
+		$Sprites.scale = Vector2(1,1)
+	elif unitTeam == 1:
+		$Sprites.material.set_shader_parameter("line_color",Color(0,0,1))
+		$Sprites.scale = Vector2(-1,1)
 	
 func _process(delta):
 	if main.armyBuilder:
@@ -218,6 +222,7 @@ func postUpdateScreen():
 		modulate.a = 1
 		if nodeHealthBar != null:
 			nodeHealthBar.value = (statHealth/float(statMaxHealth)) * 100
+			@warning_ignore("integer_division")
 			nodeHealthBar.size.x = 8 + clamp(floor(((log(statMaxHealth/25))/log(1.5))/2)*2,6,32)
 			nodeHealthBar.position.x = 12 - (nodeHealthBar.size.x / 2)
 			var blockTotal = 0
@@ -483,7 +488,7 @@ func hasStatus(statusName):
 			varFoundStatus.append([i,a])
 	return varFoundStatus
 
-func calcDamage(dmg, includeAbsorb = false,unitSource = null, actionSource = null):
+func calcDamage(dmg, _includeAbsorb = false,unitSource = null, _actionSource = null):
 	if unitSource != null:
 		for hasUrsuanaYaalCommandStatus in unitSource.hasStatus("ursuanaYaalCommand"):
 			dmg *= 1.5
@@ -611,4 +616,5 @@ func saveUnit():
 	,"gridX": gridX
 	,"gridY": gridY
 	,"team": unitTeam
+	,"spriteFlipped": $Sprites.scale.x == -1
 }

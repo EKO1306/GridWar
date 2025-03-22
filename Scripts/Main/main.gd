@@ -4,13 +4,6 @@ var selectedUnit
 var selectedAction
 @export var spawnUnitsRed = false
 @export var spawnUnitsBlue = false
-var armyCosts = [0,0]
-
-@export var armyBuilder = true
-var selectedArmyNo = [0,0]
-var armyGrid = []
-@export var doArmyCostLimit = true
-@export var armyCostLimit = 5000
 
 var mapEditor = false
 @onready var isMultiplayer = get_parent().scenePassover.get("isMultiplayer") != null
@@ -19,6 +12,14 @@ var mapEditor = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	if get_parent().scenePassover.get("playerTurn") != null:
+		currentTurn = [get_parent().scenePassover.get("playerTurn"),get_parent().scenePassover.get("turnEnded")]
+	else:
+		currentTurn = [1,false]
+	if get_parent().scenePassover.get("armyBuilder") != null:
+		armyBuilder = get_parent().scenePassover.get("armyBuilder")
+		armyHighestCosts = get_parent().scenePassover.get("armyHighestCosts")
+		armyCostLimit = get_parent().scenePassover.get("armyCostLimit")
 	createGrid()
 	for y in range(gridHeight):
 		for x in range(gridWidth):
@@ -37,30 +38,35 @@ func _ready():
 		currentTurn[0] = get_parent().scenePassover.playerTurn
 		currentTurn[1] = get_parent().scenePassover.turnEnded
 		armyHighestCosts = get_parent().scenePassover.armyHighestCosts
-		updateScreen()
+		if isMultiplayer:
+			endTurn(false,true)
+		else:
+			updateScreen()
 	else:
 		massSpawnUnits()
 		endTurn(true)
 
 func loadUnits(units):
 	for unit in units:
-		var unitNode = load(unit.pathName).instantiate()
-		unitNode.statName = unit.name
-		unitNode.statMaxHealth = unit.maxHealth
-		unitNode.statHealth = unit.health
-		unitNode.statMaxMovement = unit.maxMovement
-		unitNode.statMovement = unit.movement
-		unitNode.statMaxActions = unit.maxActions
-		unitNode.statActions = unit.actions
-		unitNode.statCost = unit.cost
-		unitNode.statTraits = unit.traitsList
-		#unitNode.statActionList = unit.actionList
-		unitNode.statusList = unit.statusList
+		var loadUnitNode = load(unit.pathName).instantiate()
+		loadUnitNode.statName = unit.name
+		loadUnitNode.statMaxHealth = unit.maxHealth
+		loadUnitNode.statHealth = unit.health
+		loadUnitNode.statMaxMovement = unit.maxMovement
+		loadUnitNode.statMovement = unit.movement
+		loadUnitNode.statMaxActions = unit.maxActions
+		loadUnitNode.statActions = unit.actions
+		loadUnitNode.statCost = unit.cost
+		loadUnitNode.statTraits = unit.traitsList
+		loadUnitNode.statActionList = unit.actionList
+		loadUnitNode.statusList = unit.statusList
 	
-		unitNode.gridX = unit.gridX
-		unitNode.gridY = unit.gridY
-		unitNode.unitTeam = unit.team
-		unitControl.add_child(unitNode)
+		loadUnitNode.gridX = unit.gridX
+		loadUnitNode.gridY = unit.gridY
+		loadUnitNode.unitTeam = unit.team
+		if unit.spriteFlipped:
+			loadUnitNode.get_node("Sprites").scale = Vector2(-1,1)
+		unitControl.add_child(loadUnitNode)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -87,30 +93,36 @@ func _process(_delta):
 					selectedArmyNo = [i,0]
 				selectedUnit = unitList[selectedArmyNo[0]][selectedArmyNo[1]]
 				updateScreen()
-
-func endTurn(firstEnd = false):
-	selectedAction = null
-	if isMultiplayer:
-		if (OnlineHandler.players[OnlineHandler.id].team == currentTurn[0] and not currentTurn[1]) or (OnlineHandler.players[OnlineHandler.id].team != currentTurn[0] and currentTurn[1]):
-			unitControl.hide()
-			tileControl.hide()
-			uiCanvas.hide()
-			return
+func calcEndTurn(firstEnd):
+	if firstEnd:
+		if OnlineHandler.players[OnlineHandler.playerId].team == currentTurn[0]:
+			hideGame()
+			return false
 	if currentTurn[1]:
-		if not firstEnd:
-			var saveData = generateSaveData()
-			currentTurn[0] = 1 - currentTurn[0]
-			loadGame.rpc(saveData)
-			unitControl.hide()
-			tileControl.hide()
-			uiCanvas.hide()
-			return
+		#currentTurn[0] = 1 - currentTurn[0]
+		currentTurn[1] = false
+		var saveData = generateSaveData()
+		saveData["isMultiplayer"] = true
+		OnlineHandler.onlineLoad.rpc(saveData)
+		if currentTurn[0] == 0:
+			pass
+		hideGame()
+		return false
+	return true
+
+func endTurn(firstEnd = false, skipCalc = false):
+	if not skipCalc:
+		if isMultiplayer:
+			if not calcEndTurn(firstEnd):
+				return
+	selectedAction = null
+	if currentTurn[1]:
 		selectedUnit = null
-		if currentTurn[0] == 1 and armyBuilder:
-			armyBuilder = false
-			armyHighestCosts = armyCosts
 		currentTurn[1] = false
 	else:
+		if not firstEnd:
+			if currentTurn[0] == 1 and armyBuilder:
+				armyBuilder = false
 		if armyBuilder:
 			selectedArmyNo = [0,0]
 			selectedUnit = unitList[selectedArmyNo[0]][selectedArmyNo[1]]
@@ -125,6 +137,11 @@ func endTurn(firstEnd = false):
 			if i.unitTeam == currentTurn[0]:
 				i.startturn()
 	updateScreen()
+	
+func hideGame():
+	unitControl.hide()
+	tileControl.hide()
+	uiCanvas.hide()
 
 func updateScreen():
 	armyCosts = [0,0]

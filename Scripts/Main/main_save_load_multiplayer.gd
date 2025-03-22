@@ -8,8 +8,15 @@ extends Node2D
 
 @onready var unitControl = $Units
 @onready var tileControl = $Tiles
-var currentTurn = [1,false] #0 = Red, 1 = Blue, true = turn, false = ended turn
+var currentTurn #0 = Red, 1 = Blue, true = turn, false = ended turn
 var armyHighestCosts
+
+@export var armyBuilder = true
+var selectedArmyNo = [0,0]
+var armyGrid = []
+@export var doArmyCostLimit = true
+@export var armyCostLimit = 5000
+var armyCosts = [0,0]
 
 func saveMap():
 	var mname = $Camera2D/CanvasLayer/SettingsPanel/MapName/TextEdit.text
@@ -32,7 +39,6 @@ func saveGame():
 	saveFile.store_line(JSON.stringify(saveData, "\t"))
 	print("saved successfully")
 
-@rpc("any_peer","call_remote","reliable")
 func loadGame(saveData = null):
 	if saveData == null:
 		var openFile = FileAccess.open("res://Saves/Games/dual_peaks.json", FileAccess.READ)
@@ -44,7 +50,8 @@ func loadGame(saveData = null):
 			print(json.get_error_message())
 			return
 		saveData = json.data
-	print("ae")
+	if saveData.get("isMultiplayer") == null:
+		saveData["isMultiplayer"] = false
 	
 	get_tree().current_scene.changeScene("res://Scenes/main.tscn",{
 	"mapName": saveData.map.name,
@@ -53,9 +60,12 @@ func loadGame(saveData = null):
 	"mapHeight": saveData.map.gridHeight,
 	"mapGrid": saveData.map.grid,
 	"units": saveData.units,
-	"playerTurn": currentTurn[0],
-	"turnEnded": currentTurn[1],
-	"armyHighestCosts": armyHighestCosts
+	"playerTurn": saveData.playerTurn,
+	"turnEnded": saveData.turnEnded,
+	"armyHighestCosts": saveData.armyHighestCosts,
+	"isMultiplayer": saveData.isMultiplayer,
+	"armyBuilder": saveData.armyBuilder,
+	"armyCostLimit": saveData.armyCostLimit
 	})
 	
 func generateSaveData():
@@ -69,11 +79,16 @@ func generateSaveData():
 		"name": mapName,
 		"gridWidth": gridWidth,
 		"gridHeight": gridHeight}
+		
+	if armyBuilder:
+		armyHighestCosts = armyCosts
 
 	return {
 		"map": mapSaveString,
 		"units": unitSaveString,
 		"playerTurn": currentTurn[0],
 		"turnEnded": currentTurn[1],
-		"armyHighestCosts": armyHighestCosts
-	}
+		"armyHighestCosts": armyHighestCosts,
+		"armyBuilder": armyBuilder,
+		"armyCostLimit": armyCostLimit
+		}

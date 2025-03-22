@@ -4,9 +4,7 @@ extends Camera2D
 
 @onready var main = get_parent()
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass
+var lastRightClickPosition
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -21,6 +19,15 @@ func _process(_delta):
 	if Input.is_action_just_released("MouseWheelDown"):
 		zoom.x = max(zoom.x - 0.5, 1)
 		zoom.y = zoom.x
+	if Input.is_action_pressed("cameraMouse"):
+		if lastRightClickPosition == null:
+			lastRightClickPosition = get_viewport().get_mouse_position()
+			return
+		position += (lastRightClickPosition - get_viewport().get_mouse_position()) / 20 * cameraSpeed / zoom.x
+		lastRightClickPosition = get_viewport().get_mouse_position()
+
+	else:
+		lastRightClickPosition = null
 	
 	global_position.x = clamp(global_position.x,-36,(main.gridWidth * 24) + 12)
 	global_position.y = clamp(global_position.y,-36,(main.gridHeight * 24) + 12)

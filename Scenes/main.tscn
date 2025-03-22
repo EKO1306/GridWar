@@ -108,9 +108,6 @@ border_blend = true
 [node name="Main" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_kqp5x")
-spawnUnitsRed = true
-spawnUnitsBlue = true
-armyBuilder = false
 armyCostLimit = 7500
 
 [node name="Paralax" type="Node2D" parent="."]
