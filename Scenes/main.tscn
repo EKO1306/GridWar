@@ -572,5 +572,7 @@ process_mode = 1
 
 [connection signal="pressed" from="Camera2D/CanvasLayer/UpperPanel/Button" to="Camera2D/CanvasLayer" method="_on_end_turn_button_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/PausePanel/PausePanel/VBoxContainer/ResumeButton" to="Camera2D/CanvasLayer/PausePanel" method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/PausePanel/PausePanel/VBoxContainer/SaveButton" to="Camera2D/CanvasLayer/PausePanel" method="_on_save_button_pressed"]
+[connection signal="pressed" from="Camera2D/CanvasLayer/PausePanel/PausePanel/VBoxContainer/LoadButton" to="Camera2D/CanvasLayer/PausePanel" method="_on_load_button_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/PausePanel/PausePanel/VBoxContainer/ReturnButton" to="Camera2D/CanvasLayer/PausePanel" method="_on_return_button_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/PausePanel/PausePanel/VBoxContainer/QuitButton" to="Camera2D/CanvasLayer/PausePanel" method="_on_quit_button_pressed"]

@@ -248,7 +248,6 @@ theme_override_constants/separation = 82
 metadata/_tab_index = 1
 
 [node name="MapHostTab" type="TabContainer" parent="MainMenuUI"]
-visible = false
 offset_left = 16.0
 offset_top = 24.0
 offset_right = 466.0
@@ -278,6 +277,7 @@ grow_horizontal = 2
 text = "Connection: "
 
 [node name="MapJoinTab" type="TabContainer" parent="MainMenuUI"]
+visible = false
 offset_left = 16.0
 offset_top = 24.0
 offset_right = 466.0
@@ -288,35 +288,23 @@ current_tab = 0
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="HSplitContainer" type="HSplitContainer" parent="MainMenuUI/MapJoinTab/Host"]
+[node name="IP" type="RichTextLabel" parent="MainMenuUI/MapJoinTab/Host"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
-offset_bottom = 32.0
+offset_bottom = 48.0
 grow_horizontal = 2
-theme_override_constants/separation = 0
-split_offset = 24
-
-[node name="IP" type="RichTextLabel" parent="MainMenuUI/MapJoinTab/Host/HSplitContainer"]
-layout_mode = 2
+theme_override_font_sizes/normal_font_size = 32
 text = "IP:"
 
-[node name="TextEdit" type="TextEdit" parent="MainMenuUI/MapJoinTab/Host/HSplitContainer"]
-layout_mode = 2
-text = "192.168.0.203"
-
-[node name="JoinGameButton" type="Button" parent="MainMenuUI/MapJoinTab/Host"]
+[node name="Player" type="RichTextLabel" parent="MainMenuUI/MapJoinTab/Host"]
 layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
+anchors_preset = 10
 anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -4.0
-offset_bottom = 4.0
+offset_top = 48.0
+offset_bottom = 72.0
 grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 32
-text = "JOIN"
+text = "Connection: "
 
 [connection signal="pressed" from="MainMenuUI/MainPanel/PlayButton" to="MainMenuUI" method="_on_play_button_pressed"]
 [connection signal="pressed" from="MainMenuUI/MainPanel/HostButton" to="MainMenuUI" method="_on_host_button_pressed"]
@@ -329,4 +317,3 @@ text = "JOIN"
 [connection signal="focus_exited" from="MainMenuUI/MapEditorTab/New/MapHeight/TextEdit" to="MainMenuUI/MapEditorTab/New/MapHeight/TextEdit" method="_on_focus_exited"]
 [connection signal="text_submitted" from="MainMenuUI/MapEditorTab/New/MapHeight/TextEdit" to="MainMenuUI/MapEditorTab/New/MapHeight/TextEdit" method="_on_text_submitted"]
 [connection signal="pressed" from="MainMenuUI/MapEditorTab/New/MapEditorButton" to="MainMenuUI" method="_on_map_editor_button_pressed"]
-[connection signal="pressed" from="MainMenuUI/MapJoinTab/Host/JoinGameButton" to="MainMenuUI" method="_on_join_game_button_pressed"]

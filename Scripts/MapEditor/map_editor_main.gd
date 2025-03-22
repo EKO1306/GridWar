@@ -33,18 +33,3 @@ func createGrid():
 
 func _on_save_button_pressed() -> void:
 	saveMap()
-
-func saveMap():
-	var mname = $Camera2D/CanvasLayer/SettingsPanel/MapName/TextEdit.text
-	var id = $Camera2D/CanvasLayer/SettingsPanel/MapID/TextEdit.text
-	if not mname:
-		print("Invalid Map Name")
-		return
-	if not id:
-		print("Invalid Map ID")
-		return
-		
-	var saveFile = FileAccess.open("res://Saves//Maps//Custom//{id}.json".format({"id": id}), FileAccess.WRITE)
-	var mapSaveString = {"grid": tileGrid, "name": mname, "gridWidth": gridWidth, "gridHeight": gridHeight}
-	saveFile.store_line(JSON.stringify(mapSaveString, "\t"))
-	print("saved successfully")
