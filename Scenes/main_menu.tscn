@@ -229,25 +229,64 @@ theme_override_constants/separation = 82
 metadata/_tab_index = 2
 
 [node name="MapPlayTab" type="TabContainer" parent="MainMenuUI"]
-visible = false
 offset_left = 16.0
 offset_top = 24.0
 offset_right = 466.0
 offset_bottom = 624.0
 current_tab = 0
 
-[node name="Official" type="VBoxContainer" parent="MainMenuUI/MapPlayTab"]
+[node name="Play" type="Control" parent="MainMenuUI/MapPlayTab"]
 layout_mode = 2
-theme_override_constants/separation = 82
 metadata/_tab_index = 0
 
-[node name="Custom" type="VBoxContainer" parent="MainMenuUI/MapPlayTab"]
+[node name="gamePlayStartButton" type="Button" parent="MainMenuUI/MapPlayTab/Play"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -61.0
+offset_bottom = -8.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 32
+text = "START"
+
+[node name="ArmyCostContainer" type="HSplitContainer" parent="MainMenuUI/MapPlayTab/Play"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 8.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/separation = 0
+split_offset = 124
+
+[node name="ArmyCostLimit" type="RichTextLabel" parent="MainMenuUI/MapPlayTab/Play/ArmyCostContainer"]
+layout_mode = 2
+text = "Army Cost Limit"
+scroll_active = false
+
+[node name="TextEdit" type="LineEdit" parent="MainMenuUI/MapPlayTab/Play/ArmyCostContainer"]
+layout_mode = 2
+placeholder_text = "5000"
+script = ExtResource("3_oowao")
+allowedCharacters = "1234567890"
+
+[node name="Official" type="VBoxContainer" parent="MainMenuUI/MapPlayTab"]
 visible = false
 layout_mode = 2
 theme_override_constants/separation = 82
 metadata/_tab_index = 1
 
+[node name="Custom" type="VBoxContainer" parent="MainMenuUI/MapPlayTab"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 82
+metadata/_tab_index = 2
+
 [node name="MapHostTab" type="TabContainer" parent="MainMenuUI"]
+visible = false
 offset_left = 16.0
 offset_top = 24.0
 offset_right = 466.0
@@ -275,6 +314,15 @@ offset_top = 48.0
 offset_bottom = 72.0
 grow_horizontal = 2
 text = "Connection: "
+
+[node name="ChosenMap" type="RichTextLabel" parent="MainMenuUI/MapHostTab/Host"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 424.0
+offset_bottom = 448.0
+grow_horizontal = 2
+text = "Chosen Map:"
 
 [node name="hostGameButton" type="Button" parent="MainMenuUI/MapHostTab/Host"]
 layout_mode = 1
@@ -342,6 +390,18 @@ scroll_active = false
 [node name="CheckButton" type="CheckButton" parent="MainMenuUI/MapHostTab/Host/ArmyCostContainer2"]
 layout_mode = 2
 
+[node name="Official" type="VBoxContainer" parent="MainMenuUI/MapHostTab"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 82
+metadata/_tab_index = 1
+
+[node name="Custom" type="VBoxContainer" parent="MainMenuUI/MapHostTab"]
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 82
+metadata/_tab_index = 2
+
 [node name="MapJoinTab" type="TabContainer" parent="MainMenuUI"]
 visible = false
 offset_left = 16.0
@@ -395,6 +455,10 @@ text = "JOIN"
 [connection signal="focus_exited" from="MainMenuUI/MapEditorTab/New/MapHeight/TextEdit" to="MainMenuUI/MapEditorTab/New/MapHeight/TextEdit" method="_on_focus_exited"]
 [connection signal="text_submitted" from="MainMenuUI/MapEditorTab/New/MapHeight/TextEdit" to="MainMenuUI/MapEditorTab/New/MapHeight/TextEdit" method="_on_text_submitted"]
 [connection signal="pressed" from="MainMenuUI/MapEditorTab/New/MapEditorButton" to="MainMenuUI" method="_on_map_editor_button_pressed"]
+[connection signal="visibility_changed" from="MainMenuUI/MapPlayTab/Play" to="MainMenuUI" method="_on_host_visibility_changed"]
+[connection signal="pressed" from="MainMenuUI/MapPlayTab/Play/gamePlayStartButton" to="MainMenuUI" method="_on_game_play_start_button_pressed"]
+[connection signal="text_changed" from="MainMenuUI/MapPlayTab/Play/ArmyCostContainer/TextEdit" to="MainMenuUI/MapPlayTab/Play/ArmyCostContainer/TextEdit" method="_on_text_submitted"]
+[connection signal="visibility_changed" from="MainMenuUI/MapHostTab/Host" to="MainMenuUI" method="_on_host_visibility_changed"]
 [connection signal="pressed" from="MainMenuUI/MapHostTab/Host/hostGameButton" to="MainMenuUI" method="_on_host_game_button_pressed"]
 [connection signal="pressed" from="MainMenuUI/MapHostTab/Host/startGameButton" to="MainMenuUI" method="_on_start_game_button_pressed"]
 [connection signal="text_changed" from="MainMenuUI/MapHostTab/Host/ArmyCostContainer/TextEdit" to="MainMenuUI/MapHostTab/Host/ArmyCostContainer/TextEdit" method="_on_text_submitted"]

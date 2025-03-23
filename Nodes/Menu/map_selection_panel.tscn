@@ -61,5 +61,5 @@ offset_right = -4.0
 offset_bottom = -4.0
 grow_horizontal = 0
 grow_vertical = 0
-text = "Play"
+text = "Select"
 script = ExtResource("2_xdj6r")

@@ -5,16 +5,21 @@ extends CanvasLayer
 @onready var mapEditorWidthLine = $MapEditorTab/New/MapWidth/TextEdit
 @onready var mapEditorHeightLine = $MapEditorTab/New/MapHeight/TextEdit
 
+var chosenMap
+
 func _ready():
 	updateMapList("res://Saves/Maps/Official","MapPlayTab/Official","Play")
 	updateMapList("res://Saves/Maps/Custom","MapPlayTab/Custom", "Play")
 	updateMapList("res://Saves/Maps/Official","MapEditorTab/Official","Editor")
 	updateMapList("res://Saves/Maps/Custom","MapEditorTab/Custom", "Editor")
+	updateMapList("res://Saves/Maps/Official","MapHostTab/Official","Play")
+	updateMapList("res://Saves/Maps/Custom","MapHostTab/Custom", "Play")
 
 func updateMapList(directory, panelDir, playAction):
 	var mapDirectoryOfficial = DirAccess.open(directory) as DirAccess
 	for i in mapDirectoryOfficial.get_files():
-		var openFile = FileAccess.open("{directory}/{file}".format({"file": i, "directory": directory}), FileAccess.READ)
+		var mapDir = "{directory}/{file}".format({"file": i, "directory": directory})
+		var openFile = FileAccess.open((mapDir), FileAccess.READ)
 		var json = JSON.new()
 		var fileString = ""
 		while openFile.get_position() < openFile.get_length():
@@ -104,3 +109,21 @@ func _on_host_game_button_pressed() -> void:
 func _on_start_game_button_pressed() -> void:
 	if len(OnlineHandler.players) > 1:
 		OnlineHandler.startGame()
+
+
+func _on_host_visibility_changed() -> void:
+	if chosenMap != null:
+		$MapHostTab/Host/ChosenMap.text = "Chosen Map: " + chosenMap.mapName
+
+
+func _on_game_play_start_button_pressed() -> void:
+	if chosenMap == null:
+		return
+	var armyCostLimit = $MapPlayTab/Play/ArmyCostContainer/TextEdit.text
+	print(armyCostLimit)
+	if armyCostLimit == "":
+		armyCostLimit = 5000
+	else:
+		armyCostLimit = int(armyCostLimit)
+	chosenMap.merge({"armyBuilder": true, "armyHighestCosts": [0,0], "armyCostLimit": armyCostLimit})
+	get_tree().get_current_scene().changeScene("res://Scenes/main.tscn", chosenMap)

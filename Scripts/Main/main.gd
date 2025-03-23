@@ -20,6 +20,8 @@ func _ready():
 		armyBuilder = get_parent().scenePassover.get("armyBuilder")
 		armyHighestCosts = get_parent().scenePassover.get("armyHighestCosts")
 		armyCostLimit = get_parent().scenePassover.get("armyCostLimit")
+	if armyCostLimit <= 0:
+		doArmyCostLimit = false
 	createGrid()
 	for y in range(gridHeight):
 		for x in range(gridWidth):

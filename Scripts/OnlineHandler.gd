@@ -27,6 +27,9 @@ func playerConnected(id):
 			
 
 func startGame():
+	var mapData = get_tree().get_current_scene().get_node("MainMenu/MainMenuUI").chosenMap
+	if mapData == null:
+		return
 	if get_tree().get_current_scene().get_node("MainMenu/MainMenuUI/MapHostTab/Host/ArmyCostContainer2/CheckButton").button_pressed:
 		for player in players:
 			if player == playerId:
@@ -47,16 +50,7 @@ func startGame():
 	else:
 		armyCostLimit = int(armyCostLimit)
 	
-	var openFile = FileAccess.open("res://Saves/Maps/Official/dual_peaks.json", FileAccess.READ)
-	var json = JSON.new()
-	var fileString = ""
-	while openFile.get_position() < openFile.get_length():
-		fileString += openFile.get_line()
-	if not json.parse(fileString) == OK:
-		print(json.get_error_message())
-		return
-	var mapData = json.data
-	mapData = {"mapName": mapData.name, "mapID": "dual_peaks", "mapWidth": mapData.gridWidth, "mapHeight": mapData.gridHeight, "mapGrid": mapData.grid, "isMultiplayer": true, "armyBuilder": true, "armyHighestCosts": [0,0], "armyCostLimit": armyCostLimit}
+	mapData.merge({"isMultiplayer": true, "armyBuilder": true, "armyHighestCosts": [0,0], "armyCostLimit": armyCostLimit})
 	get_tree().get_current_scene().changeScene.rpc("res://Scenes/main.tscn", mapData)
 	get_tree().get_current_scene().changeScene("res://Scenes/main.tscn", mapData)
 

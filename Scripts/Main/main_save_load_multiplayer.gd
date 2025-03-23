@@ -11,11 +11,11 @@ extends Node2D
 var currentTurn #0 = Red, 1 = Blue, true = turn, false = ended turn
 var armyHighestCosts
 
-@export var armyBuilder = true
+var armyBuilder = true
 var selectedArmyNo = [0,0]
 var armyGrid = []
-@export var doArmyCostLimit = true
-@export var armyCostLimit = 5000
+var doArmyCostLimit = true
+var armyCostLimit = 5000
 var armyCosts = [0,0]
 
 func saveMap():

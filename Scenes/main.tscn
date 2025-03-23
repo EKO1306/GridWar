@@ -108,7 +108,6 @@ border_blend = true
 [node name="Main" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_kqp5x")
-armyCostLimit = 7500
 
 [node name="Paralax" type="Node2D" parent="."]
 position = Vector2(576, 324)
