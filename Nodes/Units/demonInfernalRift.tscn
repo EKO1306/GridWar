@@ -1,0 +1,202 @@
+[gd_scene load_steps=15 format=3 uid="uid://dae11bt0lv14c"]
+
+[ext_resource type="Script" path="res://Scripts/unit.gd" id="1_wrm56"]
+[ext_resource type="Shader" path="res://Shaders/unitOutline.gdshader" id="2_4vh6u"]
+[ext_resource type="Texture2D" uid="uid://wjirtvbi2i2a" path="res://Images/Units/demonInfernalRift.png" id="3_tgcwh"]
+[ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_vk7ue"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0y3sv"]
+size = Vector2(24, 24)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xy4vo"]
+shader = ExtResource("2_4vh6u")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 2.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r7k7f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vq8ff"]
+atlas = ExtResource("3_tgcwh")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o48hl"]
+atlas = ExtResource("3_tgcwh")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxtuk"]
+atlas = ExtResource("3_tgcwh")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cl1c0"]
+atlas = ExtResource("3_tgcwh")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="Animation" id="Animation_3w5n0"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Core:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, -6), Vector2(0, -5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Core/Layer1:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(2, 0.5, 1),
+"update": 0,
+"values": [0.0, 3.14159, 6.28319]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/Core/Layer2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(0.5, 2, 1),
+"update": 0,
+"values": [3.14159, 0.0, -3.14159]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/Core/Layer3:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.0, 3.14159]
+}
+
+[sub_resource type="Animation" id="Animation_hh5sh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Core:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Core/Layer1:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/Core/Layer2:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/Core/Layer3:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-3.13066]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
+_data = {
+"Idle": SubResource("Animation_3w5n0"),
+"RESET": SubResource("Animation_hh5sh")
+}
+
+[node name="InfernalRift" type="Area2D" groups=["Unit"]]
+z_index = 10
+script = ExtResource("1_wrm56")
+statName = "Infernal Rift"
+statMaxHealth = 600
+statMaxMovement = 0
+statCost = 1000
+statTraits = [["factionDemon"], ["fading", 100], ["lifeless"], ["immobile"], ["exposed"], ["blind", 1]]
+statActionList = Array[Dictionary]([{
+"actions": 1,
+"name": "Conjure Demon",
+"range": Vector2(1, 1),
+"traits": [["summon", "demonDemon", "Demon"], ["recoil", 25]]
+}, {
+"actions": 1,
+"name": "Conjure Imp",
+"range": Vector2(1, 1),
+"traits": [["summon", "demonImp", "Imp"]]
+}])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12, 12)
+shape = SubResource("RectangleShape2D_0y3sv")
+
+[node name="Sprites" type="CanvasGroup" parent="."]
+material = SubResource("ShaderMaterial_xy4vo")
+position = Vector2(12, 12)
+
+[node name="Core" type="Sprite2D" parent="Sprites"]
+material = SubResource("ShaderMaterial_r7k7f")
+position = Vector2(-1, -6)
+texture = SubResource("AtlasTexture_vq8ff")
+
+[node name="Layer3" type="Sprite2D" parent="Sprites/Core"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_r7k7f")
+rotation = -3.13066
+texture = SubResource("AtlasTexture_o48hl")
+
+[node name="Layer2" type="Sprite2D" parent="Sprites/Core"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_r7k7f")
+texture = SubResource("AtlasTexture_dxtuk")
+
+[node name="Layer1" type="Sprite2D" parent="Sprites/Core"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_r7k7f")
+texture = SubResource("AtlasTexture_cl1c0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_togdo")
+}
+
+[node name="HealthBar" parent="." instance=ExtResource("4_vk7ue")]
+offset_left = 3.0
+offset_top = 18.0
+offset_right = 21.0
+offset_bottom = 22.0

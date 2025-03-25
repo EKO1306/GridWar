@@ -16,217 +16,52 @@
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
+			"height": 3,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
-		},
-		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 4,
+			"image": "Bush",
+			"type": 2
 		},
 		{
-			"height": 2,
+			"height": 5,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 5,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 5,
+			"image": "Trees",
+			"type": 3
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 3,
 			"image": "Grass",
 			"type": 0
 		},
@@ -237,13 +72,13 @@
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Bush",
+			"type": 2
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Bush",
+			"type": 2
 		},
 		{
 			"height": 2,
@@ -251,67 +86,67 @@
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 3,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 3,
+			"image": "Bush",
+			"type": 2
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 4,
+			"image": "Trees",
+			"type": 3
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 4,
+			"image": "Trees",
+			"type": 3
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 3,
+			"image": "Bush",
+			"type": 2
 		},
 		{
-			"height": 2,
+			"height": 3,
 			"image": "Grass",
 			"type": 0
 		},
@@ -322,8 +157,8 @@
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Bush",
+			"type": 2
 		},
 		{
 			"height": 2,
@@ -331,27 +166,27 @@
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 3,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 4,
+			"image": "Bush",
+			"type": 2
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
@@ -362,13 +197,13 @@
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Bush",
+			"type": 2
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Bush",
+			"type": 2
 		},
 		{
 			"height": 2,
@@ -376,27 +211,27 @@
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 3,
+			"image": "Trees",
+			"type": 3
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 3,
+			"image": "Bush",
+			"type": 2
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
@@ -411,24 +246,24 @@
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 3,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 3,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 3,
+			"image": "Bush",
+			"type": 2
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Bush",
+			"type": 2
 		},
 		{
 			"height": 2,
@@ -437,8 +272,8 @@
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Trees",
+			"type": 3
 		},
 		{
 			"height": 2,
@@ -447,8 +282,8 @@
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Bush",
+			"type": 2
 		},
 		{
 			"height": 2,
@@ -461,22 +296,22 @@
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 3,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 3,
+			"image": "Bush",
+			"type": 2
 		},
 		{
-			"height": 2,
+			"height": 3,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 3,
 			"image": "Grass",
 			"type": 0
 		},
@@ -512,33 +347,33 @@
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Bush",
+			"type": 2
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Trees",
+			"type": 3
 		},
 		{
-			"height": 2,
+			"height": 3,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 3,
 			"image": "Grass",
 			"type": 0
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Bush",
+			"type": 2
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 1,
+			"image": "Bush",
+			"type": 2
 		},
 		{
 			"height": 2,
@@ -576,14 +411,14 @@
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 7,
+			"image": "Wall",
+			"type": 1
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 7,
+			"image": "Wall",
+			"type": 1
 		},
 		{
 			"height": 2,
@@ -592,36 +427,36 @@
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Bush",
+			"type": 2
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 3,
+			"image": "Bush",
+			"type": 2
 		},
 		{
-			"height": 2,
+			"height": 3,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 3,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 1,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 1,
 			"image": "Grass",
 			"type": 0
 		},
@@ -661,9 +496,9 @@
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 6,
+			"image": "Wall",
+			"type": 1
 		},
 		{
 			"height": 2,
@@ -671,47 +506,49 @@
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 3,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 3,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 4,
+			"image": "Bridge",
+			"type": 4,
+			"undertile": "Grass"
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 4,
+			"image": "Bridge",
+			"type": 4,
+			"undertile": "Grass"
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 3,
 			"image": "Grass",
 			"type": 0
 		},
@@ -731,7 +568,7 @@
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 1,
 			"image": "Grass",
 			"type": 0
 		},
@@ -742,51 +579,51 @@
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Trees",
+			"type": 3
 		},
 		{
-			"height": 2,
+			"height": 1,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 1,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 1,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 4,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 3,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 3,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 1,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 1,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 3,
 			"image": "Grass",
 			"type": 0
 		},
@@ -807,36 +644,36 @@
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Bush",
+			"type": 2
 		},
 		{
-			"height": 2,
+			"height": 0,
 			"image": "Grass",
 			"type": 0
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Bridge",
+			"type": 4
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 0,
+			"image": "Bush",
+			"type": 2
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 0,
+			"image": "Bush",
+			"type": 2
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 1,
+			"image": "Bush",
+			"type": 2
 		},
 		{
-			"height": 2,
+			"height": 1,
 			"image": "Grass",
 			"type": 0
 		},
@@ -851,17 +688,17 @@
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 1,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 1,
+			"image": "Bush",
+			"type": 2
 		},
 		{
-			"height": 2,
+			"height": 1,
 			"image": "Grass",
 			"type": 0
 		},
@@ -886,69 +723,69 @@
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 1,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 0,
 			"image": "Grass",
 			"type": 0
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Bridge",
+			"type": 4
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 0,
+			"image": "Bush",
+			"type": 2
 		},
 		{
-			"height": 2,
+			"height": 0,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 0,
+			"image": "Bush",
+			"type": 2
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 0,
+			"image": "Bush",
+			"type": 2
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Trees",
+			"type": 3
 		},
 		{
-			"height": 2,
+			"height": 1,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 0,
+			"image": "Bush",
+			"type": 2
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 0,
+			"image": "Bush",
+			"type": 2
 		},
 		{
-			"height": 2,
+			"height": 1,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 1,
+			"image": "Bush",
+			"type": 2
 		},
 		{
 			"height": 2,
@@ -966,67 +803,67 @@
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 1,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 0,
 			"image": "Grass",
 			"type": 0
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Bridge",
+			"type": 4
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 0,
+			"image": "Bush",
+			"type": 2
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 0,
+			"image": "Trees",
+			"type": 3
 		},
 		{
-			"height": 2,
+			"height": 0,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 1,
+			"image": "Bush",
+			"type": 2
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Trees",
+			"type": 3
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 1,
+			"image": "Bush",
+			"type": 2
 		},
 		{
-			"height": 2,
+			"height": 0,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 0,
+			"image": "Bush",
+			"type": 2
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 1,
+			"image": "Trees",
+			"type": 3
 		},
 		{
-			"height": 2,
+			"height": 1,
 			"image": "Grass",
 			"type": 0
 		},
@@ -1046,14 +883,14 @@
 			"type": 0
 		},
 		{
-			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"height": 1,
+			"image": "Bush",
+			"type": 2
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Bush",
+			"type": 2
 		},
 		{
 			"height": 2,
@@ -1072,16 +909,16 @@
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Trees",
+			"type": 3
 		},
 		{
-			"height": 2,
+			"height": 1,
 			"image": "Grass",
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 1,
 			"image": "Grass",
 			"type": 0
 		},
@@ -1096,14 +933,14 @@
 			"type": 0
 		},
 		{
-			"height": 2,
+			"height": 1,
 			"image": "Grass",
 			"type": 0
 		},
 		{
 			"height": 2,
-			"image": "Grass",
-			"type": 0
+			"image": "Bush",
+			"type": 2
 		},
 		{
 			"height": 2,
@@ -1126,7 +963,7 @@
 			"type": 0
 		}
 	],
-	"gridHeight": 15,
-	"gridWidth": 15,
-	"name": "flat"
+	"gridHeight": 12,
+	"gridWidth": 16,
+	"name": "Dual Peaks"
 }

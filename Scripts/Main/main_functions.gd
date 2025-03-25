@@ -1,6 +1,5 @@
 extends "main_startGame.gd"
 
-@onready var unitNode = $Units
 
 func getTileAtXY(gridX,gridY):
 	if gridX < 0:
@@ -14,9 +13,10 @@ func getTileAtXY(gridX,gridY):
 	return tileGrid[gridY*gridWidth+gridX]
 	
 func getUnitAtXY(x,y):
-	for i in unitNode.get_children():
+	for i in unitControl.get_children():
 		if i.is_in_group("Unit"):
 			if i.gridX == x:
 				if i.gridY == y:
-					return i
+					if i.isAlive:
+						return i
 	return null

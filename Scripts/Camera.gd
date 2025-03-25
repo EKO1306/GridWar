@@ -23,7 +23,7 @@ func _process(_delta):
 		if lastRightClickPosition == null:
 			lastRightClickPosition = get_viewport().get_mouse_position()
 			return
-		position += (lastRightClickPosition - get_viewport().get_mouse_position()) / 20 * cameraSpeed / zoom.x
+		position += (lastRightClickPosition - get_viewport().get_mouse_position()) / 12 * cameraSpeed / zoom.x
 		lastRightClickPosition = get_viewport().get_mouse_position()
 
 	else:

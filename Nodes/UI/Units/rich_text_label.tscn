@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://e27qqh62128k"]
+
+[ext_resource type="FontFile" uid="uid://cwiw18el0nvtw" path="res://Misc/Fonts/Minecraft.ttf" id="1_8iuxl"]
+
+[node name="RichTextLabel" type="RichTextLabel"]
+z_index = 4096
+offset_right = 38.0
+offset_bottom = 23.0
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/normal_font = ExtResource("1_8iuxl")
+text = "Bruh"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0

@@ -29,20 +29,7 @@ func _process(_delta: float) -> void:
 		$LayoutPanel/SelectionMarker.visible = true
 		$LayoutPanel/SelectionMarker.position = localMousePos * 14 + Vector2(3,3)
 		if Input.is_action_just_pressed("left_click"):
-			updateTile(localMousePos.x, localMousePos.y)
-
-func updateTile(tileX, tileY):
-	var tile = main.tileGrid[tileY * main.gridWidth + tileX]
-	if main.brush.tool == "height+":
-		if tile.height < 10:
-			tile.height += 1
-	if main.brush.tool == "height-":
-		if tile.height > 0:
-			tile.height -= 1
-	if main.brush.tool == "brush":
-		tile.image = main.brush.image
-		tile.type = main.brush.type
-	main.updateGrid()
+			main.brushTile(localMousePos.x, localMousePos.y)
 
 func updateScreen():
 	var i = -1
@@ -60,6 +47,8 @@ func updateScreen():
 			tile.color = Color(0.1, 0.25, 0)
 		elif main.tileGrid[i].type == 4:
 			tile.color = Color(0.75, 0.5, 0)
+		elif main.tileGrid[i].type == 5:
+			tile.color = Color(0, 0.25, 0.75)
 		else:
 			tile.color = Color(0, 0, 0)
 		tile.color *= 0.8 + (main.tileGrid[i].height * 0.1)
@@ -67,3 +56,7 @@ func updateScreen():
 
 func _on_settings_button_pressed() -> void:
 	$SettingsPanel.visible = not $SettingsPanel.visible
+
+
+func _on_undertile_button_pressed() -> void:
+	main.brush.undertile = null

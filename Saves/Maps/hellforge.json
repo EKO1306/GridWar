@@ -1,0 +1,721 @@
+{
+	"grid": [
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 2,
+			"image": "InfernalBridge",
+			"type": 4,
+			"undertile": "Lava"
+		},
+		{
+			"height": 2,
+			"image": "InfernalBridge",
+			"type": 4,
+			"undertile": "Lava"
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 10,
+			"image": "WallDark",
+			"type": 1
+		},
+		{
+			"height": 9,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 9,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 10,
+			"image": "WallDark",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 2,
+			"image": "InfernalBridge",
+			"type": 4,
+			"undertile": "Lava"
+		},
+		{
+			"height": 2,
+			"image": "InfernalBridge",
+			"type": 4,
+			"undertile": "Lava"
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "InfernalBush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 10,
+			"image": "WallDark",
+			"type": 1
+		},
+		{
+			"height": 9,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 9,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 10,
+			"image": "WallDark",
+			"type": 1
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "InfernalBush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "InfernalBush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 10,
+			"image": "WallDark",
+			"type": 1
+		},
+		{
+			"height": 9,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 9,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 10,
+			"image": "WallDark",
+			"type": 1
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "InfernalBush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "InfernalTrees",
+			"type": 3
+		},
+		{
+			"height": 10,
+			"image": "WallDark",
+			"type": 1
+		},
+		{
+			"height": 8,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 8,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 10,
+			"image": "WallDark",
+			"type": 1
+		},
+		{
+			"height": 3,
+			"image": "InfernalTrees",
+			"type": 3
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "InfernalTrees",
+			"type": 3
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 4,
+			"image": "InfernalTrees",
+			"type": 3
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "InfernalBridge",
+			"type": 4,
+			"undertile": "Lava"
+		},
+		{
+			"height": 3,
+			"image": "InfernalBridge",
+			"type": 4,
+			"undertile": "Lava"
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 2,
+			"image": "InfernalBush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "InfernalBush",
+			"type": 2
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "InfernalBridge",
+			"type": 4,
+			"undertile": "Lava"
+		},
+		{
+			"height": 3,
+			"image": "InfernalBridge",
+			"type": 4,
+			"undertile": "Lava"
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "InfernalBush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "InfernalBush",
+			"type": 2
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "InfernalBush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "InfernalTrees",
+			"type": 3
+		},
+		{
+			"height": 3,
+			"image": "InfernalBridge",
+			"type": 4,
+			"undertile": "Lava"
+		},
+		{
+			"height": 3,
+			"image": "InfernalBridge",
+			"type": 4,
+			"undertile": "Lava"
+		},
+		{
+			"height": 3,
+			"image": "InfernalTrees",
+			"type": 3
+		},
+		{
+			"height": 3,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "InfernalBush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "InfernalBush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "InfernalBush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "InfernalBush",
+			"type": 2
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1,
+			"undertile": "Lava"
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1,
+			"undertile": "Lava"
+		},
+		{
+			"height": 2,
+			"image": "InfernalBush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "InfernalBush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "InfernalBush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Infernal",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1,
+			"undertile": "Lava"
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1,
+			"undertile": "Lava"
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		},
+		{
+			"height": 1,
+			"image": "Lava",
+			"type": 1
+		}
+	],
+	"gridHeight": 10,
+	"gridWidth": 14,
+	"name": "Hellforge"
+}

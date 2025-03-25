@@ -12,9 +12,9 @@ func _process(_delta: float) -> void:
 		inBox = false
 	elif mousePos.y < 0:
 		inBox = false
-	elif mousePos.x > 48:
+	elif mousePos.x > size.x * scale.x:
 		inBox = false
-	elif mousePos.y > 48:
+	elif mousePos.y > size.y * scale.y:
 		inBox = false
 	if inBox:
 		if len(main.uiCanvas.mouseNode.get_children()) == 0:

@@ -1,0 +1,1087 @@
+{
+	"grid": [
+		{
+			"height": 4,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 9,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 10,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 10,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 10,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 10,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 10,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 9,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 8,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 6,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 4,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 7,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 9,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 10,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 10,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 10,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 9,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 8,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 6,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 4,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 8,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 9,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 9,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 6,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 7,
+			"image": "Wall",
+			"type": 1
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 3,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 2,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 1,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 4,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 2,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 2,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Stone",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 1,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 1,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 3,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 3,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Trees",
+			"type": 3
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 4,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 4,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 3,
+			"image": "Grass",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Bush",
+			"type": 2
+		},
+		{
+			"height": 2,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 2,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Dirt",
+			"type": 0
+		},
+		{
+			"height": 3,
+			"image": "Dirt",
+			"type": 0
+		}
+	],
+	"gridHeight": 12,
+	"gridWidth": 18,
+	"name": "Forest Path"
+}

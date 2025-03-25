@@ -93,8 +93,13 @@ func updateStats(unit):
 func updateTraits(unit):
 	for i in uiTraitPanels.get_children():
 		i.queue_free()
+	var traitScale = 1
+	var traitCount = len(unit.statTraits)
+	while traitCount > 4:
+		traitCount *= 0.25
+		traitScale *= 0.5
 	for i in range(len(unit.statTraits)):
-		drawTrait(unit.statTraits[i], uiTraitPanels, Vector2((50*i),0), "trait")
+		drawTrait(unit.statTraits[i], uiTraitPanels, Vector2(50 * floor(int(i) % int( 4 / traitScale)) * traitScale,50 * floor(i / ( 4 / traitScale)) * traitScale), "trait", traitScale)
 		
 func updateActions(unit):
 	for i in uiPanelActions.get_children():
@@ -128,10 +133,15 @@ func updateActions(unit):
 			traitPanel.position = Vector2((i/2) * 210,92)
 		for a in uiPanelActionTraits.get_children():
 			a.queue_free()
+		var traitScale = 1
+		var traitCount = len(statActionValue.traits)
+		while traitCount > 4:
+			traitCount *= 0.25
+			traitScale *= 0.5
 		for a in range(len(statActionValue.traits)):
-			drawTrait(statActionValue.traits[a], uiPanelActionTraits, Vector2(a * 50,0),"action")
+			drawTrait(statActionValue.traits[a], uiPanelActionTraits, Vector2(a * 50 * traitScale,0),"action",traitScale)
 
-func drawTrait(traitValue, addedNode, traitPosition, traitType):
+func drawTrait(traitValue, addedNode, traitPosition, traitType, drawScale = 1):
 	var traitPanel = preload("res://Nodes/UI/panel_trait.tscn").instantiate()
 	var traitTexture
 	if traitType == "trait":
@@ -144,6 +154,7 @@ func drawTrait(traitValue, addedNode, traitPosition, traitType):
 		traitPanel.texture = traitTexture
 	addedNode.add_child(traitPanel)
 	traitPanel.position = traitPosition
+	traitPanel.scale = Vector2(drawScale,drawScale)
 	var traitTooltipList
 	if traitType == "trait":
 		traitTooltipList = main.traitTooltipList.get(traitValue[0])
@@ -196,7 +207,7 @@ func updateUpperPanel():
 				uiBlueScore.text += str(main.armyCosts[1])
 				if main.doArmyCostLimit:
 					uiBlueScore.text += "/" + str(main.armyCostLimit)
-		uiPlayerText.text = "[center]" + str(["RED","BLUE"][main.currentTurn[0]] + " TURN")
+		uiPlayerText.text = "[center]" + str(["RED","BLUE"][main.currentTurn[0]] + " TURN " + str(main.turnNo + 1))
 		if main.currentTurn[0] == 0:
 			styleUpperDark.get_stylebox("panel", "Panel").bg_color = Color(0.286,0.031,0.129)
 			styleUpperLight.get_stylebox("panel", "Panel").bg_color = Color(0.557,0.141,0.263)

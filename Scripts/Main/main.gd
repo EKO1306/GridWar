@@ -6,6 +6,7 @@ var selectedAction
 @export var spawnUnitsBlue = false
 
 var mapEditor = false
+@export var debugMode = true
 @onready var isMultiplayer = get_parent().scenePassover.get("isMultiplayer") != null
 
 @onready var uiCanvas = $Camera2D/CanvasLayer
@@ -22,6 +23,10 @@ func _ready():
 		armyCostLimit = get_parent().scenePassover.get("armyCostLimit")
 	if armyCostLimit <= 0:
 		doArmyCostLimit = false
+	if debugMode:
+		armyBuilder = false
+	if get_parent().scenePassover.get("turnNo") != null:
+		turnNo = get_parent().scenePassover.get("turnNo")
 	createGrid()
 	for y in range(gridHeight):
 		for x in range(gridWidth):
@@ -39,7 +44,6 @@ func _ready():
 		loadUnits(get_parent().scenePassover.units)
 		currentTurn[0] = get_parent().scenePassover.playerTurn
 		currentTurn[1] = get_parent().scenePassover.turnEnded
-		armyHighestCosts = get_parent().scenePassover.armyHighestCosts
 		if isMultiplayer:
 			endTurn(false,true)
 		else:
@@ -123,8 +127,11 @@ func endTurn(firstEnd = false, skipCalc = false):
 		currentTurn[1] = false
 	else:
 		if not firstEnd:
-			if currentTurn[0] == 1 and armyBuilder:
-				armyBuilder = false
+			if currentTurn[0] == 1:
+				if armyBuilder:
+					armyBuilder = false
+				else:
+					turnNo += 1
 		if armyBuilder:
 			selectedArmyNo = [0,0]
 			selectedUnit = unitList[selectedArmyNo[0]][selectedArmyNo[1]]
@@ -138,6 +145,9 @@ func endTurn(firstEnd = false, skipCalc = false):
 		for i in unitControl.get_children():
 			if i.unitTeam == currentTurn[0]:
 				i.startturn()
+		for i in unitControl.get_children():
+			if i.unitTeam == currentTurn[0]:
+				i.startturnStatus(true)
 	updateScreen()
 	
 func hideGame():
@@ -146,20 +156,25 @@ func hideGame():
 	uiCanvas.hide()
 
 func updateScreen():
+	#var time = Time.get_ticks_usec()
 	armyCosts = [0,0]
 	for i in range(len(lightGrid)):
 		lightGrid[i] = false
 	if armyBuilder:
 		updateScreenArmyBuilder()
 	for i in unitControl.get_children():
+		i.preUpdateScreen()
+	for i in unitControl.get_children():
 		i.updateScreen()
 	for i in tileControl.get_children():
 		i.updateScreen()
 	for i in unitControl.get_children():
 		i.postUpdateScreen()
-	if armyHighestCosts == null:
-		armyHighestCosts = armyCosts
+	if not armyBuilder:
+		if armyHighestCosts == null:
+			armyHighestCosts = armyCosts
 	uiCanvas.updateUI()
+	#print("Update Screen took " + str((Time.get_ticks_usec() - time) * 0.001) + " milliseconds.")
 
 
 func _on_button_pressed() -> void:
@@ -195,10 +210,14 @@ func updateScreenArmyBuilder():
 			if armyGrid[y * gridWidth + x] == currentTurn[0]:
 				lightGrid[y * gridWidth + x] = true
 
-func spawnUnit(unitPath,unitX,unitY,unitTeam):
+func spawnUnit(unitPath,unitX,unitY,unitTeam, summon = false):
+	if unitPath.right(5) != ".tscn":
+			unitPath += ".tscn"
 	var spawnUnitNode = load("res://Nodes/Units/" + unitPath).instantiate()
 	spawnUnitNode.gridX = unitX
 	spawnUnitNode.gridY = unitY
 	spawnUnitNode.unitTeam = unitTeam
+	if summon:
+		spawnUnitNode.addStatus("summon",null)
 	unitControl.add_child(spawnUnitNode)
 	spawnUnitNode.setupUnit()

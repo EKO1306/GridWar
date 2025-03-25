@@ -18,3 +18,4 @@ theme = SubResource("Theme_wc1vy")
 bbcode_enabled = true
 text = "Hello Gamers"
 fit_content = true
+scroll_active = false

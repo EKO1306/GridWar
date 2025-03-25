@@ -216,11 +216,18 @@ grow_horizontal = 2
 grow_vertical = 0
 text = "Start"
 
-[node name="Official" type="VBoxContainer" parent="MainMenuUI/MapEditorTab"]
+[node name="Official" type="ScrollContainer" parent="MainMenuUI/MapEditorTab"]
 visible = false
 layout_mode = 2
-theme_override_constants/separation = 82
+size_flags_horizontal = 3
+size_flags_vertical = 3
 metadata/_tab_index = 1
+
+[node name="Official" type="VBoxContainer" parent="MainMenuUI/MapEditorTab/Official"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 82
 
 [node name="Custom" type="VBoxContainer" parent="MainMenuUI/MapEditorTab"]
 visible = false
@@ -233,9 +240,10 @@ offset_left = 16.0
 offset_top = 24.0
 offset_right = 466.0
 offset_bottom = 624.0
-current_tab = 0
+current_tab = 1
 
 [node name="Play" type="Control" parent="MainMenuUI/MapPlayTab"]
+visible = false
 layout_mode = 2
 metadata/_tab_index = 0
 
@@ -273,11 +281,17 @@ placeholder_text = "5000"
 script = ExtResource("3_oowao")
 allowedCharacters = "1234567890"
 
-[node name="Official" type="VBoxContainer" parent="MainMenuUI/MapPlayTab"]
-visible = false
+[node name="Official" type="ScrollContainer" parent="MainMenuUI/MapPlayTab"]
 layout_mode = 2
-theme_override_constants/separation = 82
+size_flags_horizontal = 3
+size_flags_vertical = 3
 metadata/_tab_index = 1
+
+[node name="Official" type="VBoxContainer" parent="MainMenuUI/MapPlayTab/Official"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 82
 
 [node name="Custom" type="VBoxContainer" parent="MainMenuUI/MapPlayTab"]
 visible = false
@@ -390,11 +404,18 @@ scroll_active = false
 [node name="CheckButton" type="CheckButton" parent="MainMenuUI/MapHostTab/Host/ArmyCostContainer2"]
 layout_mode = 2
 
-[node name="Official" type="VBoxContainer" parent="MainMenuUI/MapHostTab"]
+[node name="Official" type="ScrollContainer" parent="MainMenuUI/MapHostTab"]
 visible = false
 layout_mode = 2
-theme_override_constants/separation = 82
+size_flags_horizontal = 3
+size_flags_vertical = 3
 metadata/_tab_index = 1
+
+[node name="Official" type="VBoxContainer" parent="MainMenuUI/MapHostTab/Official"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 82
 
 [node name="Custom" type="VBoxContainer" parent="MainMenuUI/MapHostTab"]
 visible = false

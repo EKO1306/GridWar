@@ -8,11 +8,7 @@ region = Rect2(0, 0, 18, 4)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b4sk0"]
 atlas = ExtResource("1_aqdgq")
-region = Rect2(0, 4, 18, 4)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_nebis"]
-atlas = ExtResource("1_aqdgq")
-region = Rect2(0, 8, 18, 4)
+region = Rect2(1, 5, 16, 2)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gudti"]
 atlas = ExtResource("1_aqdgq")
@@ -26,49 +22,45 @@ region = Rect2(5, 12, 4, 4)
 atlas = ExtResource("1_aqdgq")
 region = Rect2(13, 12, 4, 4)
 
-[node name="HealthBar" type="TextureProgressBar"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_nebis"]
+atlas = ExtResource("1_aqdgq")
+region = Rect2(0, 8, 18, 4)
+
+[node name="HealthBar" type="NinePatchRect"]
 z_index = 4095
 z_as_relative = false
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -9.0
 offset_top = -3.0
-offset_right = -1.0
+offset_right = 3.0
 offset_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-value = 50.0
-nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_top = 1
-stretch_margin_right = 1
-stretch_margin_bottom = 1
-texture_under = SubResource("AtlasTexture_4u18y")
-texture_progress = SubResource("AtlasTexture_b4sk0")
+texture = SubResource("AtlasTexture_4u18y")
+patch_margin_left = 1
+patch_margin_top = 1
+patch_margin_right = 1
+patch_margin_bottom = 1
 
-[node name="ShieldBar" type="TextureProgressBar" parent="."]
-self_modulate = Color(1, 1, 1, 0.784314)
+[node name="HealthBar" type="TextureProgressBar" parent="."]
+clip_contents = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = -1.0
+offset_bottom = -1.0
 grow_horizontal = 2
 grow_vertical = 2
-value = 50.0
+value = 90.0
 nine_patch_stretch = true
-stretch_margin_left = 1
-stretch_margin_right = 1
-texture_progress = SubResource("AtlasTexture_nebis")
+texture_progress = SubResource("AtlasTexture_b4sk0")
 
 [node name="Movement" type="TextureRect" parent="."]
 z_index = 1
 layout_mode = 0
-offset_left = 1.0
+offset_left = 2.0
 offset_top = 2.0
-offset_right = 5.0
+offset_right = 6.0
 offset_bottom = 6.0
 texture = SubResource("AtlasTexture_gudti")
 
@@ -82,9 +74,9 @@ texture = SubResource("AtlasTexture_l5emk")
 [node name="Action" type="TextureRect" parent="."]
 z_index = 1
 layout_mode = 0
-offset_left = 3.0
+offset_left = 6.0
 offset_top = 2.0
-offset_right = 7.0
+offset_right = 10.0
 offset_bottom = 6.0
 texture = SubResource("AtlasTexture_0co3y")
 
@@ -96,3 +88,17 @@ offset_right = 4.0
 offset_bottom = 4.0
 texture = SubResource("AtlasTexture_l5emk")
 flip_h = true
+
+[node name="ShieldBar" type="TextureProgressBar" parent="."]
+self_modulate = Color(1, 1, 1, 0.784314)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+value = 100.0
+nine_patch_stretch = true
+stretch_margin_left = 1
+stretch_margin_right = 1
+texture_progress = SubResource("AtlasTexture_nebis")

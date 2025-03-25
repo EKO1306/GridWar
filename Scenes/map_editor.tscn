@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://y0eh33bkrjej"]
+[gd_scene load_steps=39 format=3 uid="uid://y0eh33bkrjej"]
 
 [ext_resource type="Script" path="res://Scripts/MapEditor/map_editor_main.gd" id="1_narrm"]
 [ext_resource type="Script" path="res://Scripts/Camera.gd" id="2_av0nk"]
@@ -28,33 +28,93 @@ bg_color = Color(0.417955, 0.159605, 0.526552, 1)
 atlas = ExtResource("4_gg2gb")
 region = Rect2(0, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7jejx"]
-atlas = ExtResource("4_gg2gb")
-region = Rect2(0, 48, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fa6a4"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_gwh7x"]
 atlas = ExtResource("4_gg2gb")
 region = Rect2(24, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8e7my"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ycnbh"]
 atlas = ExtResource("4_gg2gb")
 region = Rect2(48, 0, 24, 24)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8acud"]
-atlas = ExtResource("4_gg2gb")
-region = Rect2(48, 48, 24, 24)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_7n4i0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_epeij"]
 atlas = ExtResource("4_gg2gb")
 region = Rect2(72, 0, 24, 24)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dtc3"]
+atlas = ExtResource("4_gg2gb")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4qie"]
+atlas = ExtResource("4_gg2gb")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h1qqk"]
+atlas = ExtResource("4_gg2gb")
+region = Rect2(0, 40, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_egy85"]
+atlas = ExtResource("4_gg2gb")
+region = Rect2(48, 40, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h704b"]
+atlas = ExtResource("4_gg2gb")
+region = Rect2(24, 40, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmoj7"]
+atlas = ExtResource("4_gg2gb")
+region = Rect2(72, 40, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8hsf"]
+atlas = ExtResource("4_gg2gb")
+region = Rect2(72, 40, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jlur3"]
+atlas = ExtResource("4_gg2gb")
+region = Rect2(0, 80, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b233x"]
+atlas = ExtResource("4_gg2gb")
+region = Rect2(24, 80, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hpq74"]
+atlas = ExtResource("4_gg2gb")
+region = Rect2(48, 80, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_luliy"]
+atlas = ExtResource("4_gg2gb")
+region = Rect2(72, 80, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_du5d5"]
+atlas = ExtResource("4_gg2gb")
+region = Rect2(0, 120, 24, 24)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_2gjjg"]
 atlas = ExtResource("4_gg2gb")
-region = Rect2(72, 48, 24, 24)
+region = Rect2(24, 120, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q3eay"]
+atlas = ExtResource("4_gg2gb")
+region = Rect2(48, 120, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kq3v8"]
+atlas = ExtResource("4_gg2gb")
+region = Rect2(72, 120, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fcnq4"]
 atlas = ExtResource("4_gg2gb")
-region = Rect2(96, 0, 24, 24)
+region = Rect2(0, 160, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_easnt"]
+atlas = ExtResource("4_gg2gb")
+region = Rect2(24, 160, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_34u3c"]
+atlas = ExtResource("4_gg2gb")
+region = Rect2(48, 160, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d5cbn"]
+atlas = ExtResource("4_gg2gb")
+region = Rect2(0, 200, 24, 24)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hmfah"]
 bg_color = Color(0.231373, 0.0588235, 0.454902, 0.607843)
@@ -178,49 +238,49 @@ offset_left = 30.0
 offset_top = 4.0
 offset_right = 54.0
 offset_bottom = 28.0
-texture_normal = SubResource("AtlasTexture_7jejx")
+texture_normal = SubResource("AtlasTexture_gwh7x")
 script = ExtResource("6_mqheg")
 brushImage = "Snow"
 
 [node name="TextureButton3" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel1/TilesPanel"]
-visible = false
 layout_mode = 0
 offset_left = 56.0
 offset_top = 4.0
 offset_right = 80.0
 offset_bottom = 28.0
-texture_normal = SubResource("AtlasTexture_ug50t")
+texture_normal = SubResource("AtlasTexture_ycnbh")
 script = ExtResource("6_mqheg")
+brushImage = "Dirt"
 
 [node name="TextureButton4" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel1/TilesPanel"]
-visible = false
 layout_mode = 0
 offset_left = 4.0
 offset_top = 30.0
 offset_right = 28.0
 offset_bottom = 54.0
-texture_normal = SubResource("AtlasTexture_ug50t")
+texture_normal = SubResource("AtlasTexture_epeij")
 script = ExtResource("6_mqheg")
+brushImage = "Stone"
 
 [node name="TextureButton5" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel1/TilesPanel"]
-visible = false
 layout_mode = 0
 offset_left = 30.0
 offset_top = 30.0
 offset_right = 54.0
 offset_bottom = 54.0
-texture_normal = SubResource("AtlasTexture_ug50t")
+texture_normal = SubResource("AtlasTexture_5dtc3")
 script = ExtResource("6_mqheg")
+brushImage = "Ice"
 
 [node name="TextureButton6" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel1/TilesPanel"]
-visible = false
 layout_mode = 0
 offset_left = 56.0
 offset_top = 30.0
 offset_right = 80.0
 offset_bottom = 54.0
-texture_normal = SubResource("AtlasTexture_ug50t")
+texture_normal = SubResource("AtlasTexture_t4qie")
 script = ExtResource("6_mqheg")
+brushImage = "Infernal"
 
 [node name="TextureButton7" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel1/TilesPanel"]
 visible = false
@@ -295,10 +355,103 @@ offset_left = 4.0
 offset_top = 4.0
 offset_right = 28.0
 offset_bottom = 28.0
-texture_normal = SubResource("AtlasTexture_fa6a4")
+texture_normal = SubResource("AtlasTexture_h1qqk")
 script = ExtResource("6_mqheg")
 brushType = 1
 brushImage = "Wall"
+
+[node name="TextureButton2" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel2/TilesPanel"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 4.0
+offset_right = 80.0
+offset_bottom = 28.0
+texture_normal = SubResource("AtlasTexture_egy85")
+script = ExtResource("6_mqheg")
+brushType = 1
+brushImage = "Lava"
+
+[node name="TextureButton3" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel2/TilesPanel"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 4.0
+offset_right = 54.0
+offset_bottom = 28.0
+texture_normal = SubResource("AtlasTexture_h704b")
+script = ExtResource("6_mqheg")
+brushType = 1
+brushImage = "WallDark"
+
+[node name="TextureButton4" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel2/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 56.0
+offset_right = 28.0
+offset_bottom = 80.0
+texture_normal = SubResource("AtlasTexture_h1qqk")
+script = ExtResource("6_mqheg")
+brushType = 1
+brushImage = "Wall"
+
+[node name="TextureButton5" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel2/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 56.0
+offset_top = 56.0
+offset_right = 80.0
+offset_bottom = 80.0
+texture_normal = SubResource("AtlasTexture_h1qqk")
+script = ExtResource("6_mqheg")
+brushType = 1
+brushImage = "Wall"
+
+[node name="TextureButton6" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel2/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 30.0
+offset_top = 56.0
+offset_right = 54.0
+offset_bottom = 80.0
+texture_normal = SubResource("AtlasTexture_h1qqk")
+script = ExtResource("6_mqheg")
+brushType = 1
+brushImage = "Wall"
+
+[node name="TextureButton7" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel2/TilesPanel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 30.0
+offset_right = 28.0
+offset_bottom = 54.0
+texture_normal = SubResource("AtlasTexture_wmoj7")
+script = ExtResource("6_mqheg")
+brushType = 1
+brushImage = "DirtWall"
+
+[node name="TextureButton8" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel2/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 56.0
+offset_top = 30.0
+offset_right = 80.0
+offset_bottom = 54.0
+texture_normal = SubResource("AtlasTexture_h1qqk")
+script = ExtResource("6_mqheg")
+brushType = 1
+brushImage = "Wall"
+
+[node name="TextureButton9" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel2/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 54.0
+offset_bottom = 54.0
+texture_normal = SubResource("AtlasTexture_x8hsf")
+script = ExtResource("6_mqheg")
+brushType = 1
+brushImage = "DirtWall"
 
 [node name="BrushPanel3" type="Panel" parent="Camera2D/CanvasLayer/LowerPanel"]
 layout_mode = 1
@@ -343,7 +496,7 @@ offset_left = 4.0
 offset_top = 4.0
 offset_right = 28.0
 offset_bottom = 28.0
-texture_normal = SubResource("AtlasTexture_8e7my")
+texture_normal = SubResource("AtlasTexture_jlur3")
 script = ExtResource("6_mqheg")
 brushType = 2
 brushImage = "Bush"
@@ -354,7 +507,89 @@ offset_left = 30.0
 offset_top = 4.0
 offset_right = 54.0
 offset_bottom = 28.0
-texture_normal = SubResource("AtlasTexture_8acud")
+texture_normal = SubResource("AtlasTexture_b233x")
+script = ExtResource("6_mqheg")
+brushType = 2
+brushImage = "SnowBush"
+
+[node name="TextureButton3" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel3/TilesPanel"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 4.0
+offset_right = 80.0
+offset_bottom = 28.0
+texture_normal = SubResource("AtlasTexture_hpq74")
+script = ExtResource("6_mqheg")
+brushType = 2
+brushImage = "InfernalBush"
+
+[node name="TextureButton4" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel3/TilesPanel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 30.0
+offset_right = 28.0
+offset_bottom = 54.0
+texture_normal = SubResource("AtlasTexture_luliy")
+script = ExtResource("6_mqheg")
+brushType = 2
+brushImage = "DirtBush"
+
+[node name="TextureButton5" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel3/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 54.0
+offset_bottom = 54.0
+texture_normal = SubResource("AtlasTexture_b233x")
+script = ExtResource("6_mqheg")
+brushType = 2
+brushImage = "SnowBush"
+
+[node name="TextureButton6" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel3/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 56.0
+offset_top = 30.0
+offset_right = 80.0
+offset_bottom = 54.0
+texture_normal = SubResource("AtlasTexture_b233x")
+script = ExtResource("6_mqheg")
+brushType = 2
+brushImage = "SnowBush"
+
+[node name="TextureButton7" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel3/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 56.0
+offset_right = 28.0
+offset_bottom = 80.0
+texture_normal = SubResource("AtlasTexture_jlur3")
+script = ExtResource("6_mqheg")
+brushType = 2
+brushImage = "Bush"
+
+[node name="TextureButton8" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel3/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 30.0
+offset_top = 56.0
+offset_right = 54.0
+offset_bottom = 80.0
+texture_normal = SubResource("AtlasTexture_b233x")
+script = ExtResource("6_mqheg")
+brushType = 2
+brushImage = "SnowBush"
+
+[node name="TextureButton9" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel3/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 56.0
+offset_top = 56.0
+offset_right = 80.0
+offset_bottom = 80.0
+texture_normal = SubResource("AtlasTexture_b233x")
 script = ExtResource("6_mqheg")
 brushType = 2
 brushImage = "SnowBush"
@@ -402,7 +637,7 @@ offset_left = 4.0
 offset_top = 4.0
 offset_right = 28.0
 offset_bottom = 28.0
-texture_normal = SubResource("AtlasTexture_7n4i0")
+texture_normal = SubResource("AtlasTexture_du5d5")
 script = ExtResource("6_mqheg")
 brushType = 3
 brushImage = "Trees"
@@ -413,6 +648,88 @@ offset_left = 30.0
 offset_top = 4.0
 offset_right = 54.0
 offset_bottom = 28.0
+texture_normal = SubResource("AtlasTexture_2gjjg")
+script = ExtResource("6_mqheg")
+brushType = 3
+brushImage = "SnowTrees"
+
+[node name="TextureButton3" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel4/TilesPanel"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 4.0
+offset_right = 80.0
+offset_bottom = 28.0
+texture_normal = SubResource("AtlasTexture_q3eay")
+script = ExtResource("6_mqheg")
+brushType = 3
+brushImage = "InfernalTrees"
+
+[node name="TextureButton4" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel4/TilesPanel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 30.0
+offset_right = 28.0
+offset_bottom = 54.0
+texture_normal = SubResource("AtlasTexture_kq3v8")
+script = ExtResource("6_mqheg")
+brushType = 3
+brushImage = "DirtTrees"
+
+[node name="TextureButton5" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel4/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 54.0
+offset_bottom = 54.0
+texture_normal = SubResource("AtlasTexture_2gjjg")
+script = ExtResource("6_mqheg")
+brushType = 3
+brushImage = "SnowTrees"
+
+[node name="TextureButton6" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel4/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 56.0
+offset_top = 30.0
+offset_right = 80.0
+offset_bottom = 54.0
+texture_normal = SubResource("AtlasTexture_2gjjg")
+script = ExtResource("6_mqheg")
+brushType = 3
+brushImage = "SnowTrees"
+
+[node name="TextureButton7" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel4/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 56.0
+offset_right = 28.0
+offset_bottom = 80.0
+texture_normal = SubResource("AtlasTexture_du5d5")
+script = ExtResource("6_mqheg")
+brushType = 3
+brushImage = "Trees"
+
+[node name="TextureButton8" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel4/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 30.0
+offset_top = 56.0
+offset_right = 54.0
+offset_bottom = 80.0
+texture_normal = SubResource("AtlasTexture_2gjjg")
+script = ExtResource("6_mqheg")
+brushType = 3
+brushImage = "SnowTrees"
+
+[node name="TextureButton9" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel4/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 56.0
+offset_top = 56.0
+offset_right = 80.0
+offset_bottom = 80.0
 texture_normal = SubResource("AtlasTexture_2gjjg")
 script = ExtResource("6_mqheg")
 brushType = 3
@@ -466,6 +783,253 @@ script = ExtResource("6_mqheg")
 brushType = 4
 brushImage = "Bridge"
 
+[node name="TextureButton2" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel5/TilesPanel"]
+layout_mode = 0
+offset_left = 30.0
+offset_top = 4.0
+offset_right = 54.0
+offset_bottom = 28.0
+texture_normal = SubResource("AtlasTexture_easnt")
+script = ExtResource("6_mqheg")
+brushType = 4
+brushImage = "StoneBridge"
+
+[node name="TextureButton3" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel5/TilesPanel"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 4.0
+offset_right = 80.0
+offset_bottom = 28.0
+texture_normal = SubResource("AtlasTexture_34u3c")
+script = ExtResource("6_mqheg")
+brushType = 4
+brushImage = "InfernalBridge"
+
+[node name="TextureButton4" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel5/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 30.0
+offset_right = 28.0
+offset_bottom = 54.0
+texture_normal = SubResource("AtlasTexture_fcnq4")
+script = ExtResource("6_mqheg")
+brushType = 4
+brushImage = "Bridge"
+
+[node name="TextureButton5" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel5/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 54.0
+offset_bottom = 54.0
+texture_normal = SubResource("AtlasTexture_fcnq4")
+script = ExtResource("6_mqheg")
+brushType = 4
+brushImage = "Bridge"
+
+[node name="TextureButton6" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel5/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 56.0
+offset_top = 30.0
+offset_right = 80.0
+offset_bottom = 54.0
+texture_normal = SubResource("AtlasTexture_fcnq4")
+script = ExtResource("6_mqheg")
+brushType = 4
+brushImage = "Bridge"
+
+[node name="TextureButton7" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel5/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 56.0
+offset_right = 28.0
+offset_bottom = 80.0
+texture_normal = SubResource("AtlasTexture_fcnq4")
+script = ExtResource("6_mqheg")
+brushType = 4
+brushImage = "Bridge"
+
+[node name="TextureButton8" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel5/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 30.0
+offset_top = 56.0
+offset_right = 54.0
+offset_bottom = 80.0
+texture_normal = SubResource("AtlasTexture_fcnq4")
+script = ExtResource("6_mqheg")
+brushType = 4
+brushImage = "Bridge"
+
+[node name="TextureButton9" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel5/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 56.0
+offset_top = 56.0
+offset_right = 80.0
+offset_bottom = 80.0
+texture_normal = SubResource("AtlasTexture_fcnq4")
+script = ExtResource("6_mqheg")
+brushType = 4
+brushImage = "Bridge"
+
+[node name="UndertileButton" type="Button" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel5"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 78.0
+offset_right = 81.0
+offset_bottom = 98.0
+theme_override_font_sizes/font_size = 8
+text = "Select Undertile"
+
+[node name="BrushPanel6" type="Panel" parent="Camera2D/CanvasLayer/LowerPanel"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 484.0
+offset_top = -110.0
+offset_right = 576.0
+offset_bottom = -4.0
+grow_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1cpyf")
+
+[node name="Label" type="RichTextLabel" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel6"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 2.0
+offset_bottom = 18.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("4_rroc0")
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "[center]Water"
+scroll_active = false
+autowrap_mode = 0
+
+[node name="TilesPanel" type="Panel" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel6"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = 18.0
+offset_right = -4.0
+offset_bottom = 102.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_tqv7q")
+
+[node name="TextureButton" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel6/TilesPanel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 28.0
+offset_bottom = 28.0
+texture_normal = SubResource("AtlasTexture_d5cbn")
+script = ExtResource("6_mqheg")
+brushType = 5
+brushImage = "Water"
+
+[node name="TextureButton2" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel6/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 30.0
+offset_top = 4.0
+offset_right = 54.0
+offset_bottom = 28.0
+texture_normal = SubResource("AtlasTexture_d5cbn")
+script = ExtResource("6_mqheg")
+brushType = 5
+brushImage = "Water"
+
+[node name="TextureButton3" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel6/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 56.0
+offset_top = 4.0
+offset_right = 80.0
+offset_bottom = 28.0
+texture_normal = SubResource("AtlasTexture_d5cbn")
+script = ExtResource("6_mqheg")
+brushType = 5
+brushImage = "Water"
+
+[node name="TextureButton4" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel6/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 30.0
+offset_right = 28.0
+offset_bottom = 54.0
+texture_normal = SubResource("AtlasTexture_d5cbn")
+script = ExtResource("6_mqheg")
+brushType = 5
+brushImage = "Water"
+
+[node name="TextureButton5" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel6/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 54.0
+offset_bottom = 54.0
+texture_normal = SubResource("AtlasTexture_d5cbn")
+script = ExtResource("6_mqheg")
+brushType = 5
+brushImage = "Water"
+
+[node name="TextureButton6" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel6/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 56.0
+offset_top = 30.0
+offset_right = 80.0
+offset_bottom = 54.0
+texture_normal = SubResource("AtlasTexture_d5cbn")
+script = ExtResource("6_mqheg")
+brushType = 5
+brushImage = "Water"
+
+[node name="TextureButton7" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel6/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 4.0
+offset_top = 56.0
+offset_right = 28.0
+offset_bottom = 80.0
+texture_normal = SubResource("AtlasTexture_d5cbn")
+script = ExtResource("6_mqheg")
+brushType = 5
+brushImage = "Water"
+
+[node name="TextureButton8" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel6/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 30.0
+offset_top = 56.0
+offset_right = 54.0
+offset_bottom = 80.0
+texture_normal = SubResource("AtlasTexture_d5cbn")
+script = ExtResource("6_mqheg")
+brushType = 5
+brushImage = "Water"
+
+[node name="TextureButton9" type="TextureButton" parent="Camera2D/CanvasLayer/LowerPanel/BrushPanel6/TilesPanel"]
+visible = false
+layout_mode = 0
+offset_left = 56.0
+offset_top = 56.0
+offset_right = 80.0
+offset_bottom = 80.0
+texture_normal = SubResource("AtlasTexture_d5cbn")
+script = ExtResource("6_mqheg")
+brushType = 5
+brushImage = "Water"
+
 [node name="UpperPanel" type="Panel" parent="Camera2D/CanvasLayer"]
 top_level = true
 anchors_preset = 5
@@ -487,6 +1051,7 @@ theme_override_fonts/normal_font = ExtResource("4_rroc0")
 theme_override_font_sizes/normal_font_size = 32
 bbcode_enabled = true
 text = "[center]Map Editor"
+scroll_active = false
 autowrap_mode = 0
 
 [node name="SettingsButton" type="TextureButton" parent="Camera2D/CanvasLayer/UpperPanel"]
@@ -607,5 +1172,6 @@ color = Color(1, 0, 0, 1)
 
 [node name="Tiles" type="Node2D" parent="."]
 
+[connection signal="pressed" from="Camera2D/CanvasLayer/LowerPanel/BrushPanel5/UndertileButton" to="Camera2D/CanvasLayer" method="_on_undertile_button_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/UpperPanel/SettingsButton" to="Camera2D/CanvasLayer" method="_on_settings_button_pressed"]
 [connection signal="pressed" from="Camera2D/CanvasLayer/SettingsPanel/SaveButton" to="." method="_on_save_button_pressed"]

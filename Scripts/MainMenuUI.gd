@@ -8,12 +8,15 @@ extends CanvasLayer
 var chosenMap
 
 func _ready():
-	updateMapList("res://Saves/Maps/Official","MapPlayTab/Official","Play")
-	updateMapList("res://Saves/Maps/Custom","MapPlayTab/Custom", "Play")
-	updateMapList("res://Saves/Maps/Official","MapEditorTab/Official","Editor")
-	updateMapList("res://Saves/Maps/Custom","MapEditorTab/Custom", "Editor")
-	updateMapList("res://Saves/Maps/Official","MapHostTab/Official","Play")
-	updateMapList("res://Saves/Maps/Custom","MapHostTab/Custom", "Play")
+	var dir = DirAccess.open("user://")
+	if not dir.dir_exists("user://Saves//Maps"):
+		dir.make_dir_recursive("user://Saves//Maps")
+	updateMapList("res://Saves/Maps","MapPlayTab/Official/Official","Play")
+	updateMapList("user://Saves/Maps","MapPlayTab/Custom", "Play")
+	updateMapList("res://Saves/Maps","MapEditorTab/Official/Official","Editor")
+	updateMapList("user://Saves/Maps","MapEditorTab/Custom", "Editor")
+	updateMapList("res://Saves/Maps","MapHostTab/Official/Official","Play")
+	updateMapList("user://Saves/Maps","MapHostTab/Custom", "Play")
 
 func updateMapList(directory, panelDir, playAction):
 	var mapDirectoryOfficial = DirAccess.open(directory) as DirAccess
@@ -125,5 +128,5 @@ func _on_game_play_start_button_pressed() -> void:
 		armyCostLimit = 5000
 	else:
 		armyCostLimit = int(armyCostLimit)
-	chosenMap.merge({"armyBuilder": true, "armyHighestCosts": [0,0], "armyCostLimit": armyCostLimit})
+	chosenMap.merge({"armyBuilder": true, "armyHighestCosts": null, "armyCostLimit": armyCostLimit})
 	get_tree().get_current_scene().changeScene("res://Scenes/main.tscn", chosenMap)

@@ -7,4 +7,7 @@ extends TextureButton
 @export var brushImage = "Grass"
 
 func _pressed() -> void:
-	main.brush = {"tool": brushTool, "type": brushType, "image": brushImage}
+	if main.brush.undertile == null:
+		main.brush.undertile = brushImage
+	else:
+		main.brush.merge({"tool": brushTool, "type": brushType, "image": brushImage}, true)

@@ -6,8 +6,10 @@ extends Node2D
 
 @onready var tileGrid = get_parent().scenePassover.mapGrid
 
-@onready var unitControl = $Units
+@onready var unitControl = get_node_or_null("Units")
 @onready var tileControl = $Tiles
+
+var turnNo = 0
 var currentTurn #0 = Red, 1 = Blue, true = turn, false = ended turn
 var armyHighestCosts
 
@@ -28,20 +30,20 @@ func saveMap():
 		print("Invalid Map ID")
 		return
 		
-	var saveFile = FileAccess.open("res://Saves//Maps//Custom//{id}.json".format({"id": id}), FileAccess.WRITE)
+	var saveFile = FileAccess.open("user://Saves//Maps//{id}.json".format({"id": id}), FileAccess.WRITE)
 	var mapSaveString = {"grid": tileGrid, "name": mname, "gridWidth": gridWidth, "gridHeight": gridHeight}
 	saveFile.store_line(JSON.stringify(mapSaveString, "\t"))
 	print("saved successfully")
 
 func saveGame():
 	var saveData = generateSaveData()
-	var saveFile = FileAccess.open("res://Saves//Games//{id}.json".format({"id": mapID}), FileAccess.WRITE)
+	var saveFile = FileAccess.open("user://Saves//Games//{id}.json".format({"id": mapID}), FileAccess.WRITE)
 	saveFile.store_line(JSON.stringify(saveData, "\t"))
 	print("saved successfully")
 
 func loadGame(saveData = null):
 	if saveData == null:
-		var openFile = FileAccess.open("res://Saves/Games/dual_peaks.json", FileAccess.READ)
+		var openFile = FileAccess.open("user://Saves/Games/dual_peaks.json", FileAccess.READ)
 		var json = JSON.new()
 		var fileString = ""
 		while openFile.get_position() < openFile.get_length():
@@ -65,7 +67,8 @@ func loadGame(saveData = null):
 	"armyHighestCosts": saveData.armyHighestCosts,
 	"isMultiplayer": saveData.isMultiplayer,
 	"armyBuilder": saveData.armyBuilder,
-	"armyCostLimit": saveData.armyCostLimit
+	"armyCostLimit": saveData.armyCostLimit,
+	"turnNo": saveData.turnNo
 	})
 	
 func generateSaveData():
@@ -90,5 +93,6 @@ func generateSaveData():
 		"turnEnded": currentTurn[1],
 		"armyHighestCosts": armyHighestCosts,
 		"armyBuilder": armyBuilder,
-		"armyCostLimit": armyCostLimit
+		"armyCostLimit": armyCostLimit,
+		"turnNo": turnNo
 		}

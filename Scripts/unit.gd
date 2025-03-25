@@ -19,15 +19,18 @@ var statActions
 
 var rng = RandomNumberGenerator.new()
 var isVisible = false
-var exists = true
+var isAlive = true
+var canHide
 
 var statusList = []
 
 @onready var main = get_parent().get_parent()
 @onready var uiCanvas = main.get_node("Camera2D/CanvasLayer")
 
-@onready var nodeHealthBar = get_node_or_null("HealthBar") as TextureProgressBar
+@onready var nodeHealthBar = get_node_or_null("HealthBar")
 @onready var nodeAnimationPlayer = get_node("AnimationPlayer") as AnimationPlayer
+var nodeDamageText
+var flashTextColor
 
 var animationMovementBuffer = []
 var movementOffset = Vector2.ZERO
@@ -37,6 +40,9 @@ var hasActed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	nodeDamageText = load("res://Nodes/UI/Units/rich_text_label.tscn").instantiate()
+	nodeDamageText.hide()
+	add_child(nodeDamageText)
 	$Sprites.material = ShaderMaterial.new()
 	$Sprites.material.shader = preload("res://Shaders/unitOutline.gdshader")
 	$Sprites.material.set_shader_parameter("line_thickness", 4)
@@ -64,10 +70,15 @@ func _process(delta):
 	if main.armyBuilder:
 		updatePosition(delta)
 		return
+	if nodeDamageText.visible:
+		var colorOffset = abs(sin(Time.get_ticks_msec() * 0.0025))
+		nodeDamageText.modulate = Color.WHITE - (flashTextColor * colorOffset)
+		nodeDamageText.modulate.a = 1
 	if main.selectedUnit == self:
 		var moved = false
-		$Sprites.modulate = Color(100,100,100,1)
-		$Sprites.self_modulate = Color(0.01,0.01,0.01,1)
+		#$Sprites.modulate = Color(100,100,100,1)
+		$Sprites.material.set_shader_parameter("line_color",Color(1,1,1))
+		$Sprites.material.set_shader_parameter("line_thickness", 8)
 		if main.currentTurn[0] == unitTeam:
 			if Input.is_action_just_pressed("move_right"):
 				if moveToXY(gridX+1,gridY,true):
@@ -87,25 +98,25 @@ func _process(delta):
 				for i in range(10):
 					isActionPressed(["key1","key2","key3","key4","key5","key6","key7","key8","key9","key0"][i],i)
 	else:
-		$Sprites.modulate = Color(1,1,1,1)
-		$Sprites.self_modulate = Color(1,1,1,1)
+		#$Sprites.modulate = Color(1,1,1,1)
+		$Sprites.material.set_shader_parameter("line_thickness", 4)
+		if unitTeam == 0:
+			$Sprites.material.set_shader_parameter("line_color",Color(1,0,0))
+		else:
+			$Sprites.material.set_shader_parameter("line_color",Color(0,0,1))
 	updatePosition(delta)
 
-func _input_event(_viewport,_event,_shapeidx):
-	if not isVisible or main.armyBuilder:
+func unitClicked():
+	if not isVisible:
 		return
-	if Input.is_action_just_pressed("left_click"):
-		if main.selectedAction == null:
-			if main.selectedUnit == self:
-				main.selectedUnit = null
-			else:
-				main.selectedUnit = self
-			if main.selectedAction != null:
-				main.selectedAction = null
+	if main.selectedAction == null:
+		if main.selectedUnit == self:
+			main.selectedUnit = null
 		else:
-			main.selectedUnit.calcAction(self)
-			main.updateScreen()
-		main.uiCanvas.updateUI()
+			main.selectedUnit = self
+		if main.selectedAction != null:
+			main.selectedAction = null
+	main.uiCanvas.updateUI()
 
 func updatePosition(delta):
 	z_index = gridY * 2 + 1
@@ -133,22 +144,32 @@ func moveToXY(x,y,spendMovement):
 	if x < gridX:
 		$Sprites.scale = Vector2(-1,1)
 	
+	if not hasTrait("immobile").is_empty():
+		return
+	
 	if targetTile == null:
 		return
 	if targetTile.type == 1:
 		return
-	if main.getUnitAtXY(x,y) != null:
-		return
 	if abs(targetTile.height - currentTile.height) > 1:
 		if targetTile.type == 4:
-			return moveToXY(gridX + (gridX-x)*-2,gridY + (gridY-y)*-2,spendMovement)
+			if hasTrait("flying").is_empty() or main.getUnitAtXY(x,y) != null:
+				return moveToXY(gridX + (gridX-x)*-2,gridY + (gridY-y)*-2,spendMovement)
+		if hasTrait("flying").is_empty():
+			return
+	if main.getUnitAtXY(x,y) != null:
 		return
 	if spendMovement:
 		var distanceToTile = abs(x-gridX) + abs(y-gridY)
-		if targetTile.type == 2 or targetTile.type == 3:
-			distanceToTile += 0.5
-			for hasMounted in hasTrait("mounted"):
+		if hasTrait("flying").is_empty():
+			if targetTile.type == 2 or targetTile.type == 3:
 				distanceToTile += 0.5
+				for hasMounted in hasTrait("mounted"):
+					distanceToTile += 0.5
+			elif targetTile.type == 5:
+				distanceToTile += 1
+				for hasMounted in hasTrait("mounted"):
+					distanceToTile += 0.5
 		if distanceToTile > statMovement:
 			return
 		statMovement -= distanceToTile
@@ -170,6 +191,8 @@ func startturn():
 	
 	for hasShield in hasTrait("shield"): #Grant block if the unit has shield
 		addStatus("block",1,[hasShield[0][1]])
+	for hasMoltenDefence in hasTrait("moltenDefence"): #Grant molten defence if the unit has molten defence
+		addStatus("moltenDefence",1,[hasMoltenDefence[0][1]])
 	
 	for hasShieldwall in hasTrait("shieldwall"): #Grant block for each adjacent ally with the shield trait.
 		var finalBlock = 0
@@ -180,18 +203,29 @@ func startturn():
 		if finalBlock > 0:
 			addStatus("block",1,[finalBlock])
 	
-	for hasBurning in hasStatus("burning"):
+	if main.turnNo > 0:
+		for hasInfernalInvader in hasTrait("infernalInvader"): #Infernal Invader drains health each turn.
+			changeHealth(-hasInfernalInvader[0][1] * 2)
+		for hasFading in hasTrait("fading"): #Fading drains health each turn.
+			changeHealth(-hasFading[0][1])
+	
+	for hasBurning in hasStatus("burning"): #Burning deals damage each turn.
 		damage(hasBurning[0][2])
-	for hasPoisoned in hasStatus("poisoned"):
+	for hasPoisoned in hasStatus("poisoned"): #Poison reduces health each turn.
 		changeHealth(-hasPoisoned[0][2])
 
 
-func startturnStatus():
+func startturnStatus(postStartTurn = false):
 	var removedStatus = []
 	for i in range(len(statusList)):
-		
 		if statusList[i][1] == null:
 			continue
+		if postStartTurn:
+			if main.statusTooltipList[statusList[i][0]].get("tickdownAfter") == null:
+				continue
+		else:
+			if main.statusTooltipList[statusList[i][0]].get("tickdownAfter") == true:
+				continue
 		statusList[i][1] -= 1
 		if statusList[i][1] <= 0:
 			removedStatus.append(i - len(removedStatus))
@@ -201,14 +235,31 @@ func startturnStatus():
 func updateGrid():
 	pass
 
+func preUpdateScreen():
+	canHide = true
+	if not hasTrait("mounted").is_empty():
+		canHide = false
+		return
+	if not hasTrait("flying").is_empty():
+		canHide = false
+		return
+	if not hasTrait("exposed").is_empty():
+		canHide = false
+		return
+	if not hasStatus("burning").is_empty():
+		canHide = false
+		return
+	if not hasStatus("exposed").is_empty():
+		canHide = false
+		return
+
 func updateScreen():
-	if not exists:
+	if not isAlive:
 		return
-	main.armyCosts[unitTeam] += statCost
+	if hasStatus("summon").is_empty():
+		main.armyCosts[unitTeam] += statCost
 	if main.armyBuilder:
-		monitoring = false
 		return
-	monitoring = true
 	if main.currentTurn[1]:
 		if main.currentTurn[0] == unitTeam:
 			if main.selectedAction == null:
@@ -218,38 +269,58 @@ func updateScreen():
 
 func postUpdateScreen():
 	isVisible = main.lightGrid[gridY * main.gridWidth + gridX]
+	nodeDamageText.hide()
 	if isVisible:
 		modulate.a = 1
 		if nodeHealthBar != null:
-			nodeHealthBar.value = (statHealth/float(statMaxHealth)) * 100
-			@warning_ignore("integer_division")
-			nodeHealthBar.size.x = 8 + clamp(floor(((log(statMaxHealth/25))/log(1.5))/2)*2,6,32)
-			nodeHealthBar.position.x = 12 - (nodeHealthBar.size.x / 2)
-			var blockTotal = 0
-			for hasBlock in hasStatus("block"):
-				blockTotal += hasBlock[0][2]
-			nodeHealthBar.get_node("ShieldBar").value = (blockTotal/float(statMaxHealth)) * 100
-			nodeHealthBar.get_node("Action").position.x = nodeHealthBar.size.x - 5
-			if unitTeam == main.currentTurn[0]:
-				nodeHealthBar.get_node("Movement").modulate.a = 1
-				nodeHealthBar.get_node("Action").modulate.a = 1
-				if statMovement <= 0:
-					nodeHealthBar.get_node("Movement").self_modulate.a = 0
-				elif not hasMoved:
-					nodeHealthBar.get_node("Movement").self_modulate.a = 1
+			updateHealthBar()
+		if main.selectedAction != null:
+			var hasDamage = main.selectedUnit.hasTrait("damage", main.selectedAction)
+			for hasDmg in hasDamage:
+				nodeDamageText.show()
+				nodeDamageText.text = str(calcDamage(hasDmg[0][1],false,main.selectedUnit))
+				nodeDamageText.size = Vector2.ZERO
+				nodeDamageText.global_position = global_position + Vector2(12,16) - (nodeDamageText.size * 0.25)
+				var dies = wouldDie(hasDmg[0][1], main.selectedUnit, main.selectedAction)
+				if dies:
+					flashTextColor = Color(0,1,1)
 				else:
-					nodeHealthBar.get_node("Movement").self_modulate.a = 0.6
-				if statActions <= 0:
-					nodeHealthBar.get_node("Action").self_modulate.a = 0
-				elif not hasActed:
-					nodeHealthBar.get_node("Action").self_modulate.a = 1
-				else:
-					nodeHealthBar.get_node("Action").self_modulate.a = 0.6
-			else:
-				nodeHealthBar.get_node("Movement").modulate.a = 0
-				nodeHealthBar.get_node("Action").modulate.a = 0
+					flashTextColor = Color(0,0,0)
 	else:
 		modulate.a = 0
+
+func updateHealthBar():
+	var nodeBarHealth = nodeHealthBar.get_node("HealthBar")
+	nodeBarHealth.value = (statHealth/float(statMaxHealth)) * 100
+	@warning_ignore("integer_division")
+	nodeHealthBar.size.x = 8 + clamp(floor(((log(statMaxHealth/25))/log(1.5))/2)*2,6,32)
+	#@warning_ignore("")
+	nodeBarHealth.set_deferred("size.x",nodeHealthBar.size.x - 2)
+	nodeHealthBar.position.x = 11 - (nodeBarHealth.size.x * 0.5)
+	var blockTotal = 0
+	for hasBlock in hasStatus("block"):
+		blockTotal += hasBlock[0][2]
+	nodeHealthBar.get_node("ShieldBar").value = (blockTotal/float(statMaxHealth)) * 100
+	print((blockTotal/float(statMaxHealth)) * 100)
+	nodeHealthBar.get_node("Action").position.x = nodeHealthBar.size.x - 5
+	if unitTeam == main.currentTurn[0]:
+		nodeHealthBar.get_node("Movement").modulate.a = 1
+		nodeHealthBar.get_node("Action").modulate.a = 1
+		if statMovement <= 0:
+			nodeHealthBar.get_node("Movement").self_modulate.a = 0
+		elif not hasMoved:
+			nodeHealthBar.get_node("Movement").self_modulate.a = 1
+		else:
+			nodeHealthBar.get_node("Movement").self_modulate.a = 0.6
+		if statActions <= 0:
+			nodeHealthBar.get_node("Action").self_modulate.a = 0
+		elif not hasActed:
+			nodeHealthBar.get_node("Action").self_modulate.a = 1
+		else:
+			nodeHealthBar.get_node("Action").self_modulate.a = 0.6
+	else:
+		nodeHealthBar.get_node("Movement").modulate.a = 0
+		nodeHealthBar.get_node("Action").modulate.a = 0
 
 func checkVisionArea(action = null):
 	var _time = Time.get_ticks_usec()
@@ -281,7 +352,7 @@ func drawVisionLine(lineX,lineY,lineVelocity, action):
 	var tileEffectiveHeight
 	
 	var actionLineMixRange
-	var actionLineMaxRange
+	var lineMaxRange = 20
 	
 	var foliageRange = 1
 	for hasEagleEye in hasTrait("eagleEye"):
@@ -289,14 +360,13 @@ func drawVisionLine(lineX,lineY,lineVelocity, action):
 	
 	if action != null:
 		actionLineMixRange = action.range[0]
-		actionLineMaxRange = action.range[1]
+		lineMaxRange = action.range[1]
+	for hasBlind in hasTrait("blind"):
+		lineMaxRange = hasBlind[0][1]
 	
 	while true:
-		if lineLength >= 20:
+		if lineLength > lineMaxRange:
 			break
-		if action != null: #End the line if it has exceeded the action range.
-			if lineLength > actionLineMaxRange:
-				break
 		
 		linePos = lineY * main.gridWidth + lineX
 		lineTile = main.tileGrid[linePos]
@@ -317,11 +387,7 @@ func drawVisionLine(lineX,lineY,lineVelocity, action):
 			if lineTile.type == 2 or lineTile.type == 3:
 				var lineUnit = main.getUnitAtXY(lineX,lineY)
 				if lineUnit != null:
-					if (
-					lineUnit.hasTrait("mounted").is_empty()
-					and lineUnit.hasStatus("burning").is_empty()
-					and lineUnit.hasStatus("exposed").is_empty()
-					): #Burning and mounted units can't hide.
+					if lineUnit.canHide: #Burning and mounted units can't hide.
 						lightTile = false
 				else:
 					lightTile = false
@@ -382,21 +448,20 @@ func selectAction(action):
 		if checkActionValid(statActionList[action], action):
 			main.selectedAction = action
 			if not hasTrait("selfTarget",action).is_empty():
-				calcAction(self)
+				calcAction(self, Vector2(gridX, gridY))
 				main.selectedAction = null
 			main.updateScreen()
 
-func calcAction(targetUnit):
+func calcAction(targetUnit, targetPos):
 	var time = Time.get_ticks_usec()
 	var actionNo = main.selectedAction
 	var currentAction = statActionList[actionNo]
 	var isTargetDead = false
 	var didActionTrigger = false
+	var returnDictionary
 	
 	if not checkActionValid(currentAction, actionNo):
 		return
-	
-	print("I hit " + targetUnit.name + " at " + str(Vector2(targetUnit.gridX,targetUnit.gridY)))
 	hasActed = true
 	
 	for hasReload in hasTrait("reload", actionNo): #Tick up Ammo from reload
@@ -406,35 +471,18 @@ func calcAction(targetUnit):
 					statActionList[actions].traits[hasAmmo[1]][1] += hasReload[0][1]
 					didActionTrigger = true
 	
-	for hasHeal in hasTrait("heal", actionNo): #Heals target from heal trait
-		if targetUnit.hasTrait("mechanical").is_empty(): #Mechanical Units cannot be healed.
-			targetUnit.changeHealth(hasHeal[0][1])
-			didActionTrigger = true
-	for hasBurn in hasTrait("burn", actionNo): #Inficts burning from burn trait
-		targetUnit.addStatus("burning", 4, [hasBurn[0][1]])
-		didActionTrigger = true
-	for hasPoison in hasTrait("poison", actionNo): #Inficts poisoned from poison trait
-		targetUnit.addStatus("poisoned", 4, [hasPoison[0][1]])
-		didActionTrigger = true
-	for hasExpose in hasTrait("expose", actionNo): #Inficts exposed from expose trait
-		targetUnit.addStatus("exposed", hasExpose[0][1], [])
-		didActionTrigger = true
+	returnDictionary = calcActionTile(targetUnit, targetPos)
+	didActionTrigger = didActionTrigger or returnDictionary.didActionTrigger
+	if targetUnit != null:
+		returnDictionary = calcActionUnit(targetUnit, targetPos)
+		didActionTrigger = didActionTrigger or returnDictionary.didActionTrigger
+		isTargetDead = isTargetDead or returnDictionary.isTargetDead
 	
 	for hasUrsuanaYaalCommand in hasTrait("ursuanaYaalCommand", actionNo): #Gives UrsuanaYaalCommand status on mounted within 2 tiles.
 		for unit in getUnitsInArea(gridX,gridY,2,null,unitTeam):
 			if not unit.hasTrait("mounted").is_empty():
 				unit.addStatus("ursuanaYaalCommand", 2, [])
 				didActionTrigger = true
-	
-	for hasDamage in hasTrait("damage", actionNo): #Deals damage equal to damage trait
-		if not isTargetDead:
-			if targetUnit.damage(hasDamage[0][1], self, actionNo): #Did the target die from the damage?
-				isTargetDead = true
-			didActionTrigger = true
-	
-	if isTargetDead:
-		for hasRampage in hasTrait("rampage", actionNo): #If the target died, gain actions if rampage trait
-			statActions += hasRampage[0][1]
 	
 	if didActionTrigger:
 		#nodeAnimationPlayer.play("action" + str(actionNo))
@@ -452,6 +500,9 @@ func calcAction(targetUnit):
 		
 		for hasAmmo in hasTrait("ammo", actionNo): #Tick down Ammo
 			statActionList[actionNo].traits[hasAmmo[1]][1] -= 1
+			
+		for hasRecoil in hasTrait("recoil", actionNo): #Takes damage if has recoil
+				damage(hasRecoil[0][1])
 	
 		#Update Actions
 		statActions -= currentAction.actions
@@ -463,6 +514,57 @@ func calcAction(targetUnit):
 	
 	if not checkActionValid(currentAction, actionNo):
 		main.selectedAction = null
+
+func calcActionTile(targetUnit, targetPos):
+	var actionNo = main.selectedAction
+	var didActionTrigger = false
+	var targetTile = main.tileGrid[targetPos.y * main.gridWidth + targetPos.x]
+	if targetUnit == null:
+		for hasTeleport in hasTrait("teleport", actionNo):
+			if targetTile.type != 1:
+				gridX = targetPos.x
+				gridY = targetPos.y
+				didActionTrigger = true
+		for hasSummon in hasTrait("summon", actionNo):
+			main.spawnUnit(hasSummon[0][1],targetPos.x,targetPos.y,unitTeam, true)
+			didActionTrigger = true
+	return {"didActionTrigger": didActionTrigger}
+
+func calcActionUnit(targetUnit, _targetPos):
+	var actionNo = main.selectedAction
+	var isTargetDead = false
+	var didActionTrigger = false
+	for hasHeal in hasTrait("heal", actionNo): #Heals target from heal trait
+		if targetUnit.hasTrait("mechanical").is_empty(): #Mechanical Units cannot be healed.
+			if targetUnit.hasTrait("lifeless").is_empty():
+				targetUnit.changeHealth(hasHeal[0][1])
+				didActionTrigger = true
+	for hasBurn in hasTrait("burn", actionNo): #Inficts burning from burn trait
+		targetUnit.addStatus("burning", 3, [hasBurn[0][1]])
+		didActionTrigger = true
+	for hasPoison in hasTrait("poison", actionNo): #Inficts poisoned from poison trait
+		targetUnit.addStatus("poisoned", 5, [hasPoison[0][1]])
+		didActionTrigger = true
+	for hasExpose in hasTrait("expose", actionNo): #Inficts exposed from expose trait
+		targetUnit.addStatus("exposed", hasExpose[0][1], [])
+		didActionTrigger = true
+		
+	for hasDamage in hasTrait("damage", actionNo): #Deals damage equal to damage trait
+		if not isTargetDead:
+			if targetUnit.damage(hasDamage[0][1], self, actionNo): #Did the target die from the damage?
+				isTargetDead = true
+			didActionTrigger = true
+	
+	if isTargetDead:
+		if targetUnit.unitTeam != unitTeam:
+			for hasRampage in hasTrait("rampage", actionNo): #If the target died, gain actions if rampage trait
+				statActions += hasRampage[0][1]
+			for hasInfernalInvader in hasTrait("infernalInvader"): #If the target died, gain max health and damage
+				if targetUnit.statCost > statCost:
+					addStatus("infernalInvader", null, [hasInfernalInvader[0][1] * 2])
+				else:
+					addStatus("infernalInvader", null, [hasInfernalInvader[0][1]])
+	return {"didActionTrigger": didActionTrigger, "isTargetDead": isTargetDead}
 
 func hasTrait(traitName, action = null):
 	var varFoundTraits = []
@@ -492,11 +594,15 @@ func calcDamage(dmg, _includeAbsorb = false,unitSource = null, _actionSource = n
 	if unitSource != null:
 		for hasUrsuanaYaalCommandStatus in unitSource.hasStatus("ursuanaYaalCommand"):
 			dmg *= 1.5
+		for hasInfernalInvader in unitSource.hasStatus("infernalInvader"):
+			dmg += hasInfernalInvader[0][2]
 	
 	for hasDefence in hasTrait("defence"): #Defence reduces damage taken.
 		dmg -= hasDefence[0][1]
+	for hasMoltenDefence in hasStatus("moltenDefence"):
+		dmg -= hasMoltenDefence[0][2]
 	
-	return floor(dmg)
+	return floor(max(0,dmg))
 
 func damage(dmg,unitSource = null, actionSource = null):
 	dmg = calcDamage(dmg, false, unitSource, actionSource)
@@ -515,8 +621,22 @@ func damage(dmg,unitSource = null, actionSource = null):
 				removeStatus(statusBlock[1])
 			dmg -= blockTotal
 	
+	while true: #If the unit has the charge status, remove it.
+		var hasMoltenDefence = hasStatus("moltenDefence")
+		if hasMoltenDefence.is_empty():
+			break
+		removeStatus(hasMoltenDefence[0][1])
+	
 	if dmg > 0:
 		return changeHealth(-dmg)
+	return false
+
+func wouldDie(dmg, unitSource = null, actionSource = null):
+	dmg = calcDamage(dmg, false, unitSource, actionSource)
+	for hasBlock in hasStatus("block"):
+		dmg -= hasBlock[0][2]
+	if statHealth <= dmg:
+		return true
 	return false
 
 func checkActionValid(action, actionNo):
@@ -534,7 +654,7 @@ func checkActionValid(action, actionNo):
 		
 	return true
 
-func addStatus(status, duration, variables = []):
+func addStatus(status, duration = null, variables = []):
 	var statusExists = false
 	var a = -1
 	for i in statusList:
@@ -558,6 +678,9 @@ func addStatus(status, duration, variables = []):
 	if status == "ursuanaYaalCommand":
 		statMaxMovement += 1
 		statMovement += 1
+	if status == "infernalInvader":
+		statHealth += variables[0] * 5
+		statMaxHealth += variables[0] * 5
 
 func removeStatus(statusNo):
 	var status = statusList[statusNo]
@@ -568,6 +691,8 @@ func removeStatus(statusNo):
 		statMaxMovement -= status[2]
 	if status[0] == "ursuanaYaalCommand":
 		statMaxMovement -= 1
+	if status[0] == "infernalInvader":
+		statMaxHealth -= status[2] * 5
 
 func changeHealth(change):
 	statHealth += change
@@ -576,11 +701,21 @@ func changeHealth(change):
 		
 	
 	if statHealth <= 0:
-		queue_free()
-		exists = false
+		die()
 		return true
 	else:
 		return false
+
+func die():
+	for unit in main.unitControl.get_children():
+		if not unit.isAlive:
+			continue
+		var hasPossessed = unit.hasStatus("possessed")
+		if not hasPossessed.is_empty():
+			if hasPossessed[0][0][2] == self:
+				removeStatus(hasPossessed[0][1])
+	queue_free()
+	isAlive = false
 
 func getUnitsInArea(areaX,areaY,areaRadius,unitMask = null, teamMask = null):
 	var unitList = []

@@ -715,7 +715,7 @@ statName = "Cannon"
 statMaxHealth = 320
 statMaxMovement = 2
 statCost = 1500
-statTraits = [["factionKingdom"], ["mechanical"]]
+statTraits = [["factionKingdom"], ["mechanical"], ["exposed"]]
 statActionList = Array[Dictionary]([{
 "actions": 1,
 "name": "Cannon",
