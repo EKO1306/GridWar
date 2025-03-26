@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://bchvv5ipib6yb"]
 
-[ext_resource type="Script" path="res://Scripts/unit.gd" id="1_y244l"]
-[ext_resource type="Shader" path="res://Shaders/unitOutline.gdshader" id="2_y7m0x"]
+[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_y244l"]
+[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_y7m0x"]
 [ext_resource type="Texture2D" uid="uid://cdr4gg2bk2pey" path="res://Images/Units/demonRiftcarver.png" id="3_k1b1m"]
 [ext_resource type="Texture2D" uid="uid://b2ris5u2gkfer" path="res://Images/Units/demonDemon.png" id="3_onmaw"]
 [ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_7fu0h"]
@@ -271,31 +271,31 @@ tracks/8/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
 _data = {
-"Idle": SubResource("Animation_3w5n0"),
-"RESET": SubResource("Animation_hh5sh")
+&"Idle": SubResource("Animation_3w5n0"),
+&"RESET": SubResource("Animation_hh5sh")
 }
 
-[node name="Demon" type="Area2D" groups=["Unit"]]
+[node name="DemonRiftcarver" type="Area2D" groups=["Unit"]]
 z_index = 10
 script = ExtResource("1_y244l")
-statName = "Demon"
+statName = "Riftcarver"
 statMaxHealth = 180
 statCost = 1200
 statTraits = [["factionDemon"], ["infernalInvader", 5, 10, 20], ["moltenDefence", 120]]
 statActionList = Array[Dictionary]([{
 "actions": 1,
 "name": "Fireball",
-"range": Vector2(2, 6),
+"range": Vector2i(2, 6),
 "traits": [["damage", 140], ["ranged"], ["burn", 20]]
 }, {
 "actions": 1,
 "name": "Summon Rift",
-"range": Vector2(1, 1),
+"range": Vector2i(1, 1),
 "traits": [["summon", "demonInfernalRift", "Rift"], ["use", 1, 1]]
 }, {
 "actions": 1,
 "name": "Claw",
-"range": Vector2(1, 1),
+"range": Vector2i(1, 1),
 "traits": [["damage", 80], ["melee"]]
 }])
 
@@ -350,7 +350,7 @@ texture = SubResource("AtlasTexture_rnfpn")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_togdo")
+&"": SubResource("AnimationLibrary_togdo")
 }
 
 [node name="HealthBar" parent="." instance=ExtResource("4_7fu0h")]

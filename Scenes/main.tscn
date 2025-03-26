@@ -1,12 +1,12 @@
 [gd_scene load_steps=32 format=3 uid="uid://cnyektfckpb08"]
 
-[ext_resource type="Script" path="res://Scripts/Main/main.gd" id="1_kqp5x"]
-[ext_resource type="Script" path="res://Scripts/Camera.gd" id="2_r14qm"]
-[ext_resource type="Script" path="res://Scripts/UIManager.gd" id="3_pb3m7"]
+[ext_resource type="Script" uid="uid://c8dnve3col8kc" path="res://Scripts/Main/main.gd" id="1_kqp5x"]
+[ext_resource type="Script" uid="uid://c3rxpfi2qb05k" path="res://Scripts/Camera.gd" id="2_r14qm"]
+[ext_resource type="Script" uid="uid://byodgssfuh8dl" path="res://Scripts/UIManager.gd" id="3_pb3m7"]
 [ext_resource type="Texture2D" uid="uid://cku8i0gm7aj7o" path="res://Images/Icons/BaseIcons.png" id="3_qknrr"]
 [ext_resource type="Texture2D" uid="uid://rd3favt5syvv" path="res://Images/UI/Bars.png" id="5_kacx6"]
 [ext_resource type="FontFile" uid="uid://cwiw18el0nvtw" path="res://Misc/Fonts/Minecraft.ttf" id="6_kxyny"]
-[ext_resource type="Script" path="res://Scripts/UI/pause_panel_menu.gd" id="8_fexfo"]
+[ext_resource type="Script" uid="uid://nvwgo3q1dmkh" path="res://Scripts/UI/pause_panel_menu.gd" id="8_fexfo"]
 
 [sub_resource type="Gradient" id="Gradient_jnjkh"]
 offsets = PackedFloat32Array(0.373281, 0.626719, 1)
@@ -108,8 +108,7 @@ border_blend = true
 [node name="Main" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_kqp5x")
-spawnUnitsRed = true
-spawnUnitsBlue = true
+debugMode = false
 
 [node name="Paralax" type="Node2D" parent="."]
 position = Vector2(576, 324)

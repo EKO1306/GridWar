@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://1rui3c2gmoks"]
 
-[ext_resource type="Script" path="res://Scripts/unit.gd" id="1_ab180"]
-[ext_resource type="Shader" path="res://Shaders/unitOutline.gdshader" id="2_xbbda"]
+[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_ab180"]
+[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_xbbda"]
 [ext_resource type="Texture2D" uid="uid://dk8osgjwk08lc" path="res://Images/Units/demonGuard.png" id="3_tntl4"]
 [ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_27sea"]
 
@@ -249,8 +249,8 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
 _data = {
-"Idle": SubResource("Animation_3w5n0"),
-"RESET": SubResource("Animation_hh5sh")
+&"Idle": SubResource("Animation_3w5n0"),
+&"RESET": SubResource("Animation_hh5sh")
 }
 
 [node name="DemonGuard" type="Area2D" groups=["Unit"]]
@@ -264,7 +264,7 @@ statTraits = [["factionDemon"], ["infernalInvader", 20, 40, 100], ["moltenDefenc
 statActionList = Array[Dictionary]([{
 "actions": 1,
 "name": "Flameblade",
-"range": Vector2(1, 1),
+"range": Vector2i(1, 1),
 "traits": [["damage", 90], ["melee"], ["burn", 10]]
 }])
 
@@ -319,7 +319,7 @@ flip_h = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_togdo")
+&"": SubResource("AnimationLibrary_togdo")
 }
 
 [node name="HealthBar" parent="." instance=ExtResource("4_27sea")]

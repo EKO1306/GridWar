@@ -3,11 +3,11 @@ extends Area2D
 @export_category("Unit Stats")
 @export var statName = ""
 @export var statMaxHealth = 100
-var statHealth
+var statHealth = 0
 @export var statMaxMovement = 3
-var statMovement
+var statMovement = 0
 @export var statMaxActions = 1
-var statActions
+var statActions = 0
 @export var statCost = 100
 @export var statTraits = []
 @export var statActionList: Array[Dictionary] = [{"name": "NAME", "actions": 1, "range": Vector2(0,1), "traits": [["damage",80],["melee"]]}]
@@ -45,30 +45,46 @@ func _ready():
 	add_child(nodeDamageText)
 	$Sprites.material = ShaderMaterial.new()
 	$Sprites.material.shader = preload("res://Shaders/unitOutline.gdshader")
-	$Sprites.material.set_shader_parameter("line_thickness", 4)
 	$AnimationPlayer.play("Idle")
 	$AnimationPlayer.speed_scale = rng.randf_range(0.9,1.1)
-	if unitTeam == 0:
-		$Sprites.material.set_shader_parameter("line_color",Color(1,0,0))
-	elif unitTeam == 1:
-		$Sprites.material.set_shader_parameter("line_color",Color(0,0,1))
 		
 func setupUnit():
 	statHealth = statMaxHealth
 	statMovement = statMaxMovement
 	statActions = statMaxActions
-	for chargeTrait in hasTrait("charge"):
-		addStatus("charge",null,[chargeTrait[0][1]])
 	if unitTeam == 0:
-		$Sprites.material.set_shader_parameter("line_color",Color(1,0,0))
 		$Sprites.scale = Vector2(1,1)
 	elif unitTeam == 1:
-		$Sprites.material.set_shader_parameter("line_color",Color(0,0,1))
 		$Sprites.scale = Vector2(-1,1)
+	
+	for chargeTrait in hasTrait("charge"):
+		addStatus("charge",null,[chargeTrait[0][1]])
+	
+	for immortalLordTrait in hasTrait("immortalLord"):
+		var spawnedTotems = 0
+		for i in [Vector2i(0,-1), Vector2i(0,1), Vector2i(1,0), Vector2i(-1,0)]:
+			if spawnedTotems >= 2:
+				break
+			var tile = main.getTileAtXY(gridX + i.x,gridY + i.y)
+			if tile == null:
+				continue
+			if tile.type == 1:
+				continue
+			if main.getUnitAtXY(gridX + i.x,gridY + i.y) != null:
+				continue
+			main.spawnUnit("demonTotem",gridX + i.x, gridY + i.y,unitTeam,true)
+			spawnedTotems += 1
 	
 func _process(delta):
 	if main.armyBuilder:
 		updatePosition(delta)
+		$Sprites.material.set_shader_parameter("line_thickness", 2)
+		if unitTeam == 0:
+			$Sprites.material.set_shader_parameter("line_color",Color(1,0,0))
+		else:
+			$Sprites.material.set_shader_parameter("line_color",Color(0,0,1))
+		if nodeHealthBar != null:
+			nodeHealthBar.hide()
 		return
 	if nodeDamageText.visible:
 		var colorOffset = abs(sin(Time.get_ticks_msec() * 0.0025))
@@ -78,7 +94,7 @@ func _process(delta):
 		var moved = false
 		#$Sprites.modulate = Color(100,100,100,1)
 		$Sprites.material.set_shader_parameter("line_color",Color(1,1,1))
-		$Sprites.material.set_shader_parameter("line_thickness", 8)
+		$Sprites.material.set_shader_parameter("line_thickness", 4)
 		if main.currentTurn[0] == unitTeam:
 			if Input.is_action_just_pressed("move_right"):
 				if moveToXY(gridX+1,gridY,true):
@@ -99,7 +115,7 @@ func _process(delta):
 					isActionPressed(["key1","key2","key3","key4","key5","key6","key7","key8","key9","key0"][i],i)
 	else:
 		#$Sprites.modulate = Color(1,1,1,1)
-		$Sprites.material.set_shader_parameter("line_thickness", 4)
+		$Sprites.material.set_shader_parameter("line_thickness", 2)
 		if unitTeam == 0:
 			$Sprites.material.set_shader_parameter("line_color",Color(1,0,0))
 		else:
@@ -194,6 +210,10 @@ func startturn():
 	for hasMoltenDefence in hasTrait("moltenDefence"): #Grant molten defence if the unit has molten defence
 		addStatus("moltenDefence",1,[hasMoltenDefence[0][1]])
 	
+	for i in range(len(statActionList)): #Reset use per turn effects.
+		for hasUsePerTurn in hasTrait("usePerTurn", i):
+			statActionList[i].traits[hasUsePerTurn[1]][1] = hasUsePerTurn[0][2]
+	
 	for hasShieldwall in hasTrait("shieldwall"): #Grant block for each adjacent ally with the shield trait.
 		var finalBlock = 0
 		var adjacentUnits = getUnitsInArea(gridX,gridY,1,self,unitTeam)   
@@ -202,6 +222,16 @@ func startturn():
 				finalBlock += hasShield[0][1]
 		if finalBlock > 0:
 			addStatus("block",1,[finalBlock])
+	
+	for hasUnholyWarlord in hasTrait("unholyWarlord"):
+		for unit in main.unitControl.get_children():
+			if unit.unitTeam != unitTeam:
+				continue
+			if unit == self:
+				continue
+			if unit.hasTrait("infernalInvader").is_empty():
+				continue
+			unit.addStatus("unholyWarlord", 1)
 	
 	if main.turnNo > 0:
 		for hasInfernalInvader in hasTrait("infernalInvader"): #Infernal Invader drains health each turn.
@@ -213,6 +243,11 @@ func startturn():
 		damage(hasBurning[0][2])
 	for hasPoisoned in hasStatus("poisoned"): #Poison reduces health each turn.
 		changeHealth(-hasPoisoned[0][2])
+	
+	for hasBloodRain in hasTrait("bloodRain"): #Heal Allies within 3 tiles.
+		for unit in getUnitsInArea(gridX,gridY,3,self,unitTeam):
+			if not unit.hasTrait("mechanical"):
+				unit.changeHealth(40)
 
 
 func startturnStatus(postStartTurn = false):
@@ -290,10 +325,11 @@ func postUpdateScreen():
 		modulate.a = 0
 
 func updateHealthBar():
+	nodeHealthBar.show()
 	var nodeBarHealth = nodeHealthBar.get_node("HealthBar")
 	nodeBarHealth.value = (statHealth/float(statMaxHealth)) * 100
 	@warning_ignore("integer_division")
-	nodeHealthBar.size.x = 8 + clamp(floor(((log(statMaxHealth/25))/log(1.5))/2)*2,6,32)
+	nodeHealthBar.size.x = 8 + clamp(int(((log(statMaxHealth/25))/log(1.5))/2)*2,6,32)
 	#@warning_ignore("")
 	nodeBarHealth.set_deferred("size.x",nodeHealthBar.size.x - 2)
 	nodeHealthBar.position.x = 11 - (nodeBarHealth.size.x * 0.5)
@@ -301,7 +337,6 @@ func updateHealthBar():
 	for hasBlock in hasStatus("block"):
 		blockTotal += hasBlock[0][2]
 	nodeHealthBar.get_node("ShieldBar").value = (blockTotal/float(statMaxHealth)) * 100
-	print((blockTotal/float(statMaxHealth)) * 100)
 	nodeHealthBar.get_node("Action").position.x = nodeHealthBar.size.x - 5
 	if unitTeam == main.currentTurn[0]:
 		nodeHealthBar.get_node("Movement").modulate.a = 1
@@ -356,7 +391,7 @@ func drawVisionLine(lineX,lineY,lineVelocity, action):
 	
 	var foliageRange = 1
 	for hasEagleEye in hasTrait("eagleEye"):
-		foliageRange += hasEagleEye[0][1]
+		foliageRange = hasEagleEye[0][1]
 	
 	if action != null:
 		actionLineMixRange = action.range[0]
@@ -526,8 +561,9 @@ func calcActionTile(targetUnit, targetPos):
 				gridY = targetPos.y
 				didActionTrigger = true
 		for hasSummon in hasTrait("summon", actionNo):
-			main.spawnUnit(hasSummon[0][1],targetPos.x,targetPos.y,unitTeam, true)
-			didActionTrigger = true
+			if targetTile.type != 1:
+				main.spawnUnit(hasSummon[0][1],targetPos.x,targetPos.y,unitTeam, true)
+				didActionTrigger = true
 	return {"didActionTrigger": didActionTrigger}
 
 func calcActionUnit(targetUnit, _targetPos):
@@ -548,6 +584,18 @@ func calcActionUnit(targetUnit, _targetPos):
 	for hasExpose in hasTrait("expose", actionNo): #Inficts exposed from expose trait
 		targetUnit.addStatus("exposed", hasExpose[0][1], [])
 		didActionTrigger = true
+	for hasPossess in hasTrait("possess", actionNo): #Inficts possessed
+		if targetUnit.statCost > hasPossess[0][1]:
+			continue
+		if targetUnit.unitTeam == unitTeam:
+			continue
+		while true:
+			var hasPossessStatus = targetUnit.hasStatus("possessed")
+			if hasPossessStatus.is_empty():
+				break
+			targetUnit.removeStatus(hasPossessStatus[1])
+		targetUnit.addStatus("possessed", null, [self,targetUnit.unitTeam])
+		didActionTrigger = true
 		
 	for hasDamage in hasTrait("damage", actionNo): #Deals damage equal to damage trait
 		if not isTargetDead:
@@ -560,10 +608,12 @@ func calcActionUnit(targetUnit, _targetPos):
 			for hasRampage in hasTrait("rampage", actionNo): #If the target died, gain actions if rampage trait
 				statActions += hasRampage[0][1]
 			for hasInfernalInvader in hasTrait("infernalInvader"): #If the target died, gain max health and damage
+				var invaderValue = hasInfernalInvader[0][1]
 				if targetUnit.statCost > statCost:
-					addStatus("infernalInvader", null, [hasInfernalInvader[0][1] * 2])
-				else:
-					addStatus("infernalInvader", null, [hasInfernalInvader[0][1]])
+					invaderValue *= 2
+				if not hasStatus("unholyWarlord").is_empty():
+					invaderValue *= 2
+				addStatus("infernalInvader", null, [invaderValue])
 	return {"didActionTrigger": didActionTrigger, "isTargetDead": isTargetDead}
 
 func hasTrait(traitName, action = null):
@@ -602,7 +652,7 @@ func calcDamage(dmg, _includeAbsorb = false,unitSource = null, _actionSource = n
 	for hasMoltenDefence in hasStatus("moltenDefence"):
 		dmg -= hasMoltenDefence[0][2]
 	
-	return floor(max(0,dmg))
+	return int(max(0,dmg))
 
 func damage(dmg,unitSource = null, actionSource = null):
 	dmg = calcDamage(dmg, false, unitSource, actionSource)
@@ -681,6 +731,8 @@ func addStatus(status, duration = null, variables = []):
 	if status == "infernalInvader":
 		statHealth += variables[0] * 5
 		statMaxHealth += variables[0] * 5
+	if status == "possessed":
+		unitTeam = 1 - variables[1]
 
 func removeStatus(statusNo):
 	var status = statusList[statusNo]
@@ -693,6 +745,8 @@ func removeStatus(statusNo):
 		statMaxMovement -= 1
 	if status[0] == "infernalInvader":
 		statMaxHealth -= status[2] * 5
+	if status[0] == "possessed":
+		unitTeam = status[3]
 
 func changeHealth(change):
 	statHealth += change
@@ -706,14 +760,29 @@ func changeHealth(change):
 	else:
 		return false
 
-func die():
+func die(forceDeath = false):
+	if not forceDeath:
+		if hasTrait("immortalLord"):
+			for unit in main.unitControl.get_children():
+				if unit.unitTeam != unitTeam:
+					continue
+				if unit.statName == "Infernal Totem":
+					gridX = unit.gridX
+					gridY = unit.gridY
+					statHealth = int(statMaxHealth * 0.5)
+					unit.die(true)
+					return
+	
+	#THE UNIT IS DEAD
+	
 	for unit in main.unitControl.get_children():
 		if not unit.isAlive:
 			continue
 		var hasPossessed = unit.hasStatus("possessed")
 		if not hasPossessed.is_empty():
 			if hasPossessed[0][0][2] == self:
-				removeStatus(hasPossessed[0][1])
+				print(hasPossessed)
+				unit.removeStatus(hasPossessed[0][1])
 	queue_free()
 	isAlive = false
 

@@ -12,3 +12,37 @@ Faetorm Ullnyaal (Health Shield, New Lord)
 	- Faetorm Shieldmaiden
 Paigrash Ullnyaal (Storm Charger, New Lord)
 	- Paigrash Beserker
+
+
+DEMONS
+Succubus
+	- Tough Melee Unit
+	- Single use weak possession
+Manifestation of Wrath
+	- ATTACKS
+	- Heals from kills
+	- Hurts from not kills
+Manifestation of Greed
+	- Ranged Spammer
+	- Heals from nearby allies
+	- Hurts when alone
+Manifestation of Gluttony
+	- BIG SINGLE MELEE
+	- Heals from eating allies and enemies
+	- Hurts each turn
+Manifestation of Sloth
+	- Absurd Melee Hitter, good Ranged Hitter
+	- Heals each turn
+	- Literally 1 speed
+Manifestation of Pride
+	- Big Melee
+	- Heals from nearby weaker units
+	- Hurts from nearby stronger units
+Manifestation of Lust
+	- Summons Succubi
+	- Heals from sheer unit count
+	- Hurts every turn
+Manifestation of Envy
+	- Copies Enemies
+	- Heals from nearby enemies
+	- Hurts from none

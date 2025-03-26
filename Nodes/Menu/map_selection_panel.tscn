@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://4jg8hrihkw6o"]
 
 [ext_resource type="FontFile" uid="uid://cwiw18el0nvtw" path="res://Misc/Fonts/Minecraft.ttf" id="1_gfdqt"]
-[ext_resource type="Script" path="res://Scripts/MainMenu/button_play_map.gd" id="2_xdj6r"]
+[ext_resource type="Script" uid="uid://bqxard4kiwv4c" path="res://Scripts/MainMenu/button_play_map.gd" id="2_xdj6r"]
 
 [node name="Map" type="Control"]
 layout_mode = 3

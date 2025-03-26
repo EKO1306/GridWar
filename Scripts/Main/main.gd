@@ -2,8 +2,6 @@ extends "main_functions.gd"
 
 var selectedUnit
 var selectedAction
-@export var spawnUnitsRed = false
-@export var spawnUnitsBlue = false
 
 var mapEditor = false
 @export var debugMode = true
@@ -49,7 +47,8 @@ func _ready():
 		else:
 			updateScreen()
 	else:
-		massSpawnUnits()
+		if debugMode:
+			massSpawnUnits()
 		endTurn(true)
 
 func loadUnits(units):
@@ -130,6 +129,8 @@ func endTurn(firstEnd = false, skipCalc = false):
 			if currentTurn[0] == 1:
 				if armyBuilder:
 					armyBuilder = false
+					for unit in unitControl.get_children():
+						unit.setupUnit()
 				else:
 					turnNo += 1
 		if armyBuilder:
@@ -187,19 +188,14 @@ func massSpawnUnits():
 		if i.right(5) != ".tscn":
 			continue
 		
-		unitX += 1
+		unitX += 2
 		for a in range(2):
-			if not spawnUnitsRed:
-				if a == 0:
-					continue
-			if not spawnUnitsBlue:
-				if a == 1:
-					continue
-			
 			if unitX >= gridWidth:
 				unitX = 0
 				unitY += 1
-			spawnUnit(i,unitX,unitY + (a * 3),a)
+			spawnUnit(i,unitX,unitY + (a * 5),a)
+	for unit in unitControl.get_children():
+		unit.setupUnit()
 
 func updateScreenArmyBuilder():
 	armyCosts = [0,0]
@@ -217,7 +213,8 @@ func spawnUnit(unitPath,unitX,unitY,unitTeam, summon = false):
 	spawnUnitNode.gridX = unitX
 	spawnUnitNode.gridY = unitY
 	spawnUnitNode.unitTeam = unitTeam
+	unitControl.add_child(spawnUnitNode)
 	if summon:
 		spawnUnitNode.addStatus("summon",null)
-	unitControl.add_child(spawnUnitNode)
-	spawnUnitNode.setupUnit()
+		spawnUnitNode.setupUnit()
+	return spawnUnitNode

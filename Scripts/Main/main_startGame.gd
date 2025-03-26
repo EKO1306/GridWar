@@ -12,6 +12,9 @@ const traitTooltipList = {
 	#Health
 	,"fading": {"tooltip": "[color=Deepskyblue]Fading[/color] [color=Springgreen]{0}[/color]\nLoses [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color] each turn.", "traitText": "{0}"}
 	,"lifeless": {"tooltip": "[color=Deepskyblue]Lifeless[/color]\nCannot regain [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color]."}
+	,"bloodRain": {"tooltip": "[color=Deepskyblue]Blood Rain[/color] [color=Springgreen]{0}[/color]\nAt the start of each turn, self and allies within 3 tiles [img width=24]res://Images/Icons/ActionTraits/Heal.png[/img][color=Lime]Heal[/color] [color=Springgreen]{0}[/color].\n[i][color=Slategray](Does not affect [img width=24]res://Images/Icons/Traits/mechanical.png[/img][color=Deepskyblue]Mechanical[/color] units.)[/color][/i]", "traitText": "{0}"}
+
+	#[img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color]
 	
 	#Movement
 	,"charge": {"tooltip": "[color=Deepskyblue]Charge[/color] [color=Springgreen]{0}[/color]\n+[color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Movement.png[/img][color=Skyblue]Movement[/color] until this unit takes an action.", "traitText": "{0}"}
@@ -28,6 +31,8 @@ const traitTooltipList = {
 	#Misc.
 	,"mechanical": {"tooltip": "[color=Deepskyblue]Mechanical[/color]\nCannot be healed, but can be repaired."}
 	,"infernalInvader": {"tooltip": "[color=Deepskyblue]Infernal Invader[/color] [color=Springgreen]{0}[/color]\nLoses [color=Springgreen]{1}[/color] [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color] each turn. Apon killing an enemy unit, permenantly gains [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] and [color=Springgreen]{2}[/color] [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Max Health[/color]. This is doubled if the killed unit's [img width=24]res://Images/Icons/General/Value.png[/img][color=Gold]Value[/color] is above this unit's [img width=24]res://Images/Icons/General/Value.png[/img][color=Gold]Value[/color].", "traitText": "{0}"}
+	,"immortalLord": {"tooltip": "[color=Deepskyblue]Immortal Lord[/color]\nAt the start of battle, [img width=24]res://Images/Icons/Status/Summon.png[/img][color=Hotpink]Summons[/color] 2 Infernal Totems. If this unit would die, instead this unit teleports onto an ally Totem's tile and erases it, and has their health set to 50%."}
+	,"unholyWarlord": {"tooltip": "[color=Deepskyblue]Unholy Warlord[/color]\nALL other allies gain +100% [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Max Health[/color] and [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] from [img width=24]res://Images/Icons/Traits/infernalInvader.png[/img][color=Deepskyblue]Infernal Invader[/color]."}
 	
 	#FACTIONS
 	,"factionKingdom": {"tooltip": "[color=Deepskyblue]Bilha Kingdom[/color]\n[i][color=Slategray]For The King![/color][/i]"}
@@ -63,7 +68,8 @@ const actionTraitTooltipList = {
 	
 	#Misc.
 	,"selfTarget": {"tooltip": "[color=Darkorange]Target Self[/color]\nThis action has no target."}
-	,"summon": {"tooltip": "[color=Darkorange]Summon[/color] [color=Springgreen]{1}[/color]\nSummons a(n) [color=Springgreen]{1}[/color] on the target tile.", "traitText": "{1}"}
+	,"summon": {"tooltip": "[color=Darkorange]Summon[/color] [color=Springgreen]{1}[/color]\n[img width=24]res://Images/Icons/Status/Summon.png[/img][color=Hotpink]Summons[/color] a(n) [color=Springgreen]{1}[/color] on the target tile.", "traitText": "{1}"}
+	,"possess": {"tooltip": "[color=Deepskyblue]Possess[/color] [color=Springgreen]{0}[/color]\nTarget Unit with [img width=24]res://Images/Icons/General/Value.png[/img][color=Gold]Value[/color] [color=Springgreen]{0}[/color] or less switches to this unit's team. If this unit dies, they return to their original team.", "traitText": "{0}"}
 	
 	#Specific
 	,"ursuanaYaalCommand": {"tooltip": "[color=Darkorange]Ursuana Yaal's Command[/color]\nGives self and ally [img width=24]res://Images/Icons/Traits/mounted.png[/img][color=Deepskyblue]Mounted[/color] units within 2 tiles +1 [img width=24]res://Images/Icons/General/Movement.png[/img][color=Skyblue]Movement[/color] and +50% [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] for 2 turns. Does not stack."}
@@ -84,14 +90,16 @@ const statusTooltipList = {
 	,"exposed": {"tooltip": "[color=Hotpink]Exposed[/color]\nCannot hide."}
 	
 	#Misc
-	,"summon": {"tooltip": "[color=Hotpink]Summon[/color] [color=Springgreen]{1}[/color]\nThis unit is a summon. It does not count towards your team's [img width=24]res://Images/Icons/General/Value.png[/img][color=Gold]Value[/color] total."}
+	,"summon": {"tooltip": "[color=Hotpink]Summon[/color]\nThis unit is a summon. It does not count towards your team's [img width=24]res://Images/Icons/General/Value.png[/img][color=Gold]Value[/color] total."}
 	,"ursuanaYaalCommand": {"tooltip": "[color=Hotpink]Ursuana Yaal's Command[/color]\n+1 [img width=24]res://Images/Icons/General/Movement.png[/img][color=Skyblue]Movement[/color] and +50% [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color]."}
+	,"unholyWarlord": {"tooltip": "[color=Deepskyblue]Unholy Warlord[/color]\n+100% [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Max Health[/color] and [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] from [img width=24]res://Images/Icons/Traits/infernalInvader.png[/img][color=Deepskyblue]Infernal Invader[/color]."}
+	,"possessed": {"tooltip": "[color=Hotpink]Possessed[/color]\nThis unit has been possessed by an unknown unit. If that unit dies, it returns to its original team. This unit does not count towards your team's [img width=24]res://Images/Icons/General/Value.png[/img][color=Gold]Value[/color] total."}
 }
 
 const unitList = [
 	["kingdomPeasant","kingdomSoldier","kingdomShielder","kingdomArcher","kingdomScout","kingdomAssassin","kingdomHealer","kingdomKnight","kingdomCannon","kingdomKingBilly"]
-	,["vikingRaider","vikingTorchbearer","vikingBeserker","vikingUrsuanaRider","vikingShieldmaiden","vikingHerbalist","vikingUrsuanaYaal"]
-	,["demonImp","demonDemon","demonGuard","demonWingedGuard","demonInfernalRift"]
+	,["vikingRaider","vikingShieldmaiden","vikingTorchbearer","vikingBeserker","vikingUrsuanaRider","vikingHerbalist","vikingUrsuanaYaal"]
+	,["demonImp","demonDemon","demonSuccubus","demonBloodPriest","demonShadowDemon","demonGuard","demonWingedGuard","demonInfernalRift","demonRiftcarver","demonArchdaemonica"]
 ]
 
 # Type 0: Empty (0)

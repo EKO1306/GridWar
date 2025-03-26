@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c55wm74tlhhet"]
 
 [ext_resource type="Texture2D" uid="uid://s7jclbjedank" path="res://Images/Icons/Traits/ERROR.png" id="1_hs4x6"]
-[ext_resource type="Script" path="res://Scripts/UI/panel_trait.gd" id="2_8c67a"]
+[ext_resource type="Script" uid="uid://esutuylv3uiy" path="res://Scripts/UI/panel_trait.gd" id="2_8c67a"]
 [ext_resource type="FontFile" uid="uid://cwiw18el0nvtw" path="res://Misc/Fonts/Minecraft.ttf" id="2_m880s"]
 
 [node name="PanelTrait" type="TextureRect"]

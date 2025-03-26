@@ -1,14 +1,14 @@
 [gd_scene load_steps=39 format=3 uid="uid://y0eh33bkrjej"]
 
-[ext_resource type="Script" path="res://Scripts/MapEditor/map_editor_main.gd" id="1_narrm"]
-[ext_resource type="Script" path="res://Scripts/Camera.gd" id="2_av0nk"]
-[ext_resource type="Script" path="res://Scripts/MapEditor/UI_map_editor.gd" id="3_2k8ej"]
+[ext_resource type="Script" uid="uid://bpjnof2reh8nd" path="res://Scripts/MapEditor/map_editor_main.gd" id="1_narrm"]
+[ext_resource type="Script" uid="uid://c3rxpfi2qb05k" path="res://Scripts/Camera.gd" id="2_av0nk"]
+[ext_resource type="Script" uid="uid://cw46qtkuwunei" path="res://Scripts/MapEditor/UI_map_editor.gd" id="3_2k8ej"]
 [ext_resource type="Texture2D" uid="uid://cycxpt663aiq0" path="res://Images/Tiles.png" id="4_gg2gb"]
 [ext_resource type="Texture2D" uid="uid://bpbyf3pjsr7pq" path="res://Images/Icons/MapEditor/Tools.png" id="4_hrxq1"]
 [ext_resource type="FontFile" uid="uid://cwiw18el0nvtw" path="res://Misc/Fonts/Minecraft.ttf" id="4_rroc0"]
-[ext_resource type="Script" path="res://Scripts/MapEditor/map_editor_brush_button.gd" id="6_mqheg"]
+[ext_resource type="Script" uid="uid://cl4rmx5cqknhn" path="res://Scripts/MapEditor/map_editor_brush_button.gd" id="6_mqheg"]
 [ext_resource type="Texture2D" uid="uid://d0ukixlq3raoc" path="res://Images/Icons/MapEditor/Cog.png" id="8_jogj3"]
-[ext_resource type="Script" path="res://Scripts/Misc/text_edit.gd" id="9_qcama"]
+[ext_resource type="Script" uid="uid://bh70y40ubp3g6" path="res://Scripts/Misc/text_edit.gd" id="9_qcama"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tqv7q"]
 bg_color = Color(0.290585, 0.12839, 0.341175, 1)

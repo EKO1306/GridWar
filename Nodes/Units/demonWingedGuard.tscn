@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://dsrk7iquv03q0"]
 
-[ext_resource type="Script" path="res://Scripts/unit.gd" id="1_w2ca2"]
-[ext_resource type="Shader" path="res://Shaders/unitOutline.gdshader" id="2_yjf8u"]
+[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_w2ca2"]
+[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_yjf8u"]
 [ext_resource type="Texture2D" uid="uid://corsrhoq3we2o" path="res://Images/Units/demonWingedGuard.png" id="3_b3jm4"]
 [ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_vmrij"]
 
@@ -421,8 +421,8 @@ tracks/14/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
 _data = {
-"Idle": SubResource("Animation_3w5n0"),
-"RESET": SubResource("Animation_hh5sh")
+&"Idle": SubResource("Animation_3w5n0"),
+&"RESET": SubResource("Animation_hh5sh")
 }
 
 [node name="DemonGuard" type="Area2D" groups=["Unit"]]
@@ -437,7 +437,7 @@ statTraits = [["factionDemon"], ["infernalInvader", 20, 40, 100], ["flying"], ["
 statActionList = Array[Dictionary]([{
 "actions": 1,
 "name": "Burning Flail",
-"range": Vector2(1, 2),
+"range": Vector2i(1, 2),
 "traits": [["damage", 60], ["melee"], ["burn", 5]]
 }])
 
@@ -503,7 +503,7 @@ offset = Vector2(0.5, 8)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_togdo")
+&"": SubResource("AnimationLibrary_togdo")
 }
 
 [node name="HealthBar" parent="." instance=ExtResource("4_vmrij")]

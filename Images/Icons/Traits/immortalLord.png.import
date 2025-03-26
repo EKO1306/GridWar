@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8q07vltn1akk"
-path="res://.godot/imported/knight.png-4630bf48a0b60ec4508d3001387840ef.ctex"
+uid="uid://b1a6i1hpcvv7h"
+path="res://.godot/imported/immortalLord.png-775707243f9faf9470f978574ab79e06.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Units/knight.png"
-dest_files=["res://.godot/imported/knight.png-4630bf48a0b60ec4508d3001387840ef.ctex"]
+source_file="res://Images/Icons/Traits/immortalLord.png"
+dest_files=["res://.godot/imported/immortalLord.png-775707243f9faf9470f978574ab79e06.ctex"]
 
 [params]
 

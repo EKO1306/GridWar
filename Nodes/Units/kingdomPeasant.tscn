@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://bh6hlhke3hs43"]
 
-[ext_resource type="Texture2D" uid="uid://de3bciqtohw4w" path="res://Images/Units/Peasant.png" id="1_wvqp7"]
-[ext_resource type="Script" path="res://Scripts/unit.gd" id="1_yqlfi"]
-[ext_resource type="Shader" path="res://Shaders/unitOutline.gdshader" id="2_8dycq"]
+[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_yqlfi"]
+[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_8dycq"]
+[ext_resource type="Texture2D" uid="uid://de3bciqtohw4w" path="res://Images/Units/KingdomPeasant.png" id="3_pt6ry"]
 [ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_yk6eu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0y3sv"]
@@ -14,21 +14,21 @@ shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 2.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_b520s"]
-atlas = ExtResource("1_wvqp7")
+atlas = ExtResource("3_pt6ry")
 region = Rect2(16, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_13ni8"]
-atlas = ExtResource("1_wvqp7")
+atlas = ExtResource("3_pt6ry")
 region = Rect2(16, 16, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ft66r"]
-atlas = ExtResource("1_wvqp7")
+atlas = ExtResource("3_pt6ry")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r7k7f"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_evr4d"]
-atlas = ExtResource("1_wvqp7")
+atlas = ExtResource("3_pt6ry")
 region = Rect2(0, 0, 16, 16)
 
 [sub_resource type="Animation" id="Animation_3w5n0"]
@@ -233,8 +233,8 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
 _data = {
-"Idle": SubResource("Animation_3w5n0"),
-"RESET": SubResource("Animation_hh5sh")
+&"Idle": SubResource("Animation_3w5n0"),
+&"RESET": SubResource("Animation_hh5sh")
 }
 
 [node name="Peasant" type="Area2D" groups=["Unit"]]
@@ -245,7 +245,7 @@ statTraits = [["factionKingdom"]]
 statActionList = Array[Dictionary]([{
 "actions": 1,
 "name": "Punch",
-"range": Vector2(1, 1),
+"range": Vector2i(1, 1),
 "traits": [["damage", 80], ["melee"]]
 }])
 
@@ -286,7 +286,7 @@ texture = SubResource("AtlasTexture_ft66r")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_togdo")
+&"": SubResource("AnimationLibrary_togdo")
 }
 
 [node name="HealthBar" parent="." instance=ExtResource("4_yk6eu")]

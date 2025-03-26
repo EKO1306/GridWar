@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://ctj2dy7csrdv5"]
 
-[ext_resource type="Script" path="res://Scripts/MainMenuUI.gd" id="1_8dmwm"]
+[ext_resource type="Script" uid="uid://bpohtv3sqqvqy" path="res://Scripts/MainMenuUI.gd" id="1_8dmwm"]
 [ext_resource type="FontFile" uid="uid://cwiw18el0nvtw" path="res://Misc/Fonts/Minecraft.ttf" id="2_sis5w"]
-[ext_resource type="Script" path="res://Scripts/Misc/text_edit.gd" id="3_oowao"]
+[ext_resource type="Script" uid="uid://bh70y40ubp3g6" path="res://Scripts/Misc/text_edit.gd" id="3_oowao"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6eo1"]
 content_margin_left = 4.0

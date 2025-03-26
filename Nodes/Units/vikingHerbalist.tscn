@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://b617d425ao7ij"]
 
-[ext_resource type="Script" path="res://Scripts/unit.gd" id="1_ebcwy"]
-[ext_resource type="Shader" path="res://Shaders/unitOutline.gdshader" id="2_h13h7"]
+[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_ebcwy"]
+[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_h13h7"]
 [ext_resource type="Texture2D" uid="uid://bx83uopj61ud4" path="res://Images/Units/VikingHerbalist.png" id="3_crkuy"]
 [ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_veptg"]
 
@@ -277,8 +277,8 @@ tracks/8/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
 _data = {
-"Idle": SubResource("Animation_3w5n0"),
-"RESET": SubResource("Animation_hh5sh")
+&"Idle": SubResource("Animation_3w5n0"),
+&"RESET": SubResource("Animation_hh5sh")
 }
 
 [node name="Herbalist" type="Area2D" groups=["Unit"]]
@@ -291,17 +291,17 @@ statTraits = [["factionViking"]]
 statActionList = Array[Dictionary]([{
 "actions": 2,
 "name": "Healing Tonic",
-"range": Vector2(0, 1),
+"range": Vector2i(0, 1),
 "traits": [["heal", 140]]
 }, {
 "actions": 1,
 "name": "Dart",
-"range": Vector2(2, 4),
+"range": Vector2i(2, 4),
 "traits": [["damage", 60], ["ranged"], ["poison", 5]]
 }, {
 "actions": 2,
 "name": "Punch",
-"range": Vector2(1, 1),
+"range": Vector2i(1, 1),
 "traits": [["damage", 80], ["melee"]]
 }])
 
@@ -362,7 +362,7 @@ offset = Vector2(-1, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_togdo")
+&"": SubResource("AnimationLibrary_togdo")
 }
 
 [node name="HealthBar" parent="." instance=ExtResource("4_veptg")]

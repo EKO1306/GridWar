@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://dae11bt0lv14c"]
 
-[ext_resource type="Script" path="res://Scripts/unit.gd" id="1_wrm56"]
-[ext_resource type="Shader" path="res://Shaders/unitOutline.gdshader" id="2_4vh6u"]
+[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_wrm56"]
+[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_4vh6u"]
 [ext_resource type="Texture2D" uid="uid://wjirtvbi2i2a" path="res://Images/Units/demonInfernalRift.png" id="3_tgcwh"]
 [ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_vk7ue"]
 
@@ -137,8 +137,8 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
 _data = {
-"Idle": SubResource("Animation_3w5n0"),
-"RESET": SubResource("Animation_hh5sh")
+&"Idle": SubResource("Animation_3w5n0"),
+&"RESET": SubResource("Animation_hh5sh")
 }
 
 [node name="InfernalRift" type="Area2D" groups=["Unit"]]
@@ -152,12 +152,12 @@ statTraits = [["factionDemon"], ["fading", 100], ["lifeless"], ["immobile"], ["e
 statActionList = Array[Dictionary]([{
 "actions": 1,
 "name": "Conjure Demon",
-"range": Vector2(1, 1),
+"range": Vector2i(1, 1),
 "traits": [["summon", "demonDemon", "Demon"], ["recoil", 25]]
 }, {
 "actions": 1,
 "name": "Conjure Imp",
-"range": Vector2(1, 1),
+"range": Vector2i(1, 1),
 "traits": [["summon", "demonImp", "Imp"]]
 }])
 
@@ -192,7 +192,7 @@ texture = SubResource("AtlasTexture_cl1c0")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_togdo")
+&"": SubResource("AnimationLibrary_togdo")
 }
 
 [node name="HealthBar" parent="." instance=ExtResource("4_vk7ue")]

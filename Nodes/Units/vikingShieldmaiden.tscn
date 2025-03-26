@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://bw1x5vprbbsg1"]
 
-[ext_resource type="Script" path="res://Scripts/unit.gd" id="1_wlyvx"]
-[ext_resource type="Shader" path="res://Shaders/unitOutline.gdshader" id="2_p2rku"]
+[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_wlyvx"]
+[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_p2rku"]
 [ext_resource type="Texture2D" uid="uid://cadr78u1c3nuw" path="res://Images/Units/VikingShieldmaiden.png" id="3_382m3"]
 [ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_3dxnf"]
 
@@ -277,8 +277,8 @@ tracks/8/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
 _data = {
-"Idle": SubResource("Animation_3w5n0"),
-"RESET": SubResource("Animation_hh5sh")
+&"Idle": SubResource("Animation_3w5n0"),
+&"RESET": SubResource("Animation_hh5sh")
 }
 
 [node name="Shieldmaiden" type="Area2D" groups=["Unit"]]
@@ -287,12 +287,12 @@ script = ExtResource("1_wlyvx")
 statName = "Shieldmaiden"
 statMaxHealth = 180
 statMaxMovement = 2
-statCost = 600
+statCost = 450
 statTraits = [["factionViking"], ["shield", 80], ["shieldwall"]]
 statActionList = Array[Dictionary]([{
 "actions": 1,
 "name": "Handaxe",
-"range": Vector2(1, 1),
+"range": Vector2i(1, 1),
 "traits": [["damage", 100], ["melee"]]
 }])
 
@@ -353,7 +353,7 @@ offset = Vector2(-1, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_togdo")
+&"": SubResource("AnimationLibrary_togdo")
 }
 
 [node name="HealthBar" parent="." instance=ExtResource("4_3dxnf")]

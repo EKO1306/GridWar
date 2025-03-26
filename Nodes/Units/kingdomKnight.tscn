@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://wxhni4vv0ubc"]
 
-[ext_resource type="Script" path="res://Scripts/unit.gd" id="1_wjcs1"]
-[ext_resource type="Shader" path="res://Shaders/unitOutline.gdshader" id="2_76gaf"]
+[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_wjcs1"]
+[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_76gaf"]
 [ext_resource type="Texture2D" uid="uid://b35ahmpeki86t" path="res://Images/Units/KingdomKnight.png" id="3_33rpl"]
 [ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="5_cm7hh"]
 
@@ -294,9 +294,9 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
 _data = {
-"Idle": SubResource("Animation_3w5n0"),
-"RESET": SubResource("Animation_hh5sh"),
-"SwingForward": SubResource("Animation_jrxee")
+&"Idle": SubResource("Animation_3w5n0"),
+&"RESET": SubResource("Animation_hh5sh"),
+&"SwingForward": SubResource("Animation_jrxee")
 }
 
 [node name="Knight" type="Area2D" groups=["Unit"]]
@@ -311,7 +311,7 @@ statTraits = [["factionKingdom"], ["defence", 20]]
 statActionList = Array[Dictionary]([{
 "actions": 1,
 "name": "Greatsword",
-"range": Vector2(1, 1),
+"range": Vector2i(1, 1),
 "traits": [["damage", 120], ["melee"]]
 }])
 
@@ -368,7 +368,7 @@ offset = Vector2(-1, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_togdo")
+&"": SubResource("AnimationLibrary_togdo")
 }
 
 [node name="HealthBar" parent="." instance=ExtResource("5_cm7hh")]

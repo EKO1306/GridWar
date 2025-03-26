@@ -1,7 +1,7 @@
 [gd_scene load_steps=21 format=3 uid="uid://ckxjcjih2yrb4"]
 
-[ext_resource type="Script" path="res://Scripts/unit.gd" id="1_fbue7"]
-[ext_resource type="Shader" path="res://Shaders/unitOutline.gdshader" id="2_yw6s5"]
+[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_fbue7"]
+[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_yw6s5"]
 [ext_resource type="Texture2D" uid="uid://bximopid8lfqm" path="res://Images/Units/VikingTorchbearer.png" id="3_wgs40"]
 [ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_114l8"]
 
@@ -306,8 +306,8 @@ tracks/9/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
 _data = {
-"Idle": SubResource("Animation_3w5n0"),
-"RESET": SubResource("Animation_hh5sh")
+&"Idle": SubResource("Animation_3w5n0"),
+&"RESET": SubResource("Animation_hh5sh")
 }
 
 [node name="Torchbearer" type="Area2D" groups=["Unit"]]
@@ -316,7 +316,7 @@ script = ExtResource("1_fbue7")
 statName = "Torchbearer"
 statMaxHealth = 200
 statCost = 400
-statTraits = [["factionViking"], ["eagleEye", 1]]
+statTraits = [["factionViking"], ["eagleEye", 2]]
 statActionList = Array[Dictionary]([{
 "actions": 1,
 "name": "Torch",
@@ -392,7 +392,7 @@ offset = Vector2(-1, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_togdo")
+&"": SubResource("AnimationLibrary_togdo")
 }
 
 [node name="HealthBar" parent="." instance=ExtResource("4_114l8")]

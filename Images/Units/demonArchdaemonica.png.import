@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://de3bciqtohw4w"
-path="res://.godot/imported/Peasant.png-c54574b56ae2a93b922749ba40055cd2.ctex"
+uid="uid://vydsdc6vdrrj"
+path="res://.godot/imported/demonArchdaemonica.png-de02d2965f16cdd15950e59ce52f31cc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Units/Peasant.png"
-dest_files=["res://.godot/imported/Peasant.png-c54574b56ae2a93b922749ba40055cd2.ctex"]
+source_file="res://Images/Units/demonArchdaemonica.png"
+dest_files=["res://.godot/imported/demonArchdaemonica.png-de02d2965f16cdd15950e59ce52f31cc.ctex"]
 
 [params]
 

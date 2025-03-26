@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://eyhxgsg5peqi"]
 
-[ext_resource type="Script" path="res://Scripts/unit.gd" id="1_f0ndl"]
-[ext_resource type="Shader" path="res://Shaders/unitOutline.gdshader" id="2_uheuw"]
+[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_f0ndl"]
+[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_uheuw"]
 [ext_resource type="Texture2D" uid="uid://b2ris5u2gkfer" path="res://Images/Units/demonDemon.png" id="3_rfbi6"]
 [ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_djol2"]
 
@@ -241,8 +241,8 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
 _data = {
-"Idle": SubResource("Animation_3w5n0"),
-"RESET": SubResource("Animation_hh5sh")
+&"Idle": SubResource("Animation_3w5n0"),
+&"RESET": SubResource("Animation_hh5sh")
 }
 
 [node name="Demon" type="Area2D" groups=["Unit"]]
@@ -256,7 +256,7 @@ statTraits = [["factionDemon"], ["infernalInvader", 10, 20, 50]]
 statActionList = Array[Dictionary]([{
 "actions": 1,
 "name": "Claw",
-"range": Vector2(1, 1),
+"range": Vector2i(1, 1),
 "traits": [["damage", 80], ["melee"]]
 }])
 
@@ -297,7 +297,7 @@ texture = SubResource("AtlasTexture_ya4ki")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_togdo")
+&"": SubResource("AnimationLibrary_togdo")
 }
 
 [node name="HealthBar" parent="." instance=ExtResource("4_djol2")]

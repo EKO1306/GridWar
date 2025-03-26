@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk33l1jeslgm5"
-path="res://.godot/imported/pixil-frame-0.png-35c9c03cd11da6eb9e8df6fc9f9bc88a.ctex"
+uid="uid://554hptxokds7"
+path="res://.godot/imported/bloodRain.png-0edc7586f9ac44ce93d1983177733c23.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/Units/pixil-frame-0.png"
-dest_files=["res://.godot/imported/pixil-frame-0.png-35c9c03cd11da6eb9e8df6fc9f9bc88a.ctex"]
+source_file="res://Images/Icons/Traits/bloodRain.png"
+dest_files=["res://.godot/imported/bloodRain.png-0edc7586f9ac44ce93d1983177733c23.ctex"]
 
 [params]
 

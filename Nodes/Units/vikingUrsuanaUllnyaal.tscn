@@ -1,7 +1,7 @@
 [gd_scene load_steps=28 format=3 uid="uid://pr5x817vruhv"]
 
-[ext_resource type="Script" path="res://Scripts/unit.gd" id="1_uo8m5"]
-[ext_resource type="Shader" path="res://Shaders/unitOutline.gdshader" id="2_x4yxr"]
+[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_uo8m5"]
+[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_x4yxr"]
 [ext_resource type="Texture2D" uid="uid://d30s3yyfnhm0r" path="res://Images/Units/VikingUrsuanaUllnyaal.png" id="3_qase6"]
 [ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_xtg0o"]
 
@@ -645,8 +645,8 @@ tracks/22/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
 _data = {
-"Idle": SubResource("Animation_3w5n0"),
-"RESET": SubResource("Animation_hh5sh")
+&"Idle": SubResource("Animation_3w5n0"),
+&"RESET": SubResource("Animation_hh5sh")
 }
 
 [node name="UrsanaUllnyaal" type="Area2D" groups=["Unit"]]
@@ -657,6 +657,12 @@ statMaxHealth = 1000
 statMaxMovement = 4
 statCost = 3000
 statTraits = [["factionViking"], ["charge", 1], ["mounted"], ["shield", 40]]
+statActionList = Array[Dictionary]([{
+"actions": 1,
+"name": "NAME",
+"range": Vector2i(1, 1),
+"traits": [["damage", 80], ["melee"]]
+}])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(12, 12)
@@ -754,7 +760,7 @@ offset = Vector2(0.5, -7)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_togdo")
+&"": SubResource("AnimationLibrary_togdo")
 }
 
 [node name="HealthBar" parent="." instance=ExtResource("4_xtg0o")]

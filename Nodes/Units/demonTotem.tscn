@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://20seq6yyaeux"]
+
+[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_r4c83"]
+[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_t4t53"]
+[ext_resource type="Texture2D" uid="uid://pfs5sjnk71ki" path="res://Images/Units/demonTotem.png" id="3_r4c83"]
+[ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_kges0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0y3sv"]
+size = Vector2(24, 24)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xy4vo"]
+shader = ExtResource("2_t4t53")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t4t53"]
+atlas = ExtResource("3_r4c83")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="Gradient" id="Gradient_r4c83"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.181592, 0.38806, 0.646766)
+colors = PackedColorArray(0.643137, 0.866667, 0.858824, 1, 0.45098, 0.745098, 0.827451, 1, 0.309804, 0.560784, 0.729412, 1, 0.145098, 0.227451, 0.368627, 1)
+
+[sub_resource type="Animation" id="Animation_3w5n0"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_hh5sh"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
+_data = {
+&"Idle": SubResource("Animation_3w5n0"),
+&"RESET": SubResource("Animation_hh5sh")
+}
+
+[node name="Totem" type="Area2D" groups=["Unit"]]
+z_index = 10
+script = ExtResource("1_r4c83")
+statName = "Infernal Totem"
+statMaxHealth = 220
+statMaxMovement = 0
+statCost = 150
+statTraits = [["factionDemon"], ["eagleEye", 3], ["blind", 3], ["immobile"], ["exposed"]]
+statActionList = Array[Dictionary]([{
+"actions": 1,
+"name": "Spirit Spark",
+"range": Vector2i(2, 3),
+"traits": [["burn", 60]]
+}])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12, 12)
+shape = SubResource("RectangleShape2D_0y3sv")
+
+[node name="Sprites" type="CanvasGroup" parent="."]
+material = SubResource("ShaderMaterial_xy4vo")
+position = Vector2(12, 12)
+
+[node name="Totem" type="Sprite2D" parent="Sprites"]
+texture_filter = 1
+position = Vector2(0, -10)
+texture = SubResource("AtlasTexture_t4t53")
+offset = Vector2(-0.5, 0)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Sprites/Totem"]
+show_behind_parent = true
+position = Vector2(0, 1)
+amount = 128
+randomness = 0.5
+draw_order = 1
+emission_shape = 3
+emission_rect_extents = Vector2(1, 0)
+direction = Vector2(0, -1)
+gravity = Vector2(0, -8)
+initial_velocity_min = 2.0
+initial_velocity_max = 6.0
+color_ramp = SubResource("Gradient_r4c83")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_togdo")
+}
+
+[node name="HealthBar" parent="." instance=ExtResource("4_kges0")]
+offset_left = 3.0
+offset_top = 18.0
+offset_right = 21.0
+offset_bottom = 22.0

@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://dm6qvy2uwttah"]
 
-[ext_resource type="Script" path="res://Scripts/unit.gd" id="1_wqcug"]
-[ext_resource type="Shader" path="res://Shaders/unitOutline.gdshader" id="2_d1m6v"]
+[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_wqcug"]
+[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_d1m6v"]
 [ext_resource type="Texture2D" uid="uid://cputbqdxcw4l" path="res://Images/Units/KingdomScout.png" id="3_vvi6l"]
 [ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_emjy2"]
 
@@ -245,8 +245,8 @@ tracks/7/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
 _data = {
-"Idle": SubResource("Animation_3w5n0"),
-"RESET": SubResource("Animation_hh5sh")
+&"Idle": SubResource("Animation_3w5n0"),
+&"RESET": SubResource("Animation_hh5sh")
 }
 
 [node name="Scout" type="Area2D" groups=["Unit"]]
@@ -257,16 +257,16 @@ statMaxHealth = 160
 statMaxMovement = 4
 statMaxActions = 2
 statCost = 400
-statTraits = [["factionKingdom"], ["eagleEye", 2]]
+statTraits = [["factionKingdom"], ["eagleEye", 3]]
 statActionList = Array[Dictionary]([{
 "actions": 1,
 "name": "Knife",
-"range": Vector2(1, 1),
+"range": Vector2i(1, 1),
 "traits": [["damage", 60], ["melee"]]
 }, {
 "actions": 2,
 "name": "Spot",
-"range": Vector2(1, 3),
+"range": Vector2i(1, 3),
 "traits": [["expose", 1]]
 }])
 
@@ -316,7 +316,7 @@ texture = SubResource("AtlasTexture_1y56x")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_togdo")
+&"": SubResource("AnimationLibrary_togdo")
 }
 
 [node name="HealthBar" parent="." instance=ExtResource("4_emjy2")]

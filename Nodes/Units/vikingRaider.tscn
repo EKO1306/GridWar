@@ -1,7 +1,7 @@
 [gd_scene load_steps=20 format=3 uid="uid://cd012103u2a00"]
 
-[ext_resource type="Script" path="res://Scripts/unit.gd" id="1_rb8vu"]
-[ext_resource type="Shader" path="res://Shaders/unitOutline.gdshader" id="2_1fk6q"]
+[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_rb8vu"]
+[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_1fk6q"]
 [ext_resource type="Texture2D" uid="uid://b7drk6ckqjjh4" path="res://Images/Units/VikingRaider.png" id="3_vd1yx"]
 [ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_4uwpi"]
 
@@ -277,8 +277,8 @@ tracks/8/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
 _data = {
-"Idle": SubResource("Animation_3w5n0"),
-"RESET": SubResource("Animation_hh5sh")
+&"Idle": SubResource("Animation_3w5n0"),
+&"RESET": SubResource("Animation_hh5sh")
 }
 
 [node name="Raider" type="Area2D" groups=["Unit"]]
@@ -291,7 +291,7 @@ statTraits = [["factionViking"], ["shield", 60]]
 statActionList = Array[Dictionary]([{
 "actions": 1,
 "name": "Battleaxe",
-"range": Vector2(1, 1),
+"range": Vector2i(1, 1),
 "traits": [["damage", 200], ["melee"]]
 }])
 
@@ -352,7 +352,7 @@ offset = Vector2(-1, 0)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_togdo")
+&"": SubResource("AnimationLibrary_togdo")
 }
 
 [node name="HealthBar" parent="." instance=ExtResource("4_4uwpi")]

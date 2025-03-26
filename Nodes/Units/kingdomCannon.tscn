@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://dpcuhyyc7gqpb"]
 
-[ext_resource type="Script" path="res://Scripts/unit.gd" id="1_fonyd"]
-[ext_resource type="Shader" path="res://Shaders/unitOutline.gdshader" id="2_4fx2p"]
+[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_fonyd"]
+[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_4fx2p"]
 [ext_resource type="Texture2D" uid="uid://cvjgb1o2mc48c" path="res://Images/Units/KingdomCannon.png" id="3_mtk36"]
 [ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_1kxaw"]
 
@@ -58,7 +58,7 @@ colors = PackedColorArray(0.188235, 0.211765, 0.192157, 1, 0.188235, 0.211765, 0
 gradient = SubResource("Gradient_88bpb")
 
 [sub_resource type="Curve" id="Curve_muc48"]
-max_value = 3.0
+_limits = [0.0, 3.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 3), 5.65149, 0.0, 0, 0]
 point_count = 2
 
@@ -702,10 +702,10 @@ tracks/12/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
 _data = {
-"Idle": SubResource("Animation_3w5n0"),
-"RESET": SubResource("Animation_hh5sh"),
-"action0": SubResource("Animation_dohja"),
-"action1": SubResource("Animation_f4oef")
+&"Idle": SubResource("Animation_3w5n0"),
+&"RESET": SubResource("Animation_hh5sh"),
+&"action0": SubResource("Animation_dohja"),
+&"action1": SubResource("Animation_f4oef")
 }
 
 [node name="Cannon" type="Area2D" groups=["Unit"]]
@@ -719,17 +719,17 @@ statTraits = [["factionKingdom"], ["mechanical"], ["exposed"]]
 statActionList = Array[Dictionary]([{
 "actions": 1,
 "name": "Cannon",
-"range": Vector2(4, 10),
+"range": Vector2i(4, 10),
 "traits": [["damage", 1000], ["ranged"], ["ammo", 0, 1]]
 }, {
 "actions": 1,
 "name": "Reload",
-"range": Vector2(0, 0),
+"range": Vector2i(0, 0),
 "traits": [["reload", 1], ["selfTarget"]]
 }, {
 "actions": 1,
 "name": "Punch",
-"range": Vector2(1, 1),
+"range": Vector2i(1, 1),
 "traits": [["damage", 80], ["melee"]]
 }])
 
@@ -798,14 +798,14 @@ position = Vector2(18.6191, -0.0318079)
 rotation = 0.49691
 emitting = false
 amount = 32
-process_material = SubResource("ParticleProcessMaterial_sbclh")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_sbclh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_togdo")
+&"": SubResource("AnimationLibrary_togdo")
 }
 
 [node name="HealthBar" parent="." instance=ExtResource("4_1kxaw")]
