@@ -11,7 +11,8 @@ func _ready() -> void:
 	multiplayer.peer_disconnected.connect(playerDisconnected)
 	multiplayer.connected_to_server.connect(connectedToServer)
 	multiplayer.connection_failed.connect(connectionFailed)
-	get_viewport().set_title(str(OS.get_cmdline_args()[1]))
+	if len(OS.get_cmdline_args()) > 1:
+		get_viewport().set_title(str(OS.get_cmdline_args()[1]))
 
 @rpc("authority","call_remote")
 func updatePlayers(p):
