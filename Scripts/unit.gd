@@ -291,7 +291,7 @@ func preUpdateScreen():
 func updateScreen():
 	if not isAlive:
 		return
-	if hasStatus("summon").is_empty():
+	if hasStatus("summon").is_empty() and hasStatus("possessed").is_empty():
 		main.armyCosts[unitTeam] += statCost
 	if main.armyBuilder:
 		return
