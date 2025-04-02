@@ -77,7 +77,8 @@ const actionTraitTooltipList = {
 	,"selfTarget": {"tooltip": "[color=Darkorange]Target Self[/color]\nThis action has no target."}
 	,"summon": {"tooltip": "[color=Darkorange]Summon[/color] [color=Springgreen]{1}[/color]\n[img width=24]res://Images/Icons/Status/Summon.png[/img][color=Hotpink]Summons[/color] a(n) [color=Springgreen]{1}[/color] on the target tile.", "traitText": "{1}"}
 	,"possess": {"tooltip": "[color=Deepskyblue]Possess[/color] [color=Springgreen]{0}[/color]\nTarget Unit with [img width=24]res://Images/Icons/General/Value.png[/img][color=Gold]Value[/color] [color=Springgreen]{0}[/color] or less switches to this unit's team. If this unit dies, they return to their original team.", "traitText": "{0}"}
-	
+	,"mindBreak": {"tooltip": "[color=Deepskyblue]Mind Break[/color]\nIf the target enemy is killed by this action, they instead switch to this unit's team with 100 [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color], 0 [img width=24]res://Images/Icons/General/Movement.png[/img][color=Skyblue]Movement[/color] and 0 [img width=24]res://Images/Icons/General/Action.png[/img][color=Indianred]Action Points[/color]. If this unit dies, they return to their original team."}
+
 	#Specific
 	,"ursuanaYaalCommand": {"tooltip": "[color=Darkorange]Ursuana Yaal's Command[/color]\nGives self and ally [img width=24]res://Images/Icons/Traits/mounted.png[/img][color=Deepskyblue]Mounted[/color] units within 2 tiles +1 [img width=24]res://Images/Icons/General/Movement.png[/img][color=Skyblue]Movement[/color] and +50% [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] for 2 turns. Does not stack."}
 	}
