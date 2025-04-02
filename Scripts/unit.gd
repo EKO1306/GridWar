@@ -255,12 +255,17 @@ func startturnStatus(postStartTurn = false):
 	for i in range(len(statusList)):
 		if statusList[i][1] == null:
 			continue
+		var statusTooltip = main.statusTooltipList.get(statusList[i][0])
 		if postStartTurn:
-			if main.statusTooltipList[statusList[i][0]].get("tickdownAfter") == null:
+			if statusTooltip == null:
 				continue
+			else:
+				if main.statusTooltipList[statusList[i][0]].get("tickdownAfter") == null:
+					continue
 		else:
-			if main.statusTooltipList[statusList[i][0]].get("tickdownAfter") == true:
-				continue
+			if not statusTooltip == null:
+				if main.statusTooltipList[statusList[i][0]].get("tickdownAfter") == true:
+					continue
 		statusList[i][1] -= 1
 		if statusList[i][1] <= 0:
 			removedStatus.append(i - len(removedStatus))
@@ -701,7 +706,11 @@ func checkActionValid(action, actionNo):
 	for hasAmmo in hasTrait("ammo", actionNo):
 		if hasAmmo[0][1] <= 0:
 			return false
-		
+	
+	if hasStatus("wrath"):
+		if not hasTrait("melee", actionNo) and not hasTrait("ranged", actionNo):
+			return false
+	
 	return true
 
 func addStatus(status, duration = null, variables = []):
@@ -776,8 +785,12 @@ func die(forceDeath = false):
 	#THE UNIT IS DEAD
 	
 	for unit in main.unitControl.get_children():
+		if unit == self:
+			continue
 		if not unit.isAlive:
 			continue
+		if hasTrait("wrathIncarnate"):
+			unit.addStatus("wrath",3)
 		var hasPossessed = unit.hasStatus("possessed")
 		if not hasPossessed.is_empty():
 			if hasPossessed[0][0][2] == self:

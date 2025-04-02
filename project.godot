@@ -21,6 +21,10 @@ config/windows_native_icon="res://Images//icon.ico"
 
 OnlineHandler="*res://Scripts/OnlineHandler.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [editor]
 
 version_control/plugin_name="GitPlugin"

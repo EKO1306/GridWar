@@ -27,7 +27,13 @@ const traitTooltipList = {
 	,"eagleEye": {"tooltip": "[color=Deepskyblue]Eagle Eye[/color] [color=Springgreen]{0}[/color]\nCan see hidden units from +[color=Springgreen]{0}[/color] tile(s) away.", "traitText": "{0}"}
 	,"exposed": {"tooltip": "[color=Deepskyblue]Exposed[/color]\nCannot hide."}
 	,"blind": {"tooltip": "[color=Deepskyblue]Blind[/color] [color=Springgreen]{0}[/color]\nCan only see up to [color=Springgreen]{0}[/color] tile(s) away.", "traitText": "{0}"}
-
+	
+	#Fervor
+	,"faithful": {"tooltip": "[color=Deepskyblue]Faithful[/color] [color=Springgreen]{0}[/color], [color=Springgreen]{1}[/color]\nApon killing an enemy unit, gains {0} Fervor. When this unit dies, Faithful allies within 2 tiles gain {1} Fervor.", "traitText": "{0}, {1}"}
+	
+	#Death
+	,"wrathIncarnate": {"tooltip": "[color=Deepskyblue]Wrath Incarnate[/color]\nWhen this unit dies, inflicts [img width=24]res://Images/Icons/Status/wrath.png[/img][color=Hotpink]Wrath[/color] on ALL units for 3 turns. Units with [img width=24]res://Images/Icons/Status/wrath.png[/img][color=Hotpink]Wrath[/color] cannot use non-attack actions."}
+	
 	#Misc.
 	,"mechanical": {"tooltip": "[color=Deepskyblue]Mechanical[/color]\nCannot be healed, but can be repaired."}
 	,"infernalInvader": {"tooltip": "[color=Deepskyblue]Infernal Invader[/color] [color=Springgreen]{0}[/color]\nLoses [color=Springgreen]{1}[/color] [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color] each turn. Apon killing an enemy unit, permenantly gains [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] and [color=Springgreen]{2}[/color] [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Max Health[/color]. This is doubled if the killed unit's [img width=24]res://Images/Icons/General/Value.png[/img][color=Gold]Value[/color] is above this unit's [img width=24]res://Images/Icons/General/Value.png[/img][color=Gold]Value[/color].", "traitText": "{0}"}
@@ -38,6 +44,7 @@ const traitTooltipList = {
 	,"factionKingdom": {"tooltip": "[color=Deepskyblue]Bilha Kingdom[/color]\n[i][color=Slategray]For The King![/color][/i]"}
 	,"factionViking": {"tooltip": "[color=Deepskyblue]Ulingrad[/color]\n[i][color=Slategray]Once broken, we return for blood and gold![/color][/i]"}
 	,"factionDemon": {"tooltip": "[color=Deepskyblue]Legiones Daemonica[/color]\n[i][color=Slategray]You call us monsters, yet we are the memories you discard. So what does that make you?[/color][/i]"}
+	,"factionAngel": {"tooltip": "[color=Deepskyblue]Angels of the Awakened[/color]\n[i][color=Slategray]We stand for the Awakened One. We are Judge, Jury, Executioner, will of the people, and scourge of the heretic.[/color][/i]"}
 }
 
 
@@ -94,12 +101,15 @@ const statusTooltipList = {
 	,"ursuanaYaalCommand": {"tooltip": "[color=Hotpink]Ursuana Yaal's Command[/color]\n+1 [img width=24]res://Images/Icons/General/Movement.png[/img][color=Skyblue]Movement[/color] and +50% [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color]."}
 	,"unholyWarlord": {"tooltip": "[color=Deepskyblue]Unholy Warlord[/color]\n+100% [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Max Health[/color] and [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] from [img width=24]res://Images/Icons/Traits/infernalInvader.png[/img][color=Deepskyblue]Infernal Invader[/color]."}
 	,"possessed": {"tooltip": "[color=Hotpink]Possessed[/color]\nThis unit has been possessed by an unknown unit. If that unit dies, it returns to its original team. This unit does not count towards your team's [img width=24]res://Images/Icons/General/Value.png[/img][color=Gold]Value[/color] total."}
+	,"wrath": {"tooltip": "[color=Hotpink]Wrath[/color]\nCannot use non-attack actions."}
+
 }
 
 const unitList = [
 	["kingdomPeasant","kingdomSoldier","kingdomShielder","kingdomArcher","kingdomScout","kingdomAssassin","kingdomHealer","kingdomKnight","kingdomCannon","kingdomKingBilly"]
 	,["vikingRaider","vikingShieldmaiden","vikingTorchbearer","vikingBeserker","vikingUrsuanaRider","vikingHerbalist","vikingUrsuanaYaal"]
 	,["demonImp","demonDemon","demonSuccubus","demonBloodPriest","demonShadowDemon","demonGuard","demonWingedGuard","demonInfernalRift","demonRiftcarver","demonArchdaemonica"]
+	,["angelCrusader"]
 ]
 
 # Type 0: Empty (0)
