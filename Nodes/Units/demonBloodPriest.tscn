@@ -303,7 +303,7 @@ z_index = 10
 script = ExtResource("1_hja2o")
 statName = "Blood Priest"
 statCost = 650
-statTraits = [["factionDemon"], ["infernalInvader", 5, 10, 20], ["bloodRain", 40]]
+statTraits = [["factionDemon"], ["infernalInvader", 5, 10, 25], ["bloodRain", 40]]
 statActionList = Array[Dictionary]([{
 "actions": 1,
 "name": "Blood Drop",

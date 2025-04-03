@@ -39,6 +39,7 @@ const traitTooltipList = {
 	,"infernalInvader": {"tooltip": "[color=Deepskyblue]Infernal Invader[/color] [color=Springgreen]{0}[/color]\nLoses [color=Springgreen]{1}[/color] [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color] each turn. Apon killing an enemy unit, permenantly gains [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] and [color=Springgreen]{2}[/color] [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Max Health[/color]. This is doubled if the killed unit's [img width=24]res://Images/Icons/General/Value.png[/img][color=Gold]Value[/color] is above this unit's [img width=24]res://Images/Icons/General/Value.png[/img][color=Gold]Value[/color].", "traitText": "{0}"}
 	,"immortalLord": {"tooltip": "[color=Deepskyblue]Immortal Lord[/color]\nAt the start of battle, [img width=24]res://Images/Icons/Status/Summon.png[/img][color=Hotpink]Summons[/color] 2 Infernal Totems. If this unit would die, instead this unit teleports onto an ally Totem's tile and erases it, and has their health set to 50%."}
 	,"unholyWarlord": {"tooltip": "[color=Deepskyblue]Unholy Warlord[/color]\nALL other allies gain +100% [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Max Health[/color] and [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] from [img width=24]res://Images/Icons/Traits/infernalInvader.png[/img][color=Deepskyblue]Infernal Invader[/color]."}
+	,"gildedHoarder": {"tooltip": "[color=Deepskyblue]Gilded Hoarder[/color]\nDeals +20 [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] and gains 40 [img width=24]res://Images/Icons/Status/block.png[/img][color=Hotpink]Block[/color] each turn for each ally Uneeded Oppulence. Apon killing an enemy unit, spawns an Uneeded Oppulence on or adjacent to that unit's tile."}
 	
 	#FACTIONS
 	,"factionKingdom": {"tooltip": "[color=Deepskyblue]Bilha Kingdom[/color]\n[i][color=Slategray]For The King![/color][/i]"}
@@ -57,7 +58,8 @@ const actionTraitTooltipList = {
 	
 	#Defensive
 	,"heal": {"tooltip": "[color=Darkorange]Heal[/color] [color=Springgreen]{0}[/color]\nRestores [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color] to the target.\n[i][color=Slategray](Does not affect [img width=24]res://Images/Icons/Traits/mechanical.png[/img][color=Deepskyblue]Mechanical[/color] units.)[/color][/i]", "traitText": "{0}"}
-	
+	,"devour": {"tooltip": "[color=Darkorange]Devour[/color]\nDeals +1000 [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] to allies. Killing a unit with this action restores [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color] to this unit equal to half the target's [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Max Health[/color]."}
+
 	#Movement
 	,"teleport": {"tooltip": "[color=Darkorange]Teleport[/color]\nTeleports to the target tile."}
 	
@@ -86,6 +88,7 @@ const actionTraitTooltipList = {
 const statusTooltipList = {
 	#Offensive
 	"infernalInvader": {"tooltip": "[color=Hotpink]Infernal Invader[/color] [color=Springgreen]{0}[/color]\n +[color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] and 5x that much [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Max Health[/color].", "traitText": "{0}"}
+	,"gildedHoarder": {"tooltip": "[color=Hotpink]Gilded Hoarder[/color]\n+[color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color].", "traitText": "{0}"}
 	#Defensive
 	,"moltenDefence": {"tooltip": "[color=Hotpink]Molten Defence[/color] [color=Springgreen]{0}[/color]\nThe next incoming [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] is reduced by [color=Springgreen]{0}[/color].", "traitText": "{0}"}
 	,"block": {"tooltip": "[color=Hotpink]Block[/color] [color=Springgreen]{0}[/color]\n[img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] taken is dealt to block first.", "traitText": "{0}"}

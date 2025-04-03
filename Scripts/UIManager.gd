@@ -195,8 +195,8 @@ func updateUpperPanel():
 	uiRedScore.text = ""
 	uiBlueScore.text = "[right]"
 	if not main.armyBuilder:
-		uiRedScore.text += str(ceil((main.armyCosts[0] / float(main.armyHighestCosts[0])) * 10) * 10) + "%"
-		uiBlueScore.text += str(ceil((main.armyCosts[1] / float(main.armyHighestCosts[1])) * 10) * 10) + "%"
+		uiRedScore.text  += str(int(ceil((main.armyCosts[0] / float(main.armyHighestCosts[0])) * 10) * 10)) + "%"
+		uiBlueScore.text += str(int(ceil((main.armyCosts[1] / float(main.armyHighestCosts[1])) * 10) * 10)) + "%"
 	if main.currentTurn[1]:
 		if main.armyBuilder:
 			if main.currentTurn[0] == 0:

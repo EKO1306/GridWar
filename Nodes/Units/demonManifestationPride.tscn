@@ -1,48 +1,42 @@
-[gd_scene load_steps=19 format=3 uid="uid://bchvv5ipib6yb"]
+[gd_scene load_steps=17 format=3 uid="uid://dme7y5ekysb4x"]
 
-[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_y244l"]
-[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_y7m0x"]
-[ext_resource type="Texture2D" uid="uid://cdr4gg2bk2pey" path="res://Images/Units/demonRiftcarver.png" id="3_k1b1m"]
-[ext_resource type="Texture2D" uid="uid://b2ris5u2gkfer" path="res://Images/Units/demonDemon.png" id="3_onmaw"]
-[ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_7fu0h"]
+[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_gdg2s"]
+[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_8qcxx"]
+[ext_resource type="Texture2D" uid="uid://cpc5d2t3s8aac" path="res://Images/Units/demonManifestationPride.png" id="3_gdg2s"]
+[ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_2euw1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0y3sv"]
 size = Vector2(24, 24)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xy4vo"]
-shader = ExtResource("2_y7m0x")
+shader = ExtResource("2_8qcxx")
 shader_parameter/line_color = Color(1, 1, 1, 1)
 shader_parameter/line_thickness = 2.0
 
-[sub_resource type="Gradient" id="Gradient_m3vh8"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.164912, 0.45614, 0.712281, 0.901754)
-colors = PackedColorArray(0.87451, 0.517647, 0.647059, 1, 0.776471, 0.317647, 0.592157, 1, 0.635294, 0.243137, 0.54902, 1, 0.478431, 0.211765, 0.482353, 1, 0.25098, 0.152941, 0.317647, 1)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_scyou"]
-atlas = ExtResource("3_k1b1m")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8qcxx"]
+atlas = ExtResource("3_gdg2s")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tk8ic"]
-atlas = ExtResource("3_k1b1m")
+[sub_resource type="AtlasTexture" id="AtlasTexture_f603k"]
+atlas = ExtResource("3_gdg2s")
 region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_exwfo"]
-atlas = ExtResource("3_k1b1m")
+[sub_resource type="AtlasTexture" id="AtlasTexture_2euw1"]
+atlas = ExtResource("3_gdg2s")
 region = Rect2(16, 16, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bqe8c"]
-atlas = ExtResource("3_onmaw")
+[sub_resource type="AtlasTexture" id="AtlasTexture_mg18g"]
+atlas = ExtResource("3_gdg2s")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_r7k7f"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_imi0a"]
-atlas = ExtResource("3_k1b1m")
+[sub_resource type="AtlasTexture" id="AtlasTexture_05idt"]
+atlas = ExtResource("3_gdg2s")
 region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rnfpn"]
-atlas = ExtResource("3_k1b1m")
+[sub_resource type="AtlasTexture" id="AtlasTexture_cxmmp"]
+atlas = ExtResource("3_gdg2s")
 region = Rect2(0, 16, 16, 16)
 
 [sub_resource type="Animation" id="Animation_3w5n0"]
@@ -59,7 +53,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector2(-0.5, -11), Vector2(-0.5, -10.5)]
+"values": [Vector2(-0.5, -13), Vector2(-0.5, -12.5)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -71,7 +65,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector2(0, -5), Vector2(0, -4.75)]
+"values": [Vector2(0, -7), Vector2(0, -6.75)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -83,7 +77,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector2(-3, -6.5), Vector2(-3, -6.25)]
+"values": [Vector2(-3, -8.5), Vector2(-3, -8.25)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -95,7 +89,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
-"values": [Vector2(3, -6.5), Vector2(3, -6.25)]
+"values": [Vector2(3, -8.5), Vector2(3, -8.25)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -107,7 +101,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(-2),
 "update": 0,
-"values": [Vector2(-1.75, 1)]
+"values": [Vector2(-1.75, -1)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -119,7 +113,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(0.5),
 "update": 0,
-"values": [Vector2(0.5, 1)]
+"values": [Vector2(0.5, -1)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -144,18 +138,6 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(-2, -2),
 "update": 0,
 "values": [0.0, 0.0872665]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Sprites/CPUParticles2D:emitting")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_hh5sh"]
@@ -256,18 +238,6 @@ tracks/7/keys = {
 "update": 0,
 "values": [0.0]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Sprites/CPUParticles2D:emitting")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
 _data = {
@@ -275,32 +245,22 @@ _data = {
 &"RESET": SubResource("Animation_hh5sh")
 }
 
-[node name="DemonRiftcarver" type="Area2D" groups=["Unit"]]
+[node name="ManifestationPride" type="Area2D" groups=["Unit"]]
 z_index = 10
-script = ExtResource("1_y244l")
-statName = "Riftcarver"
-statMaxHealth = 180
-statCost = 1200
-statTraits = [["factionDemon"], ["infernalInvader", 5, 10, 25], ["moltenDefence", 120]]
+script = ExtResource("1_gdg2s")
+statName = "Manifestation of Pride"
+statMaxHealth = 1100
+statMaxActions = 2
+statCost = 3500
+statTraits = [["factionDemon"], ["infernalInvader", 20, 40, 100]]
 statActionList = Array[Dictionary]([{
 "actions": 1,
-"name": "Fireball",
-"range": Vector2i(2, 6),
-"traits": [["damage", 140], ["ranged"], ["burn", 20]]
-}, {
-"actions": 1,
-"name": "Summon Rift",
+"name": "Jeweled Fist",
 "range": Vector2i(1, 1),
-"traits": [["summon", "demonInfernalRift", "Rift"], ["use", 1, 1]]
-}, {
-"actions": 1,
-"name": "Claw",
-"range": Vector2i(1, 1),
-"traits": [["damage", 80], ["melee"]]
+"traits": [["damage", 200], ["melee"]]
 }])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(12, 12)
 shape = SubResource("RectangleShape2D_0y3sv")
 
@@ -308,52 +268,39 @@ shape = SubResource("RectangleShape2D_0y3sv")
 material = SubResource("ShaderMaterial_xy4vo")
 position = Vector2(12, 12)
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="Sprites"]
-position = Vector2(-3, -11)
-emitting = false
-amount = 64
-draw_order = 1
-emission_shape = 1
-emission_sphere_radius = 1.0
-direction = Vector2(-2, 0)
-gravity = Vector2(0, -8)
-initial_velocity_min = 5.0
-initial_velocity_max = 5.0
-color_ramp = SubResource("Gradient_m3vh8")
-
 [node name="LegLeft" type="Sprite2D" parent="Sprites"]
 position = Vector2(11, -4)
-texture = SubResource("AtlasTexture_scyou")
+texture = SubResource("AtlasTexture_8qcxx")
 
 [node name="LegRight" type="Sprite2D" parent="Sprites"]
 position = Vector2(13, -4)
-texture = SubResource("AtlasTexture_tk8ic")
+texture = SubResource("AtlasTexture_f603k")
 
 [node name="Body" type="Sprite2D" parent="Sprites"]
 texture_filter = 1
-texture = SubResource("AtlasTexture_exwfo")
+texture = SubResource("AtlasTexture_2euw1")
 
 [node name="ArmRight" type="Sprite2D" parent="Sprites"]
 position = Vector2(4, -1)
-texture = SubResource("AtlasTexture_bqe8c")
+texture = SubResource("AtlasTexture_mg18g")
 flip_h = true
 
 [node name="Head" type="Sprite2D" parent="Sprites"]
 material = SubResource("ShaderMaterial_r7k7f")
 position = Vector2(-1, -6)
-texture = SubResource("AtlasTexture_imi0a")
+texture = SubResource("AtlasTexture_05idt")
 offset = Vector2(-1, 0)
 
 [node name="ArmLeft" type="Sprite2D" parent="Sprites"]
 position = Vector2(-3, -1)
-texture = SubResource("AtlasTexture_rnfpn")
+texture = SubResource("AtlasTexture_cxmmp")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_togdo")
 }
 
-[node name="HealthBar" parent="." instance=ExtResource("4_7fu0h")]
+[node name="HealthBar" parent="." instance=ExtResource("4_2euw1")]
 offset_left = 3.0
 offset_top = 18.0
 offset_right = 21.0

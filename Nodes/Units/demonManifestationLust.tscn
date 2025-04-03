@@ -255,8 +255,7 @@ z_index = 10
 script = ExtResource("1_nl4lg")
 statName = "Manifestation of Lust"
 statMaxHealth = 660
-statMaxMovement = 2
-statCost = 3500
+statCost = 2500
 statTraits = [["factionDemon"], ["infernalInvader", 20, 40, 80]]
 statActionList = Array[Dictionary]([{
 "actions": 1,

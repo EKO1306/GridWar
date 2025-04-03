@@ -349,7 +349,7 @@ statMaxHealth = 120
 statMaxMovement = 4
 statMaxActions = 2
 statCost = 650
-statTraits = [["factionDemon"], ["infernalInvader", 5, 10, 20]]
+statTraits = [["factionDemon"], ["infernalInvader", 5, 10, 25]]
 statActionList = Array[Dictionary]([{
 "actions": 1,
 "name": "Tendrils",
