@@ -140,6 +140,10 @@ _data = {
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="MainMenuUI" type="CanvasLayer" parent="."]
+<<<<<<< Updated upstream
+=======
+process_mode = 4
+>>>>>>> Stashed changes
 script = ExtResource("1_8dmwm")
 
 [node name="MainPanel" type="Panel" parent="MainMenuUI"]
