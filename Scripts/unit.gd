@@ -233,6 +233,14 @@ func startturn():
 				continue
 			unit.addStatus("unholyWarlord", 1)
 	
+	for hasGildedHoarder in hasTrait("gildedHoarder"):
+		for unit in main.unitControl.get_children():
+			if unit.unitTeam != unitTeam:
+				continue
+			if unit.statName == "Uneeded Oppulence":
+				addStatus("gildedHoarder", 1 , [20])
+				addStatus("block", 1 , [40])
+	
 	if main.turnNo > 0:
 		for hasInfernalInvader in hasTrait("infernalInvader"): #Infernal Invader drains health each turn.
 			changeHealth(-hasInfernalInvader[0][1] * 2)
@@ -255,12 +263,17 @@ func startturnStatus(postStartTurn = false):
 	for i in range(len(statusList)):
 		if statusList[i][1] == null:
 			continue
+		var statusTooltip = main.statusTooltipList.get(statusList[i][0])
 		if postStartTurn:
-			if main.statusTooltipList[statusList[i][0]].get("tickdownAfter") == null:
+			if statusTooltip == null:
 				continue
+			else:
+				if main.statusTooltipList[statusList[i][0]].get("tickdownAfter") == null:
+					continue
 		else:
-			if main.statusTooltipList[statusList[i][0]].get("tickdownAfter") == true:
-				continue
+			if not statusTooltip == null:
+				if main.statusTooltipList[statusList[i][0]].get("tickdownAfter") == true:
+					continue
 		statusList[i][1] -= 1
 		if statusList[i][1] <= 0:
 			removedStatus.append(i - len(removedStatus))
@@ -313,7 +326,7 @@ func postUpdateScreen():
 			var hasDamage = main.selectedUnit.hasTrait("damage", main.selectedAction)
 			for hasDmg in hasDamage:
 				nodeDamageText.show()
-				nodeDamageText.text = str(calcDamage(hasDmg[0][1],false,main.selectedUnit))
+				nodeDamageText.text = str(calcDamage(hasDmg[0][1],false, main.selectedUnit, main.selectedAction))
 				nodeDamageText.size = Vector2.ZERO
 				nodeDamageText.global_position = global_position + Vector2(12,16) - (nodeDamageText.size * 0.25)
 				var dies = wouldDie(hasDmg[0][1], main.selectedUnit, main.selectedAction)
@@ -566,13 +579,13 @@ func calcActionTile(targetUnit, targetPos):
 				didActionTrigger = true
 	return {"didActionTrigger": didActionTrigger}
 
-func calcActionUnit(targetUnit, _targetPos):
+func calcActionUnit(targetUnit, targetPos):
 	var actionNo = main.selectedAction
 	var isTargetDead = false
 	var didActionTrigger = false
 	for hasHeal in hasTrait("heal", actionNo): #Heals target from heal trait
-		if targetUnit.hasTrait("mechanical").is_empty(): #Mechanical Units cannot be healed.
-			if targetUnit.hasTrait("lifeless").is_empty():
+		if not targetUnit.hasTrait("mechanical"): #Mechanical Units cannot be healed.
+			if not targetUnit.hasTrait("lifeless"):
 				targetUnit.changeHealth(hasHeal[0][1])
 				didActionTrigger = true
 	for hasBurn in hasTrait("burn", actionNo): #Inficts burning from burn trait
@@ -604,6 +617,8 @@ func calcActionUnit(targetUnit, _targetPos):
 			didActionTrigger = true
 	
 	if isTargetDead:
+		for hasDevour in hasTrait("devour", actionNo):
+			changeHealth(int(targetUnit.statMaxHealth / 2.0))
 		if targetUnit.unitTeam != unitTeam:
 			for hasRampage in hasTrait("rampage", actionNo): #If the target died, gain actions if rampage trait
 				statActions += hasRampage[0][1]
@@ -614,6 +629,18 @@ func calcActionUnit(targetUnit, _targetPos):
 				if not hasStatus("unholyWarlord").is_empty():
 					invaderValue *= 2
 				addStatus("infernalInvader", null, [invaderValue])
+			if hasTrait("gildedHoarder"):
+				for posOffset in [Vector2.ZERO,Vector2.UP,Vector2.DOWN,Vector2.LEFT,Vector2.RIGHT]:
+					var pos = targetPos + posOffset
+					if main.getUnitAtXY(pos.x,pos.y) != null:
+						continue
+					if main.getTileAtXY(pos.x,pos.y) == null:
+						continue
+					if main.getTileAtXY(pos.x,pos.y).type == 1:
+						continue
+					main.spawnUnit("demonUneededOppulence",pos.x,pos.y,unitTeam, true)
+					break
+				
 	return {"didActionTrigger": didActionTrigger, "isTargetDead": isTargetDead}
 
 func hasTrait(traitName, action = null):
@@ -640,12 +667,18 @@ func hasStatus(statusName):
 			varFoundStatus.append([i,a])
 	return varFoundStatus
 
-func calcDamage(dmg, _includeAbsorb = false,unitSource = null, _actionSource = null):
+func calcDamage(dmg, _includeAbsorb = false, unitSource = null, actionSource = null):
 	if unitSource != null:
 		for hasUrsuanaYaalCommandStatus in unitSource.hasStatus("ursuanaYaalCommand"):
 			dmg *= 1.5
 		for hasInfernalInvader in unitSource.hasStatus("infernalInvader"):
 			dmg += hasInfernalInvader[0][2]
+		for hasGildedHoarder in unitSource.hasStatus("gildedHoarder"):
+			dmg += hasGildedHoarder[0][2]
+		if actionSource != null:
+			if unitTeam == unitSource.unitTeam:
+				if unitSource.hasTrait("devour",actionSource):
+					dmg += 1000
 	
 	for hasDefence in hasTrait("defence"): #Defence reduces damage taken.
 		dmg -= hasDefence[0][1]
@@ -678,7 +711,7 @@ func damage(dmg,unitSource = null, actionSource = null):
 		removeStatus(hasMoltenDefence[0][1])
 	
 	if dmg > 0:
-		return changeHealth(-dmg)
+		return changeHealth(-dmg, unitSource, actionSource)
 	return false
 
 func wouldDie(dmg, unitSource = null, actionSource = null):
@@ -693,15 +726,19 @@ func checkActionValid(action, actionNo):
 	if statActions < action.actions:
 		return false
 	for hasUsePerTurn in hasTrait("usePerTurn", actionNo):
-		if hasUsePerTurn[0][1] <= 0:
+		if hasUsePerTurn[0][1] < 1:
 			return false
 	for hasUse in hasTrait("use", actionNo):
-		if hasUse[0][1] <= 0:
+		if hasUse[0][1] < 1:
 			return false
 	for hasAmmo in hasTrait("ammo", actionNo):
-		if hasAmmo[0][1] <= 0:
+		if hasAmmo[0][1] < 1:
 			return false
-		
+	
+	if hasStatus("wrath"):
+		if not hasTrait("melee", actionNo) and not hasTrait("ranged", actionNo):
+			return false
+	
 	return true
 
 func addStatus(status, duration = null, variables = []):
@@ -748,15 +785,27 @@ func removeStatus(statusNo):
 	if status[0] == "possessed":
 		unitTeam = status[3]
 
-func changeHealth(change):
+func changeHealth(change, unitSource = null, actionSource = null):
+	var action
+	if actionSource != null:
+		action = unitSource.statActionList[actionSource]
+	if change > 0:
+		if hasTrait("lifeless"):
+			return false
 	statHealth += change
 	
 	statHealth = min(statHealth,statMaxHealth)
 		
-	
 	if statHealth <= 0:
-		die()
-		return true
+		if action != null:
+			if unitSource.hasTrait("mindBreak", actionSource):
+				if unitSource.unitTeam != unitTeam:
+					statHealth = 100
+					statMovement = 0
+					statActions = 0
+					addStatus("possessed", null, [unitSource, unitTeam])
+					return true
+		return die()
 	else:
 		return false
 
@@ -771,13 +820,17 @@ func die(forceDeath = false):
 					gridY = unit.gridY
 					statHealth = int(statMaxHealth * 0.5)
 					unit.die(true)
-					return
+					return false
 	
 	#THE UNIT IS DEAD
 	
 	for unit in main.unitControl.get_children():
+		if unit == self:
+			continue
 		if not unit.isAlive:
 			continue
+		if hasTrait("wrathIncarnate"):
+			unit.addStatus("wrath",3)
 		var hasPossessed = unit.hasStatus("possessed")
 		if not hasPossessed.is_empty():
 			if hasPossessed[0][0][2] == self:
@@ -785,6 +838,7 @@ func die(forceDeath = false):
 				unit.removeStatus(hasPossessed[0][1])
 	queue_free()
 	isAlive = false
+	return true
 
 func getUnitsInArea(areaX,areaY,areaRadius,unitMask = null, teamMask = null):
 	var unitList = []

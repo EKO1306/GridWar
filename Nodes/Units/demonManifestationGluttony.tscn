@@ -1,0 +1,222 @@
+[gd_scene load_steps=15 format=3 uid="uid://w74oc0u63nvu"]
+
+[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_qf7ey"]
+[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_d3ije"]
+[ext_resource type="Texture2D" uid="uid://brw44xgdjyixp" path="res://Images/Units/demonManifestationGluttony.png" id="3_qf7ey"]
+[ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_3q24j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0y3sv"]
+size = Vector2(24, 24)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xy4vo"]
+shader = ExtResource("2_d3ije")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_67pqi"]
+atlas = ExtResource("3_qf7ey")
+region = Rect2(16, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3q24j"]
+atlas = ExtResource("3_qf7ey")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrjhf"]
+atlas = ExtResource("3_qf7ey")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r7k7f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1xmwf"]
+atlas = ExtResource("3_qf7ey")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="Animation" id="Animation_3w5n0"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(1, -16.5), Vector2(1, -16)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/ArmLeft:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [Vector2(-5, -6.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/ArmRight:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [Vector2(10, -4.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/ArmRight:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.0, -0.0872665]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/ArmLeft:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.0, 0.0872665]
+}
+
+[sub_resource type="Animation" id="Animation_hh5sh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/ArmLeft:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/ArmRight:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, -1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/ArmRight:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/ArmLeft:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
+_data = {
+&"Idle": SubResource("Animation_3w5n0"),
+&"RESET": SubResource("Animation_hh5sh")
+}
+
+[node name="ManifestationGluttony" type="Area2D" groups=["Unit"]]
+z_index = 10
+script = ExtResource("1_qf7ey")
+statName = "Manifestation of Gluttony"
+statMaxHealth = 820
+statMaxMovement = 2
+statCost = 4200
+statTraits = [["factionDemon"], ["infernalInvader", 40, 80, 200], ["exposed"]]
+statActionList = Array[Dictionary]([{
+"actions": 1,
+"name": "Hungering Maw",
+"range": Vector2i(1, 1),
+"traits": [["damage", 280], ["melee"], ["devour"]]
+}])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12, 12)
+shape = SubResource("RectangleShape2D_0y3sv")
+
+[node name="Sprites" type="CanvasGroup" parent="."]
+material = SubResource("ShaderMaterial_xy4vo")
+position = Vector2(12, 12)
+
+[node name="Body" type="Sprite2D" parent="Sprites"]
+texture_filter = 1
+position = Vector2(0, -5)
+texture = SubResource("AtlasTexture_67pqi")
+offset = Vector2(8, -6)
+
+[node name="ArmRight" type="Sprite2D" parent="Sprites"]
+position = Vector2(4, -1)
+texture = SubResource("AtlasTexture_3q24j")
+flip_h = true
+
+[node name="ArmLeft" type="Sprite2D" parent="Sprites"]
+position = Vector2(-3, -1)
+texture = SubResource("AtlasTexture_yrjhf")
+
+[node name="Head" type="Sprite2D" parent="Sprites"]
+material = SubResource("ShaderMaterial_r7k7f")
+position = Vector2(-1, -6)
+texture = SubResource("AtlasTexture_1xmwf")
+offset = Vector2(0, -3)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_togdo")
+}
+
+[node name="HealthBar" parent="." instance=ExtResource("4_3q24j")]
+offset_left = 3.0
+offset_top = 18.0
+offset_right = 21.0
+offset_bottom = 22.0

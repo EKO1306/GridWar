@@ -1,0 +1,68 @@
+[gd_scene load_steps=11 format=3 uid="uid://cg7oqr4l1b8qi"]
+
+[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_21etg"]
+[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_qopeg"]
+[ext_resource type="Texture2D" uid="uid://6he8tvgvq0aa" path="res://Images/Units/demonUneededOppulence.png" id="3_21etg"]
+[ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_2psnc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0y3sv"]
+size = Vector2(24, 24)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xy4vo"]
+shader = ExtResource("2_qopeg")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qopeg"]
+atlas = ExtResource("3_21etg")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="Animation" id="Animation_3w5n0"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_hh5sh"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
+_data = {
+&"Idle": SubResource("Animation_3w5n0"),
+&"RESET": SubResource("Animation_hh5sh")
+}
+
+[node name="UneededOppulence" type="Area2D" groups=["Unit"]]
+z_index = 10
+script = ExtResource("1_21etg")
+statName = "Uneeded Oppulence"
+statMaxHealth = 120
+statMaxMovement = 0
+statMaxActions = 0
+statCost = 1000
+statTraits = [["factionDemon"], ["immobile"], ["exposed"]]
+statActionList = Array[Dictionary]([])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12, 12)
+shape = SubResource("RectangleShape2D_0y3sv")
+
+[node name="Sprites" type="CanvasGroup" parent="."]
+material = SubResource("ShaderMaterial_xy4vo")
+position = Vector2(12, 12)
+
+[node name="Totem" type="Sprite2D" parent="Sprites"]
+texture_filter = 1
+position = Vector2(0, -10)
+texture = SubResource("AtlasTexture_qopeg")
+offset = Vector2(-0.5, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_togdo")
+}
+
+[node name="HealthBar" parent="." instance=ExtResource("4_2psnc")]
+offset_left = 3.0
+offset_top = 18.0
+offset_right = 21.0
+offset_bottom = 22.0

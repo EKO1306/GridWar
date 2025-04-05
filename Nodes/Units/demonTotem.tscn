@@ -42,13 +42,13 @@ script = ExtResource("1_r4c83")
 statName = "Infernal Totem"
 statMaxHealth = 220
 statMaxMovement = 0
-statCost = 150
+statCost = 1500
 statTraits = [["factionDemon"], ["eagleEye", 3], ["blind", 3], ["immobile"], ["exposed"]]
 statActionList = Array[Dictionary]([{
 "actions": 1,
 "name": "Spirit Spark",
 "range": Vector2i(2, 3),
-"traits": [["burn", 60]]
+"traits": [["burn", 60], ["ranged"]]
 }])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

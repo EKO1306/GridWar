@@ -1,12 +1,15 @@
 TRAITS
-Cavalry -
-Takes +1 movement when moving between elevation and when moving onto tree tiles
-Lancer -
-Deals +X% damage for each tile further away they are from their starting tile this turn
+"The Paw, The Leaves
+The Law, Deceives
+Nature, Believes
+Ancient Decrees
+Protect The Trees
+The Golden Seas
+All That Needs
+Defending
+
 
 UNITS
-Ursiara Ullnyaal (Bear Master, New Lord)
-	- Ursiara Rider (Bear Master Rider)
 Faetorm Ullnyaal (Health Shield, New Lord)
 	- Faetorm Herbalist (Health Shield Herbalist)
 	- Faetorm Shieldmaiden
@@ -46,3 +49,9 @@ Manifestation of Envy
 	- Copies Enemies
 	- Heals from nearby enemies
 	- Hurts from none
+
+HOLY
+Prayer of the Great One
+	- Gains 1000 blessing a turn
+	- Gains blessing when enemies die
+	- Summons the great awakened god at 20,000
