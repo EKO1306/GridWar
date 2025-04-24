@@ -1,612 +1,419 @@
-[gd_scene load_steps=19 format=3 uid="uid://ctj2dy7csrdv5"]
+[gd_scene load_steps=39 format=3 uid="uid://d0v8rnxqrfmpp"]
 
-[ext_resource type="Script" uid="uid://bpohtv3sqqvqy" path="res://Scripts/MainMenuUI.gd" id="1_8dmwm"]
+[ext_resource type="Script" uid="uid://h8bn5nja2nu3" path="res://Scripts/MainMenu/mainMenu_main.gd" id="1_n45e2"]
 [ext_resource type="FontFile" uid="uid://cwiw18el0nvtw" path="res://Misc/Fonts/Minecraft.ttf" id="2_sis5w"]
-[ext_resource type="Script" uid="uid://bh70y40ubp3g6" path="res://Scripts/Misc/text_edit.gd" id="3_oowao"]
 [ext_resource type="Texture2D" uid="uid://dbhmwef1cxl2l" path="res://Images/UI/MainMenu/Menu.png" id="4_ce3w2"]
-[ext_resource type="Script" uid="uid://dpojxetp6l237" path="res://Scripts/MainMenu/main_menu.gd" id="4_opfnp"]
 [ext_resource type="Texture2D" uid="uid://rgbtq8fxktsc" path="res://Images/UI/MainMenu/ButtonBright.png" id="5_n45e2"]
+[ext_resource type="Script" uid="uid://dah80kbood71e" path="res://Scripts/MainMenu/mainMenu_play.gd" id="5_opfnp"]
+[ext_resource type="Script" uid="uid://c1br6j7fjs3h0" path="res://Scripts/MainMenu/mainMenu_mapSelector.gd" id="6_opfnp"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h6eo1"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhxw7"]
+atlas = ExtResource("5_n45e2")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_opfnp"]
+texture = SubResource("AtlasTexture_yhxw7")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(1, 1, 1, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cp0ys"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.294118, 0.172549, 0.556863, 0.607843)
-border_width_bottom = 4
-border_color = Color(0.294118, 0.172549, 0.556863, 1)
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ehe0"]
+atlas = ExtResource("5_n45e2")
+region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yhxw7"]
-texture = ExtResource("5_n45e2")
+texture = SubResource("AtlasTexture_1ehe0")
 texture_margin_left = 16.0
 texture_margin_top = 16.0
 texture_margin_right = 16.0
 texture_margin_bottom = 16.0
-region_rect = Rect2(48, 0, 48, 48)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_opfnp"]
-texture = ExtResource("5_n45e2")
+[sub_resource type="AtlasTexture" id="AtlasTexture_opfnp"]
+atlas = ExtResource("5_n45e2")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_16hvj"]
+texture = SubResource("AtlasTexture_opfnp")
 texture_margin_left = 16.0
 texture_margin_top = 16.0
 texture_margin_right = 16.0
 texture_margin_bottom = 16.0
-region_rect = Rect2(0, 0, 48, 48)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_trj04"]
-texture = ExtResource("5_n45e2")
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vr1f0"]
+texture = SubResource("AtlasTexture_yhxw7")
 texture_margin_left = 16.0
 texture_margin_top = 16.0
 texture_margin_right = 16.0
 texture_margin_bottom = 16.0
-region_rect = Rect2(96, 0, 48, 48)
+modulate_color = Color(1, 1, 1, 0.5)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cp0ys"]
-texture = ExtResource("4_ce3w2")
-texture_margin_left = 16.0
-texture_margin_top = 16.0
-texture_margin_right = 16.0
-texture_margin_bottom = 16.0
-region_rect = Rect2(48, 0, 48, 48)
-
-[sub_resource type="Theme" id="Theme_n45e2"]
-default_font = ExtResource("2_sis5w")
-Button/colors/font_color = Color(0.0588235, 0.203922, 0.109804, 1)
-Button/font_sizes/font_size = 32
+[sub_resource type="Theme" id="Theme_16hvj"]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("2_sis5w")
+Button/styles/disabled = SubResource("StyleBoxTexture_opfnp")
+Button/styles/focus = SubResource("StyleBoxFlat_cp0ys")
 Button/styles/hover = SubResource("StyleBoxTexture_yhxw7")
-Button/styles/normal = SubResource("StyleBoxTexture_opfnp")
-Button/styles/pressed = SubResource("StyleBoxTexture_trj04")
-RichTextLabel/font_sizes/normal_font_size = 32
-RichTextLabel/fonts/normal_font = ExtResource("2_sis5w")
-RichTextLabel/styles/normal = SubResource("StyleBoxTexture_cp0ys")
+Button/styles/normal = SubResource("StyleBoxTexture_16hvj")
+Button/styles/pressed = SubResource("StyleBoxTexture_vr1f0")
 
-[sub_resource type="Animation" id="Animation_n45e2"]
-resource_name = "Main"
+[sub_resource type="Animation" id="Animation_cp0ys"]
+resource_name = "Open"
 length = 0.5
-step = 0.5
+step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Main:position")
+tracks/0/path = NodePath("NinePatchRect:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(-2, -4),
+"transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
-"values": [Vector2(440.5, 1040), Vector2(440.5, 392)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Main:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"values": [Vector2(0, 5000), Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_opfnp"]
+[sub_resource type="Animation" id="Animation_yhxw7"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Main:position")
+tracks/0/path = NodePath("NinePatchRect:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(440.5, 392)]
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_trj04"]
+resource_name = "Closed"
+length = 0.5
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 5000)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_16hvj"]
+_data = {
+&"Closed": SubResource("Animation_trj04"),
+&"Open": SubResource("Animation_cp0ys"),
+&"RESET": SubResource("Animation_yhxw7")
+}
+
+[sub_resource type="Animation" id="Animation_16hvj"]
+resource_name = "Open"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, -5000), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vr1f0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t1dhk"]
+resource_name = "Closed"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, -5000)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5egv6"]
+_data = {
+&"Closed": SubResource("Animation_t1dhk"),
+&"Open": SubResource("Animation_16hvj"),
+&"RESET": SubResource("Animation_vr1f0")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1ehe0"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ce3w2"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnfte"]
+atlas = ExtResource("5_n45e2")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n45e2"]
+texture = SubResource("AtlasTexture_gnfte")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jo32"]
+atlas = ExtResource("5_n45e2")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cp0ys"]
+texture = SubResource("AtlasTexture_6jo32")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qfrh"]
+atlas = ExtResource("5_n45e2")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_trj04"]
+texture = SubResource("AtlasTexture_6qfrh")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(1, 1, 1, 0.5)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ce3w2"]
+texture = SubResource("AtlasTexture_opfnp")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="Theme" id="Theme_t1dhk"]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("2_sis5w")
+Button/styles/disabled = SubResource("StyleBoxFlat_1ehe0")
+Button/styles/focus = SubResource("StyleBoxFlat_ce3w2")
+Button/styles/hover = SubResource("StyleBoxTexture_n45e2")
+Button/styles/normal = SubResource("StyleBoxTexture_cp0ys")
+Button/styles/pressed = SubResource("StyleBoxTexture_trj04")
+RichTextLabel/fonts/normal_font = ExtResource("2_sis5w")
+RichTextLabel/styles/normal = SubResource("StyleBoxTexture_trj04")
+TabContainer/fonts/font = ExtResource("2_sis5w")
+TabContainer/styles/panel = SubResource("StyleBoxTexture_trj04")
+TabContainer/styles/tab_hovered = SubResource("StyleBoxTexture_n45e2")
+TabContainer/styles/tab_selected = SubResource("StyleBoxTexture_ce3w2")
+TabContainer/styles/tab_unselected = SubResource("StyleBoxTexture_trj04")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_opfnp"]
+
+[sub_resource type="Animation" id="Animation_ce3w2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Main:visible")
+tracks/1/path = NodePath("../../MapSelector/NinePatchRect:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector2(0, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_cp0ys"]
-_data = {
-&"Main": SubResource("Animation_n45e2"),
-&"RESET": SubResource("Animation_opfnp")
-}
-
-[sub_resource type="Animation" id="Animation_cp0ys"]
-resource_name = "Main"
+[sub_resource type="Animation" id="Animation_opfnp"]
+resource_name = "Closed"
 length = 0.5
-step = 0.5
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../MapSelector/NinePatchRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 5000)]
+}
 
-[sub_resource type="Animation" id="Animation_yhxw7"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_n45e2"]
+resource_name = "Open"
+length = 0.5
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../MapSelector/NinePatchRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 5000), Vector2(0, 0)]
+}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_trj04"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n45e2"]
 _data = {
-&"Main": SubResource("Animation_cp0ys"),
-&"RESET": SubResource("Animation_yhxw7")
+&"Closed": SubResource("Animation_opfnp"),
+&"Open": SubResource("Animation_n45e2"),
+&"RESET": SubResource("Animation_ce3w2")
 }
 
 [node name="MainMenu" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
-[node name="MainMenuUI" type="CanvasLayer" parent="."]
-<<<<<<< Updated upstream
-=======
-process_mode = 4
->>>>>>> Stashed changes
-script = ExtResource("1_8dmwm")
-
-[node name="MainPanel" type="Panel" parent="MainMenuUI"]
-anchors_preset = 6
-anchor_left = 1.0
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -424.0
-offset_top = -120.0
-offset_right = -64.0
-offset_bottom = 120.0
-grow_horizontal = 0
-grow_vertical = 2
-
-[node name="PlayButton" type="Button" parent="MainMenuUI/MainPanel"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 10.0
-offset_top = 10.0
-offset_right = -10.0
-offset_bottom = 42.0
-grow_horizontal = 2
-text = "Play"
-
-[node name="HostButton" type="Button" parent="MainMenuUI/MainPanel"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 10.0
-offset_top = 52.0
-offset_right = -10.0
-offset_bottom = 84.0
-grow_horizontal = 2
-text = "Host"
-
-[node name="JoinButton" type="Button" parent="MainMenuUI/MainPanel"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 10.0
-offset_top = 92.0
-offset_right = -10.0
-offset_bottom = 124.0
-grow_horizontal = 2
-text = "Join"
-
-[node name="EditorButton" type="Button" parent="MainMenuUI/MainPanel"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 10.0
-offset_top = 132.0
-offset_right = -10.0
-offset_bottom = 164.0
-grow_horizontal = 2
-text = "Editor"
-
-[node name="MapEditorTab" type="TabContainer" parent="MainMenuUI"]
-visible = false
-offset_left = 16.0
-offset_top = 24.0
-offset_right = 466.0
-offset_bottom = 624.0
-current_tab = 0
-
-[node name="New" type="Control" parent="MainMenuUI/MapEditorTab"]
-layout_mode = 2
-metadata/_tab_index = 0
-
-[node name="MapName" type="HSplitContainer" parent="MainMenuUI/MapEditorTab/New"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 4.0
-offset_top = 4.0
-offset_right = -4.0
-offset_bottom = 28.0
-grow_horizontal = 2
-split_offset = 100
-dragger_visibility = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="MainMenuUI/MapEditorTab/New/MapName"]
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("2_sis5w")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[center]Map Name"
-fit_content = true
-autowrap_mode = 0
-
-[node name="TextEdit" type="LineEdit" parent="MainMenuUI/MapEditorTab/New/MapName"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_sis5w")
-theme_override_styles/normal = SubResource("StyleBoxFlat_h6eo1")
-max_length = 32
-
-[node name="MapID" type="HSplitContainer" parent="MainMenuUI/MapEditorTab/New"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 4.0
-offset_top = 32.0
-offset_right = -4.0
-offset_bottom = 56.0
-grow_horizontal = 2
-split_offset = 100
-dragger_visibility = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="MainMenuUI/MapEditorTab/New/MapID"]
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("2_sis5w")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[center]Map ID"
-fit_content = true
-autowrap_mode = 0
-
-[node name="TextEdit" type="LineEdit" parent="MainMenuUI/MapEditorTab/New/MapID"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_sis5w")
-theme_override_styles/normal = SubResource("StyleBoxFlat_h6eo1")
-script = ExtResource("3_oowao")
-specialFlags = ["snake"]
-
-[node name="MapWidth" type="HSplitContainer" parent="MainMenuUI/MapEditorTab/New"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 4.0
-offset_top = 60.0
-offset_right = -4.0
-offset_bottom = 84.0
-grow_horizontal = 2
-split_offset = 100
-dragger_visibility = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="MainMenuUI/MapEditorTab/New/MapWidth"]
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("2_sis5w")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[center]Map Width"
-fit_content = true
-autowrap_mode = 0
-
-[node name="TextEdit" type="LineEdit" parent="MainMenuUI/MapEditorTab/New/MapWidth"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_sis5w")
-theme_override_styles/normal = SubResource("StyleBoxFlat_h6eo1")
-max_length = 2
-script = ExtResource("3_oowao")
-allowedCharacters = "1234567890"
-
-[node name="MapHeight" type="HSplitContainer" parent="MainMenuUI/MapEditorTab/New"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 4.0
-offset_top = 88.0
-offset_right = -4.0
-offset_bottom = 112.0
-grow_horizontal = 2
-split_offset = 100
-dragger_visibility = 2
-
-[node name="RichTextLabel" type="RichTextLabel" parent="MainMenuUI/MapEditorTab/New/MapHeight"]
-layout_mode = 2
-theme_override_fonts/normal_font = ExtResource("2_sis5w")
-theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[center]Map Height"
-fit_content = true
-autowrap_mode = 0
-
-[node name="TextEdit" type="LineEdit" parent="MainMenuUI/MapEditorTab/New/MapHeight"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("2_sis5w")
-theme_override_styles/normal = SubResource("StyleBoxFlat_h6eo1")
-max_length = 2
-script = ExtResource("3_oowao")
-allowedCharacters = "1234567890"
-
-[node name="MapEditorButton" type="Button" parent="MainMenuUI/MapEditorTab/New"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = -35.0
-offset_right = -4.0
-offset_bottom = -4.0
-grow_horizontal = 2
-grow_vertical = 0
-text = "Start"
-
-[node name="Official" type="ScrollContainer" parent="MainMenuUI/MapEditorTab"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-metadata/_tab_index = 1
-
-[node name="Official" type="VBoxContainer" parent="MainMenuUI/MapEditorTab/Official"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 82
-
-[node name="Custom" type="VBoxContainer" parent="MainMenuUI/MapEditorTab"]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 82
-metadata/_tab_index = 2
-
-[node name="MapPlayTab" type="TabContainer" parent="MainMenuUI"]
-offset_left = 16.0
-offset_top = 24.0
-offset_right = 466.0
-offset_bottom = 624.0
-current_tab = 1
-
-[node name="Play" type="Control" parent="MainMenuUI/MapPlayTab"]
-visible = false
-layout_mode = 2
-metadata/_tab_index = 0
-
-[node name="gamePlayStartButton" type="Button" parent="MainMenuUI/MapPlayTab/Play"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -61.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 32
-text = "START"
-
-[node name="ArmyCostContainer" type="HSplitContainer" parent="MainMenuUI/MapPlayTab/Play"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 8.0
-offset_bottom = 40.0
-grow_horizontal = 2
-theme_override_constants/separation = 0
-split_offset = 124
-
-[node name="ArmyCostLimit" type="RichTextLabel" parent="MainMenuUI/MapPlayTab/Play/ArmyCostContainer"]
-layout_mode = 2
-text = "Army Cost Limit"
-scroll_active = false
-
-[node name="TextEdit" type="LineEdit" parent="MainMenuUI/MapPlayTab/Play/ArmyCostContainer"]
-layout_mode = 2
-placeholder_text = "5000"
-script = ExtResource("3_oowao")
-allowedCharacters = "1234567890"
-
-[node name="Official" type="ScrollContainer" parent="MainMenuUI/MapPlayTab"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-metadata/_tab_index = 1
-
-[node name="Official" type="VBoxContainer" parent="MainMenuUI/MapPlayTab/Official"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 82
-
-[node name="Custom" type="VBoxContainer" parent="MainMenuUI/MapPlayTab"]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 82
-metadata/_tab_index = 2
-
-[node name="MapHostTab" type="TabContainer" parent="MainMenuUI"]
-visible = false
-offset_left = 16.0
-offset_top = 24.0
-offset_right = 466.0
-offset_bottom = 624.0
-current_tab = 0
-
-[node name="Host" type="Control" parent="MainMenuUI/MapHostTab"]
-layout_mode = 2
-metadata/_tab_index = 0
-
-[node name="IP" type="RichTextLabel" parent="MainMenuUI/MapHostTab/Host"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 48.0
-grow_horizontal = 2
-theme_override_font_sizes/normal_font_size = 32
-text = "IP:"
-
-[node name="Player" type="RichTextLabel" parent="MainMenuUI/MapHostTab/Host"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 48.0
-offset_bottom = 72.0
-grow_horizontal = 2
-text = "Connection: "
-
-[node name="ChosenMap" type="RichTextLabel" parent="MainMenuUI/MapHostTab/Host"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 424.0
-offset_bottom = 448.0
-grow_horizontal = 2
-text = "Chosen Map:"
-
-[node name="hostGameButton" type="Button" parent="MainMenuUI/MapHostTab/Host"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -117.0
-offset_bottom = -64.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 32
-text = "HOST"
-
-[node name="startGameButton" type="Button" parent="MainMenuUI/MapHostTab/Host"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -61.0
-offset_bottom = -8.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 32
-text = "START"
-
-[node name="ArmyCostContainer" type="HSplitContainer" parent="MainMenuUI/MapHostTab/Host"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 80.0
-offset_bottom = 112.0
-grow_horizontal = 2
-theme_override_constants/separation = 0
-split_offset = 124
-
-[node name="ArmyCostLimit" type="RichTextLabel" parent="MainMenuUI/MapHostTab/Host/ArmyCostContainer"]
-layout_mode = 2
-text = "Army Cost Limit"
-scroll_active = false
-
-[node name="TextEdit" type="LineEdit" parent="MainMenuUI/MapHostTab/Host/ArmyCostContainer"]
-layout_mode = 2
-placeholder_text = "5000"
-script = ExtResource("3_oowao")
-allowedCharacters = "1234567890"
-
-[node name="ArmyCostContainer2" type="HSplitContainer" parent="MainMenuUI/MapHostTab/Host"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_top = 112.0
-offset_right = -312.0
-offset_bottom = 144.0
-grow_horizontal = 2
-theme_override_constants/separation = 0
-split_offset = 124
-
-[node name="ArmyCostLimit" type="RichTextLabel" parent="MainMenuUI/MapHostTab/Host/ArmyCostContainer2"]
-layout_mode = 2
-text = "Host Starts"
-scroll_active = false
-
-[node name="CheckButton" type="CheckButton" parent="MainMenuUI/MapHostTab/Host/ArmyCostContainer2"]
-layout_mode = 2
-
-[node name="Official" type="ScrollContainer" parent="MainMenuUI/MapHostTab"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-metadata/_tab_index = 1
-
-[node name="Official" type="VBoxContainer" parent="MainMenuUI/MapHostTab/Official"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_constants/separation = 82
-
-[node name="Custom" type="VBoxContainer" parent="MainMenuUI/MapHostTab"]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 82
-metadata/_tab_index = 2
-
-[node name="MapJoinTab" type="TabContainer" parent="MainMenuUI"]
-visible = false
-offset_left = 16.0
-offset_top = 24.0
-offset_right = 466.0
-offset_bottom = 624.0
-current_tab = 0
-
-[node name="Host" type="Control" parent="MainMenuUI/MapJoinTab"]
-layout_mode = 2
-metadata/_tab_index = 0
-
-[node name="HSplitContainer" type="HSplitContainer" parent="MainMenuUI/MapJoinTab/Host"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 32.0
-grow_horizontal = 2
-theme_override_constants/separation = 0
-split_offset = 24
-
-[node name="IP" type="RichTextLabel" parent="MainMenuUI/MapJoinTab/Host/HSplitContainer"]
-layout_mode = 2
-text = "IP:"
-
-[node name="TextEdit" type="TextEdit" parent="MainMenuUI/MapJoinTab/Host/HSplitContainer"]
-layout_mode = 2
-text = "192.168.1.102"
-
-[node name="JoinGameButton" type="Button" parent="MainMenuUI/MapJoinTab/Host"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_top = -4.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 32
-text = "JOIN"
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-visible = false
-script = ExtResource("4_opfnp")
 
-[node name="Main" type="NinePatchRect" parent="CanvasLayer"]
-anchors_preset = 7
+[node name="Main" type="Control" parent="CanvasLayer"]
+custom_minimum_size = Vector2(144, 220)
+layout_mode = 3
 anchor_left = 0.5
-anchor_top = 1.0
+anchor_top = 0.96
 anchor_right = 0.5
+anchor_bottom = 0.96
+offset_left = -72.0
+offset_top = -220.08
+offset_right = 72.0
+offset_bottom = -0.0800171
+script = ExtResource("1_n45e2")
+startOpen = true
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Main"]
+custom_minimum_size = Vector2(144, 220)
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -135.5
-offset_top = -256.0
-offset_right = 135.5
-offset_bottom = -16.0
 grow_horizontal = 2
-grow_vertical = 0
+grow_vertical = 2
+theme = SubResource("Theme_16hvj")
 texture = ExtResource("4_ce3w2")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 16
@@ -614,52 +421,91 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="PlayButton" type="Button" parent="CanvasLayer/Main"]
+[node name="PlayButton" type="Button" parent="CanvasLayer/Main/NinePatchRect"]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 80.0
-grow_horizontal = 2
-theme = SubResource("Theme_n45e2")
+anchors_preset = -1
+anchor_left = 0.056
+anchor_top = 0.036
+anchor_right = 0.944
+anchor_bottom = 0.255
+offset_left = -0.0640001
+offset_top = 0.0799994
+offset_right = 0.0639954
+offset_bottom = -0.100006
+theme = SubResource("Theme_16hvj")
 text = "PLAY"
 
-[node name="LocalButton" type="Button" parent="CanvasLayer/Main"]
+[node name="EditorButton" type="Button" parent="CanvasLayer/Main/NinePatchRect"]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 16.0
-offset_top = 88.0
-offset_right = -16.0
-offset_bottom = 152.0
-grow_horizontal = 2
-theme = SubResource("Theme_n45e2")
-text = "LOCAL"
-
-[node name="EditorButton" type="Button" parent="CanvasLayer/Main"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 16.0
-offset_top = 160.0
-offset_right = -16.0
-offset_bottom = 224.0
-grow_horizontal = 2
-theme = SubResource("Theme_n45e2")
+anchors_preset = -1
+anchor_left = 0.056
+anchor_top = 0.273
+anchor_right = 0.944
+anchor_bottom = 0.491
+offset_left = -0.0640001
+offset_top = -0.0600014
+offset_right = 0.0639954
+offset_bottom = -0.0200043
+theme = SubResource("Theme_16hvj")
+disabled = true
 text = "EDITOR"
 
-[node name="MapSelector" type="NinePatchRect" parent="CanvasLayer"]
-anchors_preset = 15
+[node name="SettingsButton" type="Button" parent="CanvasLayer/Main/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.056
+anchor_top = 0.509
+anchor_right = 0.944
+anchor_bottom = 0.727
+offset_left = -0.0640001
+offset_top = 0.0199966
+offset_right = 0.0639954
+offset_bottom = 0.0599823
+theme = SubResource("Theme_16hvj")
+disabled = true
+text = "SETTINGS"
+
+[node name="ExitButton" type="Button" parent="CanvasLayer/Main/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.056
+anchor_top = 0.745
+anchor_right = 0.944
+anchor_bottom = 0.964
+offset_left = -0.0640001
+offset_top = 0.0999908
+offset_right = 0.0639954
+offset_bottom = -0.0800171
+theme = SubResource("Theme_16hvj")
+text = "EXIT"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Main"]
+libraries = {
+&"": SubResource("AnimationLibrary_16hvj")
+}
+
+[node name="Play" type="Control" parent="CanvasLayer"]
+custom_minimum_size = Vector2(144, 220)
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.185
+anchor_right = 0.5
+anchor_bottom = 0.185
+offset_left = -72.0
+offset_top = 0.119995
+offset_right = 72.0
+offset_bottom = 220.12
+script = ExtResource("5_opfnp")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Play"]
+custom_minimum_size = Vector2(144, 220)
+layout_mode = 1
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 608.0
-offset_top = 32.0
-offset_right = -32.0
-offset_bottom = -32.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = SubResource("Theme_16hvj")
 texture = ExtResource("4_ce3w2")
 region_rect = Rect2(0, 0, 48, 48)
 patch_margin_left = 16
@@ -667,108 +513,452 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CanvasLayer/MapSelector"]
+[node name="LocalButton" type="Button" parent="CanvasLayer/Play/NinePatchRect"]
 layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 16.0
-offset_top = 16.0
-offset_right = -16.0
-offset_bottom = 80.0
-grow_horizontal = 2
-theme = SubResource("Theme_n45e2")
-text = "Dual Peaks"
-fit_content = true
-scroll_active = false
-horizontal_alignment = 1
-vertical_alignment = 1
+anchors_preset = -1
+anchor_left = 0.056
+anchor_top = 0.036
+anchor_right = 0.944
+anchor_bottom = 0.255
+offset_left = -0.0640001
+offset_top = 0.0799994
+offset_right = 0.0639954
+offset_bottom = -0.100006
+theme = SubResource("Theme_16hvj")
+disabled = true
+text = "Local"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/MapSelector"]
+[node name="HostButton" type="Button" parent="CanvasLayer/Play/NinePatchRect"]
 layout_mode = 1
-anchors_preset = 9
+anchors_preset = -1
+anchor_left = 0.056
+anchor_top = 0.273
+anchor_right = 0.944
+anchor_bottom = 0.491
+offset_left = -0.0640001
+offset_top = -0.0600014
+offset_right = 0.0639954
+offset_bottom = -0.0200043
+theme = SubResource("Theme_16hvj")
+disabled = true
+text = "Host"
+
+[node name="JoinButton" type="Button" parent="CanvasLayer/Play/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.056
+anchor_top = 0.509
+anchor_right = 0.944
+anchor_bottom = 0.727
+offset_left = -0.0640001
+offset_top = 0.0199966
+offset_right = 0.0639954
+offset_bottom = 0.0599823
+theme = SubResource("Theme_16hvj")
+disabled = true
+text = "Join"
+
+[node name="BackButton" type="Button" parent="CanvasLayer/Play/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.056
+anchor_top = 0.745
+anchor_right = 0.944
+anchor_bottom = 0.964
+offset_left = -0.0640001
+offset_top = 0.0999908
+offset_right = 0.0639954
+offset_bottom = -0.0800171
+theme = SubResource("Theme_16hvj")
+text = "BACK"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Play"]
+libraries = {
+&"": SubResource("AnimationLibrary_5egv6")
+}
+
+[node name="MapSelector" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchor_left = 0.66
+anchor_top = 0.012
+anchor_right = 0.993
 anchor_bottom = 1.0
-offset_left = -96.0
-grow_vertical = 2
+offset_left = -0.320007
+offset_top = 0.224
+offset_right = 0.0639648
+script = ExtResource("6_opfnp")
+startOpen = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MapSelector/ScrollContainer"]
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MapSelector"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.012
+anchor_right = 0.993
+anchor_bottom = 1.0
+offset_top = -7.68
+offset_right = 2.68799
+grow_horizontal = 0
+grow_vertical = 2
+theme = SubResource("Theme_16hvj")
+texture = ExtResource("4_ce3w2")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer/MapSelector/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.667
+anchor_bottom = 1.0
+offset_left = 0.128021
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_t1dhk")
+current_tab = 0
+
+[node name="Official" type="ScrollContainer" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="MapButton" type="Button" parent="CanvasLayer/MapSelector/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(96, 96)
+[node name="MapButton1" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_trj04")
+theme = SubResource("Theme_16hvj")
+text = "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+text_overrun_behavior = 3
 
-[node name="MapButton2" type="Button" parent="CanvasLayer/MapSelector/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(96, 96)
+[node name="MapButton2" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_trj04")
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
 
-[node name="MapButton3" type="Button" parent="CanvasLayer/MapSelector/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(96, 96)
+[node name="MapButton3" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_trj04")
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
 
-[node name="MapButton4" type="Button" parent="CanvasLayer/MapSelector/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(96, 96)
+[node name="MapButton4" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_trj04")
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
 
-[node name="MapButton5" type="Button" parent="CanvasLayer/MapSelector/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(96, 96)
+[node name="MapButton5" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_trj04")
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
 
-[node name="MapButton6" type="Button" parent="CanvasLayer/MapSelector/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(96, 96)
+[node name="MapButton6" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_trj04")
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
 
-[node name="MapButton7" type="Button" parent="CanvasLayer/MapSelector/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(96, 96)
+[node name="MapButton7" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
-theme_override_styles/normal = SubResource("StyleBoxTexture_trj04")
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
 
-[node name="PlayButton" type="Button" parent="CanvasLayer/MapSelector"]
+[node name="MapButton8" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton9" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton10" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton11" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton12" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton13" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton14" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton15" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton16" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton17" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton18" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="Custom" type="ScrollContainer" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+
+[node name="MapButton1" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
+text_overrun_behavior = 3
+
+[node name="MapButton2" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton3" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton4" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton5" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton6" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton7" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton8" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton9" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton10" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton11" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton12" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton13" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton14" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton15" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton16" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton17" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapButton18" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+text = "e"
+text_overrun_behavior = 3
+
+[node name="MapName" type="RichTextLabel" parent="CanvasLayer/MapSelector/NinePatchRect"]
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -64.0
+anchors_preset = -1
+anchor_left = 0.021
+anchor_top = 0.012
+anchor_right = 0.979
+anchor_bottom = 0.15
+offset_left = -0.0640011
+offset_top = 0.32
+offset_right = 0.0639954
 grow_horizontal = 2
-grow_vertical = 0
-theme = SubResource("Theme_n45e2")
-text = "PLAY"
+theme = SubResource("Theme_t1dhk")
+theme_override_font_sizes/normal_font_size = 32
+text = "Creative Map Name go brrrrrr"
+horizontal_alignment = 1
 
-[node name="AnimationOpen" type="AnimationPlayer" parent="CanvasLayer"]
+[node name="MapImg" type="ColorRect" parent="CanvasLayer/MapSelector/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.04
+anchor_top = 0.175
+anchor_right = 0.96
+anchor_bottom = 0.725
+offset_left = -0.0918465
+offset_right = 0.0918274
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="MapSize" type="RichTextLabel" parent="CanvasLayer/MapSelector/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.021
+anchor_top = 0.725
+anchor_right = 0.979
+anchor_bottom = 0.794
+offset_left = -0.0640011
+offset_right = 0.0639954
+offset_bottom = -0.160034
+grow_horizontal = 2
+theme = SubResource("Theme_t1dhk")
+bbcode_enabled = true
+text = "16x16"
+
+[node name="MapAuthor" type="RichTextLabel" parent="CanvasLayer/MapSelector/NinePatchRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.021
+anchor_top = 0.725
+anchor_right = 0.979
+anchor_bottom = 0.794
+offset_left = 15.936
+offset_top = 16.0
+offset_right = -15.936
+offset_bottom = -12.16
+grow_horizontal = 2
+theme = SubResource("Theme_t1dhk")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_opfnp")
+bbcode_enabled = true
+text = "by NameisveryCool"
+horizontal_alignment = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/MapSelector"]
+root_node = NodePath("../../Main/NinePatchRect")
 libraries = {
-&"": SubResource("AnimationLibrary_cp0ys")
+&"": SubResource("AnimationLibrary_n45e2")
 }
 
-[node name="AnimationClose" type="AnimationPlayer" parent="CanvasLayer"]
-libraries = {
-&"": SubResource("AnimationLibrary_trj04")
-}
-
-[connection signal="pressed" from="MainMenuUI/MainPanel/PlayButton" to="MainMenuUI" method="_on_play_button_pressed"]
-[connection signal="pressed" from="MainMenuUI/MainPanel/HostButton" to="MainMenuUI" method="_on_host_button_pressed"]
-[connection signal="pressed" from="MainMenuUI/MainPanel/JoinButton" to="MainMenuUI" method="_on_join_button_pressed"]
-[connection signal="pressed" from="MainMenuUI/MainPanel/EditorButton" to="MainMenuUI" method="_on_editor_pressed"]
-[connection signal="focus_exited" from="MainMenuUI/MapEditorTab/New/MapID/TextEdit" to="MainMenuUI/MapEditorTab/New/MapID/TextEdit" method="_on_focus_exited"]
-[connection signal="text_submitted" from="MainMenuUI/MapEditorTab/New/MapID/TextEdit" to="MainMenuUI/MapEditorTab/New/MapID/TextEdit" method="_on_text_submitted"]
-[connection signal="focus_exited" from="MainMenuUI/MapEditorTab/New/MapWidth/TextEdit" to="MainMenuUI/MapEditorTab/New/MapWidth/TextEdit" method="_on_focus_exited"]
-[connection signal="text_submitted" from="MainMenuUI/MapEditorTab/New/MapWidth/TextEdit" to="MainMenuUI/MapEditorTab/New/MapWidth/TextEdit" method="_on_text_submitted"]
-[connection signal="focus_exited" from="MainMenuUI/MapEditorTab/New/MapHeight/TextEdit" to="MainMenuUI/MapEditorTab/New/MapHeight/TextEdit" method="_on_focus_exited"]
-[connection signal="text_submitted" from="MainMenuUI/MapEditorTab/New/MapHeight/TextEdit" to="MainMenuUI/MapEditorTab/New/MapHeight/TextEdit" method="_on_text_submitted"]
-[connection signal="pressed" from="MainMenuUI/MapEditorTab/New/MapEditorButton" to="MainMenuUI" method="_on_map_editor_button_pressed"]
-[connection signal="visibility_changed" from="MainMenuUI/MapPlayTab/Play" to="MainMenuUI" method="_on_host_visibility_changed"]
-[connection signal="pressed" from="MainMenuUI/MapPlayTab/Play/gamePlayStartButton" to="MainMenuUI" method="_on_game_play_start_button_pressed"]
-[connection signal="text_changed" from="MainMenuUI/MapPlayTab/Play/ArmyCostContainer/TextEdit" to="MainMenuUI/MapPlayTab/Play/ArmyCostContainer/TextEdit" method="_on_text_submitted"]
-[connection signal="visibility_changed" from="MainMenuUI/MapHostTab/Host" to="MainMenuUI" method="_on_host_visibility_changed"]
-[connection signal="pressed" from="MainMenuUI/MapHostTab/Host/hostGameButton" to="MainMenuUI" method="_on_host_game_button_pressed"]
-[connection signal="pressed" from="MainMenuUI/MapHostTab/Host/startGameButton" to="MainMenuUI" method="_on_start_game_button_pressed"]
-[connection signal="text_changed" from="MainMenuUI/MapHostTab/Host/ArmyCostContainer/TextEdit" to="MainMenuUI/MapHostTab/Host/ArmyCostContainer/TextEdit" method="_on_text_submitted"]
-[connection signal="pressed" from="MainMenuUI/MapJoinTab/Host/JoinGameButton" to="MainMenuUI" method="_on_join_game_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/NinePatchRect/PlayButton" to="CanvasLayer/Main" method="_on_play_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Main/NinePatchRect/ExitButton" to="CanvasLayer/Main" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Play/NinePatchRect/BackButton" to="CanvasLayer/Play" method="_on_back_button_pressed"]

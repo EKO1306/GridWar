@@ -3,7 +3,7 @@ extends Node2D
 var scenePassover
 var changingScene
 var main
-
+# hi this is micheal hahahahha >:3
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	main = preload("res://Scenes/main_menu.tscn").instantiate()
