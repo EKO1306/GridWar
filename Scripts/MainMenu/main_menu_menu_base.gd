@@ -2,6 +2,7 @@ extends Control
 
 @export var startOpen = false
 
+@export var openWithTab : Array[Node]
 
 var open = false
 
@@ -14,13 +15,17 @@ func _ready() -> void:
 func openTab():
 	if open:
 		return
-	open = true
-	$AnimationPlayer.play("Open")
 	onOpenTab()
 	for i in get_parent().get_children():
 		if i == self:
 			continue
+		for a in openWithTab:
+			if i == a:
+				continue
 		i.closeTab()
+		for a in openWithTab:
+			a.onOpenTab()
+
 func closeTab():
 	if not open:
 		return
@@ -28,4 +33,7 @@ func closeTab():
 	$AnimationPlayer.play("Closed")
 
 func onOpenTab():
-	pass
+	if open:
+		return
+	open = true
+	$AnimationPlayer.play("Open")

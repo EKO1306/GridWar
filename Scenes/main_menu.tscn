@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://d0v8rnxqrfmpp"]
+[gd_scene load_steps=45 format=3 uid="uid://d0v8rnxqrfmpp"]
 
 [ext_resource type="Script" uid="uid://h8bn5nja2nu3" path="res://Scripts/MainMenu/mainMenu_main.gd" id="1_n45e2"]
 [ext_resource type="FontFile" uid="uid://cwiw18el0nvtw" path="res://Misc/Fonts/Minecraft.ttf" id="2_sis5w"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://rgbtq8fxktsc" path="res://Images/UI/MainMenu/ButtonBright.png" id="5_n45e2"]
 [ext_resource type="Script" uid="uid://dah80kbood71e" path="res://Scripts/MainMenu/mainMenu_play.gd" id="5_opfnp"]
 [ext_resource type="Script" uid="uid://c1br6j7fjs3h0" path="res://Scripts/MainMenu/mainMenu_mapSelector.gd" id="6_opfnp"]
+[ext_resource type="Script" uid="uid://dkyk7dfa378hi" path="res://Scripts/MainMenu/mainMenu_local.gd" id="7_cp0ys"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yhxw7"]
 atlas = ExtResource("5_n45e2")
@@ -96,6 +97,23 @@ Button/styles/hover = SubResource("StyleBoxTexture_yhxw7")
 Button/styles/normal = SubResource("StyleBoxTexture_16hvj")
 Button/styles/pressed = SubResource("StyleBoxTexture_vr1f0")
 
+[sub_resource type="Animation" id="Animation_trj04"]
+resource_name = "Closed"
+length = 0.5
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 5000)]
+}
+
 [sub_resource type="Animation" id="Animation_cp0ys"]
 resource_name = "Open"
 length = 0.5
@@ -128,10 +146,17 @@ tracks/0/keys = {
 "values": [Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_trj04"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_16hvj"]
+_data = {
+&"Closed": SubResource("Animation_trj04"),
+&"Open": SubResource("Animation_cp0ys"),
+&"RESET": SubResource("Animation_yhxw7")
+}
+
+[sub_resource type="Animation" id="Animation_t1dhk"]
 resource_name = "Closed"
 length = 0.5
-step = 0.25
+step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -142,14 +167,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(2, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 5000)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_16hvj"]
-_data = {
-&"Closed": SubResource("Animation_trj04"),
-&"Open": SubResource("Animation_cp0ys"),
-&"RESET": SubResource("Animation_yhxw7")
+"values": [Vector2(0, 0), Vector2(0, -5000)]
 }
 
 [sub_resource type="Animation" id="Animation_16hvj"]
@@ -182,23 +200,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(0, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_t1dhk"]
-resource_name = "Closed"
-length = 0.5
-step = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("NinePatchRect:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(2, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(0, -5000)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5egv6"]
@@ -275,6 +276,13 @@ texture_margin_right = 16.0
 texture_margin_bottom = 16.0
 modulate_color = Color(1, 1, 1, 0.5)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_t1dhk"]
+texture = SubResource("AtlasTexture_6qfrh")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ce3w2"]
 texture = SubResource("AtlasTexture_opfnp")
 texture_margin_left = 16.0
@@ -310,39 +318,12 @@ Button/styles/pressed = SubResource("StyleBoxTexture_trj04")
 RichTextLabel/fonts/normal_font = ExtResource("2_sis5w")
 RichTextLabel/styles/normal = SubResource("StyleBoxTexture_trj04")
 TabContainer/fonts/font = ExtResource("2_sis5w")
-TabContainer/styles/panel = SubResource("StyleBoxTexture_trj04")
+TabContainer/styles/panel = SubResource("StyleBoxTexture_t1dhk")
 TabContainer/styles/tab_hovered = SubResource("StyleBoxTexture_n45e2")
 TabContainer/styles/tab_selected = SubResource("StyleBoxTexture_ce3w2")
 TabContainer/styles/tab_unselected = SubResource("StyleBoxTexture_trj04")
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_opfnp"]
-
-[sub_resource type="Animation" id="Animation_ce3w2"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../MapSelector/NinePatchRect:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_opfnp"]
 resource_name = "Closed"
@@ -378,11 +359,94 @@ tracks/0/keys = {
 "values": [Vector2(0, 5000), Vector2(0, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_ce3w2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../MapSelector/NinePatchRect:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n45e2"]
 _data = {
 &"Closed": SubResource("Animation_opfnp"),
 &"Open": SubResource("Animation_n45e2"),
 &"RESET": SubResource("Animation_ce3w2")
+}
+
+[sub_resource type="Animation" id="Animation_vtepg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect/TabContainer:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8dnnj"]
+resource_name = "Closed"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(2, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 5000)]
+}
+
+[sub_resource type="Animation" id="Animation_5egv6"]
+resource_name = "Open"
+length = 0.5
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("NinePatchRect:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(0, 5000), Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_m3bi6"]
+_data = {
+&"Closed": SubResource("Animation_8dnnj"),
+&"Open": SubResource("Animation_5egv6"),
+&"RESET": SubResource("Animation_vtepg")
 }
 
 [node name="MainMenu" type="Node2D"]
@@ -525,7 +589,6 @@ offset_top = 0.0799994
 offset_right = 0.0639954
 offset_bottom = -0.100006
 theme = SubResource("Theme_16hvj")
-disabled = true
 text = "Local"
 
 [node name="HostButton" type="Button" parent="CanvasLayer/Play/NinePatchRect"]
@@ -587,7 +650,6 @@ offset_left = -0.320007
 offset_top = 0.224
 offset_right = 0.0639648
 script = ExtResource("6_opfnp")
-startOpen = true
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MapSelector"]
 layout_mode = 1
@@ -607,284 +669,299 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="TabContainer" type="TabContainer" parent="CanvasLayer/MapSelector/NinePatchRect"]
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MapSelector/NinePatchRect"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = -0.667
 anchor_bottom = 1.0
-offset_left = 0.128021
+offset_left = 0.12793
+grow_horizontal = 0
+grow_vertical = 2
+theme = SubResource("Theme_16hvj")
+texture = ExtResource("4_ce3w2")
+region_rect = Rect2(48, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_t1dhk")
 current_tab = 0
 
-[node name="Official" type="ScrollContainer" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer"]
+[node name="Official" type="ScrollContainer" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer"]
 layout_mode = 2
 metadata/_tab_index = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Official"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="MapButton1" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+[node name="MapButton1" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Official/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
 text_overrun_behavior = 3
 
-[node name="MapButton2" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+[node name="MapButton2" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Official/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton3" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+[node name="MapButton3" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Official/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton4" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+[node name="MapButton4" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Official/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton5" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+[node name="MapButton5" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Official/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton6" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+[node name="MapButton6" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Official/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton7" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+[node name="MapButton7" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Official/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton8" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+[node name="MapButton8" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Official/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton9" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+[node name="MapButton9" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Official/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton10" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+[node name="MapButton10" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Official/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton11" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+[node name="MapButton11" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Official/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton12" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+[node name="MapButton12" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Official/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton13" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+[node name="MapButton13" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Official/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton14" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+[node name="MapButton14" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Official/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton15" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+[node name="MapButton15" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Official/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton16" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+[node name="MapButton16" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Official/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton17" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+[node name="MapButton17" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Official/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton18" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Official/VBoxContainer"]
+[node name="MapButton18" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Official/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="Custom" type="ScrollContainer" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer"]
+[node name="Custom" type="ScrollContainer" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer"]
 visible = false
 layout_mode = 2
 metadata/_tab_index = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Custom"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 
-[node name="MapButton1" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+[node name="MapButton1" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Custom/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"
 text_overrun_behavior = 3
 
-[node name="MapButton2" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+[node name="MapButton2" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Custom/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton3" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+[node name="MapButton3" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Custom/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton4" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+[node name="MapButton4" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Custom/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton5" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+[node name="MapButton5" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Custom/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton6" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+[node name="MapButton6" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Custom/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton7" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+[node name="MapButton7" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Custom/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton8" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+[node name="MapButton8" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Custom/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton9" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+[node name="MapButton9" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Custom/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton10" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+[node name="MapButton10" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Custom/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton11" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+[node name="MapButton11" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Custom/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton12" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+[node name="MapButton12" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Custom/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton13" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+[node name="MapButton13" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Custom/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton14" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+[node name="MapButton14" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Custom/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton15" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+[node name="MapButton15" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Custom/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton16" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+[node name="MapButton16" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Custom/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton17" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+[node name="MapButton17" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Custom/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
 text = "e"
 text_overrun_behavior = 3
 
-[node name="MapButton18" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/TabContainer/Custom/VBoxContainer"]
+[node name="MapButton18" type="Button" parent="CanvasLayer/MapSelector/NinePatchRect/NinePatchRect/TabContainer/Custom/VBoxContainer"]
 custom_minimum_size = Vector2(0, 48)
 layout_mode = 2
 theme = SubResource("Theme_16hvj")
@@ -959,6 +1036,88 @@ libraries = {
 &"": SubResource("AnimationLibrary_n45e2")
 }
 
+[node name="Local" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("openWithTab")]
+layout_mode = 3
+anchor_right = 0.431
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = -0.512024
+script = ExtResource("7_cp0ys")
+openWithTab = [NodePath("../MapSelector")]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/Local"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_16hvj")
+texture = ExtResource("4_ce3w2")
+region_rect = Rect2(48, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="TabContainer" type="TabContainer" parent="CanvasLayer/Local/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_t1dhk")
+current_tab = 0
+
+[node name="Play" type="NinePatchRect" parent="CanvasLayer/Local/NinePatchRect/TabContainer"]
+layout_mode = 2
+theme = SubResource("Theme_16hvj")
+texture = ExtResource("4_ce3w2")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+metadata/_tab_index = 0
+
+[node name="StartButton" type="Button" parent="CanvasLayer/Local/NinePatchRect/TabContainer/Play"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.914
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_top = 0.159973
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = SubResource("Theme_16hvj")
+text = "START"
+
+[node name="BackButton" type="Button" parent="CanvasLayer/Local/NinePatchRect"]
+custom_minimum_size = Vector2(0, 48)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.984
+anchor_right = 0.984
+offset_left = -87.192
+offset_right = -0.192017
+offset_bottom = 48.0
+grow_horizontal = 0
+theme = SubResource("Theme_16hvj")
+text = "BACK"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Local"]
+libraries = {
+&"": SubResource("AnimationLibrary_m3bi6")
+}
+
 [connection signal="pressed" from="CanvasLayer/Main/NinePatchRect/PlayButton" to="CanvasLayer/Main" method="_on_play_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Main/NinePatchRect/ExitButton" to="CanvasLayer/Main" method="_on_exit_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Play/NinePatchRect/LocalButton" to="CanvasLayer/Play" method="_on_local_button_pressed"]
 [connection signal="pressed" from="CanvasLayer/Play/NinePatchRect/BackButton" to="CanvasLayer/Play" method="_on_back_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Local/NinePatchRect/TabContainer/Play/StartButton" to="CanvasLayer/Local" method="_on_start_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/Local/NinePatchRect/BackButton" to="CanvasLayer/Local" method="_on_back_button_pressed"]

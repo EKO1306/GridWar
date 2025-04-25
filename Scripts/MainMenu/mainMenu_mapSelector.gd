@@ -3,9 +3,14 @@ var mapJsonList
 var selectedMap
 
 func onOpenTab():
-	for i in $NinePatchRect/TabContainer/Official/VBoxContainer.get_children():
+	if open:
+		return
+	open = true
+	$AnimationPlayer.play("Open")
+	
+	for i in $NinePatchRect/NinePatchRect/TabContainer/Official/VBoxContainer.get_children():
 		i.queue_free()
-	for i in $NinePatchRect/TabContainer/Custom/VBoxContainer.get_children():
+	for i in $NinePatchRect/NinePatchRect/TabContainer/Custom/VBoxContainer.get_children():
 		i.queue_free()
 	
 	#If the maps directory doesn't exist, make one.
@@ -16,10 +21,12 @@ func onOpenTab():
 	mapJsonList = {"Official": {}, "Custom": {}}
 	updateMapList("Official")
 	updateMapList("Custom")
+	
+	selectMap("Official", "dual_peaks")
 
 func updateMapList(dir):
 	openDirectory(dir)
-	var mapContainerNode = get_node("NinePatchRect/TabContainer/" + dir + "/VBoxContainer")
+	var mapContainerNode = get_node("NinePatchRect/NinePatchRect/TabContainer/" + dir + "/VBoxContainer")
 	var counter = -1
 	for i in mapJsonList[dir]:
 		counter += 1

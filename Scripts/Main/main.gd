@@ -16,6 +16,7 @@ func _ready():
 	else:
 		currentTurn = [1,false]
 	if get_parent().scenePassover.get("armyBuilder") != null:
+		print("AAAAAAAAAAAAAAAAAAAAAAAA")
 		armyBuilder = get_parent().scenePassover.get("armyBuilder")
 		armyHighestCosts = get_parent().scenePassover.get("armyHighestCosts")
 		armyCostLimit = get_parent().scenePassover.get("armyCostLimit")
