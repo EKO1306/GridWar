@@ -1,0 +1,310 @@
+[gd_scene load_steps=17 format=3 uid="uid://b8lgukcgkm1xe"]
+
+[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_607xo"]
+[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_e6bpd"]
+[ext_resource type="Texture2D" uid="uid://bnnyxmekdc7d3" path="res://Images/Units/kingdomSiegeTower.png" id="3_607xo"]
+[ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_n0upp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hh628"]
+size = Vector2(24, 24)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xy4vo"]
+shader = ExtResource("2_e6bpd")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hxy64"]
+atlas = ExtResource("3_607xo")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1nnl7"]
+atlas = ExtResource("3_607xo")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r7k7f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yd1vq"]
+atlas = ExtResource("3_607xo")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vmr6d"]
+atlas = ExtResource("3_607xo")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e6bpd"]
+atlas = ExtResource("3_607xo")
+region = Rect2(0, 32, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_607xo"]
+atlas = ExtResource("3_607xo")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="Animation" id="Animation_3w5n0"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(-6.5, -31), Vector2(-6.5, -30.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(-6, -25), Vector2(-6, -24.75)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/ArmRight:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(-2, -28), Vector2(-2, -27.75)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/ArmRight:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [1.5708, 1.65806]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/Body2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(5, -26), Vector2(5, -25.75)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprites/Head2:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(4.5, -32), Vector2(4.5, -31.5)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprites/ArmRight2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(9, -29), Vector2(9, -28.75)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprites/ArmRight2:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [1.5708, 1.65806]
+}
+
+[sub_resource type="Animation" id="Animation_hh5sh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/ArmRight:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, -1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/ArmRight:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
+_data = {
+&"Idle": SubResource("Animation_3w5n0"),
+&"RESET": SubResource("Animation_hh5sh")
+}
+
+[node name="SiegeTower" type="Area2D" groups=["Unit"]]
+z_index = 10
+script = ExtResource("1_607xo")
+statName = "Siege Tower"
+statMaxHealth = 820
+statMaxActions = 2
+statCost = 2500
+statTraits = [["factionKingdom"], ["mechanical"], ["towering", 2]]
+statActionList = Array[Dictionary]([{
+"actions": 1,
+"name": "Longbow",
+"range": Vector2i(3, 7),
+"traits": [["damage", 140], ["ranged"]]
+}, {
+"actions": 0,
+"name": "Disembark",
+"range": Vector2i(1, 1),
+"traits": [["summon", "knight", "Knight"], ["usePerTurn", 1, 1], ["use", 2, 2]]
+}])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12, 12)
+shape = SubResource("RectangleShape2D_hh628")
+
+[node name="Sprites" type="CanvasGroup" parent="."]
+material = SubResource("ShaderMaterial_xy4vo")
+position = Vector2(12, 12)
+
+[node name="Body" type="Sprite2D" parent="Sprites"]
+texture_filter = 1
+texture = SubResource("AtlasTexture_hxy64")
+
+[node name="ArmRight" type="Sprite2D" parent="Sprites"]
+position = Vector2(4, -1)
+rotation = 1.5708
+texture = SubResource("AtlasTexture_1nnl7")
+flip_h = true
+flip_v = true
+
+[node name="Bow" type="Sprite2D" parent="Sprites/ArmRight"]
+material = SubResource("ShaderMaterial_r7k7f")
+position = Vector2(-0.138002, -4.28652)
+rotation = -1.5708
+texture = SubResource("AtlasTexture_yd1vq")
+offset = Vector2(-1, 0)
+
+[node name="Head" type="Sprite2D" parent="Sprites"]
+material = SubResource("ShaderMaterial_r7k7f")
+position = Vector2(-1, -6)
+texture = SubResource("AtlasTexture_vmr6d")
+offset = Vector2(-1, 0)
+
+[node name="Body2" type="Sprite2D" parent="Sprites"]
+texture_filter = 1
+position = Vector2(5, -26)
+texture = SubResource("AtlasTexture_hxy64")
+
+[node name="Head2" type="Sprite2D" parent="Sprites"]
+material = SubResource("ShaderMaterial_r7k7f")
+position = Vector2(4.5, -32)
+texture = SubResource("AtlasTexture_vmr6d")
+offset = Vector2(-1, 0)
+
+[node name="Tower" type="Sprite2D" parent="Sprites"]
+texture_filter = 1
+position = Vector2(0, -12)
+texture = SubResource("AtlasTexture_e6bpd")
+
+[node name="ArmRight2" type="Sprite2D" parent="Sprites"]
+position = Vector2(9, -29)
+rotation = 1.5708
+texture = SubResource("AtlasTexture_1nnl7")
+flip_h = true
+flip_v = true
+
+[node name="Bow" type="Sprite2D" parent="Sprites/ArmRight2"]
+material = SubResource("ShaderMaterial_r7k7f")
+position = Vector2(-0.138002, -4.28652)
+rotation = -1.5708
+texture = SubResource("AtlasTexture_yd1vq")
+offset = Vector2(-1, 0)
+
+[node name="Wheel1" type="Sprite2D" parent="Sprites"]
+texture_filter = 1
+position = Vector2(7, 3)
+texture = SubResource("AtlasTexture_607xo")
+offset = Vector2(-0.5, 5.5)
+
+[node name="Wheel2" type="Sprite2D" parent="Sprites"]
+texture_filter = 1
+position = Vector2(1, 9)
+texture = SubResource("AtlasTexture_607xo")
+offset = Vector2(-0.5, -0.5)
+
+[node name="Wheel3" type="Sprite2D" parent="Sprites"]
+texture_filter = 1
+position = Vector2(-7, 9)
+texture = SubResource("AtlasTexture_607xo")
+offset = Vector2(-0.5, -0.5)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_togdo")
+}
+
+[node name="HealthBar" parent="." instance=ExtResource("4_n0upp")]
+offset_left = 3.0
+offset_top = 18.0
+offset_right = 21.0
+offset_bottom = 22.0

@@ -2,6 +2,9 @@ extends "main_menu_menu_base.gd"
 var mapJsonList
 var selectedMap
 
+func postReady():
+	pass
+
 func onOpenTab():
 	if open:
 		return
@@ -41,6 +44,7 @@ func selectMap(dir, map):
 	var mapDetails = mapJsonList[dir][map]
 	$NinePatchRect/MapName.text = mapDetails.name
 	$NinePatchRect/MapSize.text = "{0}x{1}".format([int(mapDetails.gridWidth),int(mapDetails.gridHeight)])
+	$NinePatchRect/MapAuthor.text = "by " + mapDetails.author
 
 func openDirectory(dir):
 	var path
@@ -62,4 +66,6 @@ func openDirectory(dir):
 		if not json.parse(fileString) == OK:
 			print(json.get_error_message())
 			return
+			
+		json.data.get_or_add("author", "Unknown")
 		mapJsonList[dir].get_or_add(i.left(-5),json.data)

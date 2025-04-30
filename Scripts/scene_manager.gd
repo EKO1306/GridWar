@@ -1,6 +1,6 @@
 extends Node2D
 
-var scenePassover
+var scenePassover = {}
 var changingScene
 var main
 # hi this is micheal hahahahha >:3
@@ -16,7 +16,7 @@ func _process(_delta: float) -> void:
 		changingScene = null
 
 @rpc("any_peer","call_remote", "reliable")
-func changeScene(scene, passover = null):
+func changeScene(scene, passover = {}):
 	scenePassover = passover
 	for i in get_children():
 		i.queue_free()

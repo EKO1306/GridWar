@@ -10,11 +10,10 @@ const traitTooltipList = {
 
 	
 	#Health
+	,"mechanical": {"tooltip": "[color=Deepskyblue]Mechanical[/color]\nCannot be healed, but can be repaired."}
 	,"fading": {"tooltip": "[color=Deepskyblue]Fading[/color] [color=Springgreen]{0}[/color]\nLoses [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color] each turn.", "traitText": "{0}"}
 	,"lifeless": {"tooltip": "[color=Deepskyblue]Lifeless[/color]\nCannot regain [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color]."}
 	,"bloodRain": {"tooltip": "[color=Deepskyblue]Blood Rain[/color] [color=Springgreen]{0}[/color]\nAt the start of each turn, self and allies within 3 tiles [img width=24]res://Images/Icons/ActionTraits/Heal.png[/img][color=Lime]Heal[/color] [color=Springgreen]{0}[/color].\n[i][color=Slategray](Does not affect [img width=24]res://Images/Icons/Traits/mechanical.png[/img][color=Deepskyblue]Mechanical[/color] units.)[/color][/i]", "traitText": "{0}"}
-
-	#[img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color]
 	
 	#Movement
 	,"charge": {"tooltip": "[color=Deepskyblue]Charge[/color] [color=Springgreen]{0}[/color]\n+[color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Movement.png[/img][color=Skyblue]Movement[/color] until this unit takes an action.", "traitText": "{0}"}
@@ -27,15 +26,16 @@ const traitTooltipList = {
 	,"eagleEye": {"tooltip": "[color=Deepskyblue]Eagle Eye[/color] [color=Springgreen]{0}[/color]\nCan see hidden units from +[color=Springgreen]{0}[/color] tile(s) away.", "traitText": "{0}"}
 	,"exposed": {"tooltip": "[color=Deepskyblue]Exposed[/color]\nCannot hide."}
 	,"blind": {"tooltip": "[color=Deepskyblue]Blind[/color] [color=Springgreen]{0}[/color]\nCan only see up to [color=Springgreen]{0}[/color] tile(s) away.", "traitText": "{0}"}
+	,"towering": {"tooltip": "[color=Deepskyblue]Towering[/color] [color=Springgreen]{0}[/color]\nCan't hide. Can see over things as if they were [color=Springgreen]{0}[/color] tile(s) higher.", "traitText": "{0}"}
 	
-	#Fervor
-	,"faithful": {"tooltip": "[color=Deepskyblue]Faithful[/color] [color=Springgreen]{0}[/color], [color=Springgreen]{1}[/color]\nApon killing an enemy unit, gains {0} Fervor. When this unit dies, Faithful allies within 2 tiles gain {1} Fervor.", "traitText": "{0}, {1}"}
+	#Mana
+	,"faithful": {"tooltip": "[color=Deepskyblue]Faithful[/color] [color=Springgreen]{0}[/color], [color=Springgreen]{1}[/color]\nApon killing an enemy unit, gains [color=Springgreen]{1}[/color] [img width=24]res://Images/Icons/General/Mana.png[/img][color=Mediumorchid]Mana[/color]. When this unit dies, [img width=24]res://Images/Icons/Traits/faithful.png[/img][color=Deepskyblue]Faithful[/color] allies within 2 tiles gain [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Mana.png[/img][color=Mediumorchid]Mana[/color].", "traitText": "{0}, {1}"}
+	,"uninspired": {"tooltip": "[color=Deepskyblue]Uninspired[/color] [color=Springgreen]{0}[/color]\nStarts with [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Mana.png[/img][color=Mediumorchid]Mana[/color].", "traitText": "{0}"}
 	
 	#Death
 	,"wrathIncarnate": {"tooltip": "[color=Deepskyblue]Wrath Incarnate[/color]\nWhen this unit dies, inflicts [img width=24]res://Images/Icons/Status/wrath.png[/img][color=Hotpink]Wrath[/color] on ALL units for 3 turns. Units with [img width=24]res://Images/Icons/Status/wrath.png[/img][color=Hotpink]Wrath[/color] cannot use non-attack actions."}
 	
 	#Misc.
-	,"mechanical": {"tooltip": "[color=Deepskyblue]Mechanical[/color]\nCannot be healed, but can be repaired."}
 	,"infernalInvader": {"tooltip": "[color=Deepskyblue]Infernal Invader[/color] [color=Springgreen]{0}[/color]\nLoses [color=Springgreen]{1}[/color] [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color] each turn. Apon killing an enemy unit, permenantly gains [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] and [color=Springgreen]{2}[/color] [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Max Health[/color]. This is doubled if the killed unit's [img width=24]res://Images/Icons/General/Value.png[/img][color=Gold]Value[/color] is above this unit's [img width=24]res://Images/Icons/General/Value.png[/img][color=Gold]Value[/color].", "traitText": "{0}"}
 	,"immortalLord": {"tooltip": "[color=Deepskyblue]Immortal Lord[/color]\nAt the start of battle, [img width=24]res://Images/Icons/Status/Summon.png[/img][color=Hotpink]Summons[/color] 2 Infernal Totems. If this unit would die, instead this unit teleports onto an ally Totem's tile and erases it, and has their health set to 50%."}
 	,"unholyWarlord": {"tooltip": "[color=Deepskyblue]Unholy Warlord[/color]\nALL other allies gain +100% [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Max Health[/color] and [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] from [img width=24]res://Images/Icons/Traits/infernalInvader.png[/img][color=Deepskyblue]Infernal Invader[/color]."}
@@ -55,7 +55,7 @@ const actionTraitTooltipList = {
 	,"melee": {"tooltip": "[color=Darkorange]Melee Attack[/color]\nThis action is a melee attack."}
 	,"ranged": {"tooltip": "[color=Darkorange]Ranged Attack[/color]\nThis action is a ranged attack."}
 	,"recoil": {"tooltip": "[color=Darkorange]Recoil[/color] [color=Springgreen]{0}[/color]\n This unit deals [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] to itself on use.", "traitText": "{0}"}
-	
+	,"impale": {"tooltip": "[color=Darkorange]Impale[/color] [color=Springgreen]{0}[/color]\n Deals +[color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] for each [img width=24]res://Images/Icons/General/Movement.png[/img][color=Skyblue]Max Movement[/color] above 3 the target has.", "traitText": "{0}"}
 	#Defensive
 	,"heal": {"tooltip": "[color=Darkorange]Heal[/color] [color=Springgreen]{0}[/color]\nRestores [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color] to the target.\n[i][color=Slategray](Does not affect [img width=24]res://Images/Icons/Traits/mechanical.png[/img][color=Deepskyblue]Mechanical[/color] units.)[/color][/i]", "traitText": "{0}"}
 	,"devour": {"tooltip": "[color=Darkorange]Devour[/color]\nDeals +1000 [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] to allies. Killing a unit with this action restores [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color] to this unit equal to half the target's [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Max Health[/color]."}
@@ -71,13 +71,14 @@ const actionTraitTooltipList = {
 	#Usage
 	,"use": {"tooltip": "[color=Springgreen]{1}[/color] [color=Darkorange]Use(s)[/color]\nThis action may only be used [color=Springgreen]{1}[/color] time(s) total.", "traitText": "{0}/{1}"}
 	,"usePerTurn": {"tooltip": "[color=Springgreen]{1}[/color] [color=Darkorange]Use(s) Per Turn[/color]\nThis action may only be used [color=Springgreen]{1}[/color] time(s) per turn.", "traitText": "{0}/{1}"}
-	,"ammo": {"tooltip": "[color=Springgreen]{1}[/color] [color=Darkorange]Ammo[/color]\nUsing this action requires 1 ammo. Other actions can restore ammo.", "traitText": "{0}/{1}"}
-	,"reload": {"tooltip": "[color=Darkorange]Reload[/color] [color=Springgreen]{0}[/color]\nRestores [color=Springgreen]{0}[/color] ammo to all of this unit's actions.", "traitText": "{0}"}
+	,"manaCost": {"tooltip": "[color=Springgreen]{0}[/color] [color=Darkorange]Mana Cost[/color]\nThis action costs [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Mana.png[/img][color=Mediumorchid]Mana[/color] to use.", "traitText": "{0}"}
+	,"manaGain": {"tooltip": "[color=Springgreen]{0}[/color] [color=Darkorange]Mana Gain[/color]\nRegain [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Mana.png[/img][color=Mediumorchid]Mana[/color] on use.", "traitText": "{0}"}
 	,"rampage": {"tooltip": "[color=Darkorange]Rampage[/color] [color=Springgreen]{0}[/color]\nIf this action kills an enemy target, this unit gains [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Action.png[/img][color=Indianred]Action Point(s)[/color].", "traitText": "{0}"}
 	
 	#Misc.
 	,"selfTarget": {"tooltip": "[color=Darkorange]Target Self[/color]\nThis action has no target."}
 	,"summon": {"tooltip": "[color=Darkorange]Summon[/color] [color=Springgreen]{1}[/color]\n[img width=24]res://Images/Icons/Status/Summon.png[/img][color=Hotpink]Summons[/color] a(n) [color=Springgreen]{1}[/color] on the target tile.", "traitText": "{1}"}
+	,"conjure": {"tooltip": "[color=Darkorange]Conjure[/color] [color=Springgreen]{2}[/color]\n[img width=24]res://Images/Icons/Status/Summon.png[/img][color=Hotpink]Summons[/color] a(n) [color=Springgreen]{2}[/color] on or adjacent to the target enemy unit. The [color=Springgreen]{2}[/color] starts with 0 [img width=24]res://Images/Icons/General/Movement.png[/img][color=Skyblue]Movement[/color].", "traitText": "{1}"}
 	,"possess": {"tooltip": "[color=Deepskyblue]Possess[/color] [color=Springgreen]{0}[/color]\nTarget Unit with [img width=24]res://Images/Icons/General/Value.png[/img][color=Gold]Value[/color] [color=Springgreen]{0}[/color] or less switches to this unit's team. If this unit dies, they return to their original team.", "traitText": "{0}"}
 	,"mindBreak": {"tooltip": "[color=Deepskyblue]Mind Break[/color]\nIf the target enemy is killed by this action, they instead switch to this unit's team with 100 [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color], 0 [img width=24]res://Images/Icons/General/Movement.png[/img][color=Skyblue]Movement[/color] and 0 [img width=24]res://Images/Icons/General/Action.png[/img][color=Indianred]Action Points[/color]. If this unit dies, they return to their original team."}
 
@@ -110,9 +111,9 @@ const statusTooltipList = {
 }
 
 const unitList = [
-	["kingdomPeasant","kingdomSoldier","kingdomShielder","kingdomArcher","kingdomScout","kingdomAssassin","kingdomHealer","kingdomKnight","kingdomCannon","kingdomKingBilly"]
-	,["vikingRaider","vikingShieldmaiden","vikingTorchbearer","vikingBeserker","vikingUrsuanaRider","vikingHerbalist","vikingUrsuanaYaal"]
-	,["demonImp","demonDemon","demonSuccubus","demonBloodPriest","demonShadowDemon","demonGuard","demonWingedGuard","demonInfernalRift","demonRiftcarver","demonArchdaemonica"]
+	["kingdomPeasant","kingdomSoldier","kingdomShielder","kingdomSpearman","kingdomArcher","kingdomScout","kingdomAssassin","kingdomHealer","kingdomSwordcaster","kingdomKnight","kingdomLanceCavalry","kingdomCannon","kingdomSiegeTower","kingdomKingBilly"]
+	,["vikingRaider","vikingShieldmaiden","vikingTorchbearer","vikingBeserker","vikingUrsuanaRider","vikingHerbalist","vikingHunter","vikingUrsuanaYaal"]
+	,["demonImp","demonDemon","demonSuccubus","demonBloodPriest","demonShadowDemon","demonGuard","demonWingedGuard","demonInfernalRift","demonRiftcarver","demonManifestationLust","demonManifestationGreed","demonManifestationWrath","demonManifestationGluttony","demonUneededOppulence","demonArchdaemonica"]
 	,["angelCrusader"]
 ]
 
