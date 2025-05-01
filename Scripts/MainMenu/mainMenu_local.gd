@@ -11,6 +11,8 @@ func _on_start_button_pressed() -> void:
 	
 func getChosenMap():
 	var mapSelectorNode = get_parent().get_node("MapSelector")
+	if mapSelectorNode.selectedMap == null:
+		return null
 	var chosenMap = mapSelectorNode.mapJsonList[mapSelectorNode.selectedMap.dir][mapSelectorNode.selectedMap.map]
 	chosenMap.get_or_add("id",mapSelectorNode.selectedMap.dir)
 	return chosenMap
@@ -26,6 +28,8 @@ func getSettings():
 
 func sendToMain():
 	var chosenMap = getChosenMap()
+	if chosenMap == null:
+		return
 	var settings = getSettings()
 	get_tree().current_scene.changeScene("res://Scenes/main.tscn",{
 	"mapName": chosenMap.name,

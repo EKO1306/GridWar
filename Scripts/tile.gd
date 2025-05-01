@@ -151,7 +151,7 @@ func _on_gui_input(event: InputEvent) -> void:
 							if main.getTileAtXY(tileX,tileY).type != 1:
 								main.spawnUnit(main.selectedUnit + ".tscn",tileX,tileY,main.currentTurn[0])
 						else:
-							unit.free()
+							unit.queue_free()
 						main.updateScreen()
 						return
 					else:

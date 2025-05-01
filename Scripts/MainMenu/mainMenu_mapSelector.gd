@@ -2,8 +2,13 @@ extends "main_menu_menu_base.gd"
 var mapJsonList
 var selectedMap
 
+var mapLoadThread: Thread
+var mapSemaphore: Semaphore
+
 func postReady():
-	pass
+	mapLoadThread = Thread.new()
+	mapSemaphore = Semaphore.new()
+	mapLoadThread.start(updateMapList)
 
 func onOpenTab():
 	if open:
@@ -20,24 +25,29 @@ func onOpenTab():
 	var dir = DirAccess.open("user://")
 	if not dir.dir_exists("user://Saves//Maps"):
 		dir.make_dir_recursive("user://Saves//Maps")
-	
 	mapJsonList = {"Official": {}, "Custom": {}}
-	updateMapList("Official")
-	updateMapList("Custom")
 	
-	selectMap("Official", "dual_peaks")
+	mapSemaphore.post()
 
-func updateMapList(dir):
-	openDirectory(dir)
+func updateMapList():
+	while true:
+		mapSemaphore.wait()
+		for dir in ["Official","Custom"]:
+			openDirectory(dir)
+			@warning_ignore("unused_variable")
+			var counter = -1
+			for i in mapJsonList[dir]:
+				counter += 1
+				var buttonNode = preload("res://Nodes/MainMenu/map_selector_button.tscn").instantiate()
+				buttonNode.text = mapJsonList[dir][i].name
+				buttonNode.connect("pressed", selectMap.bind(dir, i))
+				createButton.call_deferred(dir,buttonNode)
+		if selectedMap == null:
+			selectMap.call_deferred("Official","dual_peaks")
+
+func createButton(dir,buttonNode):
 	var mapContainerNode = get_node("NinePatchRect/NinePatchRect/TabContainer/" + dir + "/VBoxContainer")
-	var counter = -1
-	for i in mapJsonList[dir]:
-		counter += 1
-		var buttonNode = preload("res://Nodes/MainMenu/map_selector_button.tscn").instantiate()
-		buttonNode.text = mapJsonList[dir][i].name
-		buttonNode.connect("pressed", selectMap.bind(dir, i))
-		mapContainerNode.add_child(buttonNode)
-		
+	mapContainerNode.add_child.call_deferred(buttonNode)
 
 func selectMap(dir, map):
 	selectedMap = {"dir": dir, "map": map}
@@ -55,6 +65,7 @@ func openDirectory(dir):
 	else:
 		return false
 	var mapFolder = DirAccess.open(path) as DirAccess
+	@warning_ignore("unused_variable")
 	var mapFiles = {}
 	for i in mapFolder.get_files():
 		var mapDir = "{directory}/{file}".format({"file": i, "directory": path})

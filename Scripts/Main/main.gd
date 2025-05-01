@@ -5,6 +5,7 @@ var selectedAction
 
 var mapEditor = false
 var unitCount = [0,0]
+var remainingUnitVisionCalcs
 @export var debugMode = true
 @onready var isMultiplayer = get_parent().scenePassover.get("isMultiplayer") != null
 
@@ -132,7 +133,6 @@ func endTurn(firstEnd = false, skipCalc = false):
 					armyBuilder = false
 					if armyHighestCosts == [0,0]:
 						armyHighestCosts = armyCosts
-						print(armyCosts)
 					for unit in unitControl.get_children():
 						unit.setupUnit()
 				else:
@@ -161,17 +161,23 @@ func hideGame():
 	uiCanvas.hide()
 
 func updateScreen():
-	#var time = Time.get_ticks_usec()
+	var time = Time.get_ticks_usec()
 	armyCosts = [0,0]
 	unitCount = [0,0]
 	for i in range(len(lightGrid)):
 		lightGrid[i] = false
+		hiddenGrid[i] = true
 	if armyBuilder:
 		updateScreenArmyBuilder()
 	for i in unitControl.get_children():
 		i.preUpdateScreen()
+	remainingUnitVisionCalcs = 0
 	for i in unitControl.get_children():
 		i.updateScreen()
+	var printedValue = INF
+	print("eee" + str(remainingUnitVisionCalcs))
+	while remainingUnitVisionCalcs > 0:
+		pass
 	for i in tileControl.get_children():
 		i.updateScreen()
 	for i in unitControl.get_children():
@@ -190,7 +196,7 @@ func updateScreen():
 			if isMultiplayer:
 				get_parent().changeScene.rpc("res://Scenes/victory_screen.tscn",{"winningTeam": winningTeam,"isMultiplayer": isMultiplayer})
 	uiCanvas.updateUI()
-	#print("Update Screen took " + str((Time.get_ticks_usec() - time) * 0.001) + " milliseconds.")
+	print("Update Screen took " + str((Time.get_ticks_usec() - time) * 0.001) + " milliseconds.")
 
 
 func _on_button_pressed() -> void:

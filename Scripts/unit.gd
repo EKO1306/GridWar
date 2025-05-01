@@ -22,7 +22,10 @@ var statMana = 0
 var rng = RandomNumberGenerator.new()
 var isVisible = false
 var isAlive = true
-var canHide
+var unitThread: Thread
+var unitSemaphore: Semaphore
+var unitMutex: Mutex
+var finishThread = false
 
 var statusList = []
 
@@ -35,6 +38,10 @@ var nodeStatusControl
 var nodeManaBar
 var nodeDamageText
 var flashTextColor
+var tileGrid
+var mapSize
+var hiddenGrid
+var isAction
 
 var animationMovementBuffer = []
 var movementOffset = Vector2.ZERO
@@ -44,6 +51,10 @@ var hasActed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	unitThread = Thread.new()
+	unitSemaphore = Semaphore.new()
+	unitMutex = Mutex.new()
+	unitThread.start(checkVisionArea)
 	$Sprites.material = ShaderMaterial.new()
 	$Sprites.material.shader = preload("res://Shaders/unitOutline.gdshader")
 	nodeDamageText = load("res://Nodes/UI/Units/rich_text_label.tscn").instantiate()
@@ -224,10 +235,6 @@ func startturn():
 	for hasMoltenDefence in hasTrait("moltenDefence"): #Grant molten defence if the unit has molten defence
 		addStatus("moltenDefence",1,[hasMoltenDefence[0][1]])
 	
-	for i in range(len(statActionList)): #Reset use per turn effects.
-		for hasUsePerTurn in hasTrait("usePerTurn", i):
-			statActionList[i].traits[hasUsePerTurn[1]][1] = hasUsePerTurn[0][2]
-	
 	for hasShieldwall in hasTrait("shieldwall"): #Grant block for each adjacent ally with the shield trait.
 		var finalBlock = 0
 		var adjacentUnits = getUnitsInArea(gridX,gridY,1,self,unitTeam)   
@@ -260,6 +267,11 @@ func startturn():
 			changeHealth(-hasInfernalInvader[0][1] * 2)
 		for hasFading in hasTrait("fading"): #Fading drains health each turn.
 			changeHealth(-hasFading[0][1])
+		for hasManaDrain in hasTrait("manaDrain"):
+			statMana -= hasManaDrain[0][1]
+			if statMana < 0:
+				statMana = 0
+				die(true)
 	
 	for hasBurning in hasStatus("burning"): #Burning deals damage each turn.
 		damage(hasBurning[0][2])
@@ -298,24 +310,24 @@ func updateGrid():
 	pass
 
 func preUpdateScreen():
-	canHide = true
+	main.hiddenGrid[gridY * main.gridWidth + gridX] = true
 	if not hasTrait("mounted").is_empty():
-		canHide = false
+		main.hiddenGrid[gridY * main.gridWidth + gridX] = false
 		return
 	if not hasTrait("flying").is_empty():
-		canHide = false
+		main.hiddenGrid[gridY * main.gridWidth + gridX] = false
 		return
 	if not hasTrait("exposed").is_empty():
-		canHide = false
+		main.hiddenGrid[gridY * main.gridWidth + gridX] = false
 		return
 	if not hasTrait("towering").is_empty():
-		canHide = false
+		main.hiddenGrid[gridY * main.gridWidth + gridX] = false
 		return
 	if not hasStatus("burning").is_empty():
-		canHide = false
+		main.hiddenGrid[gridY * main.gridWidth + gridX] = false
 		return
 	if not hasStatus("exposed").is_empty():
-		canHide = false
+		main.hiddenGrid[gridY * main.gridWidth + gridX] = false
 		return
 
 func updateScreen():
@@ -328,10 +340,19 @@ func updateScreen():
 		return
 	if main.currentTurn[1]:
 		if main.currentTurn[0] == unitTeam:
-			if main.selectedAction == null:
-				checkVisionArea()
+			tileGrid = main.tileGrid
+			mapSize = Vector2i(main.gridWidth,main.gridHeight)
+			hiddenGrid = main.hiddenGrid
+			isAction = main.selectedAction
+			if isAction == null:
+				main.remainingUnitVisionCalcs += 1
+				unitSemaphore.post()
 			elif main.selectedUnit == self:
-				checkVisionArea(statActionList[main.selectedAction])
+				main.remainingUnitVisionCalcs += 1
+				unitSemaphore.post()
+
+func tickDownCalculatedVision():
+	main.remainingUnitVisionCalcs -= 1
 
 func postUpdateScreen():
 	isVisible = main.lightGrid[gridY * main.gridWidth + gridX]
@@ -408,6 +429,7 @@ func updateStatusControl():
 		var traitTexture = load("res://Images/Icons/Status/" + str(status[0]) + ".png")
 		if traitTexture != null:
 			statusIconNode.texture = traitTexture
+		@warning_ignore("integer_division")
 		statusIconNode.position = Vector2((7 * (i % 3)) + 3.5,11 - (7 * (i / 3)))
 		statusIconNode.scale = Vector2(0.125,0.125)
 		traitTooltipList = main.statusTooltipList.get(status[0])
@@ -426,30 +448,53 @@ func updateStatusControl():
 			statusIconNode.get_node("Label2").text = str(status[1])
 		nodeStatusControl.add_child(statusIconNode)
 
-func checkVisionArea(action = null):
-	var _time = Time.get_ticks_usec()
-	var directionVector
-	var directionVectors = []
-	for y in range(-10,10):
-		for x in range(-10,10):
-			if x == 0:
-				if y == 0:
+func checkVisionArea():
+	while true:
+		unitSemaphore.wait()
+		
+		if finishThread:
+			return
+		
+		var action
+		if isAction != null:
+			action = statActionList[isAction]
+		var lightGrid = []
+		for y in mapSize.y:
+			for x in mapSize.x:
+				lightGrid.append(false)
+		
+		var time = Time.get_ticks_usec()
+		var directionVector
+		var directionVectors = []
+		for y in range(-10,10):
+			for x in range(-10,10):
+				if x == 0:
+					if y == 0:
+						continue
+				directionVector = Vector2(x/10.0,y/10.0).normalized()
+				if directionVectors.count(directionVector) != 0:
 					continue
-			directionVector = Vector2(x/10.0,y/10.0).normalized()
-			if directionVectors.count(directionVector) != 0:
-				continue
-			directionVectors.append(directionVector)
-			drawVisionLine(gridX,gridY,directionVector, action)
-	#print(Time.get_ticks_usec() - time)
+				directionVectors.append(directionVector)
+				lightGrid = drawVisionLine(gridX,gridY,directionVector,lightGrid,hiddenGrid,action)
+		var updateLights = []
+		for i in range(len(lightGrid)):
+			if lightGrid[i]:
+				updateLights.append(i)
+		unitMutex.lock()
+		main.remainingUnitVisionCalcs -= 1
+		for i in updateLights:
+			main.lightGrid[i] = true
+		unitMutex.unlock()
+		#print(Time.get_ticks_usec() - time)
 
-func drawVisionLine(lineX,lineY,lineVelocity, action):
+func drawVisionLine(lineX,lineY,lineVelocity, lightGrid, hiddenGrid,action):
 	var lineLength = 0
 	
 	var linePos
 	var lineTile
 	var lineBuffer = Vector2(0,0)
 	
-	var lineBaseHeight = main.tileGrid[gridY * main.gridWidth + lineX].height
+	var lineBaseHeight = tileGrid[gridY * mapSize.x + lineX].height
 	for hasTowering in hasTrait("towering"):
 		lineBaseHeight += hasTowering[0][1]
 	var lineMinHeight = 0
@@ -475,8 +520,8 @@ func drawVisionLine(lineX,lineY,lineVelocity, action):
 		if lineLength > lineMaxRange:
 			break
 		
-		linePos = lineY * main.gridWidth + lineX
-		lineTile = main.tileGrid[linePos]
+		linePos = lineY * mapSize.x + lineX
+		lineTile = tileGrid[linePos]
 		tileEffectiveHeight = lineTile.height
 		
 		if lineTile.type == 3: #Trees are considered 2 higher for vision, unless you're inside it.
@@ -492,11 +537,7 @@ func drawVisionLine(lineX,lineY,lineVelocity, action):
 			lightTile = false
 		if lineLength > foliageRange: #You cannot see into bushes and trees, unless you are adjacent to them.
 			if lineTile.type == 2 or lineTile.type == 3:
-				var lineUnit = main.getUnitAtXY(lineX,lineY)
-				if lineUnit != null:
-					if lineUnit.canHide: #Burning and mounted units can't hide.
-						lightTile = false
-				else:
+				if hiddenGrid[linePos]:
 					lightTile = false
 				
 		if action != null:
@@ -504,7 +545,7 @@ func drawVisionLine(lineX,lineY,lineVelocity, action):
 				lightTile = false
 		
 		if lightTile:
-			main.lightGrid[linePos] = true
+			lightGrid[linePos] = true
 		
 		if tileEffectiveHeight >= lineBaseHeight + 2: # If the tile is 2 or more height above the unit, you can only see one tile in, and the line ends.
 			if lineTile.type != 4:
@@ -528,10 +569,10 @@ func drawVisionLine(lineX,lineY,lineVelocity, action):
 			lineLength += 1
 			lineBuffer.y += 1
 		
-		if lineX >= main.gridWidth:
+		if lineX >= mapSize.x:
 			#Right border
 			break
-		if lineY >= main.gridHeight:
+		if lineY >= mapSize.y:
 			#Top border"
 			break
 		if lineX < 0:
@@ -539,7 +580,8 @@ func drawVisionLine(lineX,lineY,lineVelocity, action):
 			break
 		if lineY < 0:
 			#"Bottom border"
-			break#
+			break
+	return lightGrid
 
 func isActionPressed(key,action):
 	if Input.is_action_just_pressed(key):
@@ -760,6 +802,11 @@ func calcDamage(dmg, _includeAbsorb = false, unitSource = null, actionSource = n
 				if unitSource.hasTrait("devour",actionSource):
 					dmg += 1000
 	
+	for hasIntangible in hasTrait("intangible"):
+		if hasIntangible[0][1] >= dmg:
+			continue
+		dmg -= floor((dmg - hasIntangible[0][1]) / 2.0)
+	
 	for hasDefence in hasTrait("defence"): #Defence reduces damage taken.
 		dmg -= hasDefence[0][1]
 	for hasMoltenDefence in hasStatus("moltenDefence"):
@@ -914,7 +961,6 @@ func die(forceDeath = false):
 		var hasPossessed = unit.hasStatus("possessed")
 		if not hasPossessed.is_empty():
 			if hasPossessed[0][0][2] == self:
-				print(hasPossessed)
 				unit.removeStatus(hasPossessed[0][1])
 	
 	for hasFaithful in hasTrait("faithful"):
@@ -962,3 +1008,8 @@ func saveUnit():
 	,"team": unitTeam
 	,"spriteFlipped": $Sprites.scale.x == -1
 }
+
+func _exit_tree() -> void:
+	finishThread = true
+	unitSemaphore.post()
+	unitThread.wait_to_finish()

@@ -7,6 +7,7 @@ const traitTooltipList = {
 	,"shield": {"tooltip": "[color=Deepskyblue]Shield[/color] [color=Springgreen]{0}[/color]\nGain [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/Status/block.png[/img][color=Hotpink]Block[/color] at the start of each turn for 1 turn. [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] taken is dealt to block first.", "traitText": "{0}"}
 	,"shieldwall": {"tooltip": "[color=Deepskyblue]Shieldwall[/color]\nGain [img width=24]res://Images/Icons/Status/block.png[/img][color=Hotpink]Block[/color] equal to adjacent allies' [img width=24]res://Images/Icons/Traits/block.png[/img][color=Deepskyblue]Shield[/color] trait value each turn for 1 turn."}
 	,"moltenDefence": {"tooltip": "[color=Deepskyblue]Molten Defence[/color] [color=Springgreen]{0}[/color]\nThe first incoming [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] each turn is reduced by [color=Springgreen]{0}[/color].", "traitText": "{0}"}
+	,"intangible": {"tooltip": "[color=Deepskyblue]Intangible[/color] [color=Springgreen]{0}[/color]\nReduces incoming [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] EXCESS of [color=Springgreen]{0}[/color] by 50%.\n[i][color=Slategray](E.g Intangible 100 would reduce 500 [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] to 350. Calculated before other [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] reductions.)[/color][/i]", "traitText": "{0}"}
 
 	
 	#Health
@@ -31,7 +32,8 @@ const traitTooltipList = {
 	#Mana
 	,"faithful": {"tooltip": "[color=Deepskyblue]Faithful[/color] [color=Springgreen]{0}[/color], [color=Springgreen]{1}[/color]\nApon killing an enemy unit, gains [color=Springgreen]{1}[/color] [img width=24]res://Images/Icons/General/Mana.png[/img][color=Mediumorchid]Mana[/color]. When this unit dies, [img width=24]res://Images/Icons/Traits/faithful.png[/img][color=Deepskyblue]Faithful[/color] allies within 2 tiles gain [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Mana.png[/img][color=Mediumorchid]Mana[/color].", "traitText": "{0}, {1}"}
 	,"uninspired": {"tooltip": "[color=Deepskyblue]Uninspired[/color] [color=Springgreen]{0}[/color]\nStarts with [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Mana.png[/img][color=Mediumorchid]Mana[/color].", "traitText": "{0}"}
-	
+	,"manaDrain": {"tooltip": "[color=Darkorange]Mana Drain[/color] [color=Springgreen]{0}[/color]\nAt the start of each turn, loses [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Mana.png[/img][color=Mediumorchid]Mana[/color]. If this cost cannot be paid, this unit is erased.", "traitText": "{0}"}
+
 	#Death
 	,"wrathIncarnate": {"tooltip": "[color=Deepskyblue]Wrath Incarnate[/color]\nWhen this unit dies, inflicts [img width=24]res://Images/Icons/Status/wrath.png[/img][color=Hotpink]Wrath[/color] on ALL units for 3 turns. Units with [img width=24]res://Images/Icons/Status/wrath.png[/img][color=Hotpink]Wrath[/color] cannot use non-attack actions."}
 	
@@ -123,12 +125,14 @@ const unitList = [
 # Type 3: Trees (5)
 # Type 4: Bridge (1)
 var lightGrid = []
+var hiddenGrid = []
 
 func createGrid():
 	var tileNo = 0
 	for y in gridHeight:
 		for x in gridWidth:
 			lightGrid.append(false)
+			hiddenGrid.append(false)
 			var tile = preload("res://Nodes/tile.tscn").instantiate()
 			tile.tileNo = tileNo
 			tile.tileX = x
