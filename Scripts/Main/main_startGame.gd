@@ -69,7 +69,8 @@ const actionTraitTooltipList = {
 	,"poison": {"tooltip": "[color=Darkorange]Poison[/color] [color=Springgreen]{0}[/color]\nApplies [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/Status/poisoned.png[/img][color=Hotpink]Poisoned[/color] to the target for 5 turns. Poisoned units lose {0} [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color] each turn.", "traitText": "{0}"}
 	,"burn": {"tooltip": "[color=Darkorange]Burn[/color] [color=Springgreen]{0}[/color]\nApplies [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/Status/burning.png[/img][color=Hotpink]Burning[/color] to the target for 3 turns. Burning deals [color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] each turn and the unit cannot hide.", "traitText": "{0}"}
 	,"expose": {"tooltip": "[color=Darkorange]Expose[/color] [color=Springgreen]{0}[/color]\nApplies [img width=24]res://Images/Icons/Status/exposed.png[/img][color=Hotpink]Exposed[/color] to the target for {0} turn(s). Exposed units cannot hide.", "traitText": "{0}"}
-	
+	,"pacifismVow": {"tooltip": "[color=Darkorange]Vow of Pacifism[/color]\nApplies [img width=24]res://Images/Icons/Status/pacifism.png[/img][color=Hotpink]Pacifism[/color] to the target for 3 turns. Pacifist units cannot reduce targets below 1 [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color] with [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color]."}
+
 	#Usage
 	,"use": {"tooltip": "[color=Springgreen]{1}[/color] [color=Darkorange]Use(s)[/color]\nThis action may only be used [color=Springgreen]{1}[/color] time(s) total.", "traitText": "{0}/{1}"}
 	,"usePerTurn": {"tooltip": "[color=Springgreen]{1}[/color] [color=Darkorange]Use(s) Per Turn[/color]\nThis action may only be used [color=Springgreen]{1}[/color] time(s) per turn.", "traitText": "{0}/{1}"}
@@ -92,6 +93,8 @@ const statusTooltipList = {
 	#Offensive
 	"infernalInvader": {"tooltip": "[color=Hotpink]Infernal Invader[/color] [color=Springgreen]{0}[/color]\n +[color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] and 5x that much [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Max Health[/color].", "traitText": "{0}"}
 	,"gildedHoarder": {"tooltip": "[color=Hotpink]Gilded Hoarder[/color]\n+[color=Springgreen]{0}[/color] [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color].", "traitText": "{0}"}
+	,"pacifism": {"tooltip": "[color=Hotpink]Pacifism[/color]\nCannot reduce targets below 1 [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Health[/color] with [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color]."}
+
 	#Defensive
 	,"moltenDefence": {"tooltip": "[color=Hotpink]Molten Defence[/color] [color=Springgreen]{0}[/color]\nThe next incoming [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] is reduced by [color=Springgreen]{0}[/color].", "traitText": "{0}"}
 	,"block": {"tooltip": "[color=Hotpink]Block[/color] [color=Springgreen]{0}[/color]\n[img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] taken is dealt to block first.", "traitText": "{0}"}
@@ -116,7 +119,7 @@ const unitList = [
 	["kingdomPeasant","kingdomSoldier","kingdomShielder","kingdomSpearman","kingdomArcher","kingdomScout","kingdomAssassin","kingdomHealer","kingdomSwordcaster","kingdomKnight","kingdomLanceCavalry","kingdomCannon","kingdomSiegeTower","kingdomKingBilly"]
 	,["vikingRaider","vikingShieldmaiden","vikingTorchbearer","vikingBeserker","vikingUrsuanaRider","vikingHerbalist","vikingHunter","vikingUrsuanaYaal"]
 	,["demonImp","demonDemon","demonSuccubus","demonBloodPriest","demonShadowDemon","demonGuard","demonWingedGuard","demonInfernalRift","demonRiftcarver","demonManifestationLust","demonManifestationGreed","demonManifestationWrath","demonManifestationGluttony","demonUneededOppulence","demonArchdaemonica"]
-	,["angelCrusader"]
+	,["angelCrusader","angelMonk"]
 ]
 
 # Type 0: Empty (0)

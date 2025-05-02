@@ -110,8 +110,8 @@ position = Vector2(12, 12)
 
 [node name="Sword" type="Sprite2D" parent="Sprites"]
 material = SubResource("ShaderMaterial_r7k7f")
-position = Vector2(0, -6)
-rotation = -0.0872665
+position = Vector2(-0.542655, -4.91469)
+rotation = -0.078121
 texture = SubResource("AtlasTexture_3ib7t")
 offset = Vector2(-0.5, -3.5)
 flip_h = true

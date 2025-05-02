@@ -58,14 +58,16 @@ func _ready():
 	$Sprites.material = ShaderMaterial.new()
 	$Sprites.material.shader = preload("res://Shaders/unitOutline.gdshader")
 	nodeDamageText = load("res://Nodes/UI/Units/rich_text_label.tscn").instantiate()
+	nodeDamageText.z_index = 4095
 	nodeDamageText.hide()
 	add_child(nodeDamageText)
 	nodeStatusControl = CanvasGroup.new()
 	nodeStatusControl.material = $Sprites.material
-	nodeStatusControl.z_index = 4095
+	nodeStatusControl.z_index = 4090
 	add_child(nodeStatusControl)
 	nodeManaBar = preload("res://Nodes/UI/Units/unit_mana_bar.tscn").instantiate()
 	nodeManaBar.position = Vector2(2,-1)
+	nodeManaBar.z_index = 4090
 	add_child(nodeManaBar)
 	$AnimationPlayer.play("Idle")
 	$AnimationPlayer.speed_scale = rng.randf_range(0.9,1.1)
@@ -696,6 +698,9 @@ func calcActionUnit(targetUnit, targetPos):
 	for hasExpose in hasTrait("expose", actionNo): #Inficts exposed from expose trait
 		targetUnit.addStatus("exposed", hasExpose[0][1], [])
 		didActionTrigger = true
+	for hasPacifism in hasTrait("pacifismVow", actionNo): #Inficts exposed from expose trait
+		targetUnit.addStatus("pacifism", 3, [])
+		didActionTrigger = true
 	for hasPossess in hasTrait("possess", actionNo): #Inficts possessed
 		if targetUnit.statCost > hasPossess[0][1]:
 			continue
@@ -811,8 +816,16 @@ func calcDamage(dmg, _includeAbsorb = false, unitSource = null, actionSource = n
 		dmg -= hasDefence[0][1]
 	for hasMoltenDefence in hasStatus("moltenDefence"):
 		dmg -= hasMoltenDefence[0][2]
+	dmg = int(max(0,dmg))
+	if unitSource != null:
+		for hasPacifism in unitSource.hasStatus("pacifism"):
+			var finalHealth = statHealth
+			for hasBlock in hasStatus("block"):
+				finalHealth += hasBlock[0][2]
+			if dmg >= finalHealth:
+				dmg = finalHealth - 1
 	
-	return int(max(0,dmg))
+	return dmg
 
 func damage(dmg,unitSource = null, actionSource = null):
 	dmg = calcDamage(dmg, false, unitSource, actionSource)
