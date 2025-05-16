@@ -1011,6 +1011,8 @@ func saveUnit():
 	,"movement": statMovement
 	,"maxActions": statMaxActions
 	,"actions": statActions
+	,"maxMana": statMaxMana
+	,"mana": statMana
 	,"cost": statCost
 	,"traitsList": statTraits
 	,"actionList": statActionList

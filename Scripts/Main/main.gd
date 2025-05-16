@@ -63,6 +63,8 @@ func loadUnits(units):
 		loadUnitNode.statMovement = unit.movement
 		loadUnitNode.statMaxActions = unit.maxActions
 		loadUnitNode.statActions = unit.actions
+		loadUnitNode.statMaxMana = unit.maxMana
+		loadUnitNode.statMana = unit.mana
 		loadUnitNode.statCost = unit.cost
 		loadUnitNode.statTraits = unit.traitsList
 		loadUnitNode.statActionList = unit.actionList
