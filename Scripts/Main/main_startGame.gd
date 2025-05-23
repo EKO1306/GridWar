@@ -107,6 +107,7 @@ const statusTooltipList = {
 	,"exposed": {"tooltip": "[color=Hotpink]Exposed[/color]\nCannot hide."}
 	
 	#Misc
+	,"engaged": {"tooltip": "[color=Hotpink]Engaged[/color]\nThis unit cannot use ranged attacks."}
 	,"summon": {"tooltip": "[color=Hotpink]Summon[/color]\nThis unit is a summon. It does not count towards your team's [img width=24]res://Images/Icons/General/Value.png[/img][color=Gold]Value[/color] total."}
 	,"ursuanaYaalCommand": {"tooltip": "[color=Hotpink]Ursuana Yaal's Command[/color]\n+1 [img width=24]res://Images/Icons/General/Movement.png[/img][color=Skyblue]Movement[/color] and +50% [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color]."}
 	,"unholyWarlord": {"tooltip": "[color=Deepskyblue]Unholy Warlord[/color]\n+100% [img width=24]res://Images/Icons/General/Health.png[/img][color=Lime]Max Health[/color] and [img width=24]res://Images/Icons/General/Damage.png[/img][color=Coral]Damage[/color] from [img width=24]res://Images/Icons/Traits/infernalInvader.png[/img][color=Deepskyblue]Infernal Invader[/color]."}
@@ -119,7 +120,7 @@ const unitList = [
 	["kingdomPeasant","kingdomSoldier","kingdomShielder","kingdomSpearman","kingdomArcher","kingdomScout","kingdomAssassin","kingdomHealer","kingdomSwordcaster","kingdomKnight","kingdomLanceCavalry","kingdomCannon","kingdomSiegeTower","kingdomKingBilly"]
 	,["vikingRaider","vikingShieldmaiden","vikingTorchbearer","vikingBeserker","vikingUrsuanaRider","vikingHerbalist","vikingHunter","vikingUrsuanaYaal"]
 	,["demonImp","demonDemon","demonSuccubus","demonBloodPriest","demonShadowDemon","demonGuard","demonWingedGuard","demonInfernalRift","demonRiftcarver","demonManifestationLust","demonManifestationGreed","demonManifestationWrath","demonManifestationGluttony","demonUneededOppulence","demonArchdaemonica"]
-	,["angelCrusader","angelMonk"]
+	#,["angelCrusader","angelMonk"]
 ]
 
 # Type 0: Empty (0)

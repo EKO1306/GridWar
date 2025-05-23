@@ -237,6 +237,12 @@ func startturn():
 	for hasMoltenDefence in hasTrait("moltenDefence"): #Grant molten defence if the unit has molten defence
 		addStatus("moltenDefence",1,[hasMoltenDefence[0][1]])
 	
+	for i in range(len(statActionList)):
+		if hasTrait("ranged", i):
+			if not getUnitsInArea(gridX,gridY,1,self,1 - unitTeam).is_empty():
+				addStatus("engaged",1)
+			break
+	
 	for hasShieldwall in hasTrait("shieldwall"): #Grant block for each adjacent ally with the shield trait.
 		var finalBlock = 0
 		var adjacentUnits = getUnitsInArea(gridX,gridY,1,self,unitTeam)   
@@ -874,7 +880,9 @@ func checkActionValid(action, actionNo):
 	for hasManaCost in hasTrait("manaCost", actionNo):
 		if hasManaCost[0][1] > statMana:
 			return false
-	
+	if hasTrait("ranged", actionNo):
+		if hasStatus("engaged"):
+			return false
 	if hasStatus("wrath"):
 		if not hasTrait("melee", actionNo) and not hasTrait("ranged", actionNo):
 			return false
