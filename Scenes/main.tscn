@@ -104,7 +104,6 @@ border_blend = true
 [node name="Main" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_kqp5x")
-debugMode = false
 
 [node name="Paralax" type="Node2D" parent="."]
 position = Vector2(576, 324)
@@ -124,11 +123,20 @@ zoom = Vector2(3, 3)
 script = ExtResource("2_r14qm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+visible = false
 script = ExtResource("3_pb3m7")
 styleDark = SubResource("Theme_pgw6q")
 styleLight = SubResource("Theme_8kb4n")
 styleUpperDark = SubResource("Theme_5pli4")
 styleUpperLight = SubResource("Theme_nydmo")
+
+[node name="DebugIndicator" type="RichTextLabel" parent="Camera2D/CanvasLayer"]
+offset_right = 224.0
+offset_bottom = 38.0
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_kxyny")
+theme_override_font_sizes/normal_font_size = 32
+text = "DEBUG MODE"
 
 [node name="LowerPanel" type="Panel" parent="Camera2D/CanvasLayer"]
 top_level = true
@@ -207,7 +215,7 @@ theme = SubResource("Theme_8kb4n")
 
 [node name="PanelStatsCore" type="Panel" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel"]
 top_level = true
-layout_mode = 2
+layout_mode = 0
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 8.0

@@ -50,11 +50,22 @@ func createButton(dir,buttonNode):
 	mapContainerNode.add_child.call_deferred(buttonNode)
 
 func selectMap(dir, map):
+	var mapPath
+	if dir == "Official":
+		mapPath = "res://Saves/Maps"
+	elif dir == "Custom":
+		mapPath = "user://Saves/Maps"
+	mapPath = "{path}/{map}".format({"path":mapPath,"map":map})
 	selectedMap = {"dir": dir, "map": map}
 	var mapDetails = mapJsonList[dir][map]
 	$NinePatchRect/MapName.text = mapDetails.name
 	$NinePatchRect/MapSize.text = "{0}x{1}".format([int(mapDetails.gridWidth),int(mapDetails.gridHeight)])
 	$NinePatchRect/MapAuthor.text = "by " + mapDetails.author
+	if ResourceLoader.exists(mapPath + ".png"):
+		var mapImage = load(mapPath + ".png")
+		$NinePatchRect/MapImage.texture = mapImage
+	else:
+		$NinePatchRect/MapImage.texture = PlaceholderTexture2D.new()
 
 func openDirectory(dir):
 	var path
@@ -68,6 +79,8 @@ func openDirectory(dir):
 	@warning_ignore("unused_variable")
 	var mapFiles = {}
 	for i in mapFolder.get_files():
+		if not i.ends_with(".json"):
+			continue
 		var mapDir = "{directory}/{file}".format({"file": i, "directory": path})
 		var openFile = FileAccess.open((mapDir), FileAccess.READ)
 		var json = JSON.new()

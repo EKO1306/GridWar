@@ -1,15 +1,15 @@
-[gd_scene load_steps=47 format=3 uid="uid://d0v8rnxqrfmpp"]
+[gd_scene load_steps=48 format=3 uid="uid://d0v8rnxqrfmpp"]
 
-[ext_resource type="Script" uid="uid://h8bn5nja2nu3" path="res://Scripts/MainMenu/mainMenu_main.gd" id="1_n45e2"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/mainMenu_main.gd" id="1_n45e2"]
 [ext_resource type="FontFile" uid="uid://cwiw18el0nvtw" path="res://Misc/Fonts/Minecraft.ttf" id="2_sis5w"]
-[ext_resource type="Script" uid="uid://b82einaw2xqqo" path="res://Scripts/MainMenu/game_version_text.gd" id="2_trj04"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/game_version_text.gd" id="2_trj04"]
 [ext_resource type="Texture2D" uid="uid://dbhmwef1cxl2l" path="res://Images/UI/MainMenu/Menu.png" id="4_ce3w2"]
 [ext_resource type="Texture2D" uid="uid://rgbtq8fxktsc" path="res://Images/UI/MainMenu/ButtonBright.png" id="5_n45e2"]
-[ext_resource type="Script" uid="uid://dah80kbood71e" path="res://Scripts/MainMenu/mainMenu_play.gd" id="5_opfnp"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/mainMenu_play.gd" id="5_opfnp"]
 [ext_resource type="Script" uid="uid://c1br6j7fjs3h0" path="res://Scripts/MainMenu/mainMenu_mapSelector.gd" id="6_opfnp"]
 [ext_resource type="Script" uid="uid://dkyk7dfa378hi" path="res://Scripts/MainMenu/mainMenu_local.gd" id="7_cp0ys"]
-[ext_resource type="Script" uid="uid://cyrfustxrt6uh" path="res://Scripts/MainMenu/mainMenu_host.gd" id="8_yhxw7"]
-[ext_resource type="Script" uid="uid://b2xk5qeic1kmp" path="res://Scripts/MainMenu/mainMenu_join.gd" id="10_16hvj"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/mainMenu_host.gd" id="8_yhxw7"]
+[ext_resource type="Script" path="res://Scripts/MainMenu/mainMenu_join.gd" id="10_16hvj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16hvj"]
 content_margin_left = 4.0
@@ -256,6 +256,8 @@ _data = {
 &"Open": SubResource("Animation_16hvj"),
 &"RESET": SubResource("Animation_vr1f0")
 }
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_16hvj"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_opfnp"]
 
@@ -667,8 +669,8 @@ anchors_preset = -1
 anchor_top = 0.012
 anchor_right = 0.993
 anchor_bottom = 1.0
-offset_top = -7.68
-offset_right = 2.68799
+offset_top = -7.6800003
+offset_right = 2.6879883
 grow_horizontal = 0
 grow_vertical = 2
 theme = SubResource("Theme_t1dhk")
@@ -998,19 +1000,14 @@ theme_override_font_sizes/normal_font_size = 32
 text = "Creative Map Name go brrrrrr"
 horizontal_alignment = 1
 
-[node name="MapImg" type="ColorRect" parent="CanvasLayer/MapSelector/NinePatchRect"]
+[node name="MapImage" type="TextureRect" parent="CanvasLayer/MapSelector/NinePatchRect"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.04
-anchor_top = 0.175
-anchor_right = 0.96
-anchor_bottom = 0.725
-offset_left = -0.0918465
-offset_right = 0.0918274
-grow_horizontal = 2
-grow_vertical = 2
-theme = SubResource("Theme_t1dhk")
-color = Color(0, 0, 0, 1)
+offset_left = 15.268127
+offset_top = 112.0
+offset_right = 369.0
+offset_bottom = 480.0
+texture = SubResource("NoiseTexture2D_16hvj")
+expand_mode = 1
 
 [node name="MapSize" type="RichTextLabel" parent="CanvasLayer/MapSelector/NinePatchRect"]
 layout_mode = 1
@@ -1152,7 +1149,7 @@ size_flags_vertical = 3
 [node name="PointLimit" type="SpinBox" parent="CanvasLayer/Local/NinePatchRect/TabContainer/Army/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 min_value = 100.0
-max_value = 1e+06
+max_value = 1000000.0
 value = 5000.0
 prefix = "Point Limit:"
 custom_arrow_step = 100.0
@@ -1325,7 +1322,7 @@ size_flags_vertical = 3
 [node name="PointLimit" type="SpinBox" parent="CanvasLayer/Host/NinePatchRect/TabContainer/Army/ScrollContainer/VBoxContainer"]
 layout_mode = 2
 min_value = 100.0
-max_value = 1e+06
+max_value = 1000000.0
 value = 5000.0
 prefix = "Point Limit:"
 custom_arrow_step = 100.0

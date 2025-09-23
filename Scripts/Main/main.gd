@@ -7,6 +7,8 @@ var mapEditor = false
 var unitCount = [0,0]
 var remainingUnitVisionCalcs
 @export var debugMode = true
+@export var unitTest = false
+var noFog = false
 @onready var isMultiplayer = get_parent().scenePassover.get("isMultiplayer") != null
 var allowMove = true
 
@@ -24,7 +26,7 @@ func _ready():
 		armyCostLimit = get_parent().scenePassover.get("armyCostLimit")
 	if armyCostLimit <= 0:
 		doArmyCostLimit = false
-	if debugMode:
+	if unitTest:
 		armyBuilder = false
 	if get_parent().scenePassover.get("turnNo") != null:
 		turnNo = get_parent().scenePassover.get("turnNo")
@@ -50,7 +52,7 @@ func _ready():
 		else:
 			updateScreen()
 	else:
-		if debugMode:
+		if unitTest:
 			massSpawnUnits()
 		endTurn(true)
 
@@ -83,6 +85,9 @@ func _process(_delta):
 	if Input.is_action_just_pressed("pause_game"):
 		get_tree().paused = not get_tree().paused
 		uiCanvas.get_node("PausePanel").visible = get_tree().paused
+	if Input.is_action_just_pressed("debugMode"):
+		noFog = !noFog
+		updateScreen()
 	if armyBuilder:
 		if Input.is_action_just_pressed("move_right"):
 			selectedArmyNo[1] += 1
@@ -165,12 +170,17 @@ func hideGame():
 
 func updateScreen():
 	var time = Time.get_ticks_usec()
+	#$Camera2D/CanvasLayer/DebugIndicator.visible = debugMode
 	allowMove = false
 	armyCosts = [0,0]
 	unitCount = [0,0]
 	for i in range(len(lightGrid)):
 		lightGrid[i] = false
 		hiddenGrid[i] = true
+	if noFog:
+		for i in range(len(lightGrid)):
+			lightGrid[i] = true
+			hiddenGrid[i] = false
 	if armyBuilder:
 		updateScreenArmyBuilder()
 	for i in unitControl.get_children():
