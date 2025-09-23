@@ -8,6 +8,7 @@ var unitCount = [0,0]
 var remainingUnitVisionCalcs
 @export var debugMode = true
 @onready var isMultiplayer = get_parent().scenePassover.get("isMultiplayer") != null
+var allowMove = true
 
 @onready var uiCanvas = $Camera2D/CanvasLayer
 
@@ -164,6 +165,7 @@ func hideGame():
 
 func updateScreen():
 	var time = Time.get_ticks_usec()
+	allowMove = false
 	armyCosts = [0,0]
 	unitCount = [0,0]
 	for i in range(len(lightGrid)):
@@ -176,9 +178,14 @@ func updateScreen():
 	remainingUnitVisionCalcs = 0
 	for i in unitControl.get_children():
 		i.updateScreen()
-	var printedValue = INF
-	print("eee" + str(remainingUnitVisionCalcs))
+	var timer = 0
+	var timerOffset = 0
 	while remainingUnitVisionCalcs > 0:
+		timer += Time.get_ticks_msec() - timerOffset
+		timerOffset = Time.get_ticks_msec()
+		if timer >= 1000:
+			timer -= 1000
+			print("AAAA")
 		pass
 	for i in tileControl.get_children():
 		i.updateScreen()
@@ -198,6 +205,7 @@ func updateScreen():
 			if isMultiplayer:
 				get_parent().changeScene.rpc("res://Scenes/victory_screen.tscn",{"winningTeam": winningTeam,"isMultiplayer": isMultiplayer})
 	uiCanvas.updateUI()
+	allowMove = true
 	print("Update Screen took " + str((Time.get_ticks_usec() - time) * 0.001) + " milliseconds.")
 
 

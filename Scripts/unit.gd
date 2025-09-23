@@ -71,6 +71,11 @@ func _ready():
 	add_child(nodeManaBar)
 	$AnimationPlayer.play("Idle")
 	$AnimationPlayer.speed_scale = rng.randf_range(0.9,1.1)
+	if main.armyBuilder:
+		if unitTeam == 0:
+			$Sprites.scale = Vector2(1,1)
+		elif unitTeam == 1:
+			$Sprites.scale = Vector2(-1,1)
 		
 func setupUnit():
 	statHealth = statMaxHealth
@@ -123,6 +128,8 @@ func _process(delta):
 		$Sprites.material.set_shader_parameter("line_color",Color(1,1,1))
 		$Sprites.material.set_shader_parameter("line_thickness", 4)
 		if main.currentTurn[0] == unitTeam:
+			if not main.allowMove:
+				return
 			if Input.is_action_just_pressed("move_right"):
 				if moveToXY(gridX+1,gridY,true):
 					moved = true
@@ -495,7 +502,7 @@ func checkVisionArea():
 		unitMutex.unlock()
 		#print(Time.get_ticks_usec() - time)
 
-func drawVisionLine(lineX,lineY,lineVelocity, lightGrid, hiddenGrid,action):
+func drawVisionLine(lineX,lineY,lineVelocity, lightGrid, hiddenGrids,action):
 	var lineLength = 0
 	
 	var linePos
@@ -545,7 +552,7 @@ func drawVisionLine(lineX,lineY,lineVelocity, lightGrid, hiddenGrid,action):
 			lightTile = false
 		if lineLength > foliageRange: #You cannot see into bushes and trees, unless you are adjacent to them.
 			if lineTile.type == 2 or lineTile.type == 3:
-				if hiddenGrid[linePos]:
+				if hiddenGrids[linePos]:
 					lightTile = false
 				
 		if action != null:
@@ -989,9 +996,13 @@ func die(forceDeath = false):
 			if unit.hasTrait("faithful").is_empty():
 				continue
 			unit.statMana = min(unit.statMana + hasFaithful[0][1], unit.statMaxMana)
+	remove()
+	return true
+
+func remove():
 	queue_free()
 	isAlive = false
-	return true
+	return
 
 func getUnitsInArea(areaX,areaY,areaRadius,unitMask = null, teamMask = null):
 	var unitList = []
