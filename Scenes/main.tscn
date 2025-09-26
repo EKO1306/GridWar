@@ -123,7 +123,6 @@ zoom = Vector2(3, 3)
 script = ExtResource("2_r14qm")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
-visible = false
 script = ExtResource("3_pb3m7")
 styleDark = SubResource("Theme_pgw6q")
 styleLight = SubResource("Theme_8kb4n")
@@ -629,8 +628,6 @@ autowrap_mode = 0
 [node name="MouseNode" type="Control" parent="Camera2D/CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 mouse_filter = 2
 
 [node name="Units" type="Node2D" parent="."]
