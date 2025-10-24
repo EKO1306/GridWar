@@ -628,8 +628,6 @@ autowrap_mode = 0
 [node name="MouseNode" type="Control" parent="Camera2D/CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 mouse_filter = 2
 
 [node name="Units" type="Node2D" parent="."]
