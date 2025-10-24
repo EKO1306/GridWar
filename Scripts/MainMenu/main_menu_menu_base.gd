@@ -37,9 +37,8 @@ func openTab():
 			continue
 		if i is RichTextLabel:
 			continue
-		for a in openWithTab:
-			if i == a:
-				continue
+		if openWithTab.has(i):
+			continue
 		i.closeTab()
 		for a in openWithTab:
 			a.onOpenTab()

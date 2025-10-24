@@ -1,15 +1,15 @@
 [gd_scene load_steps=48 format=3 uid="uid://d0v8rnxqrfmpp"]
 
-[ext_resource type="Script" path="res://Scripts/MainMenu/mainMenu_main.gd" id="1_n45e2"]
+[ext_resource type="Script" uid="uid://h8bn5nja2nu3" path="res://Scripts/MainMenu/mainMenu_main.gd" id="1_n45e2"]
 [ext_resource type="FontFile" uid="uid://cwiw18el0nvtw" path="res://Misc/Fonts/Minecraft.ttf" id="2_sis5w"]
-[ext_resource type="Script" path="res://Scripts/MainMenu/game_version_text.gd" id="2_trj04"]
+[ext_resource type="Script" uid="uid://b82einaw2xqqo" path="res://Scripts/MainMenu/game_version_text.gd" id="2_trj04"]
 [ext_resource type="Texture2D" uid="uid://dbhmwef1cxl2l" path="res://Images/UI/MainMenu/Menu.png" id="4_ce3w2"]
 [ext_resource type="Texture2D" uid="uid://rgbtq8fxktsc" path="res://Images/UI/MainMenu/ButtonBright.png" id="5_n45e2"]
-[ext_resource type="Script" path="res://Scripts/MainMenu/mainMenu_play.gd" id="5_opfnp"]
+[ext_resource type="Script" uid="uid://dah80kbood71e" path="res://Scripts/MainMenu/mainMenu_play.gd" id="5_opfnp"]
 [ext_resource type="Script" uid="uid://c1br6j7fjs3h0" path="res://Scripts/MainMenu/mainMenu_mapSelector.gd" id="6_opfnp"]
 [ext_resource type="Script" uid="uid://dkyk7dfa378hi" path="res://Scripts/MainMenu/mainMenu_local.gd" id="7_cp0ys"]
-[ext_resource type="Script" path="res://Scripts/MainMenu/mainMenu_host.gd" id="8_yhxw7"]
-[ext_resource type="Script" path="res://Scripts/MainMenu/mainMenu_join.gd" id="10_16hvj"]
+[ext_resource type="Script" uid="uid://cyrfustxrt6uh" path="res://Scripts/MainMenu/mainMenu_host.gd" id="8_yhxw7"]
+[ext_resource type="Script" uid="uid://b2xk5qeic1kmp" path="res://Scripts/MainMenu/mainMenu_join.gd" id="10_16hvj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_16hvj"]
 content_margin_left = 4.0
@@ -662,6 +662,7 @@ offset_top = 0.224
 offset_right = 0.0639648
 theme = SubResource("Theme_t1dhk")
 script = ExtResource("6_opfnp")
+startOpen = null
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MapSelector"]
 layout_mode = 1
