@@ -145,15 +145,15 @@ _data = {
 z_index = 10
 script = ExtResource("1_wrm56")
 statName = "Infernal Rift"
-statMaxHealth = 600
+statMaxHealth = 250
 statMaxMovement = 0
 statCost = 1000
-statTraits = [["factionDemon"], ["fading", 100], ["lifeless"], ["immobile"], ["exposed"], ["blind", 1]]
+statTraits = [["factionDemon"], ["fading", 50], ["lifeless"], ["immobile"], ["exposed"], ["blind", 1]]
 statActionList = Array[Dictionary]([{
 "actions": 1,
 "name": "Conjure Demon",
 "range": Vector2i(1, 1),
-"traits": [["summon", "demonDemon", "Demon"], ["recoil", 25]]
+"traits": [["summon", "demonDemon", "Demon"], ["recoil", 10]]
 }, {
 "actions": 1,
 "name": "Conjure Imp",

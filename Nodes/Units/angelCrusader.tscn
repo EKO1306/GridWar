@@ -51,6 +51,7 @@ region = Rect2(32, 16, 16, 16)
 resource_name = "Idle"
 length = 2.0
 loop_mode = 1
+step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -257,14 +258,20 @@ _data = {
 z_index = 10
 script = ExtResource("1_ogtu1")
 statName = "Crusader"
-statMaxHealth = 240
+statMaxHealth = 260
 statCost = 400
-statTraits = [["factionAngel"], ["faithful", 25, 50]]
+statMaxMana = 20
+statTraits = [["factionAngel"], ["faithful", 4, 10], ["uninspired", 0]]
 statActionList = Array[Dictionary]([{
 "actions": 1,
-"name": "Longsword",
+"name": "Warhammer",
 "range": Vector2i(1, 1),
-"traits": [["damage", 100], ["melee"]]
+"traits": [["damage", 180], ["melee"]]
+}, {
+"actions": 1,
+"name": "Smite",
+"range": Vector2i(1, 1),
+"traits": [["damage", 360], ["melee"], ["manaCost", 20]]
 }])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -23,15 +23,10 @@ func playerConnected(id):
 	if multiplayer.is_server():
 		players[id] = {}
 		updatePlayers.rpc(players)
-		if get_tree().get_current_scene().get_child(0).name == "MainMenu":
-			get_tree().get_current_scene().get_node("MainMenu/MainMenuUI/MapHostTab/Host/Player").text = "Connection: Player Connected"
 			
 
-func startGame():
-	var mapData = get_tree().get_current_scene().get_node("MainMenu/MainMenuUI").chosenMap
-	if mapData == null:
-		return
-	if get_tree().get_current_scene().get_node("MainMenu/MainMenuUI/MapHostTab/Host/ArmyCostContainer2/CheckButton").button_pressed:
+func startGame(mapData, serverData):
+	if serverData.hostRed:
 		for player in players:
 			if player == playerId:
 				players[player]["team"] = 0
@@ -40,29 +35,22 @@ func startGame():
 	else:
 		var playerColor = range(len(players))
 		playerColor.shuffle()
+		var i = -1
 		for player in players:
-			players[player]["team"] = playerColor[0]
-			playerColor.pop_front()
+			i += 1
+			players[player]["team"] = playerColor[i]
 	updatePlayers.rpc(players)
 	
-	var armyCostLimit = get_tree().get_current_scene().get_node("MainMenu/MainMenuUI/MapHostTab/Host/ArmyCostContainer/TextEdit").get_text()
-	if armyCostLimit == "":
-		armyCostLimit = 5000
-	else:
-		armyCostLimit = int(armyCostLimit)
-	
-	mapData.merge({"isMultiplayer": true, "armyBuilder": true, "armyHighestCosts": [0,0], "armyCostLimit": armyCostLimit})
 	get_tree().get_current_scene().changeScene.rpc("res://Scenes/main.tscn", mapData)
 	get_tree().get_current_scene().changeScene("res://Scenes/main.tscn", mapData)
 
 func playerDisconnected(id):
 	print("Player left me and took the kids  " + str(id))
-	if get_tree().get_current_scene().get_child(0).name == "MainMenu":
-		if multiplayer.is_server():
-			players.erase(id)
-			updatePlayers.rpc(players)
-			if get_tree().get_current_scene().get_child(0).name == "MainMenu":
-				get_tree().get_current_scene().get_node("MainMenu/MainMenuUI/MapHostTab/Host/Player").text = "Connection: Player Disconnected"
+	players.erase(id)
+	if multiplayer.is_server():
+		updatePlayers.rpc(players)
+	else:
+		closeOnline()
 	
 func connectedToServer():
 	print("Weeeee're live!")
@@ -71,7 +59,10 @@ func connectionFailed():
 	print("It bwoke 3:")
 
 func closeOnline():
-	peer = null
+	if peer != null:
+		peer.close()
+		peer = null
+	players = {}
 
 func hostGame():
 	players = {}
@@ -89,7 +80,6 @@ func hostGame():
 	
 	multiplayer.set_multiplayer_peer(peer)
 	print("Waiting For Players...")
-	get_tree().get_current_scene().get_node("MainMenu/MainMenuUI/MapHostTab/Host/Player").text = "Connection: Waiting"
 
 func joinGame() -> void:
 	players = {}

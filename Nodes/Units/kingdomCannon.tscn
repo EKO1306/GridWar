@@ -715,17 +715,18 @@ statName = "Cannon"
 statMaxHealth = 320
 statMaxMovement = 2
 statCost = 1500
+statMaxMana = 2
 statTraits = [["factionKingdom"], ["mechanical"], ["exposed"]]
 statActionList = Array[Dictionary]([{
 "actions": 1,
 "name": "Cannon",
 "range": Vector2i(4, 10),
-"traits": [["damage", 1000], ["ranged"], ["ammo", 0, 1]]
+"traits": [["damage", 1000], ["ranged"], ["manaCost", 2]]
 }, {
 "actions": 1,
 "name": "Reload",
 "range": Vector2i(0, 0),
-"traits": [["reload", 0.5], ["selfTarget"]]
+"traits": [["manaGain", 1], ["selfTarget"]]
 }, {
 "actions": 1,
 "name": "Punch",

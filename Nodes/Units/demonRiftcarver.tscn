@@ -280,7 +280,7 @@ z_index = 10
 script = ExtResource("1_y244l")
 statName = "Riftcarver"
 statMaxHealth = 180
-statCost = 1200
+statCost = 1500
 statTraits = [["factionDemon"], ["infernalInvader", 5, 10, 25], ["moltenDefence", 120]]
 statActionList = Array[Dictionary]([{
 "actions": 1,

@@ -4,8 +4,13 @@ var selectedUnit
 var selectedAction
 
 var mapEditor = false
+var unitCount = [0,0]
+var remainingUnitVisionCalcs
 @export var debugMode = true
+@export var unitTest = false
+var noFog = false
 @onready var isMultiplayer = get_parent().scenePassover.get("isMultiplayer") != null
+var allowMove = true
 
 @onready var uiCanvas = $Camera2D/CanvasLayer
 
@@ -21,7 +26,7 @@ func _ready():
 		armyCostLimit = get_parent().scenePassover.get("armyCostLimit")
 	if armyCostLimit <= 0:
 		doArmyCostLimit = false
-	if debugMode:
+	if unitTest:
 		armyBuilder = false
 	if get_parent().scenePassover.get("turnNo") != null:
 		turnNo = get_parent().scenePassover.get("turnNo")
@@ -47,7 +52,7 @@ func _ready():
 		else:
 			updateScreen()
 	else:
-		if debugMode:
+		if unitTest:
 			massSpawnUnits()
 		endTurn(true)
 
@@ -61,6 +66,8 @@ func loadUnits(units):
 		loadUnitNode.statMovement = unit.movement
 		loadUnitNode.statMaxActions = unit.maxActions
 		loadUnitNode.statActions = unit.actions
+		loadUnitNode.statMaxMana = unit.maxMana
+		loadUnitNode.statMana = unit.mana
 		loadUnitNode.statCost = unit.cost
 		loadUnitNode.statTraits = unit.traitsList
 		loadUnitNode.statActionList = unit.actionList
@@ -78,6 +85,10 @@ func _process(_delta):
 	if Input.is_action_just_pressed("pause_game"):
 		get_tree().paused = not get_tree().paused
 		uiCanvas.get_node("PausePanel").visible = get_tree().paused
+	if Input.is_action_just_pressed("debugMode"):
+		if debugMode:
+			noFog = !noFog
+			updateScreen()
 	if armyBuilder:
 		if Input.is_action_just_pressed("move_right"):
 			selectedArmyNo[1] += 1
@@ -129,6 +140,8 @@ func endTurn(firstEnd = false, skipCalc = false):
 			if currentTurn[0] == 1:
 				if armyBuilder:
 					armyBuilder = false
+					if armyHighestCosts == [0,0]:
+						armyHighestCosts = armyCosts
 					for unit in unitControl.get_children():
 						unit.setupUnit()
 				else:
@@ -157,25 +170,54 @@ func hideGame():
 	uiCanvas.hide()
 
 func updateScreen():
-	#var time = Time.get_ticks_usec()
+	var time = Time.get_ticks_usec()
+	$Camera2D/CanvasLayer/DebugIndicator.visible = debugMode
+	allowMove = false
 	armyCosts = [0,0]
+	unitCount = [0,0]
 	for i in range(len(lightGrid)):
 		lightGrid[i] = false
+		hiddenGrid[i] = true
+	if noFog:
+		for i in range(len(lightGrid)):
+			lightGrid[i] = true
+			hiddenGrid[i] = false
 	if armyBuilder:
 		updateScreenArmyBuilder()
 	for i in unitControl.get_children():
 		i.preUpdateScreen()
+	remainingUnitVisionCalcs = 0
 	for i in unitControl.get_children():
 		i.updateScreen()
+	var timer = 0
+	var timerOffset = 0
+	while remainingUnitVisionCalcs > 0:
+		timer += Time.get_ticks_msec() - timerOffset
+		timerOffset = Time.get_ticks_msec()
+		if timer >= 1000:
+			timer -= 1000
+			print("AAAA")
+		pass
 	for i in tileControl.get_children():
 		i.updateScreen()
 	for i in unitControl.get_children():
 		i.postUpdateScreen()
 	if not armyBuilder:
-		if armyHighestCosts == null:
-			armyHighestCosts = armyCosts
+		var winningTeam = -1
+		if unitCount[0] == 0:
+			winningTeam = 1
+		if unitCount[1] == 0:
+			if winningTeam == 1:
+				winningTeam = 2
+			else:
+				winningTeam = 0
+		if winningTeam != -1:
+			get_parent().changeScene("res://Scenes/victory_screen.tscn",{"winningTeam": winningTeam,"isMultiplayer": isMultiplayer})
+			if isMultiplayer:
+				get_parent().changeScene.rpc("res://Scenes/victory_screen.tscn",{"winningTeam": winningTeam,"isMultiplayer": isMultiplayer})
 	uiCanvas.updateUI()
-	#print("Update Screen took " + str((Time.get_ticks_usec() - time) * 0.001) + " milliseconds.")
+	allowMove = true
+	print("Update Screen took " + str((Time.get_ticks_usec() - time) * 0.001) + " milliseconds.")
 
 
 func _on_button_pressed() -> void:

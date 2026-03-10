@@ -409,11 +409,6 @@ statActionList = Array[Dictionary]([{
 "name": "Fork",
 "range": Vector2i(1, 1),
 "traits": [["damage", 100], ["melee"]]
-}, {
-"actions": 1,
-"name": "Fire Bolt",
-"range": Vector2i(1, 3),
-"traits": [["damage", 60], ["melee"], ["burn", 10]]
 }])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

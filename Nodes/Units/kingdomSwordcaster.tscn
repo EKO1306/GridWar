@@ -1,0 +1,455 @@
+[gd_scene load_steps=24 format=3 uid="uid://cnmnt2fwj8vu1"]
+
+[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_ufryf"]
+[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_2rl2y"]
+[ext_resource type="Texture2D" uid="uid://dncm6dyeo3ehh" path="res://Images/Units/kingdomSwordcaster.png" id="3_ufryf"]
+[ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_ru7cw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hh628"]
+size = Vector2(24, 24)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xy4vo"]
+shader = ExtResource("2_2rl2y")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2rl2y"]
+atlas = ExtResource("3_ufryf")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_r7k7f"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsp08"]
+atlas = ExtResource("3_ufryf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ru7cw"]
+atlas = ExtResource("3_ufryf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2ibq"]
+atlas = ExtResource("3_ufryf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v8xfs"]
+atlas = ExtResource("3_ufryf")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxqtq"]
+atlas = ExtResource("3_ufryf")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ib7t"]
+atlas = ExtResource("3_ufryf")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gdswe"]
+atlas = ExtResource("3_ufryf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="Gradient" id="Gradient_xqh15"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.159091, 0.422727, 0.695455)
+colors = PackedColorArray(0.776471, 0.317647, 0.592157, 1, 0.635294, 0.243137, 0.54902, 1, 0.478431, 0.211765, 0.482353, 1, 0.25098, 0.152941, 0.317647, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q7ghj"]
+gradient = SubResource("Gradient_xqh15")
+
+[sub_resource type="Curve" id="Curve_jbcmm"]
+_limits = [0.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1.5), 0.0, -3.43428, 0, 0, Vector2(1, 0.5), -0.0835365, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="CurveTexture" id="CurveTexture_ihcj7"]
+curve = SubResource("Curve_jbcmm")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_r8uvr"]
+particle_flag_disable_z = true
+direction = Vector3(1, 0.5, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 4.0
+gravity = Vector3(-8, 0, 0)
+scale_over_velocity_max = 8.0
+scale_over_velocity_curve = SubResource("CurveTexture_ihcj7")
+color_ramp = SubResource("GradientTexture1D_q7ghj")
+
+[sub_resource type="Animation" id="Animation_3w5n0"]
+resource_name = "Idle"
+length = 2.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(-0.5, -11), Vector2(-0.5, -10.5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, -5), Vector2(0, -4.75)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/ArmLeft:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(-2.5, -6.5), Vector2(-2.5, -6.25)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/ArmRight:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(4, -8), Vector2(4, -7.75)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/LegLeft:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(-2),
+"update": 0,
+"values": [Vector2(-1.75, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprites/LegRight:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(0.5),
+"update": 0,
+"values": [Vector2(0.75, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprites/ArmRight:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [1.5708, 1.65806]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprites/ArmLeft:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.0, -0.0349066]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Sprites/FloatingSword1:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(-5, -6), Vector2(-6, -7)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Sprites/FloatingSword1:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.0, -0.0872665]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Sprites/FloatingSword2:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.5, 1.5),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(-9, -4), Vector2(-8, -5)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Sprites/FloatingSword2:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [0.0, -0.0872665]
+}
+
+[sub_resource type="Animation" id="Animation_hh5sh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1, -6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/Body:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/ArmLeft:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-3, -1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/ArmRight:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(4, -1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sprites/LegLeft:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(11, -4)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Sprites/LegRight:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(13, -4)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Sprites/ArmRight:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Sprites/ArmLeft:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Sprites/FloatingSword1:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-5, -8)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Sprites/FloatingSword1:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
+_data = {
+&"Idle": SubResource("Animation_3w5n0"),
+&"RESET": SubResource("Animation_hh5sh")
+}
+
+[node name="Swordcaster" type="Area2D" groups=["Unit"]]
+z_index = 10
+script = ExtResource("1_ufryf")
+statName = "Swordcaster"
+statMaxHealth = 260
+statCost = 600
+statTraits = [["factionKingdom"]]
+statActionList = Array[Dictionary]([{
+"actions": 1,
+"name": "Longsword",
+"range": Vector2i(1, 1),
+"traits": [["damage", 100], ["melee"], ["conjure", "kingdomFlyingSword", "Sword", "Flying Sword"]]
+}])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(12, 12)
+shape = SubResource("RectangleShape2D_hh628")
+
+[node name="Sprites" type="CanvasGroup" parent="."]
+material = SubResource("ShaderMaterial_xy4vo")
+position = Vector2(12, 12)
+
+[node name="ArmLeft" type="Sprite2D" parent="Sprites"]
+position = Vector2(-3, -1)
+texture = SubResource("AtlasTexture_2rl2y")
+
+[node name="Sword" type="Sprite2D" parent="Sprites/ArmLeft"]
+show_behind_parent = true
+material = SubResource("ShaderMaterial_r7k7f")
+position = Vector2(-0.530883, 3.58996)
+rotation = 1.65806
+texture = SubResource("AtlasTexture_tsp08")
+offset = Vector2(0.5, -2)
+
+[node name="LegLeft" type="Sprite2D" parent="Sprites"]
+position = Vector2(11, -4)
+texture = SubResource("AtlasTexture_ru7cw")
+
+[node name="LegRight" type="Sprite2D" parent="Sprites"]
+position = Vector2(13, -4)
+texture = SubResource("AtlasTexture_t2ibq")
+
+[node name="Body" type="Sprite2D" parent="Sprites"]
+texture_filter = 1
+texture = SubResource("AtlasTexture_v8xfs")
+
+[node name="ArmRight" type="Sprite2D" parent="Sprites"]
+position = Vector2(4, -1)
+rotation = 1.5708
+texture = SubResource("AtlasTexture_jxqtq")
+flip_h = true
+flip_v = true
+
+[node name="Sword" type="Sprite2D" parent="Sprites/ArmRight"]
+material = SubResource("ShaderMaterial_r7k7f")
+position = Vector2(-1, -5)
+rotation = -1.5708
+texture = SubResource("AtlasTexture_3ib7t")
+offset = Vector2(-1, 0)
+
+[node name="Head" type="Sprite2D" parent="Sprites"]
+material = SubResource("ShaderMaterial_r7k7f")
+position = Vector2(-1, -6)
+texture = SubResource("AtlasTexture_gdswe")
+offset = Vector2(-1, 0)
+
+[node name="FloatingSword1" type="Sprite2D" parent="Sprites"]
+material = SubResource("ShaderMaterial_r7k7f")
+position = Vector2(-5, -8)
+texture = SubResource("AtlasTexture_3ib7t")
+offset = Vector2(-0.5, -3.5)
+flip_h = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprites/FloatingSword1"]
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_r8uvr")
+
+[node name="FloatingSword2" type="Sprite2D" parent="Sprites"]
+material = SubResource("ShaderMaterial_r7k7f")
+position = Vector2(-8.98869, -4.01131)
+rotation = -0.0557707
+texture = SubResource("AtlasTexture_3ib7t")
+offset = Vector2(-0.5, -3.5)
+flip_h = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprites/FloatingSword2"]
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_r8uvr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_togdo")
+}
+
+[node name="HealthBar" parent="." instance=ExtResource("4_ru7cw")]
+offset_left = 3.0
+offset_top = 18.0
+offset_right = 21.0
+offset_bottom = 22.0

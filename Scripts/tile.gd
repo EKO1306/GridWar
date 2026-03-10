@@ -148,9 +148,10 @@ func _on_gui_input(event: InputEvent) -> void:
 					var unit = main.getUnitAtXY(tileX,tileY)
 					if main.armyBuilder:
 						if unit == null:
-							main.spawnUnit(main.selectedUnit	 + ".tscn",tileX,tileY,main.currentTurn[0])
+							if main.getTileAtXY(tileX,tileY).type != 1:
+								main.spawnUnit(main.selectedUnit + ".tscn",tileX,tileY,main.currentTurn[0])
 						else:
-							unit.free()
+							unit.remove()
 						main.updateScreen()
 						return
 					else:

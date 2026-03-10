@@ -1,0 +1,99 @@
+[gd_scene load_steps=12 format=3 uid="uid://c5xnt8pkiliit"]
+
+[ext_resource type="FontFile" uid="uid://cwiw18el0nvtw" path="res://Misc/Fonts/Minecraft.ttf" id="1_f1ujh"]
+[ext_resource type="Texture2D" uid="uid://rgbtq8fxktsc" path="res://Images/UI/MainMenu/ButtonBright.png" id="2_kirus"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6qfrh"]
+atlas = ExtResource("2_kirus")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_opfnp"]
+texture = SubResource("AtlasTexture_6qfrh")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(1, 1, 1, 0.5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ce3w2"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 1, 1, 0.75)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gnfte"]
+atlas = ExtResource("2_kirus")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n45e2"]
+texture = SubResource("AtlasTexture_gnfte")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6jo32"]
+atlas = ExtResource("2_kirus")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cp0ys"]
+texture = SubResource("AtlasTexture_6jo32")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_trj04"]
+texture = SubResource("AtlasTexture_6qfrh")
+texture_margin_left = 16.0
+texture_margin_top = 16.0
+texture_margin_right = 16.0
+texture_margin_bottom = 16.0
+modulate_color = Color(1, 1, 1, 0.5)
+
+[sub_resource type="Theme" id="Theme_6plb7"]
+Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
+Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
+Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0, 0, 0, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_disabled_color = Color(1, 1, 1, 0.4)
+Button/colors/icon_focus_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_color = Color(1, 1, 1, 1)
+Button/colors/icon_hover_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_normal_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
+Button/constants/align_to_largest_stylebox = 0
+Button/constants/h_separation = 4
+Button/constants/icon_max_width = 0
+Button/constants/outline_size = 0
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_f1ujh")
+Button/styles/disabled = SubResource("StyleBoxTexture_opfnp")
+Button/styles/focus = SubResource("StyleBoxFlat_ce3w2")
+Button/styles/hover = SubResource("StyleBoxTexture_n45e2")
+Button/styles/normal = SubResource("StyleBoxTexture_cp0ys")
+Button/styles/pressed = SubResource("StyleBoxTexture_trj04")
+
+[node name="Map Selector Button" type="Button"]
+custom_minimum_size = Vector2(0, 48)
+theme = SubResource("Theme_6plb7")
+text = "This is a test. If this appears, uh oh"
+text_overrun_behavior = 3

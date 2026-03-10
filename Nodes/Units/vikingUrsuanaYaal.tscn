@@ -1,13 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://cpqm02h4xivmg"]
+[gd_scene load_steps=26 format=3 uid="uid://cpqm02h4xivmg"]
 
 [ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_se43e"]
 [ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_lhn2m"]
 [ext_resource type="Texture2D" uid="uid://bbf1wx7rbh52s" path="res://Images/Units/VikingUrsuanaRider.png" id="3_ilm1v"]
 [ext_resource type="Texture2D" uid="uid://cw3buc0rxcajj" path="res://Images/Units/VikingUrsanaYaal.png" id="4_45bjv"]
 [ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="5_sy84v"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hh628"]
-size = Vector2(24, 24)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xy4vo"]
 shader = ExtResource("2_lhn2m")
@@ -575,24 +572,13 @@ z_index = 10
 script = ExtResource("1_se43e")
 statName = "Ursuana Yaal"
 statMaxHealth = 440
-statMaxActions = 2
 statCost = 1100
-statTraits = [["factionViking"], ["charge", 1], ["mounted"], ["shield", 40]]
+statTraits = [["factionViking"], ["charge", 1], ["mounted"], ["shield", 80]]
 statActionList = Array[Dictionary]([{
-"actions": 0,
+"actions": 1,
 "name": "Banner Glaive",
 "range": Vector2i(1, 2),
-"traits": [["damage", 200], ["melee"], ["usePerTurn", 1, 1]]
-}, {
-"actions": 2,
-"name": "Bear Bite",
-"range": Vector2i(1, 1),
-"traits": [["damage", 80], ["melee"]]
-}, {
-"actions": 1,
-"name": "Bear Claw",
-"range": Vector2i(1, 1),
-"traits": [["damage", 30], ["melee"]]
+"traits": [["damage", 300], ["melee"], ["impale", 40]]
 }, {
 "actions": 0,
 "name": "Command",
@@ -602,7 +588,6 @@ statActionList = Array[Dictionary]([{
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(12, 12)
-shape = SubResource("RectangleShape2D_hh628")
 
 [node name="Sprites" type="CanvasGroup" parent="."]
 material = SubResource("ShaderMaterial_xy4vo")

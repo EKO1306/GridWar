@@ -9,6 +9,8 @@ var statMovement = 0
 @export var statMaxActions = 1
 var statActions = 0
 @export var statCost = 100
+@export var statMaxMana = 0
+var statMana = 0
 @export var statTraits = []
 @export var statActionList: Array[Dictionary] = [{"name": "NAME", "actions": 1, "range": Vector2(0,1), "traits": [["damage",80],["melee"]]}]
 
@@ -20,7 +22,10 @@ var statActions = 0
 var rng = RandomNumberGenerator.new()
 var isVisible = false
 var isAlive = true
-var canHide
+var unitThread: Thread
+var unitSemaphore: Semaphore
+var unitMutex: Mutex
+var finishThread = false
 
 var statusList = []
 
@@ -29,8 +34,14 @@ var statusList = []
 
 @onready var nodeHealthBar = get_node_or_null("HealthBar")
 @onready var nodeAnimationPlayer = get_node("AnimationPlayer") as AnimationPlayer
+var nodeStatusControl
+var nodeManaBar
 var nodeDamageText
 var flashTextColor
+var tileGrid
+var mapSize
+var hiddenGrid
+var isAction
 
 var animationMovementBuffer = []
 var movementOffset = Vector2.ZERO
@@ -40,18 +51,37 @@ var hasActed = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	nodeDamageText = load("res://Nodes/UI/Units/rich_text_label.tscn").instantiate()
-	nodeDamageText.hide()
-	add_child(nodeDamageText)
+	unitThread = Thread.new()
+	unitSemaphore = Semaphore.new()
+	unitMutex = Mutex.new()
+	unitThread.start(checkVisionArea)
 	$Sprites.material = ShaderMaterial.new()
 	$Sprites.material.shader = preload("res://Shaders/unitOutline.gdshader")
+	nodeDamageText = load("res://Nodes/UI/Units/rich_text_label.tscn").instantiate()
+	nodeDamageText.z_index = 4095
+	nodeDamageText.hide()
+	add_child(nodeDamageText)
+	nodeStatusControl = CanvasGroup.new()
+	nodeStatusControl.material = $Sprites.material
+	nodeStatusControl.z_index = 4090
+	add_child(nodeStatusControl)
+	nodeManaBar = preload("res://Nodes/UI/Units/unit_mana_bar.tscn").instantiate()
+	nodeManaBar.position = Vector2(2,-1)
+	nodeManaBar.z_index = 4090
+	add_child(nodeManaBar)
 	$AnimationPlayer.play("Idle")
 	$AnimationPlayer.speed_scale = rng.randf_range(0.9,1.1)
+	if main.armyBuilder:
+		if unitTeam == 0:
+			$Sprites.scale = Vector2(1,1)
+		elif unitTeam == 1:
+			$Sprites.scale = Vector2(-1,1)
 		
 func setupUnit():
 	statHealth = statMaxHealth
 	statMovement = statMaxMovement
 	statActions = statMaxActions
+	statMana = statMaxMana
 	if unitTeam == 0:
 		$Sprites.scale = Vector2(1,1)
 	elif unitTeam == 1:
@@ -59,6 +89,8 @@ func setupUnit():
 	
 	for chargeTrait in hasTrait("charge"):
 		addStatus("charge",null,[chargeTrait[0][1]])
+	for hasUninspired in hasTrait("uninspired"):
+		statMana = hasUninspired[0][1]
 	
 	for immortalLordTrait in hasTrait("immortalLord"):
 		var spawnedTotems = 0
@@ -96,6 +128,8 @@ func _process(delta):
 		$Sprites.material.set_shader_parameter("line_color",Color(1,1,1))
 		$Sprites.material.set_shader_parameter("line_thickness", 4)
 		if main.currentTurn[0] == unitTeam:
+			if not main.allowMove:
+				return
 			if Input.is_action_just_pressed("move_right"):
 				if moveToXY(gridX+1,gridY,true):
 					moved = true
@@ -210,9 +244,11 @@ func startturn():
 	for hasMoltenDefence in hasTrait("moltenDefence"): #Grant molten defence if the unit has molten defence
 		addStatus("moltenDefence",1,[hasMoltenDefence[0][1]])
 	
-	for i in range(len(statActionList)): #Reset use per turn effects.
-		for hasUsePerTurn in hasTrait("usePerTurn", i):
-			statActionList[i].traits[hasUsePerTurn[1]][1] = hasUsePerTurn[0][2]
+	for i in range(len(statActionList)):
+		if hasTrait("ranged", i):
+			if not getUnitsInArea(gridX,gridY,1,self,1 - unitTeam).is_empty():
+				addStatus("engaged",1)
+			break
 	
 	for hasShieldwall in hasTrait("shieldwall"): #Grant block for each adjacent ally with the shield trait.
 		var finalBlock = 0
@@ -246,6 +282,11 @@ func startturn():
 			changeHealth(-hasInfernalInvader[0][1] * 2)
 		for hasFading in hasTrait("fading"): #Fading drains health each turn.
 			changeHealth(-hasFading[0][1])
+		for hasManaDrain in hasTrait("manaDrain"):
+			statMana -= hasManaDrain[0][1]
+			if statMana < 0:
+				statMana = 0
+				die(true)
 	
 	for hasBurning in hasStatus("burning"): #Burning deals damage each turn.
 		damage(hasBurning[0][2])
@@ -284,21 +325,24 @@ func updateGrid():
 	pass
 
 func preUpdateScreen():
-	canHide = true
+	main.hiddenGrid[gridY * main.gridWidth + gridX] = true
 	if not hasTrait("mounted").is_empty():
-		canHide = false
+		main.hiddenGrid[gridY * main.gridWidth + gridX] = false
 		return
 	if not hasTrait("flying").is_empty():
-		canHide = false
+		main.hiddenGrid[gridY * main.gridWidth + gridX] = false
 		return
 	if not hasTrait("exposed").is_empty():
-		canHide = false
+		main.hiddenGrid[gridY * main.gridWidth + gridX] = false
+		return
+	if not hasTrait("towering").is_empty():
+		main.hiddenGrid[gridY * main.gridWidth + gridX] = false
 		return
 	if not hasStatus("burning").is_empty():
-		canHide = false
+		main.hiddenGrid[gridY * main.gridWidth + gridX] = false
 		return
 	if not hasStatus("exposed").is_empty():
-		canHide = false
+		main.hiddenGrid[gridY * main.gridWidth + gridX] = false
 		return
 
 func updateScreen():
@@ -306,22 +350,42 @@ func updateScreen():
 		return
 	if hasStatus("summon").is_empty() and hasStatus("possessed").is_empty():
 		main.armyCosts[unitTeam] += statCost
+	main.unitCount[unitTeam] += 1
 	if main.armyBuilder:
 		return
 	if main.currentTurn[1]:
 		if main.currentTurn[0] == unitTeam:
-			if main.selectedAction == null:
-				checkVisionArea()
+			tileGrid = main.tileGrid
+			mapSize = Vector2i(main.gridWidth,main.gridHeight)
+			hiddenGrid = main.hiddenGrid
+			isAction = main.selectedAction
+			if isAction == null:
+				main.remainingUnitVisionCalcs += 1
+				unitSemaphore.post()
 			elif main.selectedUnit == self:
-				checkVisionArea(statActionList[main.selectedAction])
+				main.remainingUnitVisionCalcs += 1
+				unitSemaphore.post()
+
+func tickDownCalculatedVision():
+	main.remainingUnitVisionCalcs -= 1
 
 func postUpdateScreen():
 	isVisible = main.lightGrid[gridY * main.gridWidth + gridX]
 	nodeDamageText.hide()
 	if isVisible:
-		modulate.a = 1
+		show()
 		if nodeHealthBar != null:
 			updateHealthBar()
+			updateStatusControl()
+			if statMaxMana > 0:
+				if main.armyBuilder:
+					nodeManaBar.hide()
+				else:
+					nodeManaBar.show()
+					nodeManaBar.value = (statMana / float(statMaxMana)) * 100
+					
+			else:
+				nodeManaBar.hide()
 		if main.selectedAction != null:
 			var hasDamage = main.selectedUnit.hasTrait("damage", main.selectedAction)
 			for hasDmg in hasDamage:
@@ -335,7 +399,7 @@ func postUpdateScreen():
 				else:
 					flashTextColor = Color(0,0,0)
 	else:
-		modulate.a = 0
+		hide()
 
 func updateHealthBar():
 	nodeHealthBar.show()
@@ -369,31 +433,85 @@ func updateHealthBar():
 	else:
 		nodeHealthBar.get_node("Movement").modulate.a = 0
 		nodeHealthBar.get_node("Action").modulate.a = 0
+	
+func updateStatusControl():
+	for node in nodeStatusControl.get_children():
+		node.queue_free()
+	var traitTooltipList
+	for i in range(len(statusList)):
+		var status = statusList[i]
+		var statusIconNode = preload("res://Nodes/UI/panel_trait.tscn").instantiate()
+		var traitTexture = load("res://Images/Icons/Status/" + str(status[0]) + ".png")
+		if traitTexture != null:
+			statusIconNode.texture = traitTexture
+		@warning_ignore("integer_division")
+		statusIconNode.position = Vector2((7 * (i % 3)) + 3.5,11 - (7 * (i / 3)))
+		statusIconNode.scale = Vector2(0.125,0.125)
+		traitTooltipList = main.statusTooltipList.get(status[0])
+		if traitTooltipList != null:
+			var tooltipFormat = {"s": "s stuff can go here"}
+			var a = -3
+			for e in status:
+				a += 1
+				tooltipFormat[str(a)] = e
+			statusIconNode.tooltip = traitTooltipList.tooltip.format(tooltipFormat)
+			if traitTooltipList.get("traitText") != null:
+				statusIconNode.get_node("Label").text = traitTooltipList.traitText.format(tooltipFormat)
+		else:
+			statusIconNode.tooltip = "Error: No tooltip found."
+		if status[1] != null:
+			statusIconNode.get_node("Label2").text = str(status[1])
+		nodeStatusControl.add_child(statusIconNode)
 
-func checkVisionArea(action = null):
-	var _time = Time.get_ticks_usec()
-	var directionVector
-	var directionVectors = []
-	for y in range(-10,10):
-		for x in range(-10,10):
-			if x == 0:
-				if y == 0:
+func checkVisionArea():
+	while true:
+		unitSemaphore.wait()
+		
+		if finishThread:
+			return
+		
+		var action
+		if isAction != null:
+			action = statActionList[isAction]
+		var lightGrid = []
+		for y in mapSize.y:
+			for x in mapSize.x:
+				lightGrid.append(false)
+		
+		var time = Time.get_ticks_usec()
+		var directionVector
+		var directionVectors = []
+		for y in range(-10,10):
+			for x in range(-10,10):
+				if x == 0:
+					if y == 0:
+						continue
+				directionVector = Vector2(x/10.0,y/10.0).normalized()
+				if directionVectors.count(directionVector) != 0:
 					continue
-			directionVector = Vector2(x/10.0,y/10.0).normalized()
-			if directionVectors.count(directionVector) != 0:
-				continue
-			directionVectors.append(directionVector)
-			drawVisionLine(gridX,gridY,directionVector, action)
-	#print(Time.get_ticks_usec() - time)
+				directionVectors.append(directionVector)
+				lightGrid = drawVisionLine(gridX,gridY,directionVector,lightGrid,hiddenGrid,action)
+		var updateLights = []
+		for i in range(len(lightGrid)):
+			if lightGrid[i]:
+				updateLights.append(i)
+		unitMutex.lock()
+		main.remainingUnitVisionCalcs -= 1
+		for i in updateLights:
+			main.lightGrid[i] = true
+		unitMutex.unlock()
+		#print(Time.get_ticks_usec() - time)
 
-func drawVisionLine(lineX,lineY,lineVelocity, action):
+func drawVisionLine(lineX,lineY,lineVelocity, lightGrid, hiddenGrids,action):
 	var lineLength = 0
 	
 	var linePos
 	var lineTile
 	var lineBuffer = Vector2(0,0)
 	
-	var lineBaseHeight = main.tileGrid[gridY * main.gridWidth + lineX].height
+	var lineBaseHeight = tileGrid[gridY * mapSize.x + lineX].height
+	for hasTowering in hasTrait("towering"):
+		lineBaseHeight += hasTowering[0][1]
 	var lineMinHeight = 0
 	
 	var lightTile
@@ -403,6 +521,7 @@ func drawVisionLine(lineX,lineY,lineVelocity, action):
 	var lineMaxRange = 20
 	
 	var foliageRange = 1
+	
 	for hasEagleEye in hasTrait("eagleEye"):
 		foliageRange = hasEagleEye[0][1]
 	
@@ -416,8 +535,8 @@ func drawVisionLine(lineX,lineY,lineVelocity, action):
 		if lineLength > lineMaxRange:
 			break
 		
-		linePos = lineY * main.gridWidth + lineX
-		lineTile = main.tileGrid[linePos]
+		linePos = lineY * mapSize.x + lineX
+		lineTile = tileGrid[linePos]
 		tileEffectiveHeight = lineTile.height
 		
 		if lineTile.type == 3: #Trees are considered 2 higher for vision, unless you're inside it.
@@ -426,18 +545,14 @@ func drawVisionLine(lineX,lineY,lineVelocity, action):
 		
 		if tileEffectiveHeight > lineBaseHeight: # If a wall higher than the unit blocks vision, anything 2 height or more below it isn't visible.
 			if lineTile.type != 4:
-				lineMinHeight = max(lineMinHeight,tileEffectiveHeight)
+				lineMinHeight = min(lineMinHeight,tileEffectiveHeight)
 		
 		lightTile = true
 		if tileEffectiveHeight < lineMinHeight - 1: #You cannot see tiles more than 1 below where you are, unless on edge.
 			lightTile = false
 		if lineLength > foliageRange: #You cannot see into bushes and trees, unless you are adjacent to them.
 			if lineTile.type == 2 or lineTile.type == 3:
-				var lineUnit = main.getUnitAtXY(lineX,lineY)
-				if lineUnit != null:
-					if lineUnit.canHide: #Burning and mounted units can't hide.
-						lightTile = false
-				else:
+				if hiddenGrids[linePos]:
 					lightTile = false
 				
 		if action != null:
@@ -445,7 +560,7 @@ func drawVisionLine(lineX,lineY,lineVelocity, action):
 				lightTile = false
 		
 		if lightTile:
-			main.lightGrid[linePos] = true
+			lightGrid[linePos] = true
 		
 		if tileEffectiveHeight >= lineBaseHeight + 2: # If the tile is 2 or more height above the unit, you can only see one tile in, and the line ends.
 			if lineTile.type != 4:
@@ -469,10 +584,10 @@ func drawVisionLine(lineX,lineY,lineVelocity, action):
 			lineLength += 1
 			lineBuffer.y += 1
 		
-		if lineX >= main.gridWidth:
+		if lineX >= mapSize.x:
 			#Right border
 			break
-		if lineY >= main.gridHeight:
+		if lineY >= mapSize.y:
 			#Top border"
 			break
 		if lineX < 0:
@@ -480,7 +595,8 @@ func drawVisionLine(lineX,lineY,lineVelocity, action):
 			break
 		if lineY < 0:
 			#"Bottom border"
-			break#
+			break
+	return lightGrid
 
 func isActionPressed(key,action):
 	if Input.is_action_just_pressed(key):
@@ -512,12 +628,10 @@ func calcAction(targetUnit, targetPos):
 		return
 	hasActed = true
 	
-	for hasReload in hasTrait("reload", actionNo): #Tick up Ammo from reload
-		for actions in range(len(statActionList)):
-			for hasAmmo in hasTrait("ammo",actions):
-				if hasAmmo[0][1] < hasAmmo[0][2]:
-					statActionList[actions].traits[hasAmmo[1]][1] += hasReload[0][1]
-					didActionTrigger = true
+	for hasManaGain in hasTrait("manaGain", actionNo): #Regain mana from mana gain
+		if statMana < statMaxMana:
+			statMana = min(statMana + hasManaGain[0][1],statMaxMana)
+			didActionTrigger = true
 	
 	returnDictionary = calcActionTile(targetUnit, targetPos)
 	didActionTrigger = didActionTrigger or returnDictionary.didActionTrigger
@@ -546,8 +660,8 @@ func calcAction(targetUnit, targetPos):
 		for hasUse in hasTrait("use", actionNo): #Tick down Use
 			statActionList[actionNo].traits[hasUse[1]][1] -= 1
 		
-		for hasAmmo in hasTrait("ammo", actionNo): #Tick down Ammo
-			statActionList[actionNo].traits[hasAmmo[1]][1] -= 1
+		for hasManaCost in hasTrait("manaCost", actionNo): #Spend mana
+			statMana -= hasManaCost[0][1]
 			
 		for hasRecoil in hasTrait("recoil", actionNo): #Takes damage if has recoil
 				damage(hasRecoil[0][1])
@@ -597,6 +711,9 @@ func calcActionUnit(targetUnit, targetPos):
 	for hasExpose in hasTrait("expose", actionNo): #Inficts exposed from expose trait
 		targetUnit.addStatus("exposed", hasExpose[0][1], [])
 		didActionTrigger = true
+	for hasPacifism in hasTrait("pacifismVow", actionNo): #Inficts exposed from expose trait
+		targetUnit.addStatus("pacifism", 3, [])
+		didActionTrigger = true
 	for hasPossess in hasTrait("possess", actionNo): #Inficts possessed
 		if targetUnit.statCost > hasPossess[0][1]:
 			continue
@@ -616,12 +733,31 @@ func calcActionUnit(targetUnit, targetPos):
 				isTargetDead = true
 			didActionTrigger = true
 	
+	for hasConjure in hasTrait("conjure", actionNo): #Summons unit adjacent or on to the target
+		if targetUnit.unitTeam == unitTeam:
+			continue
+		for i in [Vector2i(0,0), Vector2i(0,-1), Vector2i(0,1), Vector2i(1,0), Vector2i(-1,0)]:
+			var tile = main.getTileAtXY(targetPos.x + i.x,targetPos.y + i.y)
+			if tile == null:
+				continue
+			if tile.type == 1:
+				continue
+			if main.getUnitAtXY(targetPos.x + i.x,targetPos.y + i.y) != null:
+				continue
+			main.spawnUnit(hasConjure[0][1],targetPos.x + i.x, targetPos.y + i.y,unitTeam,true)
+			didActionTrigger = true
+			break
+	
 	if isTargetDead:
 		for hasDevour in hasTrait("devour", actionNo):
 			changeHealth(int(targetUnit.statMaxHealth / 2.0))
 		if targetUnit.unitTeam != unitTeam:
+			
 			for hasRampage in hasTrait("rampage", actionNo): #If the target died, gain actions if rampage trait
 				statActions += hasRampage[0][1]
+			for hasFaithful in hasTrait("faithful"): #If the target died, gain mana if faithful trait
+				statMana = min(statMana+hasFaithful[0][2],statMaxMana)
+			
 			for hasInfernalInvader in hasTrait("infernalInvader"): #If the target died, gain max health and damage
 				var invaderValue = hasInfernalInvader[0][1]
 				if targetUnit.statCost > statCost:
@@ -629,6 +765,7 @@ func calcActionUnit(targetUnit, targetPos):
 				if not hasStatus("unholyWarlord").is_empty():
 					invaderValue *= 2
 				addStatus("infernalInvader", null, [invaderValue])
+			
 			if hasTrait("gildedHoarder"):
 				for posOffset in [Vector2.ZERO,Vector2.UP,Vector2.DOWN,Vector2.LEFT,Vector2.RIGHT]:
 					var pos = targetPos + posOffset
@@ -676,16 +813,32 @@ func calcDamage(dmg, _includeAbsorb = false, unitSource = null, actionSource = n
 		for hasGildedHoarder in unitSource.hasStatus("gildedHoarder"):
 			dmg += hasGildedHoarder[0][2]
 		if actionSource != null:
+			if statMaxMovement > 3:
+				for hasImpale in unitSource.hasTrait("impale",actionSource):
+					dmg += (statMaxMovement - 3) * hasImpale[0][1]
 			if unitTeam == unitSource.unitTeam:
 				if unitSource.hasTrait("devour",actionSource):
 					dmg += 1000
+	
+	for hasIntangible in hasTrait("intangible"):
+		if hasIntangible[0][1] >= dmg:
+			continue
+		dmg -= floor((dmg - hasIntangible[0][1]) / 2.0)
 	
 	for hasDefence in hasTrait("defence"): #Defence reduces damage taken.
 		dmg -= hasDefence[0][1]
 	for hasMoltenDefence in hasStatus("moltenDefence"):
 		dmg -= hasMoltenDefence[0][2]
+	dmg = int(max(0,dmg))
+	if unitSource != null:
+		for hasPacifism in unitSource.hasStatus("pacifism"):
+			var finalHealth = statHealth
+			for hasBlock in hasStatus("block"):
+				finalHealth += hasBlock[0][2]
+			if dmg >= finalHealth:
+				dmg = finalHealth - 1
 	
-	return int(max(0,dmg))
+	return dmg
 
 func damage(dmg,unitSource = null, actionSource = null):
 	dmg = calcDamage(dmg, false, unitSource, actionSource)
@@ -704,7 +857,7 @@ func damage(dmg,unitSource = null, actionSource = null):
 				removeStatus(statusBlock[1])
 			dmg -= blockTotal
 	
-	while true: #If the unit has the charge status, remove it.
+	while true:
 		var hasMoltenDefence = hasStatus("moltenDefence")
 		if hasMoltenDefence.is_empty():
 			break
@@ -731,10 +884,12 @@ func checkActionValid(action, actionNo):
 	for hasUse in hasTrait("use", actionNo):
 		if hasUse[0][1] < 1:
 			return false
-	for hasAmmo in hasTrait("ammo", actionNo):
-		if hasAmmo[0][1] < 1:
+	for hasManaCost in hasTrait("manaCost", actionNo):
+		if hasManaCost[0][1] > statMana:
 			return false
-	
+	if hasTrait("ranged", actionNo):
+		if hasStatus("engaged"):
+			return false
 	if hasStatus("wrath"):
 		if not hasTrait("melee", actionNo) and not hasTrait("ranged", actionNo):
 			return false
@@ -824,7 +979,7 @@ func die(forceDeath = false):
 	
 	#THE UNIT IS DEAD
 	
-	for unit in main.unitControl.get_children():
+	for unit in main.unitControl.get_children(): #Remove possessed from each unit
 		if unit == self:
 			continue
 		if not unit.isAlive:
@@ -834,11 +989,20 @@ func die(forceDeath = false):
 		var hasPossessed = unit.hasStatus("possessed")
 		if not hasPossessed.is_empty():
 			if hasPossessed[0][0][2] == self:
-				print(hasPossessed)
 				unit.removeStatus(hasPossessed[0][1])
+	
+	for hasFaithful in hasTrait("faithful"):
+		for unit in getUnitsInArea(gridX,gridY,2,self,unitTeam):
+			if unit.hasTrait("faithful").is_empty():
+				continue
+			unit.statMana = min(unit.statMana + hasFaithful[0][1], unit.statMaxMana)
+	remove()
+	return true
+
+func remove():
 	queue_free()
 	isAlive = false
-	return true
+	return
 
 func getUnitsInArea(areaX,areaY,areaRadius,unitMask = null, teamMask = null):
 	var unitList = []
@@ -866,6 +1030,8 @@ func saveUnit():
 	,"movement": statMovement
 	,"maxActions": statMaxActions
 	,"actions": statActions
+	,"maxMana": statMaxMana
+	,"mana": statMana
 	,"cost": statCost
 	,"traitsList": statTraits
 	,"actionList": statActionList
@@ -876,3 +1042,8 @@ func saveUnit():
 	,"team": unitTeam
 	,"spriteFlipped": $Sprites.scale.x == -1
 }
+
+func _exit_tree() -> void:
+	finishThread = true
+	unitSemaphore.post()
+	unitThread.wait_to_finish()

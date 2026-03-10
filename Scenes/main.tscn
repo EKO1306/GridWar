@@ -1,12 +1,16 @@
-[gd_scene load_steps=32 format=3 uid="uid://cnyektfckpb08"]
+[gd_scene load_steps=34 format=3 uid="uid://cnyektfckpb08"]
 
 [ext_resource type="Script" uid="uid://c8dnve3col8kc" path="res://Scripts/Main/main.gd" id="1_kqp5x"]
 [ext_resource type="Script" uid="uid://c3rxpfi2qb05k" path="res://Scripts/Camera.gd" id="2_r14qm"]
 [ext_resource type="Script" uid="uid://byodgssfuh8dl" path="res://Scripts/UIManager.gd" id="3_pb3m7"]
-[ext_resource type="Texture2D" uid="uid://cku8i0gm7aj7o" path="res://Images/Icons/BaseIcons.png" id="3_qknrr"]
+[ext_resource type="Texture2D" uid="uid://dbkxuep8rrkjp" path="res://Images/Icons/General/Health.png" id="5_d1ilt"]
 [ext_resource type="Texture2D" uid="uid://rd3favt5syvv" path="res://Images/UI/Bars.png" id="5_kacx6"]
 [ext_resource type="FontFile" uid="uid://cwiw18el0nvtw" path="res://Misc/Fonts/Minecraft.ttf" id="6_kxyny"]
+[ext_resource type="Texture2D" uid="uid://cvmwbmciq745j" path="res://Images/Icons/General/Movement.png" id="7_6iyac"]
+[ext_resource type="Texture2D" uid="uid://dcjc0c7wqyttt" path="res://Images/Icons/General/Action.png" id="8_fdnlq"]
 [ext_resource type="Script" uid="uid://nvwgo3q1dmkh" path="res://Scripts/UI/pause_panel_menu.gd" id="8_fexfo"]
+[ext_resource type="Texture2D" uid="uid://busgiy3xvt56h" path="res://Images/Icons/General/Value.png" id="9_jkdf5"]
+[ext_resource type="Texture2D" uid="uid://ji7qtq3ybph1" path="res://Images/Icons/General/mana.png" id="10_d1ilt"]
 
 [sub_resource type="Gradient" id="Gradient_jnjkh"]
 offsets = PackedFloat32Array(0.373281, 0.626719, 1)
@@ -40,10 +44,6 @@ Panel/styles/panel = SubResource("StyleBoxFlat_rkb85")
 [sub_resource type="Theme" id="Theme_nydmo"]
 Panel/styles/panel = null
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uan7b"]
-atlas = ExtResource("3_qknrr")
-region = Rect2(0, 0, 12, 12)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_s5n2l"]
 atlas = ExtResource("5_kacx6")
 region = Rect2(0, 0, 80, 12)
@@ -51,10 +51,6 @@ region = Rect2(0, 0, 80, 12)
 [sub_resource type="AtlasTexture" id="AtlasTexture_34c12"]
 atlas = ExtResource("5_kacx6")
 region = Rect2(0, 24, 80, 12)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rrex7"]
-atlas = ExtResource("3_qknrr")
-region = Rect2(12, 0, 12, 12)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7q7ga"]
 atlas = ExtResource("5_kacx6")
@@ -64,17 +60,17 @@ region = Rect2(0, 12, 80, 12)
 atlas = ExtResource("5_kacx6")
 region = Rect2(0, 36, 80, 12)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_8vsgf"]
-atlas = ExtResource("3_qknrr")
-region = Rect2(24, 0, 12, 12)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_fcpdn"]
 atlas = ExtResource("5_kacx6")
 region = Rect2(0, 48, 80, 12)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_06rrb"]
-atlas = ExtResource("3_qknrr")
-region = Rect2(36, 0, 12, 12)
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bp64"]
+atlas = ExtResource("5_kacx6")
+region = Rect2(0, 60, 80, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_344ge"]
+atlas = ExtResource("5_kacx6")
+region = Rect2(0, 72, 80, 12)
 
 [sub_resource type="Theme" id="Theme_oc7ro"]
 Panel/styles/panel = SubResource("StyleBoxFlat_rkb85")
@@ -86,7 +82,7 @@ Panel/styles/panel = null
 offsets = PackedFloat32Array(0, 0.534831, 1)
 colors = PackedColorArray(0.419608, 0.188235, 0.176471, 1, 0.301961, 0.0745098, 0.317647, 1, 0.137255, 0.12549, 0.364706, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_7b1cl"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_d1ilt"]
 gradient = SubResource("Gradient_lkytc")
 width = 16
 height = 16
@@ -94,7 +90,7 @@ fill_from = Vector2(0.5, 1)
 fill_to = Vector2(0.5, 0)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_syocd"]
-texture = SubResource("GradientTexture2D_7b1cl")
+texture = SubResource("GradientTexture2D_d1ilt")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ox3di"]
 bg_color = Color(0.231373, 0.0588235, 0.454902, 0.607843)
@@ -108,6 +104,7 @@ border_blend = true
 [node name="Main" type="Node2D"]
 process_mode = 3
 script = ExtResource("1_kqp5x")
+debugMode = false
 
 [node name="Paralax" type="Node2D" parent="."]
 position = Vector2(576, 324)
@@ -132,6 +129,14 @@ styleDark = SubResource("Theme_pgw6q")
 styleLight = SubResource("Theme_8kb4n")
 styleUpperDark = SubResource("Theme_5pli4")
 styleUpperLight = SubResource("Theme_nydmo")
+
+[node name="DebugIndicator" type="RichTextLabel" parent="Camera2D/CanvasLayer"]
+offset_right = 224.0
+offset_bottom = 38.0
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_fonts/normal_font = ExtResource("6_kxyny")
+theme_override_font_sizes/normal_font_size = 32
+text = "DEBUG MODE"
 
 [node name="LowerPanel" type="Panel" parent="Camera2D/CanvasLayer"]
 top_level = true
@@ -178,10 +183,11 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("6_kxyny")
 theme_override_font_sizes/normal_font_size = 32
-bbcode_enabled = true
 text = "Ullnyaal Korbaa"
 scroll_active = false
 autowrap_mode = 0
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="StatusPanels" type="Control" parent="Camera2D/CanvasLayer/LowerPanel/NamePanel"]
 layout_mode = 1
@@ -209,7 +215,7 @@ theme = SubResource("Theme_8kb4n")
 
 [node name="PanelStatsCore" type="Panel" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel"]
 top_level = true
-layout_mode = 2
+layout_mode = 0
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 8.0
@@ -225,7 +231,7 @@ offset_left = 4.0
 offset_top = 4.0
 offset_right = 28.0
 offset_bottom = 28.0
-texture = SubResource("AtlasTexture_uan7b")
+texture = ExtResource("5_d1ilt")
 
 [node name="BarHealth" type="TextureProgressBar" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel/PanelStatsCore"]
 layout_mode = 0
@@ -236,6 +242,9 @@ offset_bottom = 16.0
 scale = Vector2(2, 2)
 max_value = 80.0
 value = 10.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_right = 4
 texture_under = SubResource("AtlasTexture_s5n2l")
 texture_progress = SubResource("AtlasTexture_34c12")
 
@@ -252,10 +261,10 @@ grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 theme_override_fonts/normal_font = ExtResource("6_kxyny")
 theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[center]500/1000"
+text = "500/1000"
 scroll_active = false
 autowrap_mode = 0
+horizontal_alignment = 1
 
 [node name="IconMovement" type="TextureRect" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel/PanelStatsCore"]
 layout_mode = 0
@@ -263,7 +272,7 @@ offset_left = 4.0
 offset_top = 34.0
 offset_right = 28.0
 offset_bottom = 58.0
-texture = SubResource("AtlasTexture_rrex7")
+texture = ExtResource("7_6iyac")
 
 [node name="BarMovement" type="TextureProgressBar" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel/PanelStatsCore"]
 layout_mode = 0
@@ -274,6 +283,9 @@ offset_bottom = 46.0
 scale = Vector2(2, 2)
 max_value = 80.0
 value = 40.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_right = 4
 texture_under = SubResource("AtlasTexture_7q7ga")
 texture_progress = SubResource("AtlasTexture_7bvwy")
 
@@ -290,10 +302,10 @@ grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 theme_override_fonts/normal_font = ExtResource("6_kxyny")
 theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[center]5/6"
+text = "5/6"
 scroll_active = false
 autowrap_mode = 0
+horizontal_alignment = 1
 
 [node name="IconAction" type="TextureRect" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel/PanelStatsCore"]
 layout_mode = 0
@@ -301,7 +313,7 @@ offset_left = 4.0
 offset_top = 64.0
 offset_right = 28.0
 offset_bottom = 88.0
-texture = SubResource("AtlasTexture_8vsgf")
+texture = ExtResource("8_fdnlq")
 
 [node name="BarAction" type="TextureProgressBar" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel/PanelStatsCore"]
 layout_mode = 0
@@ -312,6 +324,9 @@ offset_bottom = 76.0
 scale = Vector2(2, 2)
 max_value = 80.0
 value = 59.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_right = 4
 texture_under = SubResource("AtlasTexture_7q7ga")
 texture_progress = SubResource("AtlasTexture_fcpdn")
 
@@ -328,10 +343,10 @@ grow_vertical = 2
 scale = Vector2(0.5, 0.5)
 theme_override_fonts/normal_font = ExtResource("6_kxyny")
 theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[center]2/3"
+text = "2/3"
 scroll_active = false
 autowrap_mode = 0
+horizontal_alignment = 1
 
 [node name="IconCost" type="TextureRect" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel/PanelStatsCore"]
 layout_mode = 0
@@ -339,7 +354,7 @@ offset_left = 4.0
 offset_top = 94.0
 offset_right = 28.0
 offset_bottom = 118.0
-texture = SubResource("AtlasTexture_06rrb")
+texture = ExtResource("9_jkdf5")
 
 [node name="LabelCost" type="RichTextLabel" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel/PanelStatsCore"]
 layout_mode = 1
@@ -353,10 +368,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/normal_font = ExtResource("6_kxyny")
 theme_override_font_sizes/normal_font_size = 16
-bbcode_enabled = true
-text = "[center]69420"
+text = "69420"
 scroll_active = false
 autowrap_mode = 0
+horizontal_alignment = 1
 
 [node name="Traits" type="Control" parent="Camera2D/CanvasLayer/LowerPanel/StatsPanel"]
 anchors_preset = 0
@@ -366,11 +381,69 @@ offset_right = 4.0
 offset_bottom = 130.0
 mouse_filter = 2
 
+[node name="StatsManaPanel" type="Panel" parent="Camera2D/CanvasLayer/LowerPanel"]
+top_level = true
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 214.0
+offset_top = -186.0
+offset_right = 246.0
+offset_bottom = -4.0
+grow_vertical = 0
+theme = SubResource("Theme_8kb4n")
+
+[node name="BarMana" type="TextureProgressBar" parent="Camera2D/CanvasLayer/LowerPanel/StatsManaPanel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 180.0
+offset_right = 79.0
+offset_bottom = 192.0
+rotation = -1.5708
+scale = Vector2(2, 2)
+max_value = 80.0
+value = 59.0
+nine_patch_stretch = true
+stretch_margin_left = 4
+stretch_margin_right = 4
+texture_under = SubResource("AtlasTexture_6bp64")
+texture_progress = SubResource("AtlasTexture_344ge")
+
+[node name="Label" type="RichTextLabel" parent="Camera2D/CanvasLayer/LowerPanel/StatsManaPanel/BarMana"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 75.0
+offset_top = -2.0
+offset_right = 32.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5708
+scale = Vector2(0.5, 0.5)
+theme_override_fonts/normal_font = ExtResource("6_kxyny")
+theme_override_font_sizes/normal_font_size = 16
+text = "2/3"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="IconMana" type="TextureRect" parent="Camera2D/CanvasLayer/LowerPanel/StatsManaPanel"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 28.0
+offset_bottom = 27.0
+texture = ExtResource("10_d1ilt")
+
 [node name="ActionPanels" type="Control" parent="Camera2D/CanvasLayer/LowerPanel"]
 anchors_preset = 0
-offset_left = 214.0
+offset_left = 250.0
 offset_top = 4.0
-offset_right = 214.0
+offset_right = 250.0
 offset_bottom = 4.0
 
 [node name="UpperPanel" type="Panel" parent="Camera2D/CanvasLayer"]
@@ -556,8 +629,6 @@ autowrap_mode = 0
 [node name="MouseNode" type="Control" parent="Camera2D/CanvasLayer"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 mouse_filter = 2
 
 [node name="Units" type="Node2D" parent="."]

@@ -12,6 +12,8 @@ extends CanvasLayer
 @onready var uiStatsMovementBar = uiStatsPanel.get_node("BarMovement") as TextureProgressBar
 @onready var uiStatsActionBar = uiStatsPanel.get_node("BarAction") as TextureProgressBar
 @onready var uiStatsCostLabel = uiStatsPanel.get_node("LabelCost") as RichTextLabel
+@onready var uiStatsManaPanel = uiLowerPanel.get_node("StatsManaPanel") as Panel
+@onready var uiStatsManaBar = uiStatsManaPanel.get_node("BarMana") as TextureProgressBar
 
 @onready var uiTraitPanels = uiLowerPanel.get_node("StatsPanel/Traits")
 @onready var uiPanelActions = uiLowerPanel.get_node("ActionPanels")
@@ -77,18 +79,29 @@ func updateUI():
 	#print("Update UI took " + str(Time.get_ticks_usec() - time))
 
 func updateStats(unit):
-	uiNameLabel.text = "[center]" + unit.statName
+	uiNameLabel.text = unit.statName
 	if main.armyBuilder:
 		unit.statHealth = unit.statMaxHealth
 		unit.statMovement = unit.statMaxMovement
 		unit.statActions = unit.statMaxActions
+		if unit.hasTrait("uninspired").is_empty():
+			unit.statMana = unit.statMaxMana
+		else:
+			unit.statMana =  unit.hasTrait("uninspired")[0][0][1]
+	
 	uiStatsHealthBar.value = round((unit.statHealth/float(unit.statMaxHealth))*80)
-	uiStatsHealthBar.get_node("Label").text = "[center]" + str(unit.statHealth) + "/" + str(unit.statMaxHealth)
+	uiStatsHealthBar.get_node("Label").text = str(unit.statHealth) + "/" + str(unit.statMaxHealth)
 	uiStatsMovementBar.value = round((unit.statMovement/float(unit.statMaxMovement))*80)
-	uiStatsMovementBar.get_node("Label").text = "[center]" + str(unit.statMovement) + "/" + str(unit.statMaxMovement)
+	uiStatsMovementBar.get_node("Label").text = str(unit.statMovement) + "/" + str(unit.statMaxMovement)
 	uiStatsActionBar.value = round((unit.statActions/float(unit.statMaxActions))*80)
-	uiStatsActionBar.get_node("Label").text = "[center]" + str(unit.statActions) + "/" + str(unit.statMaxActions)
-	uiStatsCostLabel.text = "[center]" + str(unit.statCost)
+	uiStatsActionBar.get_node("Label").text = str(unit.statActions) + "/" + str(unit.statMaxActions)
+	uiStatsCostLabel.text = str(unit.statCost)
+	if unit.statMaxMana > 0:
+		uiStatsManaPanel.show()
+		uiStatsManaBar.value = round((unit.statMana/float(unit.statMaxMana))*80)
+		uiStatsManaBar.get_node("Label").text = str(unit.statMana) + "/" + str(unit.statMaxMana)
+	else:
+		uiStatsManaPanel.hide()
 
 func updateTraits(unit):
 	for i in uiTraitPanels.get_children():
@@ -106,6 +119,10 @@ func updateActions(unit):
 		i.queue_free()
 	var traitPanel
 	var statActionValue
+	if uiStatsManaPanel.visible:
+		uiPanelActions.position = Vector2(250,4)
+	else:
+		uiPanelActions.position = Vector2(214,4)
 	for i in range(len(unit.statActionList)):
 		statActionValue = unit.statActionList[i]
 		traitPanel = preload("res://Nodes/UI/panel_action.tscn").instantiate()
@@ -172,18 +189,12 @@ func drawTrait(traitValue, addedNode, traitPosition, traitType, drawScale = 1):
 			tooltipFormat[str(a)] = i
 		traitPanel.tooltip = traitTooltipList.tooltip.format(tooltipFormat)
 		if traitTooltipList.get("traitText") != null:
-			traitPanel.get_node("Label").text = "[center]" + traitTooltipList.traitText.format(tooltipFormat)
+			traitPanel.get_node("Label").text = traitTooltipList.traitText.format(tooltipFormat)
 	else:
 		traitPanel.tooltip = "Error: No tooltip found."
-		#if traitType == "status":
-			#if len(traitValue) >= 3:
-				#traitPanel.get_node("Label").text = "[center]" + str(traitValue[2])
-		#else:
-			#if len(traitValue) >= 2:
-				#traitPanel.get_node("Label").text = "[center]" + str(traitValue[1])
 	if traitType == "status":
 		if traitValue[1] != null:
-			traitPanel.get_node("Label2").text = "[center]" + str(traitValue[1])
+			traitPanel.get_node("Label2").text = str(traitValue[1])
 
 func updateStatus(unit):
 	for a in uiPanelStatus.get_children():

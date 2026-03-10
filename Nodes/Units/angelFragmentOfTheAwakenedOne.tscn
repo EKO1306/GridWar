@@ -1,0 +1,282 @@
+[gd_scene load_steps=19 format=3 uid="uid://lsasjqpi04qg"]
+
+[ext_resource type="Script" uid="uid://cufxgjoqvexep" path="res://Scripts/unit.gd" id="1_jwyf4"]
+[ext_resource type="Shader" uid="uid://bubwsnmxlgath" path="res://Shaders/unitOutline.gdshader" id="2_bujy4"]
+[ext_resource type="Texture2D" uid="uid://cdnhp0ru8okc3" path="res://Images/Units/angelFragmentOfTheAwakenedOne.png" id="3_jwyf4"]
+[ext_resource type="PackedScene" uid="uid://carpn4w2yjnje" path="res://Nodes/UI/unit_health_bar.tscn" id="4_c2qqc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hh628"]
+size = Vector2(24, 24)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xy4vo"]
+shader = ExtResource("2_bujy4")
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/line_thickness = 2.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c2qqc"]
+atlas = ExtResource("3_jwyf4")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="Gradient" id="Gradient_jwyf4"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.135, 0.305, 0.57, 0.775)
+colors = PackedColorArray(0.921569, 0.929412, 0.913725, 1, 0.643137, 0.866667, 0.858824, 1, 0.45098, 0.745098, 0.827451, 1, 0.309804, 0.560784, 0.729412, 1, 0.145098, 0.227451, 0.368627, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_bujy4"]
+gradient = SubResource("Gradient_jwyf4")
+
+[sub_resource type="Curve" id="Curve_jwyf4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_bujy4"]
+curve = SubResource("Curve_jwyf4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jwyf4"]
+particle_flag_disable_z = true
+spread = 180.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+scale_min = 3.0
+scale_max = 3.0
+scale_curve = SubResource("CurveTexture_bujy4")
+color_ramp = SubResource("GradientTexture1D_bujy4")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mgi6j"]
+atlas = ExtResource("3_jwyf4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mgi6j"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+scale_min = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_bujy4")
+color_ramp = SubResource("GradientTexture1D_bujy4")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bujy4"]
+atlas = ExtResource("3_jwyf4")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="Animation" id="Animation_3w5n0"]
+resource_name = "Idle"
+length = 4.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/CentralEye/OuterRing:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 12.5664]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/CentralEye/InnerRing:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-0.785398, 5.49779]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/CentralEye/MiddleRing:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 9.42478]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/CentralEye:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(-2, -2),
+"update": 0,
+"values": [Vector2(0, -13), Vector2(0, -23)]
+}
+
+[sub_resource type="Animation" id="Animation_hh5sh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprites/CentralEye/OuterRing:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprites/CentralEye/InnerRing:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [7.11054]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprites/CentralEye/MiddleRing:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.63228]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprites/CentralEye:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(3.98337, -21.9387)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_togdo"]
+_data = {
+&"Idle": SubResource("Animation_3w5n0"),
+&"RESET": SubResource("Animation_hh5sh")
+}
+
+[node name="FragmentOfTheAwakenedOne" type="Area2D" groups=["Unit"]]
+z_index = 10
+script = ExtResource("1_jwyf4")
+statName = "Fragment of Awakened"
+statMaxHealth = 1400
+statMaxMovement = 4
+statMaxActions = 6
+statCost = 10000
+statMaxMana = 150
+statTraits = [["factionAngel"], ["flying"], ["eagleEye", 5], ["intangible", 200], ["intangible", 100], ["manaDrain", 50]]
+statActionList = Array[Dictionary]([{
+"actions": 1,
+"name": "Almighty Gaze",
+"range": Vector2i(1, 5),
+"traits": [["damage", 80], ["ranged"]]
+}])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(12, 12)
+shape = SubResource("RectangleShape2D_hh628")
+
+[node name="Sprites" type="CanvasGroup" parent="."]
+material = SubResource("ShaderMaterial_xy4vo")
+position = Vector2(12, 12)
+
+[node name="CentralEye" type="Sprite2D" parent="Sprites"]
+position = Vector2(3.98337, -21.9387)
+texture = SubResource("AtlasTexture_c2qqc")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprites/CentralEye"]
+amount = 16
+lifetime = 2.0
+trail_lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_jwyf4")
+
+[node name="InnerRing" type="Sprite2D" parent="Sprites/CentralEye"]
+rotation = 7.11054
+texture = SubResource("AtlasTexture_mgi6j")
+offset = Vector2(0, -4)
+
+[node name="InnerRing2" type="Sprite2D" parent="Sprites/CentralEye/InnerRing"]
+rotation = 3.14159
+texture = SubResource("AtlasTexture_mgi6j")
+offset = Vector2(0, -4)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprites/CentralEye/InnerRing/InnerRing2"]
+position = Vector2(0.5, -8)
+amount = 16
+trail_lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_mgi6j")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprites/CentralEye/InnerRing"]
+position = Vector2(0.5, -8)
+amount = 16
+trail_lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_mgi6j")
+
+[node name="MiddleRing" type="Sprite2D" parent="Sprites/CentralEye"]
+rotation = 2.63228
+texture = SubResource("AtlasTexture_mgi6j")
+offset = Vector2(0, -6)
+
+[node name="MiddleRing2" type="Sprite2D" parent="Sprites/CentralEye/MiddleRing"]
+rotation = 3.14159
+texture = SubResource("AtlasTexture_mgi6j")
+offset = Vector2(0, -6)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprites/CentralEye/MiddleRing/MiddleRing2"]
+position = Vector2(0.5, -10)
+amount = 24
+trail_lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_mgi6j")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprites/CentralEye/MiddleRing"]
+position = Vector2(0.5, -10)
+amount = 24
+trail_lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_mgi6j")
+
+[node name="OuterRing" type="Sprite2D" parent="Sprites/CentralEye"]
+texture = SubResource("AtlasTexture_bujy4")
+offset = Vector2(0, -8)
+
+[node name="OuterRing2" type="Sprite2D" parent="Sprites/CentralEye/OuterRing"]
+rotation = -3.14159
+texture = SubResource("AtlasTexture_bujy4")
+offset = Vector2(0, -8)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprites/CentralEye/OuterRing/OuterRing2"]
+position = Vector2(0.5, -12)
+amount = 32
+trail_lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_mgi6j")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Sprites/CentralEye/OuterRing"]
+position = Vector2(0.5, -12)
+amount = 32
+trail_lifetime = 2.0
+process_material = SubResource("ParticleProcessMaterial_mgi6j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_togdo")
+}
+
+[node name="HealthBar" parent="." instance=ExtResource("4_c2qqc")]
+offset_left = 3.0
+offset_top = 18.0
+offset_right = 21.0
+offset_bottom = 22.0

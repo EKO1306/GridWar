@@ -263,7 +263,7 @@ statTraits = [["factionKingdom"]]
 statActionList = Array[Dictionary]([{
 "actions": 1,
 "name": "Longbow",
-"range": Vector2i(3, 7),
+"range": Vector2i(3, 6),
 "traits": [["damage", 140], ["ranged"]]
 }, {
 "actions": 1,

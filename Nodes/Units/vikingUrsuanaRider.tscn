@@ -538,24 +538,13 @@ z_index = 10
 script = ExtResource("1_e8nia")
 statName = "Ursuana Rider"
 statMaxHealth = 320
-statMaxActions = 2
 statCost = 500
 statTraits = [["factionViking"], ["charge", 1], ["mounted"]]
 statActionList = Array[Dictionary]([{
-"actions": 0,
+"actions": 1,
 "name": "Longaxe",
 "range": Vector2i(1, 1),
-"traits": [["damage", 140], ["melee"], ["usePerTurn", 1, 1]]
-}, {
-"actions": 2,
-"name": "Bear Bite",
-"range": Vector2i(1, 1),
-"traits": [["damage", 80], ["melee"]]
-}, {
-"actions": 1,
-"name": "Bear Claw",
-"range": Vector2i(1, 1),
-"traits": [["damage", 30], ["melee"]]
+"traits": [["damage", 240], ["melee"], ["usePerTurn", 1, 1]]
 }])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
