@@ -35,7 +35,7 @@ func openTab():
 	for i in get_parent().get_children():
 		if i == self:
 			continue
-		if i is RichTextLabel:
+		if not "open" in i:
 			continue
 		if openWithTab.has(i):
 			continue

@@ -86,8 +86,9 @@ func _process(_delta):
 		get_tree().paused = not get_tree().paused
 		uiCanvas.get_node("PausePanel").visible = get_tree().paused
 	if Input.is_action_just_pressed("debugMode"):
-		noFog = !noFog
-		updateScreen()
+		if debugMode:
+			noFog = !noFog
+			updateScreen()
 	if armyBuilder:
 		if Input.is_action_just_pressed("move_right"):
 			selectedArmyNo[1] += 1
@@ -170,7 +171,7 @@ func hideGame():
 
 func updateScreen():
 	var time = Time.get_ticks_usec()
-	#$Camera2D/CanvasLayer/DebugIndicator.visible = debugMode
+	$Camera2D/CanvasLayer/DebugIndicator.visible = debugMode
 	allowMove = false
 	armyCosts = [0,0]
 	unitCount = [0,0]

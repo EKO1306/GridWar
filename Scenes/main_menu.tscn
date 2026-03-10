@@ -662,7 +662,6 @@ offset_top = 0.224
 offset_right = 0.0639648
 theme = SubResource("Theme_t1dhk")
 script = ExtResource("6_opfnp")
-startOpen = null
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer/MapSelector"]
 layout_mode = 1
